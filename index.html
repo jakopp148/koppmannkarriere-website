@@ -40,8 +40,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background: var(--white);
-            box-shadow: 0 1px 0 var(--border);
+            background: var(--primary-blue);
             z-index: 1000;
         }
 
@@ -55,8 +54,6 @@
         }
 
         .logo {
-            font-size: 1.45rem;
-            font-weight: 800;
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -67,22 +64,22 @@
         .logo:hover { opacity: 0.85; }
 
         .logo img {
-            height: 38px;
+            height: 52px;
             width: auto;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 2rem;
             align-items: center;
         }
 
         nav ul li a {
             text-decoration: none;
-            color: var(--black);
+            color: rgba(255,255,255,0.88);
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             letter-spacing: 0.02em;
             transition: color 0.3s ease;
             position: relative;
@@ -95,17 +92,17 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary-blue);
+            background: var(--white);
             transition: width 0.3s ease;
         }
 
-        nav ul li a:hover { color: var(--primary-blue); }
+        nav ul li a:hover { color: var(--white); }
         nav ul li a:hover::after { width: 100%; }
 
         .header-cta-btn {
             padding: 0.6rem 1.5rem;
-            background: var(--primary-blue);
-            color: var(--white);
+            background: var(--white);
+            color: var(--primary-blue);
             font-family: 'Montserrat', sans-serif;
             font-size: 0.875rem;
             font-weight: 700;
@@ -119,9 +116,9 @@
         }
 
         .header-cta-btn:hover {
-            background: var(--dark-blue);
+            background: rgba(255,255,255,0.88);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,98,177,0.35);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
         }
 
         /* Burger Button */
@@ -139,7 +136,7 @@
             display: block;
             width: 24px;
             height: 2px;
-            background: var(--black);
+            background: var(--white);
             border-radius: 2px;
             transition: all 0.3s ease;
         }
@@ -152,7 +149,7 @@
         .mobile-menu {
             display: none;
             position: fixed;
-            top: 65px;
+            top: 74px;
             left: 0;
             right: 0;
             bottom: 0;
@@ -198,19 +195,16 @@
 
         /* ── BLOCK 1: HERO ── */
         .hero {
-            margin-top: 70px;
+            margin-top: 74px;
             min-height: 88vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            background: var(--white);
+            position: relative;
             overflow: hidden;
         }
 
         .hero-image {
+            width: 100%;
             height: 88vh;
-            position: relative;
-            overflow: hidden;
+            min-height: 500px;
         }
 
         .hero-image img {
@@ -218,66 +212,51 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
+            display: block;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(0, 23, 60, 0.72) 0%,
+                rgba(0, 39, 119, 0.45) 45%,
+                rgba(0,0,0,0) 75%
+            );
         }
 
         .hero-content {
-            padding: 4rem 5rem 4rem 4rem;
-            max-width: 620px;
-        }
-
-        .hero-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--primary-blue);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-eyebrow::before {
-            content: '';
-            display: inline-block;
-            width: 28px;
-            height: 2px;
-            background: var(--primary-blue);
+            position: absolute;
+            top: 2rem;
+            left: 0;
+            right: 0;
+            padding: 3.5rem 5rem;
+            max-width: 700px;
+            z-index: 2;
         }
 
         .hero h1 {
-            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            font-size: clamp(2.4rem, 5vw, 4rem);
             font-weight: 900;
-            color: var(--black);
+            color: var(--white);
             line-height: 1.05;
             letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.2);
         }
 
         .hero h1 span {
-            color: var(--primary-blue);
-        }
-
-        .hero-claim {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--primary-blue);
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.01em;
+            color: rgba(255,255,255,0.9);
         }
 
         .hero-description {
             font-size: 1.05rem;
-            color: var(--medium-gray);
+            color: rgba(255,255,255,0.88);
             line-height: 1.85;
-            margin-bottom: 2.5rem;
             font-weight: 400;
-        }
-
-        .hero-ctas {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+            max-width: 520px;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.2);
         }
 
         .btn-primary {
@@ -369,19 +348,6 @@
         .reason-section h2 em {
             font-style: normal;
             color: var(--primary-blue);
-            position: relative;
-        }
-
-        .reason-section h2 em::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--primary-blue);
-            opacity: 0.3;
-            border-radius: 2px;
         }
 
         .reason-text {
@@ -440,12 +406,6 @@
             background: var(--light-gray);
         }
 
-        .carousel-section .section-label {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-
         .carousel-wrapper {
             max-width: 1200px;
             margin: 0 auto;
@@ -453,28 +413,27 @@
             overflow: hidden;
             border-radius: 20px;
             box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+            background: var(--white);
         }
 
         .carousel {
             display: flex;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .carousel-item {
             min-width: 100%;
-            height: 480px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: var(--white);
-            position: relative;
-            overflow: hidden;
         }
 
         .carousel-item img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            display: block;
+            object-fit: contain;
         }
 
         .carousel-controls {
@@ -506,12 +465,29 @@
             background: var(--white);
         }
 
+        .about-section-header {
+            max-width: 1100px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .about-section-header h2 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+        }
+
+        .about-section-header h2 span {
+            color: var(--primary-blue);
+        }
+
         .about-container {
             max-width: 1100px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 5rem;
+            gap: 4rem;
             align-items: start;
         }
 
@@ -524,7 +500,7 @@
             align-items: center;
             justify-content: center;
             position: sticky;
-            top: 100px;
+            top: 90px;
             border: 1px solid var(--border);
         }
 
@@ -533,21 +509,6 @@
             font-size: 1rem;
             text-align: center;
             padding: 2rem;
-        }
-
-        .accordion-header {
-            margin-bottom: 2.5rem;
-        }
-
-        .accordion-header h2 {
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
-            font-weight: 800;
-            line-height: 1.25;
-            letter-spacing: -0.02em;
-        }
-
-        .accordion-header h2 span {
-            color: var(--primary-blue);
         }
 
         .accordion {
@@ -1035,18 +996,8 @@
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
-            .hero {
-                grid-template-columns: 1fr;
-                min-height: auto;
-            }
-
-            .hero-image {
-                height: 50vw;
-                min-height: 300px;
-            }
-
             .hero-content {
-                padding: 3rem 2.5rem;
+                padding: 2.5rem 3rem;
                 max-width: 100%;
             }
 
@@ -1073,28 +1024,17 @@
         }
 
         @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-
-            .header-cta-btn {
-                display: none;
-            }
-
-            .logo {
-                display: none;
-            }
-
-            .burger {
-                display: flex;
-            }
+            nav ul { display: none; }
+            .header-cta-btn { display: none; }
+            .logo { display: none; }
+            .burger { display: flex; }
 
             .hero-content {
-                padding: 2.5rem 1.5rem;
+                padding: 2rem 1.5rem;
             }
 
-            .hero-ctas {
-                flex-direction: column;
+            .hero h1 {
+                font-size: clamp(1.8rem, 7vw, 2.8rem);
             }
 
             .reason-section,
@@ -1105,13 +1045,8 @@
                 padding: 5rem 1.5rem;
             }
 
-            .carousel-section {
-                padding: 3rem 1.5rem;
-            }
-
-            .cta-container {
-                padding: 2.5rem 2rem;
-            }
+            .carousel-section { padding: 3rem 1.5rem; }
+            .cta-container { padding: 2.5rem 2rem; }
 
             .footer-container {
                 grid-template-columns: 1fr;
@@ -1135,10 +1070,11 @@
             </a>
             <ul>
                 <li><a href="#startseite">Start</a></li>
-                <li><a href="#arbeitnehmende">Für Arbeitnehmende</a></li>
-                <li><a href="#unternehmen">Für Unternehmen</a></li>
-                <li><a href="#ueber-mich">Über mich</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
+                <li><a href="unternehmen.html">Für Unternehmen</a></li>
+                <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
+                <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
+                <li><a href="#ueber-mich">So Arbeite Ich</a></li>
+                <li><a href="#kontakt">Kontakt & Einstieg</a></li>
             </ul>
             <a href="#kontakt" class="header-cta-btn">Erstgespräch vereinbaren</a>
             <button class="burger" id="burger" aria-label="Menü öffnen">
@@ -1152,9 +1088,10 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-menu">
         <a href="#startseite" class="mobile-nav-link">Start</a>
-        <a href="#arbeitnehmende" class="mobile-nav-link">Für Arbeitnehmende</a>
-        <a href="#unternehmen" class="mobile-nav-link">Für Unternehmen</a>
-        <a href="#ueber-mich" class="mobile-nav-link">Über mich</a>
+        <a href="unternehmen.html" class="mobile-nav-link">Für Unternehmen</a>
+        <a href="arbeitnehmende.html" class="mobile-nav-link">Für Arbeitnehmende</a>
+        <a href="karriere-kosmos.html" class="mobile-nav-link">Karriere-Kosmos</a>
+        <a href="#ueber-mich" class="mobile-nav-link">So Arbeite Ich</a>
         <a href="#kontakt" class="mobile-cta">Erstgespräch vereinbaren</a>
     </div>
 
@@ -1163,6 +1100,7 @@
         <div class="hero-image">
             <img src="images/Hero_Startseite_Hilfe Bergsteigen.png" alt="Karrierebegleitung – gemeinsam den nächsten Schritt gehen">
         </div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Ich begleite<br><span>Menschen.</span><br>Keine Lebensläufe.</h1>
             <p class="hero-description">
@@ -1244,6 +1182,9 @@
 
     <!-- BLOCK 4: ABOUT / ACCORDION -->
     <section class="about-section" id="ueber-mich">
+        <div class="about-section-header">
+            <h2>Ich bin Jan – <span>Karrierebegleitung</span> ist mein Ansatz</h2>
+        </div>
         <div class="about-container">
             <div class="video-container">
                 <div class="video-placeholder">
@@ -1252,9 +1193,6 @@
                 </div>
             </div>
             <div class="accordion-wrapper">
-                <div class="accordion-header">
-                    <h2>Ich bin Jan –<br><span>Karrierebegleitung</span><br>ist mein Ansatz</h2>
-                </div>
                 <div class="accordion">
                     <div class="accordion-item">
                         <button class="accordion-button">
@@ -1338,15 +1276,7 @@
                 und ob eine Zusammenarbeit für dich passt.
             </p>
             <p class="cta-tagline">Ohne Vorbereitung. Ohne Verpflichtung. Ohne Druck.</p>
-
-            <a href="kontakt.html" class="btn-primary" style="display:inline-block; margin-bottom:2rem;">Erstgespräch vereinbaren</a>
-
-            <div class="cta-social-row">
-                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="cta-social-pill">LinkedIn</a>
-                <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="cta-social-pill">Instagram</a>
-                <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="cta-social-pill">TikTok</a>
-                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="cta-social-pill">YouTube</a>
-            </div>
+            <a href="kontakt.html" class="btn-primary" style="display:inline-block;">Erstgespräch vereinbaren</a>
         </div>
     </section>
 
@@ -1357,6 +1287,10 @@
         <div class="target-container">
             <div class="target-card" id="arbeitnehmende">
                 <h2>Für Arbeitnehmende</h2>
+                <div class="target-list">
+                    <strong>Wer ist gemeint?</strong><br>
+                    Fachkräfte · Führungskräfte · Studierende · Quereinsteigende · Schüler:innen
+                </div>
                 <p>
                     Berufliche Entscheidungen fallen selten leicht. Oft fehlt nicht Motivation oder Können – 
                     sondern Klarheit über die eigenen Stärken, Bedürfnisse und Möglichkeiten. 
@@ -1392,14 +1326,14 @@
                 Einblicke in meine Arbeit und Haltung gibt es auch auf meinen Kanälen – 
                 rund um Karriere, persönliche Entwicklung und die Fragen, die berufliche Entscheidungen wirklich prägen.
             </p>
+            <div class="closing-cta">
+                <a href="#kontakt" class="btn-white">Erstgespräch vereinbaren</a>
+            </div>
             <div class="social-row">
                 <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="social-pill">LinkedIn</a>
                 <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="social-pill">Instagram</a>
                 <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="social-pill">TikTok</a>
                 <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="social-pill">YouTube</a>
-            </div>
-            <div class="closing-cta">
-                <a href="#kontakt" class="btn-white">Jetzt Erstgespräch vereinbaren</a>
             </div>
         </div>
     </section>
@@ -1411,9 +1345,10 @@
                 <h4>Navigation</h4>
                 <ul>
                     <li><a href="#startseite">Start</a></li>
-                    <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
                     <li><a href="unternehmen.html">Für Unternehmen</a></li>
-                    <li><a href="#ueber-mich">Über mich</a></li>
+                    <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
+                    <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
+                    <li><a href="#ueber-mich">So Arbeite Ich</a></li>
                     <li><a href="#kontakt">Kontakt & Einstieg</a></li>
                 </ul>
             </div>
@@ -1501,7 +1436,7 @@
 
         setInterval(() => {
             updateCarousel((currentIndex + 1) % dots.length);
-        }, 5000);
+        }, 7000);
 
         // Accordion
         document.querySelectorAll('.accordion-button').forEach(button => {
