@@ -282,18 +282,17 @@
         }
         .contact-text a:hover { color: var(--primary-blue); }
 
-        /* Zeeg embed in Kontakt-Tab */
-        .zeeg-card {
-            background: var(--light-gray);
-            border-radius: 16px; padding: 2rem;
-            margin-top: 2rem;
+        /* Zeeg embed */
+        .zeeg-section {
+            margin-top: 2.5rem;
         }
-        .zeeg-card h3 {
+        .zeeg-label {
             font-size: 0.78rem; font-weight: 700;
             text-transform: uppercase; letter-spacing: 0.1em;
-            color: var(--medium-gray); margin-bottom: 1.5rem;
+            color: var(--medium-gray); margin-bottom: 1.2rem;
         }
-        .zeeg-card .zeeg-inline-widget {
+        .zeeg-inline-widget {
+            width: 100% !important;
             min-height: 700px;
         }
 
@@ -616,7 +615,7 @@
                     <div class="contact-icon">✉️</div>
                     <div class="contact-text">
                         <strong>E-Mail</strong>
-                        <a href="mailto:jan@koppmannkarriere.de">jan@koppmannkarriere.de</a>
+                        <a href="/cdn-cgi/l/email-protection#b8d2d9d6f8d3d7c8c8d5d9d6d6d3d9cacad1ddcadd96dcdd"><span class="__cf_email__" data-cfemail="aec4cfc0eec5c1dedec3cfc0c0c5cfdcdcc7cbdccb80cacb">[email&#160;protected]</span></a>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -659,9 +658,9 @@
         </div>
 
         <!-- Zeeg Terminbuchung -->
-        <div class="zeeg-card">
-            <h3>Erstgespräch direkt buchen</h3>
-            <div class="zeeg-inline-widget" id="zeeg-embed-koppmannkarriere" style="width: auto; height: auto"></div>
+        <div class="zeeg-section">
+            <p class="zeeg-label">Erstgespräch direkt buchen</p>
+            <div class="zeeg-inline-widget" id="zeeg-embed-koppmannkarriere" style="width: 100%; min-height: 700px;"></div>
             <script type="text/javascript" src="https://assets.zeeg.me/embed.min.js" data-user="koppmannkarriere" async></script>
         </div>
 
@@ -923,7 +922,7 @@
         <div class="footer-section">
             <h4>Kontakt</h4>
             <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br>
-            <a href="mailto:jan@koppmannkarriere.de">jan@koppmannkarriere.de</a></p>
+            <a href="/cdn-cgi/l/email-protection#660c0708260d0916160b0708080d0714140f031403480203"><span class="__cf_email__" data-cfemail="c8a2a9a688a3a7b8b8a5a9a6a6a3a9babaa1adbaade6acad">[email&#160;protected]</span></a></p>
             <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br>folgt</p>
             <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Adresse</strong><br>
             Neuhurden 22<br>51491 Overath</p>
@@ -953,7 +952,7 @@
     </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Burger Menu
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -1014,14 +1013,4 @@
     bindForm('multiplikator-form', 'm-submit', 'Eingetragen – Jan meldet sich!');
 
     // Share button
-    const shareBtn = document.getElementById('share-btn');
-    if (shareBtn) {
-        shareBtn.addEventListener('click', () => {
-            if (navigator.share) {
-                navigator.share({ title: 'Koppmann Karriere', url: window.location.href });
-            } else {
-                navigator.clipboard.writeText(window.location.href).then(() => {
-                    shareBtn.textContent = '✓ Link kopiert!';
-                    setTimeout(() => { shareBtn.innerHTML = '↗ Seite teilen'; }, 2500);
-                });
-   
+    const shareBtn = document.getE
