@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Für Unternehmen – Koppmann Karriere</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary-blue: #0062b1;
+            --dark-blue: #002777;
+            --light-blue: #008bba;
+            --white: #ffffff;
+            --black: #0a0a0a;
+            --light-gray: #f4f6f9;
+            --medium-gray: #6b7280;
+            --border: #e5e9f0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.8;
+            color: var(--black);
+            overflow-x: hidden;
+            font-size: 17px;
+            background: var(--white);
+        }
+
+        /* ── HEADER ── */
+        header { position: fixed; top: 0; left: 0; right: 0; background: var(--dark-blue); z-index: 1000; }
+        nav { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; height: 72px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { text-decoration: none; display: flex; align-items: center; height: 100%; padding: 8px 0; transition: opacity 0.3s; }
+        .logo:hover { opacity: 0.85; }
+        .logo img { height: 100%; width: auto; max-height: 56px; object-fit: contain; }
+        nav ul { display: flex; list-style: none; gap: 1.8rem; align-items: center; }
+        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.88); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.02em; transition: color 0.3s; position: relative; white-space: nowrap; }
+        nav ul li a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--white); transition: width 0.3s; }
+        nav ul li a:hover, nav ul li a.active { color: var(--white); }
+        nav ul li a:hover::after, nav ul li a.active::after { width: 100%; }
+        .header-cta-btn { padding: 0.6rem 1.4rem; background: var(--white); color: var(--dark-blue); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
+        .header-cta-btn:hover { background: rgba(255,255,255,0.88); transform: translateY(-2px); }
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .burger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+        .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger.open span:nth-child(2) { opacity: 0; }
+        .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: var(--white); z-index: 999; flex-direction: column; padding: 2rem 2.5rem; overflow-y: auto; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { text-decoration: none; color: var(--black); font-weight: 600; font-size: 1.3rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+        .mobile-menu a:hover { color: var(--primary-blue); }
+        .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--primary-blue); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
+
+        /* ── HERO: TYPOGRAFIE ── */
+        .hero {
+            margin-top: 72px;
+            background: var(--dark-blue);
+            min-height: 68vh;
+            display: flex; align-items: center;
+            padding: 5rem 2.5rem;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .hero-ring-outer {
+            position: absolute; right: -140px; top: 50%; transform: translateY(-50%);
+            width: 560px; height: 560px; border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .hero-ring-inner {
+            position: absolute; right: 60px; top: 50%; transform: translateY(-50%);
+            width: 340px; height: 340px; border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.07);
+        }
+        .hero-inner {
+            max-width: 1200px; margin: 0 auto; width: 100%;
+            position: relative; z-index: 2;
+            display: grid; grid-template-columns: 1fr auto;
+            gap: 4rem; align-items: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            color: rgba(255,255,255,0.4); margin-bottom: 1.8rem;
+            display: flex; align-items: center; gap: 0.8rem;
+        }
+        .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: rgba(255,255,255,0.3); }
+        .hero h1 {
+            font-size: clamp(2.6rem, 4.5vw, 4rem);
+            font-weight: 900; color: var(--white);
+            line-height: 1.05; letter-spacing: -0.03em;
+        }
+        .hero h1 .thin {
+            font-weight: 300; color: rgba(255,255,255,0.6);
+            display: block; font-size: 0.8em;
+            letter-spacing: -0.01em; margin-top: 0.25rem;
+        }
+        .hero-rule { width: 48px; height: 3px; background: var(--primary-blue); border-radius: 2px; margin: 2rem 0; }
+        .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.8; max-width: 520px; }
+        .hero-ctas { display: flex; gap: 1rem; margin-top: 2.8rem; align-items: center; flex-wrap: wrap; }
+        .btn-hero-primary { display: inline-block; padding: 0.85rem 2rem; background: var(--white); color: var(--dark-blue); font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
+        .btn-hero-primary:hover { background: rgba(255,255,255,0.9); transform: translateY(-2px); }
+        .btn-hero-outline { display: inline-block; padding: 0.85rem 2rem; border: 1.5px solid rgba(255,255,255,0.28); color: rgba(255,255,255,0.85); font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 600; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
+        .btn-hero-outline:hover { border-color: rgba(255,255,255,0.6); color: var(--white); }
+        .btn-hero-text { color: rgba(255,255,255,0.45); font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .btn-hero-text:hover { color: rgba(255,255,255,0.75); }
+        .hero-side { display: flex; flex-direction: column; align-items: center; gap: 2rem; padding-right: 1rem; }
+        .hero-vertical { writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(180deg); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.15); }
+
+        /* Wave */
+        .hero-wave { background: var(--dark-blue); line-height: 0; }
+        .hero-wave svg { display: block; width: 100%; }
+
+        /* ── GEMEINSAME SECTION-STYLES ── */
+        .section { padding: 5.5rem 2.5rem; }
+        .section.gray { background: var(--light-gray); }
+        .section.white { background: var(--white); }
+        .section.dark { background: var(--dark-blue); }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .container-wide { max-width: 1200px; margin: 0 auto; }
+
+        .section-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary-blue); margin-bottom: 0.8rem; }
+        .section-eyebrow.light { color: rgba(255,255,255,0.5); }
+        h2.section-title { font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 800; color: var(--black); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.8rem; }
+        h2.section-title.light { color: var(--white); }
+        h2.section-title.center { text-align: center; }
+        .section-text { font-size: 1rem; color: var(--medium-gray); line-height: 1.9; margin-bottom: 1.2rem; }
+        .section-text:last-child { margin-bottom: 0; }
+        .section-text strong { color: var(--black); font-weight: 600; }
+
+        /* ── HIGHLIGHT BOX ── */
+        .highlight-box {
+            background: rgba(0,98,177,0.06);
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 0 12px 12px 0;
+            padding: 1.5rem 1.8rem;
+            margin: 1.8rem 0;
+        }
+        .highlight-box p { font-size: 1rem; color: var(--black); line-height: 1.8; margin-bottom: 0.6rem; }
+        .highlight-box p:last-child { margin-bottom: 0; }
+
+        /* ── COOPERATION CARDS ── */
+        .coop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; }
+        .coop-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border-top: 4px solid var(--dark-blue);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        }
+        .coop-card-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary-blue); margin-bottom: 0.8rem; }
+        .coop-card h3 { font-size: 1.25rem; font-weight: 800; color: var(--dark-blue); letter-spacing: -0.02em; margin-bottom: 1.2rem; }
+        .coop-card p { font-size: 0.95rem; color: var(--medium-gray); line-height: 1.8; margin-bottom: 0.9rem; }
+        .coop-card p:last-child { margin-bottom: 0; }
+        .coop-card p strong { color: var(--black); font-weight: 600; }
+
+        /* ── AOC HIGHLIGHT ── */
+        .aoc-box {
+            background: var(--light-gray);
+            border-radius: 16px;
+            padding: 2rem 2.2rem;
+            margin: 1.8rem 0;
+        }
+        .aoc-box p { font-size: 0.97rem; color: var(--medium-gray); line-height: 1.8; margin-bottom: 0.7rem; }
+        .aoc-box p:last-child { margin-bottom: 0; }
+
+        /* ── PROZESS STEPS ── */
+        .process-steps { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
+        .process-step {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 2rem 2.2rem;
+            border-left: 4px solid var(--primary-blue);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            display: grid;
+            grid-template-columns: 48px 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+        .step-num {
+            width: 48px; height: 48px;
+            background: var(--dark-blue);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; font-weight: 900; color: var(--white);
+            flex-shrink: 0; margin-top: 2px;
+        }
+        .step-content h3 { font-size: 1.05rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.7rem; letter-spacing: -0.01em; }
+        .step-content p { font-size: 0.95rem; color: var(--medium-gray); line-height: 1.8; margin-bottom: 0.6rem; }
+        .step-content p:last-child { margin-bottom: 0; }
+        .step-content p strong { color: var(--black); font-weight: 600; }
+
+        /* ── PRICING ── */
+        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+        .pricing-item {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 1.6rem 1.8rem;
+            border-top: 3px solid var(--border);
+        }
+        .pricing-item.featured { border-top-color: var(--primary-blue); background: rgba(0,98,177,0.04); }
+        .pricing-item h4 { font-size: 0.9rem; font-weight: 700; color: var(--dark-blue); margin-bottom: 0.6rem; }
+        .pricing-item p { font-size: 0.9rem; color: var(--medium-gray); line-height: 1.7; }
+
+        /* ── JOB PROFILE SECTION (dark) ── */
+        .job-profile-section {
+            padding: 5rem 2.5rem;
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+            text-align: center;
+        }
+        .job-profile-section h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; color: var(--white); letter-spacing: -0.02em; margin-bottom: 1rem; }
+        .job-profile-section p { font-size: 1rem; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .job-profile-section p strong { color: rgba(255,255,255,0.95); font-weight: 600; }
+
+        /* ── FAQ ── */
+        .faq-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+        .faq-item { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+        .faq-question { width: 100%; padding: 1.4rem 1.8rem; background: var(--white); border: none; text-align: left; font-family: 'Montserrat', sans-serif; font-size: 0.97rem; font-weight: 700; color: var(--dark-blue); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; transition: background 0.2s; }
+        .faq-question:hover { background: var(--light-gray); }
+        .faq-icon { font-size: 1.3rem; color: var(--primary-blue); transition: transform 0.3s; flex-shrink: 0; font-weight: 300; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-answer-inner { padding: 0 1.8rem 1.6rem; font-size: 0.95rem; color: var(--medium-gray); line-height: 1.85; }
+
+        /* ── CONTACT SECTION ── */
+        .contact-section {
+            padding: 5.5rem 2.5rem;
+            background: var(--white);
+        }
+        .contact-inner {
+            max-width: 900px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 4rem; align-items: center;
+        }
+        .contact-text h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; color: var(--black); letter-spacing: -0.02em; margin-bottom: 1rem; }
+        .contact-text p { font-size: 1rem; color: var(--medium-gray); line-height: 1.8; margin-bottom: 0.8rem; }
+        .contact-text p:last-child { margin-bottom: 0; }
+        .contact-image { border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+        .contact-image img { width: 100%; height: 320px; object-fit: cover; object-position: center 30%; display: block; }
+        .contact-links { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+        .contact-link { color: var(--primary-blue); text-decoration: none; font-size: 0.92rem; font-weight: 500; transition: color 0.2s; }
+        .contact-link:hover { color: var(--dark-blue); text-decoration: underline; }
+
+        /* ── BUTTONS ── */
+        .btn-primary { display: inline-block; padding: 0.9rem 2.2rem; background: var(--primary-blue); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.92rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
+        .btn-primary:hover { background: var(--dark-blue); transform: translateY(-2px); }
+        .btn-secondary { display: inline-block; padding: 0.85rem 2rem; border: 2px solid var(--primary-blue); color: var(--primary-blue); font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
+        .btn-secondary:hover { background: var(--primary-blue); color: var(--white); }
+        .btn-white-outline { display: inline-block; padding: 0.9rem 2.2rem; background: var(--white); color: var(--dark-blue); font-family: 'Montserrat', sans-serif; font-size: 0.92rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+        .btn-white-outline:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+
+        .cta-row { margin-top: 2.2rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+        .cta-row.center { justify-content: center; }
+
+        /* ── FOOTER ── */
+        footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 4rem 2.5rem 2rem; }
+        .footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem; margin-bottom: 3rem; }
+        .footer-section h4 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1.4rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.7rem; }
+        .footer-section a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--white); }
+        .footer-section p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
+        .footer-social-icons { display: flex; gap: 0.8rem; margin-top: 0.5rem; }
+        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
+        .footer-social-icon img { width: 22px; height: 22px; object-fit: contain; display: block; }
+        .footer-social-icon:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .coop-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+            .footer-container { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .header-cta-btn { display: none; }
+            .burger { display: flex; }
+            .hero { padding: 4rem 1.5rem; min-height: auto; }
+            .hero-inner { grid-template-columns: 1fr; }
+            .hero-side { display: none; }
+            .section { padding: 4rem 1.5rem; }
+            .process-step { grid-template-columns: 1fr; gap: 1rem; }
+            .step-num { width: 36px; height: 36px; font-size: 0.9rem; }
+            .footer-container { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .hero-ctas { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <nav>
+        <a href="index.html" class="logo"><img src="images/Logo_weiß.png" alt="Koppmann Karriere"></a>
+        <ul>
+            <li><a href="unternehmen.html" class="active">Für Unternehmen</a></li>
+            <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
+            <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
+            <li><a href="ueber-mich.html">So Arbeite Ich</a></li>
+            <li><a href="kontakt-einstieg.html">Kontakt & Einstieg</a></li>
+        </ul>
+        <a href="kontakt-einstieg.html" class="header-cta-btn">Erstgespräch vereinbaren</a>
+        <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+    </nav>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+    <a href="unternehmen.html">Für Unternehmen</a>
+    <a href="arbeitnehmende.html">Für Arbeitnehmende</a>
+    <a href="karriere-kosmos.html">Karriere-Kosmos</a>
+    <a href="ueber-mich.html">So Arbeite Ich</a>
+    <a href="kontakt-einstieg.html">Kontakt & Einstieg</a>
+    <a href="kontakt-einstieg.html" class="mobile-cta">Erstgespräch vereinbaren</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-ring-outer"></div>
+    <div class="hero-ring-inner"></div>
+    <div class="hero-inner">
+        <div class="hero-text">
+            <p class="hero-eyebrow">Für Unternehmen</p>
+            <h1>
+                Personalentscheidungen,
+                <span class="thin">die langfristig tragen.</span>
+            </h1>
+            <div class="hero-rule"></div>
+            <p class="hero-sub">
+                Ich erweitere die Entscheidungsgrundlage von Unternehmen durch strukturierte Einordnung, persönliche Begleitung und zusätzliche Einblicke jenseits klassischer Auswahlprozesse.
+            </p>
+            <div class="hero-ctas">
+                <a href="kontakt-einstieg.html" class="btn-hero-primary">Erstgespräch vereinbaren</a>
+                <a href="#job-profile" class="btn-hero-outline">Jobprofil hinterlegen</a>
+                <a href="ueber-mich.html" class="btn-hero-text">→ So arbeite ich</a>
+            </div>
+        </div>
+        <div class="hero-side">
+            <div class="hero-vertical">Koppmann Karriere · Für Unternehmen</div>
+        </div>
+    </div>
+</section>
+<div class="hero-wave">
+    <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,32 C360,56 1080,8 1440,32 L1440,48 L0,48 Z" fill="#f4f6f9"/>
+    </svg>
+</div>
+
+<!-- BLOCK 2: Problem -->
+<section class="section gray">
+    <div class="container">
+        <p class="section-eyebrow">Die Ausgangslage</p>
+        <h2 class="section-title">Personalentscheidungen bleiben mit Unsicherheit verbunden.</h2>
+        <p class="section-text"><strong>Personalentscheidungen sind anspruchsvoll – und sie bleiben es.</strong></p>
+        <p class="section-text">Menschen sind komplex. Zusammenarbeit entsteht nicht nach Schema, sondern im Zusammenspiel von Persönlichkeit, Erwartungen und Alltag.</p>
+        <p class="section-text">Lebensläufe und Gespräche sind wichtige Bestandteile eines Auswahlprozesses. Gleichzeitig zeigen sie nur einen Ausschnitt dessen, was Zusammenarbeit später tatsächlich prägt.</p>
+        <p class="section-text"><strong>Unsicherheit lässt sich nicht vollständig vermeiden.</strong> Aber sie lässt sich bewusster einordnen – wenn der Mensch hinter dem Profil verstanden wird.</p>
+    </div>
+</section>
+
+<!-- BLOCK 3: Solution -->
+<section class="section white">
+    <div class="container">
+        <p class="section-eyebrow">Mein Ansatz</p>
+        <h2 class="section-title">Recruiting aus Begleitung – nicht aus Druck.</h2>
+        <p class="section-text">Ich begleite Menschen kontinuierlich in ihrer beruflichen Entwicklung – unabhängig von einer konkreten Vakanz.</p>
+        <p class="section-text">Gleichzeitig lerne ich auch Unternehmen kennen: Geschäftsführung, Inhaber:innen oder HR-Verantwortliche – ich nehme mir Zeit zu verstehen, wie Sie arbeiten, welche Rahmenbedingungen entscheidend sind und was Zusammenarbeit in Ihrem Unternehmen tatsächlich bedeutet.</p>
+        <div class="highlight-box">
+            <p><strong>Wenn sich aus dieser Begleitung eine tragfähige Verbindung abzeichnet, melde ich mich aktiv.</strong></p>
+            <p>Nicht mit einer Auswahl an Profilen. Sondern mit einer klar eingeordneten Empfehlung.</p>
+        </div>
+        <p class="section-text">Die <strong>Karriere-Framework-Analyse (KFA)</strong> unterstützt diese Einordnung – sie schafft zusätzliche Einblicke in Arbeitsweise, Motivation und berufliches Selbstverständnis.</p>
+        <p class="section-text">So entsteht Recruiting nicht aus Druck, sondern aus gegenseitigem Verständnis und realer Passung.</p>
+    </div>
+</section>
+
+<!-- BLOCK 4: Cooperation Types -->
+<section class="section gray">
+    <div class="container-wide">
+        <p class="section-eyebrow">Zusammenarbeit</p>
+        <h2 class="section-title center">Zwei Wege der Zusammenarbeit</h2>
+        <div class="coop-grid">
+            <div class="coop-card">
+                <p class="coop-card-label">Variante A</p>
+                <h3>Kooperation</h3>
+                <p>Langfristige Zusammenarbeit auf Basis gegenseitiger Einordnung.</p>
+                <p>Wir starten mit einem <strong>Arbeitgeber:innen-Ziel-Gespräch (AZG)</strong>, in dem wir Rahmenbedingungen, Erwartungen und Entscheidungslogik klären.</p>
+                <p>Ich nehme mir Zeit, Ihr Unternehmen zu verstehen – fachlich, strukturell und kulturell.</p>
+                <p>Auf dieser Grundlage entsteht eine kontinuierliche Zusammenarbeit. Wenn sich aus der Begleitung geeigneter Personen eine tragfähige Verbindung abzeichnet, melde ich mich aktiv.</p>
+                <p><strong>Nicht mit einer Auswahl – sondern mit einer klar eingeordneten Empfehlung.</strong></p>
+            </div>
+            <div class="coop-card">
+                <p class="coop-card-label">Variante B</p>
+                <h3>Fast-Track</h3>
+                <p>Für akuten Bedarf oder konkrete Situationen.</p>
+                <p>Wenn eine Position zeitnah zu besetzen ist oder ich mit einem passenden Profil auf ein Unternehmen zugehe, welches ich noch nicht kennenlernen konnte, erfolgt die Abstimmung fokussiert und direkt.</p>
+                <p><strong>Auch hier gilt:</strong> Ich empfehle nur, wenn ich Passung realistisch einschätzen kann.</p>
+                <p>Der Prozess ist kompakter – die Einordnung bleibt zentral.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BLOCK 5: AOC -->
+<section class="section white">
+    <div class="container">
+        <p class="section-eyebrow">Zusatzleistung</p>
+        <h2 class="section-title">ArbeitsOrt-Check (AOC)</h2>
+        <p class="section-text">Neben der Vermittlung biete ich mit dem <strong>ArbeitsOrt-Check</strong> eine strukturierte Analyse der Arbeitsrealität in Ihrem Unternehmen.</p>
+        <p class="section-text">Der AOC macht sichtbar, wie Zusammenarbeit tatsächlich erlebt wird – in Bezug auf Kommunikation, Erwartungen, Verantwortungsverständnis und Rahmenbedingungen.</p>
+        <div class="aoc-box">
+            <p><strong>Ziel ist es nicht, Prozesse zu bewerten, sondern Transparenz zu schaffen.</strong></p>
+            <p>Denn tragfähige Personalentscheidungen beginnen nicht nur bei der Auswahl, sondern auch bei einem realistischen Verständnis des Arbeitsumfelds.</p>
+        </div>
+        <p class="section-text">Der ArbeitsOrt-Check ist unabhängig von einer Vermittlung nutzbar.</p>
+        <div class="cta-row">
+            <a href="aoc.html" class="btn-secondary">Mehr zum ArbeitsOrt-Check</a>
+        </div>
+    </div>
+</section>
+
+<!-- BLOCK 6: Prozess -->
+<section class="section gray">
+    <div class="container">
+        <p class="section-eyebrow">Prozess</p>
+        <h2 class="section-title">So entsteht Zusammenarbeit</h2>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <h3>Einstieg & Kennenlernen</h3>
+                    <p>Ein unverbindliches Kennenlerngespräch bildet den Ausgangspunkt einer möglichen Kooperation.</p>
+                    <p>Alternativ können Sie ein konkretes Jobprofil hinterlegen. Bei realistischer Passung komme ich aktiv auf Sie zu – auch ohne vorherige Kooperation.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <h3>Kooperations-Check-In & Unternehmenssuchprofil</h3>
+                    <p>Nach dem Erstgespräch erhalten Sie einen strukturierten <strong>Kooperations-Check-In</strong>. Er dient dazu, Erwartungen, Rahmenbedingungen und Entscheidungslogik frühzeitig sichtbar zu machen.</p>
+                    <p>Auf dieser Basis entwickle ich ein klares <strong>Unternehmenssuchprofil</strong> – das nicht nur Anforderungen beschreibt, sondern auch Arbeitsrealität, Kontext und Bedingungen gelingender Zusammenarbeit.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <h3>Empfehlung oder Fast-Track</h3>
+                    <p>Wenn sich aus der kontinuierlichen Begleitung geeigneter Personen eine tragfähige Verbindung abzeichnet, melde ich mich aktiv – gegebenenfalls auch mit einer konkreten Bewerbung.</p>
+                    <p>Im Fast-Track-Fall erfolgt die Abstimmung fokussierter und zeitnah – die Einordnung bleibt jedoch zentral.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">4</div>
+                <div class="step-content">
+                    <h3>Kontinuität</h3>
+                    <p>Kooperation bedeutet regelmäßiger Austausch. Suchprofile werden bei Bedarf aktualisiert, Veränderungen eingeordnet und neue Bedarfe realistisch bewertet.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BLOCK 7: Vergütung -->
+<section class="section white">
+    <div class="container">
+        <p class="section-eyebrow">Vergütung</p>
+        <h2 class="section-title">Rahmenbedingungen & Preismodell</h2>
+        <p class="section-text">Kosten entstehen für Ihr Unternehmen <strong>ausschließlich im Fall einer erfolgreichen Einstellung</strong>.</p>
+        <p class="section-text">Die Vergütung erfolgt erfolgsbasiert – transparent und nachvollziehbar geregelt.</p>
+        <div class="pricing-grid">
+            <div class="pricing-item">
+                <h4>Einmalhonorar</h4>
+                <p>Klassische Einmalzahlung nach erfolgreicher Einstellung. Transparent und klar geregelt.</p>
+            </div>
+            <div class="pricing-item featured">
+                <h4>Flexibles Ratenmodell</h4>
+                <p>Finanzielle Risiken bewusst steuern – offene Raten entfallen automatisch bei vorzeitiger Beendigung des Arbeitsverhältnisses.</p>
+            </div>
+        </div>
+        <p class="section-text" style="margin-top: 1.5rem;">Details regeln wir transparent im Vorfeld. Mehr dazu unter „So Arbeite Ich".</p>
+        <div class="cta-row">
+            <a href="so-arbeite-ich.html" class="btn-secondary">Vergütung im Detail</a>
+        </div>
+    </div>
+</section>
+
+<!-- BLOCK 8: Job Profile -->
+<section class="job-profile-section" id="job-profile">
+    <p class="section-eyebrow light" style="margin-bottom:0.8rem;">Aktuellen Bedarf hinterlegen</p>
+    <h2>Sie haben aktuell eine offene Position?</h2>
+    <p>Über das Formular können Sie Ihr Jobprofil direkt hinterlegen – mit Anforderungen, Rahmenbedingungen und Kontext.</p>
+    <p>Ich prüfe realistisch, ob und wo sich aus der begleiteten Personengruppe eine tragfähige Verbindung abzeichnet.</p>
+    <p><strong>Bei Passung melde ich mich aktiv. Eine Garantie auf sofortige Vermittlung besteht bewusst nicht.</strong></p>
+    <div style="margin-top: 2.2rem;">
+        <a href="kontakt-einstieg.html" class="btn-white-outline">Jobprofil hinterlegen</a>
+    </div>
+</section>
+
+<!-- BLOCK 9: FAQ -->
+<section class="section gray">
+    <div class="container">
+        <p class="section-eyebrow">FAQ</p>
+        <h2 class="section-title">Häufige Fragen</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question">Wie unterscheidet sich Ihr Ansatz von klassischem Recruiting? <span class="faq-icon">+</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Ich arbeite nicht suchgetrieben auf Zuruf, sondern begleitungsbasiert.<br><br>Empfehlungen entstehen aus kontinuierlicher Einordnung – nicht aus kurzfristiger Vorauswahl.<br><br>Der Maßstab meiner Arbeit ist nicht die schnelle Besetzung, sondern eine langfristig tragfähige Entscheidung.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Können wir auch bei akutem Bedarf zusammenarbeiten? <span class="faq-icon">+</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Ja. Im Rahmen eines Fast-Track-Prozesses prüfen wir zeitnah, ob eine realistische Passung vorliegt.<br><br>Gleichzeitig arbeite ich transparent: Eine Vorstellung ist nur möglich, wenn sich aus meinem begleiteten Personenkreis eine echte Passung ergibt.<br><br>Ich werbe keine Personen aktiv aus bestehenden Arbeitsverhältnissen ab. Nach einer erfolgreichen Vermittlung gilt zudem eine selbst auferlegte und vertraglich fixierte Sperrfrist.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Wie lange dauert es bis zur ersten Vermittlung? <span class="faq-icon">+</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Das hängt von Bedarf, Markt und Passung ab.<br><br>Mein Ansatz ist nicht auf Geschwindigkeit optimiert, sondern auf Tragfähigkeit und realistische Einordnung.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Für welche Unternehmensgrößen ist das geeignet? <span class="faq-icon">+</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Für kleine und mittelständische Unternehmen ebenso wie für wachsende Organisationen, die Wert auf langfristige Zusammenarbeit legen.<br><br>Auch größere Unternehmen können von einer zusätzlichen, unabhängigen Quelle qualifiziert eingeordneter Talente profitieren.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Was passiert bei einer Beendigung in der Probezeit? <span class="faq-icon">+</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Im Rahmen flexibler Ratenmodelle können finanzielle Risiken reduziert werden.<br><br>Offene Raten entfallen bei einer vorzeitigen Beendigung des Arbeitsverhältnisses automatisch.<br><br>Details regeln wir transparent im Vorfeld und sind unter „So Arbeite Ich" nachzulesen.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BLOCK 10: Kontakt -->
+<section class="contact-section" id="kontakt">
+    <div class="contact-inner">
+        <div class="contact-text">
+            <p class="section-eyebrow">Einstieg</p>
+            <h2>Unverbindlich ins Gespräch kommen.</h2>
+            <p>Wenn Sie prüfen möchten, ob dieser Ansatz für Ihr Unternehmen sinnvoll ist, lade ich Sie zu einem unverbindlichen Kennenlerngespräch ein.</p>
+            <p>Das Gespräch dient der Einordnung – nicht dem Abschluss.</p>
+            <div class="cta-row">
+                <a href="https://zeeg.me/koppmannkarriere" class="btn-primary" target="_blank" rel="noopener">Erstgespräch vereinbaren</a>
+            </div>
+            <div class="contact-links">
+                <a href="kontakt-einstieg.html" class="contact-link">→ Kontaktformular</a>
+                <a href="mailto:jan@koppmannkarriere.de" class="contact-link">→ jan@koppmannkarriere.de</a>
+                <a href="tel:+49" class="contact-link">→ Telefonnummer (folgt)</a>
+            </div>
+        </div>
+        <div class="contact-image">
+            <img src="images/offener Gesprächsraum.jpg" alt="Unverbindlich ins Gespräch kommen">
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="index.html">Start</a></li>
+                <li><a href="unternehmen.html">Für Unternehmen</a></li>
+                <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
+                <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
+                <li><a href="ueber-mich.html">So Arbeite Ich</a></li>
+                <li><a href="kontakt-einstieg.html">Kontakt & Einstieg</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Kontakt</h4>
+            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br><a href="mailto:jan@koppmannkarriere.de">jan@koppmannkarriere.de</a></p>
+            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br>folgt</p>
+        </div>
+        <div class="footer-section">
+            <h4>Social Media</h4>
+            <div class="footer-social-icons">
+                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="YouTube"><img src="images/YouTube_Icon.png" alt="YouTube"></a>
+                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon" title="LinkedIn"><img src="images/Linkedin_Icon.png" alt="LinkedIn"></a>
+                <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="footer-social-icon" title="Instagram"><img src="images/Instagram_Icon.png" alt="Instagram"></a>
+                <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="TikTok"><img src="images/Tiktok_Icon.png" alt="TikTok"></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h4>Rechtliches</h4>
+            <ul>
+                <li><a href="impressum.html">Impressum</a></li>
+                <li><a href="datenschutz.html">Datenschutz</a></li>
+            </ul>
+            <h4 style="margin-top:1.8rem;">Tippgeber:in werden</h4>
+            <p><a href="tippgeber.html">Weiterempfehlen & Provision erhalten</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Jan Koppmann – Karrierebegleitung</p>
+        <p>Hosted on Netlify · Made with ♥ in Overath</p>
+    </div>
+</footer>
+
+<script>
+    // Burger
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    burger.addEventListener('click', () => {
+        burger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            burger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // FAQ
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.querySelector('.faq-question').addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('active');
+                i.querySelector('.faq-answer').style.maxHeight = null;
+            });
+            if (!isActive) {
+                item.classList.add('active');
+                item.querySelector('.faq-answer').style.maxHeight = item.querySelector('.faq-answer').scrollHeight + 'px';
+            }
+        });
+    });
+</script>
+</body>
+</html>
