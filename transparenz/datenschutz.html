@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenschutzerklärung – Koppmann Karriere</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-blue: #0062b1; --dark-blue: #002777; --light-blue: #008bba;
+            --white: #ffffff; --black: #0a0a0a; --light-gray: #f4f6f9;
+            --medium-gray: #6b7280; --border: #e5e9f0;
+        }
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.7; color: var(--black); font-size: 17px; }
+
+        /* ── HEADER ── */
+        header { position: fixed; top: 0; left: 0; right: 0; background: var(--dark-blue); z-index: 1000; }
+        nav { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; height: 72px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { text-decoration: none; display: flex; align-items: center; height: 100%; padding: 8px 0; transition: opacity 0.3s; }
+        .logo:hover { opacity: 0.85; }
+        .logo img { height: 100%; width: auto; max-height: 56px; object-fit: contain; }
+        nav ul { display: flex; list-style: none; gap: 1.8rem; align-items: center; }
+        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.88); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.02em; transition: color 0.3s; position: relative; white-space: nowrap; }
+        nav ul li a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--white); transition: width 0.3s; }
+        nav ul li a:hover { color: var(--white); }
+        nav ul li a:hover::after { width: 100%; }
+        .header-cta-btn { padding: 0.6rem 1.4rem; background: var(--white); color: var(--dark-blue); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
+        .header-cta-btn:hover { background: rgba(255,255,255,0.88); transform: translateY(-2px); }
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .burger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+        .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger.open span:nth-child(2) { opacity: 0; }
+        .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: var(--white); z-index: 999; flex-direction: column; padding: 2rem 2.5rem; overflow-y: auto; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { text-decoration: none; color: var(--black); font-weight: 600; font-size: 1.3rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+        .mobile-menu a:hover { color: var(--primary-blue); }
+        .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--primary-blue); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
+
+        /* ── BREADCRUMB ── */
+        .breadcrumb { margin-top: 72px; padding: 0.9rem 2.5rem; background: var(--light-gray); font-size: 0.82rem; color: var(--medium-gray); }
+        .breadcrumb a { color: var(--medium-gray); text-decoration: none; transition: color 0.2s; }
+        .breadcrumb a:hover { color: var(--primary-blue); }
+        .breadcrumb span { margin: 0 0.4rem; }
+
+        /* ── HERO ── */
+        .hero { background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue)); padding: 3.5rem 2.5rem 5rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+        .hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero-eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.8rem; }
+        .hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: var(--white); letter-spacing: -0.02em; margin-bottom: 0.8rem; }
+        .hero p { color: rgba(255,255,255,0.7); font-size: 0.92rem; }
+        .hero-wave { position: absolute; bottom: -1px; left: 0; right: 0; }
+        .hero-wave svg { display: block; width: 100%; }
+
+        /* ── TOC ── */
+        .toc-wrap { max-width: 860px; margin: 0 auto; padding: 2.5rem 2.5rem 0; }
+        .toc { background: var(--light-gray); border-radius: 14px; padding: 1.5rem 2rem; border-left: 4px solid var(--primary-blue); }
+        .toc h3 { font-size: 0.82rem; font-weight: 700; color: var(--black); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.08em; }
+        .toc ol { padding-left: 1.2rem; }
+        .toc ol li { margin-bottom: 0.4rem; }
+        .toc a { font-size: 0.88rem; color: var(--primary-blue); text-decoration: none; }
+        .toc a:hover { text-decoration: underline; }
+
+        /* ── CONTENT ── */
+        .content-wrap { max-width: 860px; margin: 0 auto; padding: 3rem 2.5rem 6rem; }
+        .ds-block { margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border); scroll-margin-top: 100px; }
+        .ds-block:last-child { border-bottom: none; margin-bottom: 0; }
+        .ds-block h2 { font-size: 1rem; font-weight: 700; color: var(--black); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+        .block-icon { width: 32px; height: 32px; border-radius: 8px; background: #e0f0ff; color: var(--primary-blue); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+        .ds-block h3 { font-size: 0.95rem; font-weight: 700; color: var(--black); margin: 1.5rem 0 0.5rem; }
+        .ds-block p { font-size: 0.95rem; color: var(--medium-gray); line-height: 1.85; margin-bottom: 0.8rem; }
+        .ds-block p:last-child { margin-bottom: 0; }
+        .ds-block a { color: var(--primary-blue); text-decoration: none; }
+        .ds-block a:hover { text-decoration: underline; }
+        .ds-block strong { color: var(--black); }
+        .info-box { background: var(--light-gray); border-radius: 10px; padding: 1.2rem 1.5rem; margin: 1rem 0; border-left: 3px solid var(--primary-blue); }
+        .info-box p { font-size: 0.88rem; margin-bottom: 0; }
+        .service-card { background: var(--light-gray); border-radius: 12px; padding: 1.5rem; margin: 1rem 0; border: 1px solid var(--border); }
+        .service-card h4 { font-size: 0.92rem; font-weight: 700; color: var(--black); margin-bottom: 0.6rem; }
+        .service-card p { font-size: 0.86rem; color: var(--medium-gray); margin-bottom: 0.35rem; }
+        .service-card p:last-child { margin-bottom: 0; }
+        .service-meta { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.8rem; }
+        .service-meta span { font-size: 0.72rem; font-weight: 600; background: var(--white); padding: 0.18rem 0.6rem; border-radius: 50px; color: var(--medium-gray); border: 1px solid var(--border); }
+
+        /* ── FOOTER ── */
+        footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 4rem 2.5rem 2rem; }
+        .footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem; margin-bottom: 3rem; }
+        .footer-section h4 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1.4rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.7rem; }
+        .footer-section a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--white); }
+        .footer-section p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
+        .footer-social-icons { display: flex; gap: 0.8rem; margin-top: 0.5rem; }
+        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
+        .footer-social-icon img { width: 22px; height: 22px; object-fit: contain; display: block; }
+        .footer-social-icon:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; } .header-cta-btn { display: none; } .burger { display: flex; }
+            .footer-container { grid-template-columns: 1fr 1fr; gap: 2rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 480px) { .footer-container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo"><img src="images/Logo_weiß.png" alt="Koppmann Karriere"></a>
+        <ul>
+            <li><a href="unternehmen.html">Für Unternehmen</a></li>
+            <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
+            <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
+            <li><a href="ueber-mich.html">So Arbeite Ich</a></li>
+            <li><a href="kontakt-einstieg.html">Kontakt & Einstieg</a></li>
+        </ul>
+        <a href="kontakt-einstieg.html" class="header-cta-btn">Erstgespräch vereinbaren</a>
+        <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+    </nav>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+    <a href="unternehmen.html">Für Unternehmen</a>
+    <a href="arbeitnehmende.html">Für Arbeitnehmende</a>
+    <a href="karriere-kosmos.html">Karriere-Kosmos</a>
+    <a href="ueber-mich.html">So Arbeite Ich</a>
+    <a href="kontakt-einstieg.html">Kontakt & Einstieg</a>
+    <a href="kontakt-einstieg.html" class="mobile-cta">Erstgespräch vereinbaren</a>
+</div>
+
+<div class="breadcrumb">
+    <a href="index.html">Start</a><span>›</span>Datenschutz
+</div>
+
+<section class="hero">
+    <div class="hero-inner">
+        <p class="hero-eyebrow">Rechtliches</p>
+        <h1>Datenschutzerklärung</h1>
+        <p>Stand: Februar 2026 · Informationen über die Verarbeitung personenbezogener Daten auf dieser Website.</p>
+    </div>
+    <div class="hero-wave">
+        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="#ffffff"/>
+        </svg>
+    </div>
+</section>
+
+<div class="toc-wrap">
+    <div class="toc">
+        <h3>Inhalt</h3>
+        <ol>
+            <li><a href="#verantwortlicher">Verantwortlicher</a></li>
+            <li><a href="#grundsaetze">Grundsätze der Datenverarbeitung</a></li>
+            <li><a href="#server-logs">Websiteaufruf & Server-Logs</a></li>
+            <li><a href="#kontaktformular">Kontaktformular</a></li>
+            <li><a href="#google-fonts">Google Fonts</a></li>
+            <li><a href="#formbricks">Formbricks (Umfrageformular)</a></li>
+            <li><a href="#youtube">YouTube-Einbettungen</a></li>
+            <li><a href="#analytics">Analyse-Tools</a></li>
+            <li><a href="#rechte">Deine Rechte</a></li>
+            <li><a href="#aenderungen">Änderungen</a></li>
+        </ol>
+    </div>
+</div>
+
+<div class="content-wrap">
+
+    <div class="ds-block" id="verantwortlicher">
+        <h2><span class="block-icon">🏢</span> 1. Verantwortlicher</h2>
+        <p>Verantwortlicher im Sinne der DSGVO für die Verarbeitung personenbezogener Daten auf dieser Website ist:</p>
+        <div class="info-box">
+            <p><strong>Jan Koppmann Consulting & Recruiting</strong> (Marke: Koppmann Karriere)<br>
+            Inhaber: Jan Koppmann · Neuhurden 22, 51491 Overath<br>
+            E-Mail: <a href="mailto:jan@koppmannkarriere.de">jan@koppmannkarriere.de</a></p>
+        </div>
+    </div>
+
+    <div class="ds-block" id="grundsaetze">
+        <h2><span class="block-icon">⚖️</span> 2. Grundsätze der Datenverarbeitung</h2>
+        <p>Wir verarbeiten personenbezogene Daten nur, wenn dies gesetzlich erlaubt ist oder du eingewilligt hast. Wir erheben nur die Daten, die für den jeweiligen Zweck notwendig sind (Datensparsamkeit). Daten werden nicht länger gespeichert, als es der Zweck erfordert. Rechtsgrundlagen der Verarbeitung sind je nach Kontext Art. 6 Abs. 1 lit. a DSGVO (Einwilligung), lit. b (Vertragserfüllung) oder lit. f DSGVO (berechtigte Interessen).</p>
+    </div>
+
+    <div class="ds-block" id="server-logs">
+        <h2><span class="block-icon">🖥️</span> 3. Websiteaufruf & Server-Logs</h2>
+        <p>Beim Aufruf dieser Website übermittelt dein Browser automatisch technische Daten an den Webserver. Diese sogenannten Server-Log-Dateien enthalten u.a. IP-Adresse, Browsertyp, Betriebssystem, Datum/Uhrzeit und aufgerufene Seite. Diese Daten werden ausschließlich zur technischen Bereitstellung der Website und zur Erkennung von Missbrauch verarbeitet. Eine Zusammenführung mit anderen Datenquellen findet nicht statt. <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO.</p>
+    </div>
+
+    <div class="ds-block" id="kontaktformular">
+        <h2><span class="block-icon">📬</span> 4. Kontaktformular</h2>
+        <p>Wenn du das Kontaktformular auf dieser Website nutzt, werden die von dir eingegebenen Daten (Name, E-Mail-Adresse, Nachricht) zur Bearbeitung deiner Anfrage verarbeitet. Eine Weitergabe an Dritte findet nicht statt. <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen).</p>
+    </div>
+
+    <div class="ds-block" id="google-fonts">
+        <h2><span class="block-icon">🔤</span> 5. Google Fonts</h2>
+        <p>Diese Website verwendet Google Fonts zur einheitlichen Darstellung von Schriftarten. Beim Aufruf einer Seite lädt dein Browser die benötigten Schriften direkt von Google-Servern. Dabei wird deine IP-Adresse an Google übermittelt.</p>
+        <div class="service-card">
+            <h4>Google Fonts</h4>
+            <p><strong>Anbieter:</strong> Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland</p>
+            <p><strong>Zweck:</strong> Einheitliche Darstellung von Schriftarten</p>
+            <p><strong>Datenschutz:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+            <div class="service-meta">
+                <span>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO</span>
+                <span>Drittland-Transfer: USA (Standardvertragsklauseln)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="ds-block" id="formbricks">
+        <h2><span class="block-icon">📋</span> 6. Formbricks (Umfrageformular)</h2>
+        <p>Für den Jobzufriedenheits-Scan im Karriere-Kosmos nutzen wir Formbricks, ein externes Umfragetool. Wenn du das Formular aufrufst oder ausfüllst, werden deine Eingaben sowie technische Daten an Formbricks übermittelt. Falls du deine E-Mail-Adresse für ein ausführlicheres Ergebnis angibst, wird diese zur Zustellung des Ergebnisses verarbeitet und nicht für Werbezwecke genutzt.</p>
+        <div class="service-card">
+            <h4>Formbricks</h4>
+            <p><strong>Anbieter:</strong> Formbricks GmbH, Deutschland</p>
+            <p><strong>Zweck:</strong> Durchführung des Jobzufriedenheits-Scans, optionale Ergebnis-Zustellung per E-Mail</p>
+            <p><strong>Datenschutz:</strong> <a href="https://formbricks.com/privacy-policy" target="_blank" rel="noopener">formbricks.com/privacy-policy</a></p>
+            <div class="service-meta">
+                <span>Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)</span>
+                <span>Hosting: EU-basiert</span>
+            </div>
+        </div>
+        <p>Die Nutzung des Scans ist freiwillig. Du kannst die Seite auch ohne Ausfüllen des Formulars nutzen.</p>
+    </div>
+
+    <div class="ds-block" id="youtube">
+        <h2><span class="block-icon">▶️</span> 7. YouTube-Einbettungen</h2>
+        <p>Auf einigen Seiten dieser Website sind Videos von YouTube eingebettet. Wir setzen YouTube im <strong>erweiterten Datenschutzmodus</strong> ein. Das bedeutet, dass YouTube keine Informationen über dich als Websitebesucher speichert, bevor du das Video aktiv abspielst.</p>
+        <div class="service-card">
+            <h4>YouTube (erweiterter Datenschutzmodus)</h4>
+            <p><strong>Anbieter:</strong> Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland</p>
+            <p><strong>Zweck:</strong> Einbettung von Informations- und Erklärvideos</p>
+            <p><strong>Datenschutz:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+            <div class="service-meta">
+                <span>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO</span>
+                <span>Drittland-Transfer: USA (Standardvertragsklauseln)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="ds-block" id="analytics">
+        <h2><span class="block-icon">📊</span> 8. Analyse-Tools</h2>
+        <p>Derzeit setzt diese Website keine Analyse- oder Tracking-Tools ein. Sollten künftig Tools wie Google Analytics oder vergleichbare Dienste eingesetzt werden, wird diese Datenschutzerklärung entsprechend aktualisiert und du wirst über geeignete Mechanismen (z.B. Cookie-Banner) um deine Einwilligung gebeten.</p>
+        <div class="info-box">
+            <p>📌 <strong>Hinweis:</strong> Der Einsatz von Analyse-Tools befindet sich aktuell in Prüfung. Diese Seite wird bei einer Entscheidung zeitnah aktualisiert.</p>
+        </div>
+    </div>
+
+    <div class="ds-block" id="rechte">
+        <h2><span class="block-icon">🛡️</span> 9. Deine Rechte</h2>
+        <p>Als betroffene Person hast du folgende Rechte hinsichtlich deiner personenbezogenen Daten:</p>
+        <h3>Auskunft, Berichtigung, Löschung (Art. 15–17 DSGVO)</h3>
+        <p>Du hast das Recht zu erfahren, welche Daten wir über dich gespeichert haben, diese berichtigen oder löschen zu lassen – sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
+        <h3>Einschränkung & Widerspruch (Art. 18, 21 DSGVO)</h3>
+        <p>Du kannst die Einschränkung der Verarbeitung verlangen oder der Verarbeitung widersprechen, sofern sie auf berechtigtem Interesse beruht.</p>
+        <h3>Datenübertragbarkeit (Art. 20 DSGVO)</h3>
+        <p>Du hast das Recht, deine Daten in einem gängigen, maschinenlesbaren Format zu erhalten.</p>
+        <h3>Beschwerderecht</h3>
+        <p>Du hast das Recht, dich bei der zuständigen Datenschutz-Aufsichtsbehörde zu beschweren. Für Nordrhein-Westfalen: <strong>LDI NRW</strong>, <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener">www.ldi.nrw.de</a>.</p>
+        <div class="info-box" style="margin-top:1.2rem;">
+            <p>Zur Ausübung deiner Rechte wende dich an: <a href="mailto:jan@koppmannkarriere.de">jan@koppmannkarriere.de</a></p>
+        </div>
+    </div>
+
+    <div class="ds-block" id="aenderungen">
+        <h2><span class="block-icon">🔄</span> 10. Änderungen dieser Datenschutzerklärung</h2>
+        <p>Wir behalten uns vor, diese Datenschutzerklärung anzupassen, um sie stets den aktuellen rechtlichen Anforderungen anzupassen oder um Änderungen unserer Leistungen umzusetzen. Für deinen erneuten Besuch gilt dann die jeweils aktuelle Datenschutzerklärung.</p>
+        <p><strong>Letzte Aktualisierung:</strong> Februar 2026</p>
+    </div>
+
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="index.html">Start</a></li>
+                <li><a href="unternehmen.html">Für Unternehmen</a></li>
+                <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
+                <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
+                <li><a href="ueber-mich.html">So Arbeite Ich</a></li>
+                <li><a href="kontakt-einstieg.html">Kontakt & Einstieg</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Kontakt</h4>
+            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br>
+            <a href="mailto:jan@koppmannkarriere.de">jan@koppmannkarriere.de</a></p>
+            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br>folgt</p>
+        </div>
+        <div class="footer-section">
+            <h4>Social Media</h4>
+            <div class="footer-social-icons">
+                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="YouTube"><img src="images/YouTube_Icon.png" alt="YouTube"></a>
+                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon" title="LinkedIn"><img src="images/Linkedin_Icon.png" alt="LinkedIn"></a>
+                <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="footer-social-icon" title="Instagram"><img src="images/Instagram_Icon.png" alt="Instagram"></a>
+                <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="TikTok"><img src="images/Tiktok_Icon.png" alt="TikTok"></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h4>Rechtliches</h4>
+            <ul>
+                <li><a href="impressum.html">Impressum</a></li>
+                <li><a href="datenschutz.html">Datenschutz</a></li>
+            </ul>
+            <h4 style="margin-top:1.8rem;">Tippgeber:in werden</h4>
+            <p><a href="tippgeber.html">Weiterempfehlen & Provision erhalten</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Jan Koppmann – Karrierebegleitung</p>
+        <p>Hosted on Netlify · Made with ♥ in Overath</p>
+    </div>
+</footer>
+
+<script>
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    burger.addEventListener('click', () => {
+        burger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            burger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+    });
+</script>
+</body>
+</html>
