@@ -221,7 +221,53 @@
         .job-profile-section p { font-size: 1rem; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
         .job-profile-section p strong { color: rgba(255,255,255,0.95); font-weight: 600; }
 
-        /* ── FAQ ── */
+        /* ── USP CHECK BLOCK ── */
+        .usp-block { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; margin-top: 0; }
+        .usp-check-box {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        }
+        .usp-check-box h3 { font-size: 1.1rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+        .usp-check-box .usp-intro { font-size: 0.92rem; color: var(--medium-gray); margin-bottom: 1.8rem; line-height: 1.7; }
+        .usp-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0; }
+        .usp-list li {
+            display: flex; align-items: flex-start; gap: 0.9rem;
+            padding: 1rem 0; border-bottom: 1px solid var(--border);
+            font-size: 0.93rem; color: var(--black); line-height: 1.55;
+        }
+        .usp-list li:last-child { border-bottom: none; }
+        .usp-check { flex-shrink: 0; width: 22px; height: 22px; background: var(--dark-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+        .usp-check svg { width: 12px; height: 12px; stroke: var(--white); stroke-width: 2.5; fill: none; }
+        .usp-conclusion {
+            margin-top: 1.8rem; padding: 1.2rem 1.5rem;
+            background: var(--dark-blue); border-radius: 10px;
+            font-size: 0.92rem; font-weight: 700; color: var(--white); line-height: 1.5;
+        }
+        .usp-conclusion span { color: rgba(255,255,255,0.65); font-weight: 500; }
+
+        .dossier-box {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            display: flex; flex-direction: column; gap: 1.5rem;
+        }
+        .dossier-box h3 { font-size: 1.1rem; font-weight: 800; color: var(--dark-blue); letter-spacing: -0.01em; margin-bottom: 0.3rem; }
+        .dossier-box p { font-size: 0.92rem; color: var(--medium-gray); line-height: 1.7; }
+        .dossier-preview {
+            background: var(--light-gray);
+            border-radius: 12px;
+            border: 2px dashed var(--border);
+            padding: 2.5rem 1.5rem;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 1rem; text-align: center;
+        }
+        .dossier-icon { font-size: 2.8rem; }
+        .dossier-preview-label { font-size: 0.82rem; font-weight: 700; color: var(--medium-gray); letter-spacing: 0.06em; text-transform: uppercase; }
+        .dossier-preview-name { font-size: 0.95rem; font-weight: 600; color: var(--black); }
+        @media (max-width: 1024px) { .usp-block { grid-template-columns: 1fr; } }
         .faq-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
         .faq-item { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
         .faq-question { width: 100%; padding: 1.4rem 1.8rem; background: var(--white); border: none; text-align: left; font-family: 'Montserrat', sans-serif; font-size: 0.97rem; font-weight: 700; color: var(--dark-blue); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; transition: background 0.2s; }
@@ -416,6 +462,63 @@
     </div>
 </section>
 
+<!-- BLOCK 4b: Wann passt Koppmann Karriere? -->
+<section class="section white">
+    <div class="container-wide">
+        <p class="section-eyebrow">Für Sie geeignet, wenn ...</p>
+        <h2 class="section-title">Wann passt Koppmann Karriere?</h2>
+        <div class="usp-block">
+
+            <!-- Links: Checkliste -->
+            <div class="usp-check-box">
+                <p class="usp-intro">Fünf Fragen zur Einordnung – ohne Marketingversprechen.</p>
+                <ul class="usp-list">
+                    <li>
+                        <span class="usp-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+                        Wenn eine Stelle langfristig besetzt sein soll – nicht nur irgendwie
+                    </li>
+                    <li>
+                        <span class="usp-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+                        Wenn die Unternehmenskultur erhalten bleiben soll
+                    </li>
+                    <li>
+                        <span class="usp-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+                        Wenn Sie Fehlbesetzungen aktiv reduzieren wollen
+                    </li>
+                    <li>
+                        <span class="usp-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+                        Wenn Sie Zugang zu einem wachsenden, jungen Talentepool suchen
+                    </li>
+                    <li>
+                        <span class="usp-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+                        Wenn Ihnen auch nach der Besetzung wichtig ist, dass es wirklich passt
+                    </li>
+                </ul>
+                <div class="usp-conclusion">
+                    → Dann arbeiten wir zusammen.
+                    <span> Ein erstes Gespräch ist kostenlos und unverbindlich.</span>
+                </div>
+            </div>
+
+            <!-- Rechts: Musterdossier -->
+            <div class="dossier-box">
+                <div>
+                    <h3>Wie sieht eine Empfehlung aus?</h3>
+                    <p>Statt einer Bewerbungsmappe erhalten Sie von mir ein strukturiertes <strong>Bewerbungsdossier</strong> – mit Einordnung, Hintergrund und meiner persönlichen Einschätzung zur Passung.</p>
+                    <p>Hier können Sie sich ein Muster ansehen.</p>
+                </div>
+                <div class="dossier-preview">
+                    <div class="dossier-icon">📄</div>
+                    <div class="dossier-preview-label">Musterdossier</div>
+                    <div class="dossier-preview-name">Bewerbungsdossier – Koppmann Karriere</div>
+                    <a href="assets/musterdossier.pdf" target="_blank" rel="noopener" class="btn-secondary" style="margin-top:0.5rem;">Muster ansehen (PDF) →</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 <!-- BLOCK 5: AOC -->
 <section class="section white">
     <div class="container">
@@ -429,7 +532,7 @@
         </div>
         <p class="section-text">Der ArbeitsOrt-Check ist unabhängig von einer Vermittlung nutzbar.</p>
         <div class="cta-row">
-            <a href="unternehmen/aoc.html" class="btn-secondary">Mehr zum ArbeitsOrt-Check</a>
+            <a href="aoc.html" class="btn-secondary">Mehr zum ArbeitsOrt-Check</a>
         </div>
     </div>
 </section>
@@ -554,7 +657,7 @@
             </div>
             <div class="contact-links">
                 <a href="kontakt-einstieg.html" class="contact-link">→ Kontaktformular</a>
-                <a href="mailto:jan@koppmannkarriere.de" class="contact-link">→ jan@koppmannkarriere.de</a>
+                <a href="/cdn-cgi/l/email-protection#e8828986a8838798988589868683899a9a818d9a8dc68c8d" class="contact-link">→ <span class="__cf_email__" data-cfemail="81ebe0efc1eaeef1f1ece0efefeae0f3f3e8e4f3e4afe5e4">[email&#160;protected]</span></a>
                 <a href="tel:+49" class="contact-link">→ Telefonnummer (folgt)</a>
             </div>
         </div>
@@ -580,7 +683,7 @@
         </div>
         <div class="footer-section">
             <h4>Kontakt</h4>
-            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br><a href="mailto:jan@koppmannkarriere.de">jan@koppmannkarriere.de</a></p>
+            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br><a href="/cdn-cgi/l/email-protection#deb4bfb09eb5b1aeaeb3bfb0b0b5bfacacb7bbacbbf0babb"><span class="__cf_email__" data-cfemail="9af0fbf4daf1f5eaeaf7fbf4f4f1fbe8e8f3ffe8ffb4feff">[email&#160;protected]</span></a></p>
             <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br>folgt</p>
         </div>
         <div class="footer-section">
@@ -608,7 +711,7 @@
     </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Burger
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -629,16 +732,4 @@
     document.querySelectorAll('.faq-item').forEach(item => {
         item.querySelector('.faq-question').addEventListener('click', () => {
             const isActive = item.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(i => {
-                i.classList.remove('active');
-                i.querySelector('.faq-answer').style.maxHeight = null;
-            });
-            if (!isActive) {
-                item.classList.add('active');
-                item.querySelector('.faq-answer').style.maxHeight = item.querySelector('.faq-answer').scrollHeight + 'px';
-            }
-        });
-    });
-</script>
-</body>
-</html>
+            document.querySelectorAll('.faq-item').forEach(i =>
