@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wissen & Einordnungen – Koppmann Karriere</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary-blue: #0062b1;
+            --dark-blue: #002777;
+            --page-color: #008bba;
+            --page-color-dark: #006a8e;
+            --page-color-light: #e0f6fb;
+            --white: #ffffff;
+            --black: #0a0a0a;
+            --light-gray: #f4f6f9;
+            --medium-gray: #6b7280;
+            --border: #e5e9f0;
+        }
+
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.8; color: var(--black); overflow-x: hidden; font-size: 17px; background: var(--white); }
+
+        /* ── HEADER ── */
+        header { position: fixed; top: 0; left: 0; right: 0; background: var(--dark-blue); z-index: 1000; }
+        nav { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; height: 72px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { text-decoration: none; display: flex; align-items: center; height: 100%; padding: 8px 0; transition: opacity 0.3s; }
+        .logo:hover { opacity: 0.85; }
+        .logo img { height: 100%; width: auto; max-height: 56px; object-fit: contain; }
+        nav ul { display: flex; list-style: none; gap: 1.8rem; align-items: center; }
+        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.88); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.02em; transition: color 0.3s; position: relative; white-space: nowrap; }
+        nav ul li a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--white); transition: width 0.3s; }
+        nav ul li a:hover, nav ul li a.active { color: var(--white); }
+        nav ul li a:hover::after, nav ul li a.active::after { width: 100%; }
+        .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.88); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.6); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
+        .header-cta-btn:hover { background: var(--white); color: var(--dark-blue); border-color: var(--white); }
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .burger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+        .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger.open span:nth-child(2) { opacity: 0; }
+        .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: var(--white); z-index: 999; flex-direction: column; padding: 2rem 2.5rem; overflow-y: auto; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { text-decoration: none; color: var(--black); font-weight: 600; font-size: 1.3rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+        .mobile-menu a:hover { color: var(--page-color); }
+        .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--page-color); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
+
+        /* ── BREADCRUMB ── */
+        .breadcrumb { margin-top: 72px; background: var(--page-color); padding: 0.7rem 2.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.75); display: flex; align-items: center; gap: 0.5rem; }
+        .breadcrumb a { color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
+        .breadcrumb a:hover { color: var(--white); }
+        .breadcrumb span { opacity: 0.5; }
+
+        /* ── HERO ── */
+        .hero { background: linear-gradient(135deg, var(--dark-blue) 0%, var(--page-color-dark) 60%, var(--page-color) 100%); padding: 4rem 2.5rem 0; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 60px 60px; }
+        .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 2; padding-bottom: 3.5rem; }
+        .hero-back { display: inline-flex; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.82rem; font-weight: 600; margin-bottom: 1.5rem; transition: color 0.2s; }
+        .hero-back:hover { color: var(--white); }
+        .hero-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+        .hero h1 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; color: var(--white); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1rem; }
+        .hero-desc { font-size: 1rem; color: rgba(255,255,255,0.72); line-height: 1.8; max-width: 620px; }
+        .hero-wave { line-height: 0; }
+        .hero-wave svg { display: block; width: 100%; }
+
+        /* ── SECTIONS ── */
+        .sec-wrap { max-width: 1000px; margin: 0 auto; padding: 4.5rem 2.5rem; }
+        .sec-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: var(--black); letter-spacing: -0.02em; margin-bottom: 0.6rem; }
+        .sec-sub { font-size: 0.97rem; color: var(--medium-gray); line-height: 1.7; margin-bottom: 2.5rem; }
+
+        /* ── FEATURED ── */
+        .featured-card { display: grid; grid-template-columns: 280px 1fr; border-radius: 20px; overflow: hidden; border: 2px solid var(--border); text-decoration: none; transition: all 0.3s; background: var(--white); }
+        .featured-card:hover { border-color: var(--page-color); box-shadow: 0 12px 40px rgba(0,139,186,0.12); transform: translateY(-3px); }
+        .featured-img { background: linear-gradient(135deg, var(--page-color-dark), var(--page-color)); display: flex; align-items: center; justify-content: center; font-size: 4rem; min-height: 220px; }
+        .featured-content { padding: 2rem 2.2rem; display: flex; flex-direction: column; gap: 0.8rem; }
+        .featured-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .tag-pill { font-size: 0.72rem; font-weight: 700; padding: 0.22rem 0.65rem; border-radius: 50px; background: var(--light-gray); color: var(--medium-gray); }
+        .featured-pill { background: #fef9c3; color: #92400e; border: 1px solid #fde68a; }
+        .featured-content h2 { font-size: 1.15rem; font-weight: 800; color: var(--black); line-height: 1.35; letter-spacing: -0.01em; }
+        .featured-content p { font-size: 0.9rem; color: var(--medium-gray); line-height: 1.8; flex: 1; }
+        .featured-meta { display: flex; gap: 1.2rem; font-size: 0.82rem; color: var(--medium-gray); }
+        .read-more { display: inline-block; font-size: 0.85rem; font-weight: 700; color: var(--page-color); margin-top: 0.3rem; }
+
+        /* ── FILTER ── */
+        .filter-section { position: sticky; top: 72px; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .filter-inner { max-width: 1000px; margin: 0 auto; padding: 1rem 2.5rem 0.8rem; display: flex; flex-direction: column; gap: 0.8rem; }
+        .search-row { display: flex; gap: 0.8rem; align-items: center; }
+        .search-box { flex: 1; position: relative; }
+        .search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); font-size: 0.9rem; }
+        .search-box input { width: 100%; padding: 0.65rem 1rem 0.65rem 2.4rem; border: 1.5px solid var(--border); border-radius: 50px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; outline: none; transition: border-color 0.2s; background: var(--light-gray); }
+        .search-box input:focus { border-color: var(--page-color); background: var(--white); }
+        .sort-select { padding: 0.65rem 1rem; border: 1.5px solid var(--border); border-radius: 50px; font-family: 'Montserrat', sans-serif; font-size: 0.83rem; font-weight: 600; color: var(--medium-gray); outline: none; cursor: pointer; background: var(--light-gray); }
+        .tags-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .tag-filter-btn { padding: 0.4rem 1rem; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 600; border: 2px solid var(--border); background: var(--white); color: var(--medium-gray); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+        .tag-filter-btn:hover { border-color: var(--page-color); color: var(--page-color); }
+        .tag-filter-btn.active { background: var(--page-color); color: var(--white); border-color: var(--page-color); }
+
+        /* ── ARTIKEL GRID ── */
+        .artikel-section { background: var(--light-gray); }
+        .artikel-inner { max-width: 1000px; margin: 0 auto; padding: 3.5rem 2.5rem; }
+        .artikel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+        .artikel-card { background: var(--white); border-radius: 14px; border: 2px solid transparent; text-decoration: none; display: flex; flex-direction: column; overflow: hidden; transition: all 0.25s; }
+        .artikel-card:hover { border-color: var(--page-color); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,139,186,0.1); }
+        .artikel-card.placeholder { border: 2px dashed var(--border); }
+        .artikel-card.placeholder:hover { border-color: var(--border); transform: none; box-shadow: none; }
+        .artikel-thumb { height: 110px; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; flex-shrink: 0; }
+        .artikel-body { padding: 1.3rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+        .artikel-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+        .artikel-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.18rem 0.55rem; border-radius: 50px; background: var(--page-color-light); color: var(--page-color-dark); }
+        .placeholder-badge { font-size: 0.68rem; font-weight: 700; padding: 0.18rem 0.55rem; border-radius: 50px; background: var(--light-gray); color: var(--medium-gray); }
+        .artikel-body h3 { font-size: 0.92rem; font-weight: 800; color: var(--black); line-height: 1.35; }
+        .artikel-body p { font-size: 0.83rem; color: var(--medium-gray); line-height: 1.7; flex: 1; }
+        .artikel-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem; font-size: 0.78rem; color: var(--medium-gray); }
+        .lesen { font-weight: 700; color: var(--page-color); }
+        .no-results { display: none; grid-column: 1 / -1; text-align: center; padding: 4rem 2rem; }
+        .no-results .no-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .no-results h3 { font-size: 1rem; font-weight: 700; color: var(--black); margin-bottom: 0.5rem; }
+        .no-results p { font-size: 0.88rem; color: var(--medium-gray); }
+
+        /* ── STECKBRIEFE ── */
+        .steckbrief-section { background: var(--white); }
+        .steckbrief-wrap { max-width: 1000px; margin: 0 auto; padding: 4.5rem 2.5rem; }
+        .steckbrief-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+        .steckbrief-header > div p { font-size: 0.97rem; color: var(--medium-gray); margin-top: 0.4rem; }
+        .yt-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.3rem; background: #ff0000; color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; white-space: nowrap; }
+        .yt-link:hover { background: #cc0000; transform: translateY(-2px); }
+        .steckbrief-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+        .steckbrief-card { background: var(--light-gray); border-radius: 14px; padding: 1.4rem; display: flex; flex-direction: column; gap: 0.5rem; border: 2px solid transparent; transition: all 0.25s; }
+        .steckbrief-card:hover { border-color: var(--page-color); background: var(--page-color-light); transform: translateY(-2px); }
+        .steckbrief-icon { font-size: 1.6rem; }
+        .steckbrief-card h4 { font-size: 0.88rem; font-weight: 800; color: var(--black); line-height: 1.3; }
+        .steckbrief-card p { font-size: 0.8rem; color: var(--medium-gray); line-height: 1.65; flex: 1; }
+        .coming-soon { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 0.2rem 0.55rem; background: #fef3c7; color: #92400e; border-radius: 50px; border: 1px solid #fde68a; align-self: flex-start; margin-top: auto; }
+
+        /* ── CTA ── */
+        .cta-strip { padding: 4.5rem 2.5rem; background: var(--page-color); text-align: center; }
+        .cta-strip h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; color: var(--white); margin-bottom: 0.8rem; letter-spacing: -0.02em; }
+        .cta-strip p { font-size: 1rem; color: rgba(255,255,255,0.82); margin-bottom: 2rem; }
+        .btn-white { display: inline-block; padding: 0.9rem 2.4rem; background: var(--white); color: var(--dark-blue); font-family: 'Montserrat', sans-serif; font-size: 0.92rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.2); }
+
+        /* ── FOOTER ── */
+        footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 4rem 2.5rem 2rem; }
+        .footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem; margin-bottom: 3rem; }
+        .footer-section h4 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1.4rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.7rem; }
+        .footer-section a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--white); }
+        .footer-section p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
+        .footer-social-icons { display: flex; gap: 0.8rem; margin-top: 0.5rem; }
+        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
+        .footer-social-icon img { width: 22px; height: 22px; object-fit: contain; display: block; }
+        .footer-social-icon:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .steckbrief-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-container { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            nav ul, .header-cta-btn { display: none; }
+            .burger { display: flex; }
+            .breadcrumb { padding: 0.7rem 1.5rem; }
+            .hero { padding: 3rem 1.5rem 0; }
+            .sec-wrap, .artikel-inner, .steckbrief-wrap { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .featured-card { grid-template-columns: 1fr; }
+            .featured-img { min-height: 140px; }
+            .artikel-grid { grid-template-columns: 1fr 1fr; }
+            .steckbrief-grid { grid-template-columns: 1fr 1fr; }
+            .filter-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .search-row { flex-direction: column; align-items: stretch; }
+            .footer-container { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .artikel-grid { grid-template-columns: 1fr; }
+            .steckbrief-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <nav>
+        <a href="index.html" class="logo"><img src="images/Logo_weiß.png" alt="Koppmann Karriere"></a>
+        <ul>
+            <li><a href="fuer-arbeitnehmende.html">Für Arbeitnehmende</a></li>
+            <li><a href="karriere-kosmos.html" class="active">Karriere-Kosmos</a></li>
+            <li><a href="unternehmen.html">Für Unternehmen</a></li>
+            <li><a href="ueber-mich.html">So Arbeite Ich</a></li>
+            <li><a href="kontakt-einstieg.html">Kontakt & Einstieg</a></li>
+        </ul>
+        <a href="kontakt-einstieg.html" class="header-cta-btn">Erstgespräch vereinbaren</a>
+        <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+    </nav>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+    <a href="fuer-arbeitnehmende.html">Für Arbeitnehmende</a>
+    <a href="karriere-kosmos.html">Karriere-Kosmos</a>
+    <a href="unternehmen.html">Für Unternehmen</a>
+    <a href="ueber-mich.html">So Arbeite Ich</a>
+    <a href="kontakt-einstieg.html">Kontakt & Einstieg</a>
+    <a href="kontakt-einstieg.html" class="mobile-cta">Erstgespräch vereinbaren</a>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+    <a href="index.html">Start</a><span>›</span>
+    <a href="karriere-kosmos.html">Karriere-Kosmos</a><span>›</span>
+    Wissen & Einordnungen
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <a href="karriere-kosmos.html" class="hero-back">← Zurück zum Karriere-Kosmos</a>
+        <p class="hero-eyebrow">Karriere-Kosmos · Wissen & Einordnungen</p>
+        <h1>Artikel, Einblicke<br>& Orientierung</h1>
+        <p class="hero-desc">Fachliche Beiträge zu beruflichen Themen – verständlich, einordnend und nah an dem, was Menschen im Arbeitsalltag wirklich beschäftigt.</p>
+    </div>
+    <div class="hero-wave">
+        <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,32 C360,56 1080,8 1440,32 L1440,48 L0,48 Z" fill="#ffffff"/>
+        </svg>
+    </div>
+</section>
+
+<!-- FEATURED -->
+<section>
+    <div class="sec-wrap">
+        <h2 class="sec-title">Aktuell empfohlen</h2>
+        <p class="sec-sub">Ein Beitrag, der gerade besonders relevant ist.</p>
+
+        <a href="#" class="featured-card">
+            <div class="featured-img">🧭</div>
+            <div class="featured-content">
+                <div class="featured-tags">
+                    <span class="tag-pill featured-pill">⭐ Featured</span>
+                    <span class="tag-pill">Orientierung</span>
+                    <span class="tag-pill">Karriere</span>
+                </div>
+                <h2>Warum „Ich weiß nicht, was ich will" kein Problem ist – sondern ein Ausgangspunkt</h2>
+                <p>Viele Menschen glauben, berufliche Orientierung bedeutet, bereits eine klare Antwort zu haben. Das Gegenteil ist oft der Fall: Wer nicht weiß, was er will, hat meistens noch nicht die richtigen Fragen gestellt.</p>
+                <div class="featured-meta">
+                    <span>📅 Januar 2026</span>
+                    <span>⏱ 5 Min. Lesezeit</span>
+                </div>
+                <span class="read-more">Artikel lesen →</span>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- FILTER -->
+<div class="filter-section">
+    <div class="filter-inner">
+        <div class="search-row">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search-input" placeholder="Artikel suchen …">
+            </div>
+            <select class="sort-select" id="sort-select">
+                <option value="neu">Neueste zuerst</option>
+                <option value="alt">Älteste zuerst</option>
+                <option value="az">A–Z</option>
+            </select>
+        </div>
+        <div class="tags-row">
+            <button class="tag-filter-btn active" data-tag="alle">Alle</button>
+            <button class="tag-filter-btn" data-tag="orientierung">🧭 Orientierung</button>
+            <button class="tag-filter-btn" data-tag="karriere">🎯 Karriere</button>
+            <button class="tag-filter-btn" data-tag="bewerbung">📝 Bewerbung</button>
+            <button class="tag-filter-btn" data-tag="mindset">🧠 Mindset</button>
+            <button class="tag-filter-btn" data-tag="arbeitsmarkt">📊 Arbeitsmarkt</button>
+            <button class="tag-filter-btn" data-tag="fuehrung">👥 Führung</button>
+            <button class="tag-filter-btn" data-tag="ausbildung">🏫 Ausbildung</button>
+            <button class="tag-filter-btn" data-tag="studium">🎓 Studium</button>
+            <button class="tag-filter-btn" data-tag="selbstmanagement">⚙️ Selbstmanagement</button>
+        </div>
+    </div>
+</div>
+
+<!-- ARTIKEL GRID -->
+<section class="artikel-section">
+    <div class="artikel-inner">
+        <div class="artikel-grid" id="artikel-grid">
+
+            <a href="#" class="artikel-card" data-tags="orientierung karriere" data-titel="Der erste Schritt ist nicht der schwerste – er ist der unklarste">
+                <div class="artikel-thumb" style="background: linear-gradient(135deg,#006a8e,#008bba);">🚶</div>
+                <div class="artikel-body">
+                    <div class="artikel-tags"><span class="artikel-tag">Orientierung</span><span class="artikel-tag">Karriere</span></div>
+                    <h3>Der erste Schritt ist nicht der schwerste – er ist der unklarste</h3>
+                    <p>Was es bedeutet, berufliche Veränderung anzugehen, wenn noch nicht klar ist, wohin die Reise gehen soll.</p>
+                    <div class="artikel-footer"><span>📅 Feb. 2026</span><span class="lesen">Lesen →</span></div>
+                </div>
+            </a>
+
+            <a href="#" class="artikel-card" data-tags="bewerbung karriere" data-titel="Was Personaler wirklich lesen – und was sie übersehen">
+                <div class="artikel-thumb" style="background: linear-gradient(135deg,#004a8a,#0062b1);">📋</div>
+                <div class="artikel-body">
+                    <div class="artikel-tags"><span class="artikel-tag">Bewerbung</span><span class="artikel-tag">Karriere</span></div>
+                    <h3>Was Personaler wirklich lesen – und was sie übersehen</h3>
+                    <p>Ein ehrlicher Blick auf Bewerbungsunterlagen aus der Perspektive derer, die täglich Stapel davon durchgehen.</p>
+                    <div class="artikel-footer"><span>📅 Feb. 2026</span><span class="lesen">Lesen →</span></div>
+                </div>
+            </a>
+
+            <a href="#" class="artikel-card" data-tags="mindset selbstmanagement" data-titel="Entscheidungen treffen, wenn keine Option perfekt ist">
+                <div class="artikel-thumb" style="background: linear-gradient(135deg,#002777,#0062b1);">🔀</div>
+                <div class="artikel-body">
+                    <div class="artikel-tags"><span class="artikel-tag">Mindset</span><span class="artikel-tag">Selbstmanagement</span></div>
+                    <h3>Entscheidungen treffen, wenn keine Option perfekt ist</h3>
+                    <p>Wie wir mit Unvollständigkeit umgehen – und warum das Warten auf die perfekte Lösung oft die schlechteste Entscheidung ist.</p>
+                    <div class="artikel-footer"><span>📅 Jan. 2026</span><span class="lesen">Lesen →</span></div>
+                </div>
+            </a>
+
+            <a href="#" class="artikel-card" data-tags="ausbildung studium arbeitsmarkt" data-titel="Ausbildung oder Studium? Eine Entscheidung mit mehr Spielraum als gedacht">
+                <div class="artikel-thumb" style="background: linear-gradient(135deg,#006a8e,#008bba);">🏫</div>
+                <div class="artikel-body">
+                    <div class="artikel-tags"><span class="artikel-tag">Ausbildung</span><span class="artikel-tag">Studium</span></div>
+                    <h3>Ausbildung oder Studium? Eine Entscheidung mit mehr Spielraum als gedacht</h3>
+                    <p>Was die Zahlen sagen, was die Praxis zeigt – und warum die Frage oft falsch gestellt wird.</p>
+                    <div class="artikel-footer"><span>📅 Jan. 2026</span><span class="lesen">Lesen →</span></div>
+                </div>
+            </a>
+
+            <a href="#" class="artikel-card" data-tags="fuehrung karriere" data-titel="Was gute Führung mit Karrierebegleitung zu tun hat">
+                <div class="artikel-thumb" style="background: linear-gradient(135deg,#002777,#006a8e);">👥</div>
+                <div class="artikel-body">
+                    <div class="artikel-tags"><span class="artikel-tag">Führung</span><span class="artikel-tag">Karriere</span></div>
+                    <h3>Was gute Führung mit Karrierebegleitung zu tun hat</h3>
+                    <p>Warum Führungskräfte, die ihre Mitarbeitenden wirklich kennen, langfristig bessere Ergebnisse erzielen.</p>
+                    <div class="artikel-footer"><span>📅 Dez. 2025</span><span class="lesen">Lesen →</span></div>
+                </div>
+            </a>
+
+            <a href="#" class="artikel-card" data-tags="mindset orientierung" data-titel="Warum Unsicherheit kein Zeichen von Schwäche ist">
+                <div class="artikel-thumb" style="background: linear-gradient(135deg,#006a8e,#008bba);">🌊</div>
+                <div class="artikel-body">
+                    <div class="artikel-tags"><span class="artikel-tag">Mindset</span><span class="artikel-tag">Orientierung</span></div>
+                    <h3>Warum Unsicherheit kein Zeichen von Schwäche ist</h3>
+                    <p>Der Umgang mit beruflicher Orientierungslosigkeit – und was dahintersteckt, wenn jemand „nicht weiß, was er will".</p>
+                    <div class="artikel-footer"><span>📅 Dez. 2025</span><span class="lesen">Lesen →</span></div>
+                </div>
+            </a>
+
+            <!-- Placeholder -->
+            <div class="artikel-card placeholder" data-tags="" data-titel="">
+                <div class="artikel-thumb" style="background: var(--light-gray);">✍️</div>
+                <div class="artikel-body">
+                    <div class="artikel-tags"><span class="placeholder-badge">In Arbeit</span></div>
+                    <h3>Neuer Artikel folgt in Kürze</h3>
+                    <p>Inhalte werden laufend ergänzt – schau gerne regelmäßig vorbei.</p>
+                    <div class="artikel-footer"><span>–</span><span></span></div>
+                </div>
+            </div>
+
+            <!-- Keine Treffer -->
+            <div class="no-results" id="no-results">
+                <div class="no-icon">🔍</div>
+                <h3>Kein Artikel gefunden</h3>
+                <p>Versuch es mit einem anderen Suchbegriff oder wähle einen anderen Tag.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- STECKBRIEFE -->
+<section class="steckbrief-section">
+    <div class="steckbrief-wrap">
+        <div class="steckbrief-header">
+            <div>
+                <h2 class="sec-title">Ausbildungsberufs-Steckbriefe</h2>
+                <p>Kurze Einblicke in verschiedene Ausbildungsberufe – was steckt dahinter, was erwartet dich?</p>
+            </div>
+            <a href="#" class="yt-link">▶ Zur YouTube-Playlist</a>
+        </div>
+
+        <div class="steckbrief-grid">
+            <div class="steckbrief-card">
+                <div class="steckbrief-icon">🏥</div>
+                <h4>Medizinische Fachangestellte:r</h4>
+                <p>Zwischen Patientenbetreuung, Verwaltung und medizinischen Grundtätigkeiten.</p>
+                <span class="coming-soon">Steckbrief folgt</span>
+            </div>
+            <div class="steckbrief-card">
+                <div class="steckbrief-icon">💻</div>
+                <h4>Fachinformatiker:in</h4>
+                <p>IT, Systemintegration und Softwareentwicklung – einer der gefragtesten Berufe.</p>
+                <span class="coming-soon">Steckbrief folgt</span>
+            </div>
+            <div class="steckbrief-card">
+                <div class="steckbrief-icon">⚡</div>
+                <h4>Elektroniker:in</h4>
+                <p>Handwerk trifft Technik – von der Gebäudeinstallation bis zur Automatisierung.</p>
+                <span class="coming-soon">Steckbrief folgt</span>
+            </div>
+            <div class="steckbrief-card">
+                <div class="steckbrief-icon">🛒</div>
+                <h4>Kaufmann/-frau im Einzelhandel</h4>
+                <p>Kundenberatung, Warenwirtschaft und der alltägliche Handel – breites Berufsbild.</p>
+                <span class="coming-soon">Steckbrief folgt</span>
+            </div>
+            <div class="steckbrief-card">
+                <div class="steckbrief-icon">🏗️</div>
+                <h4>Industriemechaniker:in</h4>
+                <p>Maschinen, Anlagen, Präzision – das Herzstück vieler Produktionsbetriebe.</p>
+                <span class="coming-soon">Steckbrief folgt</span>
+            </div>
+            <div class="steckbrief-card">
+                <div class="steckbrief-icon">✂️</div>
+                <h4>Friseur:in</h4>
+                <p>Kreativität, Kundenbeziehungen und handwerkliches Geschick im Alltag.</p>
+                <span class="coming-soon">Steckbrief folgt</span>
+            </div>
+            <div class="steckbrief-card">
+                <div class="steckbrief-icon">📦</div>
+                <h4>Fachlagerist:in</h4>
+                <p>Logistik, Organisation und der unsichtbare Motor hinter dem Warenfluss.</p>
+                <span class="coming-soon">Steckbrief folgt</span>
+            </div>
+            <div class="steckbrief-card" style="background: var(--page-color-light); border: 2px dashed var(--page-color);">
+                <div class="steckbrief-icon">➕</div>
+                <h4>Weitere Steckbriefe folgen</h4>
+                <p>Laufend werden neue Berufsbilder ergänzt. YouTube-Playlist für Videoformat.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+    <h2>Thema gefunden, das dich beschäftigt?</h2>
+    <p>Im Erstgespräch können wir es gemeinsam vertiefen – ohne Vorbereitung, ohne Druck.</p>
+    <a href="kontakt-einstieg.html" class="btn-white">Zum Erstgespräch →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="index.html">Start</a></li>
+                <li><a href="fuer-arbeitnehmende.html">Für Arbeitnehmende</a></li>
+                <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
+                <li><a href="unternehmen.html">Für Unternehmen</a></li>
+                <li><a href="ueber-mich.html">So Arbeite Ich</a></li>
+                <li><a href="kontakt-einstieg.html">Kontakt & Einstieg</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Kontakt</h4>
+            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br><a href="mailto:jan@koppmannkarriere.de">jan@koppmannkarriere.de</a></p>
+            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br>folgt</p>
+        </div>
+        <div class="footer-section">
+            <h4>Social Media</h4>
+            <div class="footer-social-icons">
+                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="YouTube"><img src="images/YouTube_Icon.png" alt="YouTube"></a>
+                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon" title="LinkedIn"><img src="images/Linkedin_Icon.png" alt="LinkedIn"></a>
+                <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="footer-social-icon" title="Instagram"><img src="images/Instagram_Icon.png" alt="Instagram"></a>
+                <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="TikTok"><img src="images/Tiktok_Icon.png" alt="TikTok"></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h4>Rechtliches</h4>
+            <ul>
+                <li><a href="transparenz/impressum.html">Impressum</a></li>
+                <li><a href="transparenz/datenschutz.html">Datenschutz</a></li>
+            </ul>
+            <h4 style="margin-top:1.8rem;">Tippgeber:in werden</h4>
+            <p><a href="tippgeber.html">Weiterempfehlen & Provision erhalten</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Jan Koppmann – Karrierebegleitung</p>
+        <p>Hosted on Netlify · Made with ♥ in Overath</p>
+    </div>
+</footer>
+
+<script>
+    // Burger
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    burger.addEventListener('click', () => {
+        burger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            burger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Tag Filter + Suche
+    const tagBtns = document.querySelectorAll('.tag-filter-btn');
+    const searchInput = document.getElementById('search-input');
+    const sortSelect = document.getElementById('sort-select');
+    const artikelGrid = document.getElementById('artikel-grid');
+    const noResults = document.getElementById('no-results');
+    let activeTag = 'alle';
+    let searchTerm = '';
+
+    function filterArtikel() {
+        const cards = artikelGrid.querySelectorAll('.artikel-card:not(.placeholder)');
+        let visible = 0;
+        cards.forEach(card => {
+            const tags = (card.dataset.tags || '').toLowerCase();
+            const titel = (card.dataset.titel || '').toLowerCase();
+            const matchTag = activeTag === 'alle' || tags.includes(activeTag);
+            const matchSearch = searchTerm === '' || titel.includes(searchTerm) || tags.includes(searchTerm);
+            const show = matchTag && matchSearch;
+            card.style.display = show ? 'flex' : 'none';
+            if (show) visible++;
+        });
+        const placeholder = artikelGrid.querySelector('.artikel-card.placeholder');
+        if (placeholder) placeholder.style.display = (activeTag === 'alle' && searchTerm === '') ? 'flex' : 'none';
+        noResults.style.display = visible === 0 ? 'block' : 'none';
+    }
+
+    tagBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tagBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeTag = btn.dataset.tag;
+            filterArtikel();
+        });
+    });
+
+    searchInput.addEventListener('input', () => {
+        searchTerm = searchInput.value.toLowerCase().trim();
+        filterArtikel();
+    });
+
+    sortSelect.addEventListener('change', () => {
+        const cards = [...artikelGrid.querySelectorAll('.artikel-card:not(.placeholder)')];
+        const val = sortSelect.value;
+        cards.sort((a, b) => {
+            const ta = a.dataset.titel || '';
+            const tb = b.dataset.titel || '';
+            if (val === 'az') return ta.localeCompare(tb, 'de');
+            return 0;
+        });
+        const placeholder = artikelGrid.querySelector('.artikel-card.placeholder');
+        cards.forEach(c => artikelGrid.insertBefore(c, noResults));
+        if (placeholder) artikelGrid.insertBefore(placeholder, noResults);
+    });
+</script>
+</body>
+</html>
