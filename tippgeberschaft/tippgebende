@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tippgeber:in werden – Koppmann Karriere</title>
+    <meta name="description" content="Empfiehl jemanden weiter und erhalte eine Prämie bei erfolgreicher Vermittlung. 100 € bei Ausbildung, 200 € bei Fachkraft – nur im Erfolgsfall.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-blue: #0062b1; --dark-blue: #002777; --light-blue: #008bba;
+            --page-color: #008bba; --page-color-light: #e0f6fb;
+            --white: #fff; --black: #000; --light-gray: #f5f5f5; --medium-gray: #6b7280;
+            --green: #16a34a; --green-light: #dcfce7;
+        }
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.7; color: var(--black); font-size: 17px; overflow-x: hidden; }
+
+        header { position: fixed; top: 0; left: 0; right: 0; background: var(--dark-blue); box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 1000; transition: all 0.3s; }
+        header.scrolled { background: var(--dark-blue); box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+        nav { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        header.scrolled nav { padding: 0.6rem 2rem; }
+        .logo { font-weight: 700; color: var(--white); text-decoration: none; display: flex; align-items: center; transition: all 0.3s; }
+        .logo img { height: 40px; width: auto; transition: height 0.3s; }
+        header.scrolled .logo img { height: 32px; }
+        nav ul { display: flex; list-style: none; gap: 2.5rem; align-items: center; transition: all 0.3s; }
+        header.scrolled nav ul { opacity: 0; visibility: hidden; pointer-events: none; height: 0; overflow: hidden; }
+        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.85); font-weight: 500; font-size: 0.95rem; transition: color 0.3s; position: relative; }
+        nav ul li a:hover, nav ul li a.active { color: var(--white); }
+        nav ul li a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--white); transition: width 0.3s; }
+        nav ul li a:hover::after, nav ul li a.active::after { width: 100%; }
+        .header-cta-btn { display: inline-block; padding: 0.65rem 1.6rem; background: transparent; color: var(--white); font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255,255,255,0.6); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
+        .header-cta-btn:hover { background: var(--white); color: var(--dark-blue); border-color: var(--white); }
+        .anchor-nav { background: var(--white); border-bottom: 2px solid var(--light-gray); position: sticky; top: 65px; z-index: 900; }
+
+        .breadcrumb { margin-top: 80px; padding: 1rem 2rem; background: var(--light-gray); font-size: 0.85rem; color: var(--medium-gray); }
+        .breadcrumb a { color: var(--medium-gray); text-decoration: none; }
+        .breadcrumb a:hover { color: var(--primary-blue); }
+        .breadcrumb span { margin: 0 0.5rem; }
+
+        /* HERO */
+        .hero { background: linear-gradient(135deg, #002777 0%, #0062b1 60%, #0080d0 100%); padding: 5rem 2rem 6rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 450px; height: 450px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+        .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 380px; gap: 4rem; align-items: center; }
+        .hero-back { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.55); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-bottom: 2rem; transition: color 0.2s; display: block; }
+        .hero-back:hover { color: var(--white); }
+        .hero-eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 1rem; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; color: var(--white); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1.2rem; }
+        .hero-desc { font-size: 1.05rem; color: rgba(255,255,255,0.75); line-height: 1.8; }
+        .hero-wave { position: absolute; bottom: -1px; left: 0; right: 0; }
+        .hero-wave svg { display: block; width: 100%; }
+
+        /* Prämien-Karte im Hero */
+        .praemien-card { background: rgba(255,255,255,0.08); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 2rem; }
+        .praemien-card-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 1.2rem; }
+        .praemie-row { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); gap: 1rem; }
+        .praemie-row:last-child { border-bottom: none; }
+        .praemie-label { font-size: 0.9rem; color: rgba(255,255,255,0.8); }
+        .praemie-amount { display: flex; flex-direction: column; align-items: flex-end; }
+        .praemie-main { font-size: 1.4rem; font-weight: 800; color: var(--white); }
+        .praemie-spende { font-size: 0.72rem; color: rgba(255,255,255,0.5); }
+        .praemie-note { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+        /* SECTIONS */
+        .sec-wrap { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
+        .sec-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--black); margin-bottom: 0.4rem; }
+        .sec-sub { font-size: 1rem; color: var(--medium-gray); margin-bottom: 3rem; line-height: 1.7; }
+
+        .anchor-nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; display: flex; overflow-x: auto; scrollbar-width: none; }
+        .anchor-nav-inner::-webkit-scrollbar { display: none; }
+        .anchor-btn { padding: 1rem 1.4rem; background: none; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 600; color: var(--medium-gray); cursor: pointer; white-space: nowrap; transition: all 0.25s; }
+        .anchor-btn:hover, .anchor-btn.active { color: var(--page-color); border-bottom-color: var(--page-color); }
+
+        /* WIE ES FUNKTIONIERT */
+        #sec-ablauf { background: var(--white); }
+        .ablauf-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        .ablauf-step { position: relative; }
+        .ablauf-num { width: 46px; height: 46px; border-radius: 12px; background: var(--page-color-light); color: var(--page-color); display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; margin-bottom: 1rem; }
+        .ablauf-connector { position: absolute; top: 23px; left: 54px; right: -1.5rem; height: 2px; background: var(--page-color-light); }
+        .ablauf-step:last-child .ablauf-connector { display: none; }
+        .ablauf-step h3 { font-size: 0.97rem; font-weight: 700; color: var(--black); margin-bottom: 0.4rem; }
+        .ablauf-step p { font-size: 0.88rem; color: var(--medium-gray); line-height: 1.65; }
+
+        /* DATENSCHUTZ HINWEIS */
+        .ds-hinweis { background: #fffbeb; border: 2px solid #fde68a; border-radius: 14px; padding: 1.5rem 2rem; margin-top: 3rem; display: flex; gap: 1rem; align-items: flex-start; }
+        .ds-hinweis-icon { font-size: 1.5rem; flex-shrink: 0; }
+        .ds-hinweis h4 { font-size: 0.95rem; font-weight: 700; color: #92400e; margin-bottom: 0.3rem; }
+        .ds-hinweis p { font-size: 0.88rem; color: #78350f; line-height: 1.7; }
+
+        /* PRAEMIEN DETAIL */
+        #sec-praemien { background: var(--light-gray); }
+        .praemien-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .praemien-kachel { background: var(--white); border-radius: 18px; padding: 2rem; border: 2px solid transparent; transition: all 0.3s; }
+        .praemien-kachel:hover { border-color: var(--page-color); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,98,177,0.1); }
+        .praemien-kachel-type { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--medium-gray); margin-bottom: 0.5rem; }
+        .praemien-kachel h3 { font-size: 1.1rem; font-weight: 700; color: var(--black); margin-bottom: 0.4rem; }
+        .praemien-betrag { font-size: 2.8rem; font-weight: 800; color: var(--page-color); line-height: 1; margin: 0.8rem 0; }
+        .praemien-spende-line { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--green); font-weight: 600; margin-bottom: 1rem; }
+        .praemien-kachel p { font-size: 0.9rem; color: var(--medium-gray); line-height: 1.7; }
+
+        .erfolgsfall-box { background: var(--page-color); border-radius: 14px; padding: 1.5rem 2rem; margin-top: 2rem; display: flex; align-items: center; gap: 1.2rem; }
+        .erfolgsfall-box p { font-size: 0.95rem; color: rgba(255,255,255,0.9); line-height: 1.7; }
+        .erfolgsfall-box strong { color: var(--white); }
+
+        /* FORMULAR */
+        #sec-formular { background: var(--white); }
+        .formular-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+        .formular-info h3 { font-size: 1.1rem; font-weight: 700; color: var(--black); margin-bottom: 1rem; }
+        .formular-info p { font-size: 0.95rem; color: var(--medium-gray); line-height: 1.8; margin-bottom: 1rem; }
+        .formular-info ul { list-style: none; padding: 0; }
+        .formular-info ul li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.9rem; color: var(--medium-gray); padding: 0.4rem 0; }
+        .formular-info ul li::before { content: '✓'; color: var(--page-color); font-weight: 800; flex-shrink: 0; }
+
+        .formular-card { background: var(--light-gray); border-radius: 20px; padding: 2.5rem; }
+        .formular-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--black); margin-bottom: 0.4rem; }
+        .formular-card > p { font-size: 0.88rem; color: var(--medium-gray); margin-bottom: 2rem; }
+        .f-field { margin-bottom: 1.2rem; }
+        .f-label { font-size: 0.82rem; font-weight: 700; color: var(--medium-gray); display: block; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .f-input { width: 100%; padding: 0.8rem 1rem; border: 2px solid #e5e7eb; border-radius: 10px; font-family: 'Montserrat', sans-serif; font-size: 0.95rem; background: var(--white); outline: none; transition: border-color 0.2s; }
+        .f-input:focus { border-color: var(--page-color); }
+        .f-select { width: 100%; padding: 0.8rem 1rem; border: 2px solid #e5e7eb; border-radius: 10px; font-family: 'Montserrat', sans-serif; font-size: 0.95rem; background: var(--white); outline: none; cursor: pointer; }
+        .f-select:focus { border-color: var(--page-color); }
+        .f-textarea { width: 100%; padding: 0.8rem 1rem; border: 2px solid #e5e7eb; border-radius: 10px; font-family: 'Montserrat', sans-serif; font-size: 0.95rem; background: var(--white); outline: none; resize: vertical; min-height: 80px; transition: border-color 0.2s; }
+        .f-textarea:focus { border-color: var(--page-color); }
+        .f-note { font-size: 0.78rem; color: var(--medium-gray); margin-top: 0.3rem; line-height: 1.5; }
+        .btn-submit { display: block; width: 100%; padding: 1.1rem; background: var(--page-color); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 16px rgba(0,98,177,0.25); margin-top: 1.5rem; }
+        .btn-submit:hover { background: var(--dark-blue); transform: translateY(-2px); }
+
+        /* FAQ */
+        #sec-faq { background: var(--light-gray); }
+        .faq-list { display: flex; flex-direction: column; gap: 0; border: 2px solid #e5e7eb; border-radius: 16px; overflow: hidden; }
+        .faq-item { background: var(--white); border-bottom: 1px solid #e5e7eb; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question { width: 100%; padding: 1.3rem 1.8rem; background: none; border: none; font-family: 'Montserrat', sans-serif; font-size: 0.97rem; font-weight: 700; color: var(--black); cursor: pointer; display: flex; justify-content: space-between; align-items: center; text-align: left; gap: 1rem; transition: background 0.2s; }
+        .faq-question:hover { background: var(--light-gray); }
+        .faq-chevron { font-size: 0.8rem; transition: transform 0.3s; flex-shrink: 0; color: var(--page-color); }
+        .faq-item.open .faq-chevron { transform: rotate(180deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-answer-inner { padding: 0 1.8rem 1.3rem; font-size: 0.93rem; color: var(--medium-gray); line-height: 1.8; }
+
+        /* RECHTLICHES */
+        #sec-rechtlich { background: var(--white); }
+        .rechtlich-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .rechtlich-card { background: var(--light-gray); border-radius: 14px; padding: 1.5rem; }
+        .rechtlich-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--black); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem; }
+        .rechtlich-card p { font-size: 0.88rem; color: var(--medium-gray); line-height: 1.7; }
+
+        /* MULTIPLIKATOREN HINWEIS */
+        .multi-hinweis { background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue)); border-radius: 20px; padding: 2.5rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; margin-top: 3rem; }
+        .multi-hinweis h3 { font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+        .multi-hinweis p { font-size: 0.95rem; color: rgba(255,255,255,0.75); }
+        .btn-multi { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 1.8rem; background: var(--white); color: var(--dark-blue); font-size: 0.95rem; font-weight: 700; border-radius: 50px; text-decoration: none; white-space: nowrap; transition: all 0.3s; }
+        .btn-multi:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+
+        /* CTA */
+        .cta-strip { padding: 4.5rem 2rem; background: var(--page-color); text-align: center; }
+        .cta-strip h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--white); margin-bottom: 0.8rem; }
+        .cta-strip p { font-size: 1rem; color: rgba(255,255,255,0.78); margin-bottom: 2rem; }
+        .btn-white { display: inline-block; padding: 1rem 2.5rem; background: var(--white); color: var(--page-color); font-size: 1rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+        .btn-white:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+
+        /* FOOTER */
+        footer { background: var(--light-blue); padding: 4rem 2rem 2rem; }
+        .footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem; margin-bottom: 3rem; }
+        .footer-section h3 { font-size: 1.1rem; font-weight: 700; color: var(--black); margin-bottom: 1.5rem; }
+        .footer-section ul { list-style: none; padding: 0; }
+        .footer-section ul li { margin-bottom: 0.8rem; }
+        .footer-section a { color: var(--black); text-decoration: none; font-size: 0.95rem; }
+        .footer-section a:hover { color: var(--dark-blue); text-decoration: underline; }
+        .footer-section p { color: var(--black); font-size: 0.95rem; margin-bottom: 0.5rem; }
+        .footer-social-icons { display: flex; gap: 1rem; margin-top: 1rem; }
+        .footer-social-icon { width: 40px; height: 40px; background: var(--white); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s; color: var(--primary-blue); font-size: 1.1rem; font-weight: 700; }
+        .footer-social-icon:hover { background: var(--primary-blue); color: var(--white); transform: translateY(-3px); }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.1); color: var(--black); opacity: 0.8; font-size: 0.9rem; }
+
+        @media (max-width: 968px) {
+            nav ul { display: none; } .header-cta-btn { display: inline-block !important; }
+            .hero-inner { grid-template-columns: 1fr; } .praemien-card { display: none; }
+            .ablauf-grid { grid-template-columns: 1fr 1fr; } .ablauf-connector { display: none; }
+            .praemien-grid { grid-template-columns: 1fr; }
+            .formular-grid { grid-template-columns: 1fr; }
+            .rechtlich-grid { grid-template-columns: 1fr; }
+            .multi-hinweis { grid-template-columns: 1fr; }
+            .footer-container { grid-template-columns: 1fr 1fr; gap: 2rem; }
+        }
+        @media (max-width: 580px) {
+            nav { padding: 1rem; } .ablauf-grid { grid-template-columns: 1fr; }
+            .footer-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header id="header">
+    <nav>
+        <a href="koppmann-karriere.html" class="logo"><img src="images/logo.png" alt="Koppmann Karriere"></a>
+        <ul>
+            <li><a href="koppmann-karriere.html">Startseite</a></li>
+            <li><a href="fuer-arbeitnehmende.html">Für Arbeitnehmende</a></li>
+            <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
+            <li><a href="fuer-unternehmen.html">Für Unternehmen</a></li>
+            <li><a href="ueber-mich.html">So arbeite ich</a></li>
+            <li><a href="kontakt-einstieg.html">Kontakt & Einstieg</a></li>
+        </ul>
+        <a href="kontakt-einstieg.html" class="header-cta-btn">Kontakt & Einstieg</a>
+    </nav>
+</header>
+
+<div class="breadcrumb">
+    <a href="koppmann-karriere.html">Start</a><span>›</span>
+    <a href="kontakt-einstieg.html">Kontakt & Einstieg</a><span>›</span>
+    Tippgeber:in werden
+</div>
+
+<section class="hero">
+    <div class="hero-inner">
+        <div>
+            <a href="kontakt-einstieg.html" class="hero-back">← Zurück zu „Kontakt & Einstieg"</a>
+            <p class="hero-eyebrow">Weiterempfehlen & Prämie erhalten</p>
+            <h1>Kennst du jemanden,<br>der einen neuen Job<br>braucht?</h1>
+            <p class="hero-desc">Wenn jemand aus deinem Umfeld durch deine Empfehlung erfolgreich vermittelt wird – erhältst du eine Prämie. Kein Aufwand, kein Risiko, nur im Erfolgsfall.</p>
+        </div>
+        <div class="praemien-card">
+            <p class="praemien-card-title">Prämienübersicht</p>
+            <div class="praemie-row">
+                <span class="praemie-label">Ausbildungsvermittlung</span>
+                <div class="praemie-amount">
+                    <span class="praemie-main">100 €</span>
+                    <span class="praemie-spende">+ 20 € Spende</span>
+                </div>
+            </div>
+            <div class="praemie-row">
+                <span class="praemie-label">Fachkraftvermittlung</span>
+                <div class="praemie-amount">
+                    <span class="praemie-main">200 €</span>
+                    <span class="praemie-spende">+ 50 € Spende</span>
+                </div>
+            </div>
+            <p class="praemie-note">Nur bei erfolgreicher Vermittlung. Erfolg = unterschriebener Vertrag + erster Arbeitstag + erste Zahlung des Unternehmens eingegangen.</p>
+        </div>
+    </div>
+    <div class="hero-wave">
+        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="#ffffff"/>
+        </svg>
+    </div>
+</section>
+
+<div class="anchor-nav">
+    <div class="anchor-nav-inner">
+        <button class="anchor-btn active" data-target="sec-ablauf">🔄 Ablauf</button>
+        <button class="anchor-btn" data-target="sec-praemien">💶 Prämien</button>
+        <button class="anchor-btn" data-target="sec-formular">✉️ Empfehlung abgeben</button>
+        <button class="anchor-btn" data-target="sec-faq">❓ FAQ</button>
+        <button class="anchor-btn" data-target="sec-rechtlich">⚖️ Rechtliches</button>
+    </div>
+</div>
+
+<!-- ABLAUF -->
+<section id="sec-ablauf">
+    <div class="sec-wrap">
+        <h2 class="sec-title">So einfach funktioniert es</h2>
+        <p class="sec-sub">Du gibst einen Hinweis – den Rest erledigen wir.</p>
+        <div class="ablauf-grid">
+            <div class="ablauf-step">
+                <div class="ablauf-connector"></div>
+                <div class="ablauf-num">1</div>
+                <h3>Du denkst an jemanden</h3>
+                <p>Jemand aus deinem Umfeld sucht einen Job, eine Ausbildung oder eine neue Herausforderung.</p>
+            </div>
+            <div class="ablauf-step">
+                <div class="ablauf-connector"></div>
+                <div class="ablauf-num">2</div>
+                <h3>Du gibst einen Hinweis</h3>
+                <p>Du schickst uns eine kurze Nachricht mit deinem Namen und dem Hinweis, wer sich melden könnte.</p>
+            </div>
+            <div class="ablauf-step">
+                <div class="ablauf-connector"></div>
+                <div class="ablauf-num">3</div>
+                <h3>Die Person meldet sich selbst</h3>
+                <p>Wichtig: Die Person nimmt selbst Kontakt auf – du gibst keine Kontaktdaten weiter. So bleibt alles datenschutzkonform.</p>
+            </div>
+            <div class="ablauf-step">
+                <div class="ablauf-num">4</div>
+                <h3>Bei Erfolg: Prämie für dich</h3>
+                <p>Wenn die Vermittlung erfolgreich war, erhältst du einen Monat nach der ersten Unternehmenszahlung deine Prämie.</p>
+            </div>
+        </div>
+        <div class="ds-hinweis">
+            <div class="ds-hinweis-icon">🔐</div>
+            <div>
+                <h4>Datenschutz-Hinweis: Keine Kontaktdaten Dritter</h4>
+                <p>Du gibst uns ausschließlich <strong>deine eigenen Kontaktdaten</strong> – niemals die der empfohlenen Person. Diese nimmt selbst und freiwillig Kontakt auf. So ist sichergestellt, dass kein Datenschutzproblem entsteht.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRÄMIEN -->
+<section id="sec-praemien" style="background: var(--light-gray);">
+    <div class="sec-wrap">
+        <h2 class="sec-title">Deine Prämie</h2>
+        <p class="sec-sub">Zwei Kategorien – je nach Art der Vermittlung.</p>
+        <div class="praemien-grid">
+            <div class="praemien-kachel">
+                <div class="praemien-kachel-type">Kategorie 1</div>
+                <h3>Ausbildungsvermittlung</h3>
+                <div class="praemien-betrag">100 €</div>
+                <div class="praemien-spende-line">🌱 + 20 € Spende in deinem Namen</div>
+                <p>Wenn die empfohlene Person erfolgreich in eine Ausbildungsstelle vermittelt wird und den Vertrag unterschreibt.</p>
+            </div>
+            <div class="praemien-kachel">
+                <div class="praemien-kachel-type">Kategorie 2</div>
+                <h3>Fachkraftvermittlung</h3>
+                <div class="praemien-betrag">200 €</div>
+                <div class="praemien-spende-line">🌱 + 50 € Spende in deinem Namen</div>
+                <p>Wenn die empfohlene Person als Fachkraft erfolgreich vermittelt wird und ihre erste Stelle antritt.</p>
+            </div>
+        </div>
+        <div class="erfolgsfall-box">
+            <div style="font-size: 2rem; flex-shrink: 0;">✅</div>
+            <p><strong>Wann gilt eine Vermittlung als erfolgreich?</strong> Vertrag unterschrieben + erster Arbeitstag erfolgt + erste Ratenzahlung des Unternehmens bei Koppmann Karriere eingegangen. Auszahlung erfolgt einen Monat danach.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FORMULAR -->
+<section id="sec-formular">
+    <div class="sec-wrap">
+        <h2 class="sec-title">Empfehlung abgeben</h2>
+        <p class="sec-sub">Eine kurze Nachricht genügt – wir melden uns bei dir.</p>
+        <div class="formular-grid">
+            <div class="formular-info">
+                <h3>Was passiert nach deiner Nachricht?</h3>
+                <p>Du schickst uns eine Nachricht mit deinen Kontaktdaten und einem kurzen Hinweis. Wir notieren dich als Tippgeber:in – falls sich die Person meldet und erfolgreich vermittelt wird, kommen wir auf dich zu.</p>
+                <ul>
+                    <li>Kein Vertrag, keine Verpflichtung deinerseits</li>
+                    <li>Kein Anspruch auf Prämie solange kein Erfolg</li>
+                    <li>Deine Daten werden ausschließlich für die Zuordnung verwendet</li>
+                    <li>Auszahlung wahlweise per Überweisung oder Gutschein</li>
+                    <li>Bei Minderjährigen: Gutschein oder Auszahlung an Erziehungsberechtigte</li>
+                </ul>
+                <div class="ds-hinweis" style="margin-top: 1.5rem;">
+                    <div class="ds-hinweis-icon">💡</div>
+                    <div>
+                        <h4>Wie erfährt Jan von der Verbindung?</h4>
+                        <p>Sag der Person, dass sie im Erstgespräch deinen Namen erwähnen soll – so kann Jan beide Kontaktpunkte zusammenführen. Einfach, sicher, datenschutzkonform.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="formular-card">
+                <h3>Hinweis abgeben</h3>
+                <p>Deine Nachricht öffnet sich in deinem E-Mail-Programm – vorausgefüllt mit allen wichtigen Feldern.</p>
+                <div class="f-field">
+                    <label class="f-label">Dein Name *</label>
+                    <input type="text" class="f-input" id="f-name" placeholder="Vor- und Nachname">
+                </div>
+                <div class="f-field">
+                    <label class="f-label">Deine E-Mail *</label>
+                    <input type="email" class="f-input" id="f-email" placeholder="deine@email.de">
+                </div>
+                <div class="f-field">
+                    <label class="f-label">Art der Empfehlung</label>
+                    <select class="f-select" id="f-type">
+                        <option value="Ausbildung">Ausbildungssuche</option>
+                        <option value="Fachkraft">Stellensuche / Fachkraft</option>
+                        <option value="Unsicher">Noch nicht sicher</option>
+                    </select>
+                </div>
+                <div class="f-field">
+                    <label class="f-label">Kurzer Hinweis (optional)</label>
+                    <textarea class="f-textarea" id="f-hinweis" placeholder="Z. B. in welchem Bereich die Person sucht, oder wie du auf Koppmann Karriere gestoßen bist..."></textarea>
+                    <p class="f-note">Keine Kontaktdaten der empfohlenen Person – nur deinen Hinweis.</p>
+                </div>
+                <button class="btn-submit" id="send-btn">E-Mail öffnen & abschicken →</button>
+                <p style="font-size: 0.78rem; color: var(--medium-gray); text-align: center; margin-top: 0.8rem;">Öffnet dein E-Mail-Programm mit vorausgefüllter Nachricht an <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1d777c735d76726d6d707c7373767c6f6f74786f78337978">[email&#160;protected]</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="sec-faq" style="background: var(--light-gray);">
+    <div class="sec-wrap">
+        <h2 class="sec-title">Häufige Fragen</h2>
+        <p class="sec-sub">Alles Wichtige auf einen Blick.</p>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question">Wann bekomme ich meine Prämie? <span class="faq-chevron">▼</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Die Prämie wird einen Monat nach Eingang der ersten Ratenzahlung des Unternehmens bei Koppmann Karriere ausgezahlt. Vorher gibt es keine Teil- oder Vorauszahlungen. Du wirst aktiv informiert, sobald ein Erfolgsfall vorliegt.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Was ist, wenn die Vermittlung nicht klappt? <span class="faq-chevron">▼</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Dann gibt es keine Prämie – und keine Konsequenzen für dich. Du hast keinerlei Risiko oder Verpflichtung. Das Modell funktioniert ausschließlich erfolgsbasiert.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Wie wird zugeordnet, dass die Person von mir kommt? <span class="faq-chevron">▼</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Die Person erwähnt im Erstgespräch mit Jan deinen Namen. Zusammen mit deinem Hinweis per E-Mail können beide Punkte verbunden werden. Wichtig: Die Person meldet sich immer selbst – du gibst keine Kontaktdaten weiter.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Was ist, wenn die Person Jan schon kennt? <span class="faq-chevron">▼</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Ist der Kontakt bereits vor deiner Empfehlung zustande gekommen, besteht kein Prämienanspruch. In Sonderfällen kann es eine Kulanzlösung geben – diese ist aber freiwillig und begründet keinen Anspruch.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Muss ich Steuern auf die Prämie zahlen? <span class="faq-chevron">▼</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Die Prämie wird brutto ausgezahlt. Die steuerliche Behandlung liegt bei dir als Empfänger:in. Bei kleineren Beträgen innerhalb der Freigrenze (aktuell 256 € p.a. für sonstige Einkünfte) fällt in der Regel keine Steuer an – bitte im Zweifel dein Finanzamt oder einen Steuerberater fragen.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Ich bin minderjährig – kann ich trotzdem teilnehmen? <span class="faq-chevron">▼</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Ja. Bei Minderjährigen erfolgt die Auszahlung entweder als Gutschein oder an eine erziehungsberechtigte Person. Eine Direktüberweisung an Minderjährige ist nicht möglich. Dies wird beim Auszahlungsformular abgefragt.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Wie lange gilt meine Empfehlung? <span class="faq-chevron">▼</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Es gilt eine großzügig bemessene Zeitspanne für die Attribution – damit niemand leer ausgeht, weil der Prozess sich verzögert hat. Die konkrete Dauer (z. B. 6 oder 12 Monate) wird verbindlich festgelegt und bei Bedarf mitgeteilt.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RECHTLICHES -->
+<section id="sec-rechtlich">
+    <div class="sec-wrap">
+        <h2 class="sec-title">Rechtliches & Transparenz</h2>
+        <p class="sec-sub">Kein Kleingedrucktes – nur klare Regeln.</p>
+        <div class="rechtlich-grid">
+            <div class="rechtlich-card">
+                <h4>💶 Steuerliche Verantwortung</h4>
+                <p>Die Prämie wird brutto ausgezahlt. Tippgeber:innen sind selbst für die steuerliche Behandlung verantwortlich. Bei Fragen empfehlen wir die Beratung durch ein Finanzamt oder Steuerberater:in.</p>
+            </div>
+            <div class="rechtlich-card">
+                <h4>🔒 Datenschutz</h4>
+                <p>Deine Kontaktdaten werden ausschließlich zur Zuordnung und Auszahlung verwendet. Keine Weitergabe an Dritte. Kontaktdaten der empfohlenen Person werden nie von dir erhoben.</p>
+            </div>
+            <div class="rechtlich-card">
+                <h4>📋 Kein Vertragsverhältnis</h4>
+                <p>Die Tippgeberschaft begründet kein Vertragsverhältnis und keinen einklagbaren Anspruch auf eine Prämie. Die Prämienentscheidung liegt faktenbasiert bei Koppmann Karriere.</p>
+            </div>
+            <div class="rechtlich-card">
+                <h4>🚫 Kein Affiliate-Marketing</h4>
+                <p>Das Modell basiert auf persönlichen Empfehlungen im privaten Umfeld. Massenwerbung, Spam oder öffentliche Werbeaktionen im Namen von Koppmann Karriere sind nicht erlaubt.</p>
+            </div>
+        </div>
+
+        <!-- Multiplikatoren Hinweis -->
+        <div class="multi-hinweis">
+            <div>
+                <h3>Du hast ein Café, Studio oder einen Laden?</h3>
+                <p>Als Multiplikator erreichst du mehr Menschen – mit Plakaten, QR-Codes und einer höheren Prämie von 300 €.</p>
+            </div>
+            <a href="multiplikatoren.html" class="btn-multi">Mehr erfahren →</a>
+        </div>
+    </div>
+</section>
+
+<section class="cta-strip">
+    <h2>Jemanden im Kopf?</h2>
+    <p>Eine kurze Nachricht genügt – kein Aufwand, kein Risiko.</p>
+    <a href="#sec-formular" class="btn-white" onclick="document.getElementById('sec-formular').scrollIntoView({behavior:'smooth'}); return false;">Jetzt Hinweis abgeben →</a>
+</section>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>Navigation</h3>
+            <ul>
+                <li><a href="koppmann-karriere.html">Start</a></li>
+                <li><a href="fuer-arbeitnehmende.html">Für Arbeitnehmende</a></li>
+                <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
+                <li><a href="fuer-unternehmen.html">Für Unternehmen</a></li>
+                <li><a href="ueber-mich.html">So arbeite ich</a></li>
+                <li><a href="kontakt-einstieg.html">Kontakt & Einstieg</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Kontakt</h3>
+            <p><strong>E-Mail:</strong><br><a href="/cdn-cgi/l/email-protection#ef858e81af84809f9f828e8181848e9d9d868a9d8ac18b8a"><span class="__cf_email__" data-cfemail="7b111a153b10140b0b161a1515101a0909121e091e551f1e">[email&#160;protected]</span></a></p>
+            <p><strong>Telefon:</strong> folgt</p>
+            <p><strong>Adresse:</strong><br>Neuhurden 22, 51491 Overath</p>
+        </div>
+        <div class="footer-section">
+            <h3>Social</h3>
+            <div class="footer-social-icons">
+                <a href="#" class="footer-social-icon">▶</a>
+                <a href="#" class="footer-social-icon">in</a>
+                <a href="#" class="footer-social-icon">📷</a>
+                <a href="#" class="footer-social-icon">♪</a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h3>Rechtliches</h3>
+            <ul>
+                <li><a href="impressum.html">Impressum</a></li>
+                <li><a href="datenschutz.html">Datenschutz</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Jan Koppmann - Karrierebegleitung</p></div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 50); });
+
+    const sections = document.querySelectorAll('section[id]');
+    const anchorBtns = document.querySelectorAll('.anchor-btn');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 160) current = sec.id; });
+        anchorBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.target === current));
+    });
+    anchorBtns.forEach(btn => {
+        btn.addEventListener('click', () => { document.getElementById(btn.dataset.target)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    });
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.parentElement;
+            const answer = item.querySelector('.faq-answer');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('open');
+                i.querySelector('.faq-answer').style.maxHeight = '0';
+            });
+            if (!isOpen) {
+                item.classList.add('open');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        });
+    });
+
+    // Mailto Builder
+    document.getElementById('send-btn').addEventListener('click', () => {
+        const name = document.getElementById('f-name').value.trim();
+        const email = document.getElementById('f-email').value.trim();
+        const type = document.getElementById('f-type').value;
+        const hinweis = document.getElementById('f-hinweis').value.trim();
+        if (!name || !email) { alert('Bitte Name und E-Mail-Adresse angeben.'); return; }
+        const subject = encodeURIComponent('Tippgeber-Hinweis: ' + name);
+        const body = encodeURIComponent(
+            'Hallo Jan,\n\n' +
+            'ich möchte einen Tippgeber-Hinweis abgeben.\n\n' +
+            'Mein Name: ' + name + '\n' +
+            'Meine E-Mail: ' + email + '\n' +
+            'Art der Empfehlung: ' + type + '\n' +
+            (hinweis ? 'Hinweis: ' + hinweis + '\n' : '') +
+            '\nViele Grüße,\n' + name
+        );
+        window.location.href = 'mailto:jan@koppmannkarriere.de?subject=' + subject + '&body=' + body;
+    });
+</script>
+</body>
+</html>
