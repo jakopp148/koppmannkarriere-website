@@ -45,24 +45,27 @@
         .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--primary-blue); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
 
         /* ── HERO ── */
-        .hero { margin-top: 72px; min-height: 85vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; overflow: hidden; }
-        .hero-image { width: 100%; height: 85vh; overflow: hidden; }
+        .hero { margin-top: 72px; position: relative; width: 100%; min-height: 88vh; overflow: hidden; }
+        .hero-image { position: absolute; inset: 0; }
         .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
-        .hero-content { padding: 4rem 4rem 4rem 4rem; }
-        .hero h1 { font-size: clamp(2.4rem, 4.5vw, 4rem); font-weight: 900; color: var(--primary-blue); margin-bottom: 0.8rem; letter-spacing: -0.03em; line-height: 1.05; }
-        .hero h3 { font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 400; color: var(--dark-blue); margin-bottom: 2rem; }
-        .hero-description { font-size: 1.05rem; color: var(--medium-gray); line-height: 1.85; }
+        .hero-content { position: relative; z-index: 1; padding: 5rem 3rem 4rem 4rem; max-width: 560px; margin-top: 3rem; }
+        .hero h1 { font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 900; color: var(--white); margin-bottom: 1rem; letter-spacing: -0.03em; line-height: 1.1; text-shadow: 0 2px 20px rgba(0,0,0,0.35); }
+        .hero-description { font-size: 1.05rem; color: rgba(255,255,255,0.92); line-height: 1.85; text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
+        .hero-mobile-text { display: none; padding: 2rem 1.5rem; background: var(--white); }
+        .hero-mobile-text h1 { font-size: clamp(1.8rem, 6vw, 2.6rem); font-weight: 900; color: var(--primary-blue); margin-bottom: 0.8rem; letter-spacing: -0.03em; line-height: 1.1; }
+        .hero-mobile-text p { font-size: 1rem; color: var(--medium-gray); line-height: 1.85; }
 
         /* ── REASON ── */
         .reason-section { padding: 6rem 2rem 4rem; background: var(--white); text-align: center; }
         .reason-section h3 { font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 800; color: var(--black); display: inline; letter-spacing: -0.02em; }
         .reason-section .highlight { font-family: 'Georgia', serif; color: var(--primary-blue); text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 3px; margin-left: 0.8rem; font-size: clamp(1.6rem, 4vw, 2.8rem); font-style: italic; }
         .reason-text { max-width: 900px; margin: 3rem auto 0; font-size: 1.1rem; color: var(--medium-gray); line-height: 1.85; }
-        .carousel-heading { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem 1.5rem; }
-        .carousel-heading h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 800; color: var(--black); letter-spacing: -0.01em; }
+
 
         /* ── CAROUSEL ── */
-        .carousel-section { padding: 4rem 2rem; background: var(--light-gray); }
+        .carousel-section { padding: 3rem 2rem 4rem; background: var(--light-gray); }
+        .carousel-heading { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem 1.8rem; }
+        .carousel-heading h3 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 900; color: var(--black); letter-spacing: -0.02em; }
         .carousel-outer { max-width: 1400px; margin: 0 auto; position: relative; padding: 0 2.5rem; }
         .carousel-viewport { overflow: hidden; border-radius: 16px; }
         .carousel-track { display: flex; will-change: transform; }
@@ -153,9 +156,8 @@
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
-            .hero { grid-template-columns: 1fr; min-height: auto; }
-            .hero-image { height: 55vw; max-height: 500px; }
-            .hero-content { padding: 3rem 2rem; }
+            .hero { min-height: 55vw; }
+            .hero-content { padding: 4rem 3rem 3rem 3rem; max-width: 480px; }
             .about-container { grid-template-columns: 1fr; gap: 2rem; }
             .video-container { position: static; }
             .target-container { grid-template-columns: 1fr; }
@@ -164,8 +166,9 @@
         @media (max-width: 768px) {
             nav ul, .header-cta-btn { display: none; }
             .burger { display: flex; }
-            .hero-image { height: 65vw; }
-            .hero-content { padding: 2.5rem 1.5rem; text-align: center; }
+            .hero { min-height: 60vw; }
+            .hero-content { display: none; }
+            .hero-mobile-text { display: block; }
             .footer-container { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
         }
@@ -205,15 +208,19 @@
              alt="Zwei Bergsteiger – Karrierebegleitung mit Koppmann Karriere">
     </div>
     <div class="hero-content">
-        <h1>Karrierebegleitung.</h1>
-        <h3>Klarheit vor dem nächsten Schritt</h3>
+        <h1>Ich begleite Menschen.<br>Keine Lebensläufe.</h1>
         <p class="hero-description">
-            Ich begleite Menschen und Unternehmen dabei, berufliche Entscheidungen zu treffen, die langfristig tragen.
-            Im Mittelpunkt steht das Zusammenspiel von Persönlichkeit, Rolle, Unternehmenskultur und gemeinsamen Zielen –
-            für Perspektiven und Zusammenarbeit, die nachhaltig funktionieren.
+            Berufliche Entscheidungen, die langfristig tragen, entstehen nicht aus Druck – sondern aus Klarheit.
+            Ich begleite Menschen und Unternehmen dabei, den nächsten Schritt bewusst zu gehen.
         </p>
     </div>
 </section>
+<!-- HERO MOBILE TEXT (shown only on mobile) -->
+<div class="hero-mobile-text">
+    <h1>Ich begleite Menschen.<br>Keine Lebensläufe.</h1>
+    <p>Berufliche Entscheidungen, die langfristig tragen, entstehen nicht aus Druck – sondern aus Klarheit.
+    Ich begleite Menschen und Unternehmen dabei, den nächsten Schritt bewusst zu gehen.</p>
+</div>
 
 <!-- BLOCK 2: REASON -->
 <section class="reason-section">
@@ -236,13 +243,13 @@
         <button class="carousel-arrow prev" id="prev-btn" aria-label="Vorheriges Bild">&#8592;</button>
         <div class="carousel-viewport">
             <div class="carousel-track" id="carousel-track">
-                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/Startseite_Karussell_1_st5lpf.png" alt="Karrierebegleitung, weil 1"></div>
-                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/Startseite_Karussell_2_ygfxgt.png" alt="Karrierebegleitung, weil 2"></div>
-                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/Startseite_Karussell_3_tfxleb.png" alt="Karrierebegleitung, weil 3"></div>
-                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/Startseite_Karussell_4_ycsnj3.png" alt="Karrierebegleitung, weil 4"></div>
-                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/Startseite_Karussell_5_zcmij7.png" alt="Karrierebegleitung, weil 5"></div>
-                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/Startseite_Karussell_6_liiinz.png" alt="Karrierebegleitung, weil 6"></div>
-                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/Startseite_Karussell_7_rul4op.png" alt="Karrierebegleitung, weil 7"></div>
+                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664944/Startseite_Karussell_1_st5lpf.png" alt="Karrierebegleitung, weil 1"></div>
+                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664930/Startseite_Karussell_2_ygfxgt.png" alt="Karrierebegleitung, weil 2"></div>
+                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664917/Startseite_Karussell_3_tfxleb.png" alt="Karrierebegleitung, weil 3"></div>
+                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664904/Startseite_Karussell_4_ycsnj3.png" alt="Karrierebegleitung, weil 4"></div>
+                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664883/Startseite_Karussell_5_zcmij7.png" alt="Karrierebegleitung, weil 5"></div>
+                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664865/Startseite_Karussell_6_liiinz.png" alt="Karrierebegleitung, weil 6"></div>
+                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664846/Startseite_Karussell_7_rul4op.png" alt="Karrierebegleitung, weil 7"></div>
             </div>
         </div>
         <button class="carousel-arrow next" id="next-btn" aria-label="Nächstes Bild">&#8594;</button>
