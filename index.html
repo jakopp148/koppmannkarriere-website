@@ -45,20 +45,21 @@
         .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--primary-blue); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
 
         /* ── HERO ── */
-        .hero { margin-top: 72px; position: relative; width: 100%; min-height: 88vh; overflow: hidden; display: flex; align-items: center; }
-        .hero-image { position: absolute; inset: 0; z-index: 0; }
+        .hero { margin-top: 72px; min-height: 85vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; overflow: hidden; }
+        .hero-image { width: 100%; height: 85vh; overflow: hidden; }
         .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
-        .hero-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,0.93) 0%, rgba(255,255,255,0.82) 38%, rgba(255,255,255,0.12) 68%, transparent 100%); }
-        .hero-content { position: relative; z-index: 1; padding: 5rem 4rem 5rem 5rem; max-width: 580px; }
+        .hero-content { padding: 4rem 4rem 4rem 4rem; }
         .hero h1 { font-size: clamp(2.4rem, 4.5vw, 4rem); font-weight: 900; color: var(--primary-blue); margin-bottom: 0.8rem; letter-spacing: -0.03em; line-height: 1.05; }
         .hero h3 { font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 400; color: var(--dark-blue); margin-bottom: 2rem; }
         .hero-description { font-size: 1.05rem; color: var(--medium-gray); line-height: 1.85; }
 
         /* ── REASON ── */
         .reason-section { padding: 6rem 2rem 4rem; background: var(--white); text-align: center; }
-        .reason-section h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; color: var(--black); display: inline; letter-spacing: -0.02em; }
-        .reason-section .highlight { font-family: 'Georgia', serif; color: var(--primary-blue); text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 3px; margin-left: 0.8rem; font-size: clamp(2rem, 5vw, 3.5rem); font-style: italic; }
+        .reason-section h3 { font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 800; color: var(--black); display: inline; letter-spacing: -0.02em; }
+        .reason-section .highlight { font-family: 'Georgia', serif; color: var(--primary-blue); text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 3px; margin-left: 0.8rem; font-size: clamp(1.6rem, 4vw, 2.8rem); font-style: italic; }
         .reason-text { max-width: 900px; margin: 3rem auto 0; font-size: 1.1rem; color: var(--medium-gray); line-height: 1.85; }
+        .carousel-heading { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem 1.5rem; }
+        .carousel-heading h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 800; color: var(--black); letter-spacing: -0.01em; }
 
         /* ── CAROUSEL ── */
         .carousel-section { padding: 4rem 2rem; background: var(--light-gray); }
@@ -152,8 +153,9 @@
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
-            .hero { min-height: 60vw; }
-            .hero-content { padding: 3rem 2rem; max-width: 460px; }
+            .hero { grid-template-columns: 1fr; min-height: auto; }
+            .hero-image { height: 55vw; max-height: 500px; }
+            .hero-content { padding: 3rem 2rem; }
             .about-container { grid-template-columns: 1fr; gap: 2rem; }
             .video-container { position: static; }
             .target-container { grid-template-columns: 1fr; }
@@ -162,7 +164,8 @@
         @media (max-width: 768px) {
             nav ul, .header-cta-btn { display: none; }
             .burger { display: flex; }
-            .hero-content { padding: 2.5rem 1.5rem; max-width: 90%; }
+            .hero-image { height: 65vw; }
+            .hero-content { padding: 2.5rem 1.5rem; text-align: center; }
             .footer-container { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
         }
@@ -198,7 +201,7 @@
 <!-- BLOCK 1: HERO -->
 <section class="hero">
     <div class="hero-image">
-        <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1920/Hero_Startseite_Hilfe_Bergsteigen_i5up0j.png"
+        <img src="images/Hero_Startseite_Hilfe Bergsteigen.png"
              alt="Zwei Bergsteiger – Karrierebegleitung mit Koppmann Karriere">
     </div>
     <div class="hero-content">
@@ -214,7 +217,7 @@
 
 <!-- BLOCK 2: REASON -->
 <section class="reason-section">
-    <h2>Karrierebegleitung, weil</h2>
+    <h3>Karrierebegleitung, weil</h3>
     <span class="highlight">der Mensch mehr ist als sein Lebenslauf</span>
     <p class="reason-text">
         Lebensläufe zeigen, was jemand gemacht hat – selten, wer jemand ist.
@@ -226,6 +229,9 @@
 
 <!-- BLOCK 3: CAROUSEL -->
 <section class="carousel-section">
+    <div class="carousel-heading">
+        <h3>Karrierebegleitung, weil</h3>
+    </div>
     <div class="carousel-outer">
         <button class="carousel-arrow prev" id="prev-btn" aria-label="Vorheriges Bild">&#8592;</button>
         <div class="carousel-viewport">
@@ -467,7 +473,7 @@
         const nextBtn = document.getElementById('next-btn');
         const TOTAL = 7;
 
-        // Clone slides for infinite loop: prepend + append copies
+        // Clone slides for infinite loop
         const origSlides = Array.from(track.children);
         origSlides.forEach(s => track.appendChild(s.cloneNode(true)));
         [...origSlides].reverse().forEach(s => track.insertBefore(s.cloneNode(true), track.firstChild));
@@ -477,7 +483,13 @@
         let autoplay;
 
         function getSlideWidth() {
-            return track.children[0].offsetWidth;
+            return track.parentElement.offsetWidth / getVisible();
+        }
+
+        function getVisible() {
+            if (window.innerWidth <= 600) return 1;
+            if (window.innerWidth <= 900) return 2;
+            return 3;
         }
 
         function goTo(index, animate) {
@@ -491,10 +503,14 @@
         track.addEventListener('transitionend', () => {
             isTransitioning = false;
             if (current < TOTAL) {
-                goTo(current + TOTAL, false);
+                track.style.transition = 'none';
+                current += TOTAL;
+                track.style.transform = 'translateX(-' + (current * getSlideWidth()) + 'px)';
                 void track.offsetWidth;
             } else if (current >= TOTAL * 2) {
-                goTo(current - TOTAL, false);
+                track.style.transition = 'none';
+                current -= TOTAL;
+                track.style.transform = 'translateX(-' + (current * getSlideWidth()) + 'px)';
                 void track.offsetWidth;
             }
         });
@@ -510,6 +526,8 @@
             goTo(current - 1, true);
         }
 
+        // Init after layout is ready
+        window.addEventListener('load', () => { goTo(TOTAL, false); });
         goTo(TOTAL, false);
 
         prevBtn.addEventListener('click', () => { prev(); resetAutoplay(); });
@@ -534,7 +552,10 @@
         function resetAutoplay() { clearInterval(autoplay); startAutoplay(); }
         startAutoplay();
 
-        window.addEventListener('resize', () => { goTo(current, false); });
+        window.addEventListener('resize', () => {
+            track.style.transition = 'none';
+            track.style.transform = 'translateX(-' + (current * getSlideWidth()) + 'px)';
+        });
     })();
 
     // ── ACCORDION ──
