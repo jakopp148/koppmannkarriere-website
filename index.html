@@ -9,18 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         :root {
             --primary-blue: #0062b1;
             --dark-blue: #002777;
-            --light-blue: #008bba;
             --white: #ffffff;
             --black: #0a0a0a;
             --light-gray: #f4f6f9;
             --medium-gray: #6b7280;
             --border: #e5e9f0;
         }
-
         body { font-family: 'Montserrat', sans-serif; line-height: 1.7; color: var(--black); overflow-x: hidden; font-size: 17px; }
 
         /* ── HEADER ── */
@@ -51,34 +48,34 @@
         .hero { margin-top: 72px; position: relative; width: 100%; min-height: 88vh; overflow: hidden; display: flex; align-items: center; }
         .hero-image { position: absolute; inset: 0; z-index: 0; }
         .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
-        .hero-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,0.93) 0%, rgba(255,255,255,0.80) 40%, rgba(255,255,255,0.15) 70%, transparent 100%); }
+        .hero-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,0.93) 0%, rgba(255,255,255,0.82) 38%, rgba(255,255,255,0.12) 68%, transparent 100%); }
         .hero-content { position: relative; z-index: 1; padding: 5rem 4rem 5rem 5rem; max-width: 580px; }
         .hero h1 { font-size: clamp(2.4rem, 4.5vw, 4rem); font-weight: 900; color: var(--primary-blue); margin-bottom: 0.8rem; letter-spacing: -0.03em; line-height: 1.05; }
         .hero h3 { font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 400; color: var(--dark-blue); margin-bottom: 2rem; }
         .hero-description { font-size: 1.05rem; color: var(--medium-gray); line-height: 1.85; }
 
-        /* ── REASON SECTION ── */
+        /* ── REASON ── */
         .reason-section { padding: 6rem 2rem 4rem; background: var(--white); text-align: center; }
         .reason-section h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; color: var(--black); display: inline; letter-spacing: -0.02em; }
-        .reason-section .highlight { font-family: 'Georgia', serif; color: var(--primary-blue); text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 3px; margin-left: 1rem; font-size: clamp(2rem, 5vw, 3.5rem); font-style: italic; }
-        .reason-text { max-width: 900px; margin: 3rem auto 0; font-size: 1.1rem; color: var(--medium-gray); line-height: 1.85; text-align: center; }
+        .reason-section .highlight { font-family: 'Georgia', serif; color: var(--primary-blue); text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 3px; margin-left: 0.8rem; font-size: clamp(2rem, 5vw, 3.5rem); font-style: italic; }
+        .reason-text { max-width: 900px; margin: 3rem auto 0; font-size: 1.1rem; color: var(--medium-gray); line-height: 1.85; }
 
         /* ── CAROUSEL ── */
         .carousel-section { padding: 4rem 2rem; background: var(--light-gray); }
-        .carousel-outer { max-width: 1400px; margin: 0 auto; position: relative; }
+        .carousel-outer { max-width: 1400px; margin: 0 auto; position: relative; padding: 0 2.5rem; }
         .carousel-viewport { overflow: hidden; border-radius: 16px; }
-        .carousel-track { display: flex; transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .carousel-track { display: flex; will-change: transform; }
         .carousel-slide { flex: 0 0 calc(100% / 3); padding: 0 0.5rem; box-sizing: border-box; }
-        .carousel-slide img { width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.10); }
-        .carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.92); border: none; border-radius: 50%; width: 46px; height: 46px; font-size: 1.1rem; cursor: pointer; transition: all 0.3s; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
-        .carousel-arrow:hover { background: var(--white); transform: translateY(-50%) scale(1.08); }
-        .carousel-arrow.prev { left: -1.4rem; }
-        .carousel-arrow.next { right: -1.4rem; }
+        .carousel-slide img { width: 100%; height: auto; display: block; border-radius: 10px; }
+        .carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.92); border: none; border-radius: 50%; width: 46px; height: 46px; font-size: 1.1rem; cursor: pointer; transition: all 0.25s; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
+        .carousel-arrow:hover { background: var(--white); box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .carousel-arrow.prev { left: 0; }
+        .carousel-arrow.next { right: 0; }
         .carousel-controls { display: flex; justify-content: center; gap: 0.6rem; margin-top: 1.4rem; }
         .carousel-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--medium-gray); border: none; cursor: pointer; transition: all 0.3s; opacity: 0.45; }
         .carousel-dot.active { background: var(--primary-blue); width: 32px; border-radius: 5px; opacity: 1; }
         @media (max-width: 900px) { .carousel-slide { flex: 0 0 50%; } }
-        @media (max-width: 600px) { .carousel-slide { flex: 0 0 100%; } .carousel-arrow.prev { left: 0.3rem; } .carousel-arrow.next { right: 0.3rem; } }
+        @media (max-width: 600px) { .carousel-slide { flex: 0 0 100%; } }
 
         /* ── ABOUT / ACCORDION ── */
         .about-section { padding: 6rem 2rem; background: var(--white); }
@@ -89,7 +86,7 @@
         .accordion-header h3 { font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 800; color: var(--black); letter-spacing: -0.02em; }
         .accordion-header .highlight { color: var(--primary-blue); }
         .accordion { display: flex; flex-direction: column; gap: 0.6rem; }
-        .accordion-item { border: 2px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.3s; }
+        .accordion-item { border: 2px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color 0.3s; }
         .accordion-item.active { border-color: var(--primary-blue); }
         .accordion-button { width: 100%; padding: 1.4rem 1.5rem; background: var(--white); border: none; text-align: left; font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 600; color: var(--black); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; gap: 1rem; }
         .accordion-button:hover { background: var(--light-gray); }
@@ -98,19 +95,19 @@
         .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
         .accordion-content-inner { padding: 0 1.5rem 1.5rem; color: var(--medium-gray); line-height: 1.85; font-size: 0.97rem; }
 
-        /* ── INSIGHT SECTION ── */
+        /* ── INSIGHT ── */
         .insight-section { padding: 6rem 2rem; background: var(--light-gray); }
         .insight-container { max-width: 900px; margin: 0 auto; }
         .insight-section h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; color: var(--black); margin-bottom: 2rem; line-height: 1.3; letter-spacing: -0.02em; }
         .insight-section p { font-size: 1.05rem; color: var(--medium-gray); line-height: 1.85; margin-bottom: 1.5rem; }
 
-        /* ── CTA SECTION ── */
-        .cta-section { padding: 6rem 2rem; background-image: url('https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1920,h_800,c_fill,g_auto/offener_Gespr%C3%A4chsraum_pkohvh.jpg'); background-size: cover; background-position: center; position: relative; overflow: hidden; min-height: 580px; display: flex; align-items: center; justify-content: center; }
+        /* ── CTA ── */
+        .cta-section { padding: 6rem 2rem; background-image: url('https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1920,h_800,c_fill,g_auto/offener_Gespr%C3%A4chsraum_pkohvh.jpg'); background-size: cover; background-position: center; position: relative; min-height: 580px; display: flex; align-items: center; justify-content: center; }
         .cta-section::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
         .cta-container { max-width: 500px; background: var(--primary-blue); padding: 3rem 2.5rem; border-radius: 20px; text-align: center; position: relative; z-index: 1; box-shadow: 0 20px 60px rgba(0,0,0,0.35); }
         .cta-section h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 800; color: var(--white); margin-bottom: 1.5rem; line-height: 1.2; letter-spacing: -0.02em; }
         .cta-section p { font-size: 1rem; color: var(--white); margin-bottom: 1.2rem; opacity: 0.95; line-height: 1.75; }
-        .btn-primary { display: inline-block; padding: 1rem 2.4rem; background: var(--white); color: var(--primary-blue); font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,0.2); margin-top: 1rem; }
+        .btn-primary { display: inline-block; padding: 1rem 2.4rem; background: var(--white); color: var(--primary-blue); font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; box-shadow: 0 8px 24px rgba(0,0,0,0.2); margin-top: 1rem; }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(0,0,0,0.3); }
 
         /* ── TARGET GROUPS ── */
@@ -121,10 +118,10 @@
         .target-card h1 { font-size: 2.2rem; font-weight: 900; color: var(--primary-blue); margin-bottom: 1.5rem; letter-spacing: -0.03em; }
         .target-list { background: var(--white); padding: 1rem 1.2rem; border-radius: 12px; margin: 1.5rem 0; font-size: 0.92rem; color: var(--medium-gray); line-height: 1.7; }
         .target-card p { color: var(--medium-gray); line-height: 1.85; margin-bottom: 2rem; font-size: 0.97rem; }
-        .btn-secondary-card { display: inline-block; padding: 0.85rem 1.8rem; background: var(--primary-blue); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; }
-        .btn-secondary-card:hover { background: var(--dark-blue); transform: translateY(-2px); }
+        .btn-card { display: inline-block; padding: 0.85rem 1.8rem; background: var(--primary-blue); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
+        .btn-card:hover { background: var(--dark-blue); transform: translateY(-2px); }
 
-        /* ── CLOSING SECTION ── */
+        /* ── CLOSING ── */
         .closing-section { padding: 6rem 2rem; background: var(--light-gray); }
         .closing-container { max-width: 800px; margin: 0 auto; text-align: center; }
         .closing-section h3 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; color: var(--black); margin-bottom: 2rem; line-height: 1.3; letter-spacing: -0.02em; }
@@ -156,8 +153,7 @@
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
             .hero { min-height: 60vw; }
-
-            .hero-content { padding: 3rem 2rem; max-width: 480px; }
+            .hero-content { padding: 3rem 2rem; max-width: 460px; }
             .about-container { grid-template-columns: 1fr; gap: 2rem; }
             .video-container { position: static; }
             .target-container { grid-template-columns: 1fr; }
@@ -166,11 +162,9 @@
         @media (max-width: 768px) {
             nav ul, .header-cta-btn { display: none; }
             .burger { display: flex; }
-
-            .hero-content { padding: 2.5rem 1.5rem; max-width: 100%; }
+            .hero-content { padding: 2.5rem 1.5rem; max-width: 90%; }
             .footer-container { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
-            .carousel-item { /* height adapts to image */ }
         }
     </style>
 </head>
@@ -236,7 +230,6 @@
         <button class="carousel-arrow prev" id="prev-btn" aria-label="Vorheriges Bild">&#8592;</button>
         <div class="carousel-viewport">
             <div class="carousel-track" id="carousel-track">
-                <!-- Clones appended by JS for infinite loop -->
                 <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/Startseite_Karussell_1_st5lpf.png" alt="Karrierebegleitung, weil 1"></div>
                 <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/Startseite_Karussell_2_ygfxgt.png" alt="Karrierebegleitung, weil 2"></div>
                 <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/Startseite_Karussell_3_tfxleb.png" alt="Karrierebegleitung, weil 3"></div>
@@ -248,7 +241,7 @@
         </div>
         <button class="carousel-arrow next" id="next-btn" aria-label="Nächstes Bild">&#8594;</button>
     </div>
-    <div class="carousel-controls" id="carousel-dots">
+    <div class="carousel-controls">
         <button class="carousel-dot active" data-index="0"></button>
         <button class="carousel-dot" data-index="1"></button>
         <button class="carousel-dot" data-index="2"></button>
@@ -279,8 +272,7 @@
                     <button class="accordion-button">Meine Mission <span class="accordion-icon">+</span></button>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            Ich unterstütze Menschen und Unternehmen dabei, berufliche Entscheidungen fundiert, realistisch und langfristig tragfähig zu treffen.
-                            <br><br>
+                            Ich unterstütze Menschen und Unternehmen dabei, berufliche Entscheidungen fundiert, realistisch und langfristig tragfähig zu treffen.<br><br>
                             Nicht auf Basis von Momentaufnahmen, sondern auf Grundlage von Einordnung, Klarheit und einem realistischen Blick auf Zusammenarbeit.
                         </div>
                     </div>
@@ -297,8 +289,7 @@
                     <button class="accordion-button">Mein Ansatz <span class="accordion-icon">+</span></button>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            Ich ergänze bestehende Strukturen um eine zusätzliche Entscheidungsgrundlage.
-                            <br><br>
+                            Ich ergänze bestehende Strukturen um eine zusätzliche Entscheidungsgrundlage.<br><br>
                             So entsteht ein Rahmen für berufliche Entscheidungen, die nicht nur fachlich funktionieren, sondern auch menschlich funktionieren.
                         </div>
                     </div>
@@ -307,10 +298,8 @@
                     <button class="accordion-button">Meine Überzeugung <span class="accordion-icon">+</span></button>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            Von einer gewachsenen, vertrauensvollen Arbeitsbeziehung profitieren sowohl Menschen als Arbeitnehmende sowie Unternehmen selbst. Es lohnt sich immer für beide Seiten zu prüfen, ob Zusammenarbeit wirklich passt.
-                            <br><br>
-                            Menschen können unter den richtigen Bedingungen aufblühen, leistungsfähig sein, sich selbstverwirklichen und gesund leben.
-                            <br><br>
+                            Von einer gewachsenen, vertrauensvollen Arbeitsbeziehung profitieren sowohl Menschen als Arbeitnehmende sowie Unternehmen selbst.<br><br>
+                            Menschen können unter den richtigen Bedingungen aufblühen, leistungsfähig sein, sich selbstverwirklichen und gesund leben.<br><br>
                             Unternehmen gewinnen Mitarbeitende, die dauerhaft eine Bereicherung für die Organisation sind.
                         </div>
                     </div>
@@ -345,12 +334,8 @@
 <section class="cta-section">
     <div class="cta-container">
         <h2>Kostenloses &amp; unverbindliches Erstgespräch</h2>
-        <p>
-            In einem ersten Gespräch klären wir gemeinsam, worum es dir geht, was du suchst und ob eine Zusammenarbeit für dich passt.
-        </p>
-        <p style="font-weight: 700;">
-            Ohne Vorbereitung. Ohne Verpflichtung. Ohne Druck.
-        </p>
+        <p>In einem ersten Gespräch klären wir gemeinsam, worum es dir geht, was du suchst und ob eine Zusammenarbeit für dich passt.</p>
+        <p style="font-weight: 700;">Ohne Vorbereitung. Ohne Verpflichtung. Ohne Druck.</p>
         <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="btn-primary">Erstgespräch vereinbaren</a>
     </div>
 </section>
@@ -369,7 +354,7 @@
                 eigenen Stärken, Bedürfnisse und Möglichkeiten. In der Karrierebegleitung unterstütze ich dich dabei, Orientierung
                 zu gewinnen, Entscheidungen einzuordnen und deinen nächsten Schritt bewusst zu gehen – unabhängig, fair und ohne Druck.
             </p>
-            <a href="arbeitnehmende.html" class="btn-secondary-card">Mehr zur Karrierebegleitung</a>
+            <a href="arbeitnehmende.html" class="btn-card">Mehr zur Karrierebegleitung</a>
         </div>
         <div class="target-card">
             <h1>Für Unternehmen</h1>
@@ -378,7 +363,7 @@
                 langfristige Auswirkungen auf Teams, Kultur und Zusammenarbeit. Ich unterstütze Unternehmen dabei, ihre Entscheidungsgrundlage
                 zu erweitern – um Arbeitsweise, Motivation und Passung realistisch einzuschätzen und Fehlbesetzungen gezielt zu vermeiden.
             </p>
-            <a href="unternehmen.html" class="btn-secondary-card">Zum Unternehmensbereich</a>
+            <a href="unternehmen.html" class="btn-card">Zum Unternehmensbereich</a>
         </div>
     </div>
 </section>
@@ -389,13 +374,8 @@
         <h3>Gute Entscheidungen brauchen Zeit – und ein Gegenüber</h3>
         <p>Ob berufliche Orientierung oder unternehmerische Entscheidung: Gute Lösungen entstehen selten unter Druck, sondern im Austausch.</p>
         <p>Ein erstes Gespräch bietet Raum, Anliegen einzuordnen und gemeinsame Perspektiven zu prüfen.</p>
-        <p>
-            <strong>Einblicke in meine Arbeit und meine Haltung finden sich auch auf Instagram, TikTok, YouTube und LinkedIn.</strong>
-        </p>
-        <p>
-            Dort teile ich Inhalte rund um Karriere, persönliche Entwicklung und ordne Themen ein,
-            die berufliche Entscheidungen beeinflussen.
-        </p>
+        <p><strong>Einblicke in meine Arbeit und meine Haltung finden sich auch auf Instagram, TikTok, YouTube und LinkedIn.</strong></p>
+        <p>Dort teile ich Inhalte rund um Karriere, persönliche Entwicklung und ordne Themen ein, die berufliche Entscheidungen beeinflussen.</p>
         <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="btn-cta-main">Jetzt Erstgespräch vereinbaren</a>
         <div class="social-links">
             <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="social-link">
@@ -463,7 +443,7 @@
 </footer>
 
 <script>
-    // Burger Menu
+    // ── BURGER ──
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobile-menu');
     burger.addEventListener('click', () => {
@@ -479,7 +459,7 @@
         });
     });
 
-    // Carousel – infinite loop, 3/2/1 visible
+    // ── CAROUSEL – infinite loop, 3/2/1 visible ──
     (function() {
         const track = document.getElementById('carousel-track');
         const dots = document.querySelectorAll('.carousel-dot');
@@ -487,46 +467,36 @@
         const nextBtn = document.getElementById('next-btn');
         const TOTAL = 7;
 
-        // Clone all slides and append for infinite loop
+        // Clone slides for infinite loop: prepend + append copies
         const origSlides = Array.from(track.children);
         origSlides.forEach(s => track.appendChild(s.cloneNode(true)));
-        origSlides.forEach(s => track.insertBefore(s.cloneNode(true), track.firstChild));
+        [...origSlides].reverse().forEach(s => track.insertBefore(s.cloneNode(true), track.firstChild));
 
-        function getVisible() {
-            if (window.innerWidth <= 600) return 1;
-            if (window.innerWidth <= 900) return 2;
-            return 3;
-        }
-
-        let current = TOTAL; // start at real index (after prepended clones)
-        let autoplay;
+        let current = TOTAL;
         let isTransitioning = false;
+        let autoplay;
 
-        function slideWidth() {
+        function getSlideWidth() {
             return track.children[0].offsetWidth;
         }
 
         function goTo(index, animate) {
-            if (animate === false) track.style.transition = 'none';
-            else track.style.transition = 'transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94)';
-            track.style.transform = 'translateX(-' + (index * slideWidth()) + 'px)';
+            track.style.transition = animate === false ? 'none' : 'transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94)';
+            track.style.transform = 'translateX(-' + (index * getSlideWidth()) + 'px)';
             current = index;
-            // Update dots
             const realIdx = ((current - TOTAL) % TOTAL + TOTAL) % TOTAL;
             dots.forEach((d, i) => d.classList.toggle('active', i === realIdx));
         }
 
-        // After transition, silently jump if we're in clone territory
         track.addEventListener('transitionend', () => {
             isTransitioning = false;
-            if (current <= TOTAL - 1) {
+            if (current < TOTAL) {
                 goTo(current + TOTAL, false);
+                void track.offsetWidth;
             } else if (current >= TOTAL * 2) {
                 goTo(current - TOTAL, false);
+                void track.offsetWidth;
             }
-            // Force reflow
-            track.getBoundingClientRect();
-            track.style.transition = '';
         });
 
         function next() {
@@ -540,12 +510,10 @@
             goTo(current - 1, true);
         }
 
-        // Init position without animation
         goTo(TOTAL, false);
 
         prevBtn.addEventListener('click', () => { prev(); resetAutoplay(); });
         nextBtn.addEventListener('click', () => { next(); resetAutoplay(); });
-
         dots.forEach((dot, i) => {
             dot.addEventListener('click', () => {
                 if (isTransitioning) return;
@@ -555,7 +523,6 @@
             });
         });
 
-        // Touch swipe
         let touchStartX = 0;
         track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
         track.addEventListener('touchend', e => {
@@ -567,32 +534,10 @@
         function resetAutoplay() { clearInterval(autoplay); startAutoplay(); }
         startAutoplay();
 
-        // Recalculate on resize
         window.addEventListener('resize', () => { goTo(current, false); });
     })();
-    }
 
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            updateCarousel(parseInt(dot.dataset.index));
-            resetAutoplay();
-        });
-    });
-
-    prevBtn.addEventListener('click', () => { updateCarousel(currentIndex - 1); resetAutoplay(); });
-    nextBtn.addEventListener('click', () => { updateCarousel(currentIndex + 1); resetAutoplay(); });
-
-    // Touch/Swipe support
-    let touchStartX = 0;
-    carousel.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
-    carousel.addEventListener('touchend', e => {
-        const diff = touchStartX - e.changedTouches[0].screenX;
-        if (Math.abs(diff) > 50) { updateCarousel(diff > 0 ? currentIndex + 1 : currentIndex - 1); resetAutoplay(); }
-    });
-
-    startAutoplay();
-
-    // Accordion
+    // ── ACCORDION ──
     document.querySelectorAll('.accordion-button').forEach(button => {
         button.addEventListener('click', () => {
             const item = button.parentElement;
