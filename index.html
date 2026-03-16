@@ -48,11 +48,12 @@
         .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--primary-blue); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
 
         /* ── HERO ── */
-        .hero { margin-top: 72px; min-height: 88vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 0; overflow: hidden; }
-        .hero-image { width: 100%; height: 88vh; position: relative; overflow: hidden; }
-        .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-        .hero-content { padding: 4rem 5rem 4rem 4rem; max-width: 620px; }
-        .hero h1 { font-size: clamp(2.2rem, 4vw, 3.8rem); font-weight: 900; color: var(--primary-blue); margin-bottom: 0.8rem; letter-spacing: -0.03em; line-height: 1.05; }
+        .hero { margin-top: 72px; position: relative; width: 100%; min-height: 88vh; overflow: hidden; display: flex; align-items: center; }
+        .hero-image { position: absolute; inset: 0; z-index: 0; }
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
+        .hero-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,0.93) 0%, rgba(255,255,255,0.80) 40%, rgba(255,255,255,0.15) 70%, transparent 100%); }
+        .hero-content { position: relative; z-index: 1; padding: 5rem 4rem 5rem 5rem; max-width: 580px; }
+        .hero h1 { font-size: clamp(2.4rem, 4.5vw, 4rem); font-weight: 900; color: var(--primary-blue); margin-bottom: 0.8rem; letter-spacing: -0.03em; line-height: 1.05; }
         .hero h3 { font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 400; color: var(--dark-blue); margin-bottom: 2rem; }
         .hero-description { font-size: 1.05rem; color: var(--medium-gray); line-height: 1.85; }
 
@@ -64,17 +65,20 @@
 
         /* ── CAROUSEL ── */
         .carousel-section { padding: 4rem 2rem; background: var(--light-gray); }
-        .carousel-container { max-width: 1200px; margin: 0 auto; position: relative; overflow: hidden; border-radius: 20px; box-shadow: 0 8px 40px rgba(0,0,0,0.12); }
-        .carousel { display: flex; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-        .carousel-item { min-width: 100%; position: relative; }
-        .carousel-item img { width: 100%; height: auto; display: block; }
-        .carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 48px; height: 48px; font-size: 1.2rem; cursor: pointer; transition: all 0.3s; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
+        .carousel-outer { max-width: 1400px; margin: 0 auto; position: relative; }
+        .carousel-viewport { overflow: hidden; border-radius: 16px; }
+        .carousel-track { display: flex; transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .carousel-slide { flex: 0 0 calc(100% / 3); padding: 0 0.5rem; box-sizing: border-box; }
+        .carousel-slide img { width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.10); }
+        .carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.92); border: none; border-radius: 50%; width: 46px; height: 46px; font-size: 1.1rem; cursor: pointer; transition: all 0.3s; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
         .carousel-arrow:hover { background: var(--white); transform: translateY(-50%) scale(1.08); }
-        .carousel-arrow.prev { left: 1.2rem; }
-        .carousel-arrow.next { right: 1.2rem; }
-        .carousel-controls { display: flex; justify-content: center; gap: 0.7rem; margin-top: 1.5rem; }
-        .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--medium-gray); border: none; cursor: pointer; transition: all 0.3s; opacity: 0.5; }
-        .carousel-dot.active { background: var(--primary-blue); width: 36px; border-radius: 5px; opacity: 1; }
+        .carousel-arrow.prev { left: -1.4rem; }
+        .carousel-arrow.next { right: -1.4rem; }
+        .carousel-controls { display: flex; justify-content: center; gap: 0.6rem; margin-top: 1.4rem; }
+        .carousel-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--medium-gray); border: none; cursor: pointer; transition: all 0.3s; opacity: 0.45; }
+        .carousel-dot.active { background: var(--primary-blue); width: 32px; border-radius: 5px; opacity: 1; }
+        @media (max-width: 900px) { .carousel-slide { flex: 0 0 50%; } }
+        @media (max-width: 600px) { .carousel-slide { flex: 0 0 100%; } .carousel-arrow.prev { left: 0.3rem; } .carousel-arrow.next { right: 0.3rem; } }
 
         /* ── ABOUT / ACCORDION ── */
         .about-section { padding: 6rem 2rem; background: var(--white); }
@@ -151,9 +155,9 @@
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
-            .hero { grid-template-columns: 1fr; min-height: auto; }
-            .hero-image { height: 50vw; max-height: 480px; }
-            .hero-content { padding: 3rem 2rem; max-width: 100%; }
+            .hero { min-height: 60vw; }
+
+            .hero-content { padding: 3rem 2rem; max-width: 480px; }
             .about-container { grid-template-columns: 1fr; gap: 2rem; }
             .video-container { position: static; }
             .target-container { grid-template-columns: 1fr; }
@@ -162,8 +166,8 @@
         @media (max-width: 768px) {
             nav ul, .header-cta-btn { display: none; }
             .burger { display: flex; }
-            .hero-image { height: 60vw; }
-            .hero-content { padding: 2.5rem 1.5rem; text-align: center; }
+
+            .hero-content { padding: 2.5rem 1.5rem; max-width: 100%; }
             .footer-container { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
             .carousel-item { /* height adapts to image */ }
@@ -200,7 +204,7 @@
 <!-- BLOCK 1: HERO -->
 <section class="hero">
     <div class="hero-image">
-        <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_960,h_900,c_fill,g_auto/Hero_Startseite_Hilfe_Bergsteigen_i5up0j.png"
+        <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1920/Hero_Startseite_Hilfe_Bergsteigen_i5up0j.png"
              alt="Zwei Bergsteiger – Karrierebegleitung mit Koppmann Karriere">
     </div>
     <div class="hero-content">
@@ -228,34 +232,23 @@
 
 <!-- BLOCK 3: CAROUSEL -->
 <section class="carousel-section">
-    <div class="carousel-container">
+    <div class="carousel-outer">
         <button class="carousel-arrow prev" id="prev-btn" aria-label="Vorheriges Bild">&#8592;</button>
-        <div class="carousel" id="carousel">
-            <div class="carousel-item">
-                <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1200/Startseite_Karussell_1_st5lpf.png" alt="Karrierebegleitung, weil 1">
-            </div>
-            <div class="carousel-item">
-                <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1200/Startseite_Karussell_2_ygfxgt.png" alt="Karrierebegleitung, weil 2">
-            </div>
-            <div class="carousel-item">
-                <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1200/Startseite_Karussell_3_tfxleb.png" alt="Karrierebegleitung, weil 3">
-            </div>
-            <div class="carousel-item">
-                <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1200/Startseite_Karussell_4_ycsnj3.png" alt="Karrierebegleitung, weil 4">
-            </div>
-            <div class="carousel-item">
-                <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1200/Startseite_Karussell_5_zcmij7.png" alt="Karrierebegleitung, weil 5">
-            </div>
-            <div class="carousel-item">
-                <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1200/Startseite_Karussell_6_liiinz.png" alt="Karrierebegleitung, weil 6">
-            </div>
-            <div class="carousel-item">
-                <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1200/Startseite_Karussell_7_rul4op.png" alt="Karrierebegleitung, weil 7">
+        <div class="carousel-viewport">
+            <div class="carousel-track" id="carousel-track">
+                <!-- Clones appended by JS for infinite loop -->
+                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/Startseite_Karussell_1_st5lpf.png" alt="Karrierebegleitung, weil 1"></div>
+                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/Startseite_Karussell_2_ygfxgt.png" alt="Karrierebegleitung, weil 2"></div>
+                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/Startseite_Karussell_3_tfxleb.png" alt="Karrierebegleitung, weil 3"></div>
+                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/Startseite_Karussell_4_ycsnj3.png" alt="Karrierebegleitung, weil 4"></div>
+                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/Startseite_Karussell_5_zcmij7.png" alt="Karrierebegleitung, weil 5"></div>
+                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/Startseite_Karussell_6_liiinz.png" alt="Karrierebegleitung, weil 6"></div>
+                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/Startseite_Karussell_7_rul4op.png" alt="Karrierebegleitung, weil 7"></div>
             </div>
         </div>
         <button class="carousel-arrow next" id="next-btn" aria-label="Nächstes Bild">&#8594;</button>
     </div>
-    <div class="carousel-controls">
+    <div class="carousel-controls" id="carousel-dots">
         <button class="carousel-dot active" data-index="0"></button>
         <button class="carousel-dot" data-index="1"></button>
         <button class="carousel-dot" data-index="2"></button>
@@ -486,28 +479,97 @@
         });
     });
 
-    // Carousel
-    const carousel = document.getElementById('carousel');
-    const dots = document.querySelectorAll('.carousel-dot');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    let currentIndex = 0;
-    let autoplay;
+    // Carousel – infinite loop, 3/2/1 visible
+    (function() {
+        const track = document.getElementById('carousel-track');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const TOTAL = 7;
 
-    function updateCarousel(index) {
-        const total = dots.length;
-        currentIndex = (index + total) % total;
-        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
-    }
+        // Clone all slides and append for infinite loop
+        const origSlides = Array.from(track.children);
+        origSlides.forEach(s => track.appendChild(s.cloneNode(true)));
+        origSlides.forEach(s => track.insertBefore(s.cloneNode(true), track.firstChild));
 
-    function startAutoplay() {
-        autoplay = setInterval(() => updateCarousel(currentIndex + 1), 6000);
-    }
+        function getVisible() {
+            if (window.innerWidth <= 600) return 1;
+            if (window.innerWidth <= 900) return 2;
+            return 3;
+        }
 
-    function resetAutoplay() {
-        clearInterval(autoplay);
+        let current = TOTAL; // start at real index (after prepended clones)
+        let autoplay;
+        let isTransitioning = false;
+
+        function slideWidth() {
+            return track.children[0].offsetWidth;
+        }
+
+        function goTo(index, animate) {
+            if (animate === false) track.style.transition = 'none';
+            else track.style.transition = 'transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94)';
+            track.style.transform = 'translateX(-' + (index * slideWidth()) + 'px)';
+            current = index;
+            // Update dots
+            const realIdx = ((current - TOTAL) % TOTAL + TOTAL) % TOTAL;
+            dots.forEach((d, i) => d.classList.toggle('active', i === realIdx));
+        }
+
+        // After transition, silently jump if we're in clone territory
+        track.addEventListener('transitionend', () => {
+            isTransitioning = false;
+            if (current <= TOTAL - 1) {
+                goTo(current + TOTAL, false);
+            } else if (current >= TOTAL * 2) {
+                goTo(current - TOTAL, false);
+            }
+            // Force reflow
+            track.getBoundingClientRect();
+            track.style.transition = '';
+        });
+
+        function next() {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            goTo(current + 1, true);
+        }
+        function prev() {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            goTo(current - 1, true);
+        }
+
+        // Init position without animation
+        goTo(TOTAL, false);
+
+        prevBtn.addEventListener('click', () => { prev(); resetAutoplay(); });
+        nextBtn.addEventListener('click', () => { next(); resetAutoplay(); });
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                goTo(TOTAL + i, true);
+                resetAutoplay();
+            });
+        });
+
+        // Touch swipe
+        let touchStartX = 0;
+        track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+        track.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) { diff > 0 ? next() : prev(); resetAutoplay(); }
+        });
+
+        function startAutoplay() { autoplay = setInterval(next, 6000); }
+        function resetAutoplay() { clearInterval(autoplay); startAutoplay(); }
         startAutoplay();
+
+        // Recalculate on resize
+        window.addEventListener('resize', () => { goTo(current, false); });
+    })();
     }
 
     dots.forEach(dot => {
