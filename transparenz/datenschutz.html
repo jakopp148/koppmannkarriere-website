@@ -58,12 +58,17 @@
         .content-wrap { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 6rem; }
 
         /* ── TOC ── */
-        .toc { background: var(--light-gray); border-radius: 16px; padding: 2rem 2.5rem; margin-bottom: 3rem; }
-        .toc h2 { font-size: 0.85rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--medium-gray); margin-bottom: 1rem; }
-        .toc ol { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.4rem; }
-        .toc ol li { font-size: 0.9rem; }
-        .toc ol li a { color: var(--primary-blue); text-decoration: none; font-weight: 600; }
-        .toc ol li a:hover { text-decoration: underline; }
+        .toc { background: var(--light-gray); border-radius: 16px; margin-bottom: 3rem; overflow: hidden; }
+        .toc-toggle { width: 100%; background: none; border: none; padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'Montserrat', sans-serif; border-radius: 16px; transition: background 0.2s; }
+        .toc-toggle-label { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--medium-gray); }
+        .toc-arrow { font-size: 0.75rem; color: var(--medium-gray); transition: transform 0.3s; line-height: 1; }
+        .toc-toggle.open .toc-arrow { transform: rotate(180deg); }
+        .toc-body { display: none; padding: 0.5rem 2rem 1.5rem; border-top: 1px solid var(--border); }
+        .toc-body.open { display: block; }
+        .toc-body ol { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; }
+        .toc-body ol li { font-size: 0.9rem; }
+        .toc-body ol li a { color: var(--primary-blue); text-decoration: none; font-weight: 600; }
+        .toc-body ol li a:hover { text-decoration: underline; }
 
         /* ── BLOCKS ── */
         .ds-block { margin-bottom: 3.5rem; padding-bottom: 3.5rem; border-bottom: 1px solid var(--border); scroll-margin-top: 90px; }
@@ -158,21 +163,26 @@
 
     <!-- INHALTSVERZEICHNIS -->
     <nav class="toc" aria-label="Inhaltsverzeichnis">
-        <h2>Inhaltsverzeichnis</h2>
-        <ol>
-            <li><a href="#verantwortlicher">Verantwortlicher</a></li>
-            <li><a href="#grundsaetze">Grundsätze der Datenverarbeitung</a></li>
-            <li><a href="#website">Website & Hosting</a></li>
-            <li><a href="#formulare">Kontaktformulare</a></li>
-            <li><a href="#terminbuchung">Terminbuchung (Zeeg)</a></li>
-            <li><a href="#bilder">Bildhosting (Cloudinary)</a></li>
-            <li><a href="#ki">KI-Einsatz & Datenverarbeitung</a></li>
-            <li><a href="#klienten">Klientendaten & Karrierebegleitung</a></li>
-            <li><a href="#aufbewahrung">Aufbewahrungsfristen</a></li>
-            <li><a href="#rechte">Ihre Rechte</a></li>
-            <li><a href="#loeschung">Datenlöschungsantrag</a></li>
-            <li><a href="#aenderungen">Änderungen dieser Erklärung</a></li>
-        </ol>
+        <button class="toc-toggle" id="toc-toggle" aria-expanded="false">
+            <span class="toc-toggle-label">Inhaltsverzeichnis</span>
+            <span class="toc-arrow">▼</span>
+        </button>
+        <div class="toc-body" id="toc-body">
+            <ol>
+                <li><a href="#verantwortlicher">Verantwortlicher</a></li>
+                <li><a href="#grundsaetze">Grundsätze der Datenverarbeitung</a></li>
+                <li><a href="#website">Website &amp; Hosting</a></li>
+                <li><a href="#formulare">Kontaktformulare</a></li>
+                <li><a href="#terminbuchung">Terminbuchung (Zeeg)</a></li>
+                <li><a href="#bilder">Bildhosting (Cloudinary)</a></li>
+                <li><a href="#ki">KI-Einsatz &amp; Datenverarbeitung</a></li>
+                <li><a href="#klienten">Klientendaten &amp; Karrierebegleitung</a></li>
+                <li><a href="#aufbewahrung">Aufbewahrungsfristen</a></li>
+                <li><a href="#rechte">Ihre Rechte</a></li>
+                <li><a href="#loeschung">Datenlöschungsantrag</a></li>
+                <li><a href="#aenderungen">Änderungen dieser Erklärung</a></li>
+            </ol>
+        </div>
     </nav>
 
     <!-- 1. VERANTWORTLICHER -->
@@ -420,6 +430,22 @@
             burger.classList.remove('open');
             mobileMenu.classList.remove('open');
             document.body.style.overflow = '';
+        });
+    });
+
+    // TOC Dropdown
+    const tocToggle = document.getElementById('toc-toggle');
+    const tocBody = document.getElementById('toc-body');
+    tocToggle.addEventListener('click', () => {
+        tocToggle.classList.toggle('open');
+        tocBody.classList.toggle('open');
+        tocToggle.setAttribute('aria-expanded', tocBody.classList.contains('open'));
+    });
+    // Close TOC when a link is clicked
+    tocBody.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+            tocToggle.classList.remove('open');
+            tocBody.classList.remove('open');
         });
     });
 </script>
