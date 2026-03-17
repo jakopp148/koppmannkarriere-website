@@ -350,6 +350,41 @@
         .btn-primary:hover { background: var(--dark-blue); transform: translateY(-2px); }
 
 
+        /* ── POLAROID (Tiefpunkt) ── */
+        .tiefpunkt-grid { align-items: center; }
+        .polaroid-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .polaroid {
+            background: var(--white);
+            padding: 1rem 1rem 2.8rem 1rem;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 2px;
+            max-width: 300px;
+            width: 100%;
+            transform: rotate(-1.5deg);
+            transition: transform 0.4s ease;
+        }
+        .polaroid:hover { transform: rotate(0deg) scale(1.02); }
+        .polaroid img {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            object-position: center center;
+            display: block;
+        }
+        .polaroid-caption {
+            text-align: center;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--medium-gray);
+            margin-top: 1rem;
+            letter-spacing: 0.04em;
+            font-family: 'Montserrat', sans-serif;
+        }
+
         /* ── SPORT SPLIT BLOCK ── */
         .sport-section {
             display: grid;
@@ -550,7 +585,7 @@
 
 <!-- BLOCK 2: Tiefpunkt & Wendepunkt -->
 <section class="story-section gray">
-    <div class="story-grid reverse">
+    <div class="story-grid tiefpunkt-grid">
         <div class="story-text">
             <p class="eyebrow">Was mich geprägt hat</p>
             <h2>Der Umweg, der mich hierher gebracht hat.</h2>
@@ -559,9 +594,11 @@
             <p>Nach der zweiten Operation traf ich eine bewusste Entscheidung: aktiv gestalten statt nur reagieren. Mit Fokus, Reflexion und konsequenter Anpassung – Schritt für Schritt.</p>
             <p><strong>Diese Erfahrung ist der Grund, warum ich Karrierebegleitung nicht als Dienstleistung sehe, sondern als Überzeugung.</strong></p>
         </div>
-        <div class="story-image">
-            <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_800/Tiefpunkt_Bild_Website_aqjlrb.jpg" alt="Krankenhausaufenthalt November 2021" style="object-position: center bottom;">
-            <div class="img-caption">November 2021</div>
+        <div class="polaroid-wrap">
+            <div class="polaroid">
+                <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/Tiefpunkt_Bild_Website_aqjlrb.jpg" alt="Krankenhausaufenthalt November 2021">
+                <div class="polaroid-caption">November 2021</div>
+            </div>
         </div>
     </div>
 </section>
