@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Koppmann Karriere – Karrierebegleitung. Klarheit vor dem nächsten Schritt.</title>
+    <title>Für Arbeitnehmende – Koppmann Karriere</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         :root {
             --primary-blue: #0062b1;
             --dark-blue: #002777;
-            --light-blue: #008bba;
+            --page-color: #008bba;
             --white: #ffffff;
             --black: #0a0a0a;
             --light-gray: #f4f6f9;
             --medium-gray: #6b7280;
             --border: #e5e9f0;
         }
-
         body { font-family: 'Montserrat', sans-serif; line-height: 1.7; color: var(--black); overflow-x: hidden; font-size: 17px; }
 
         /* ── HEADER ── */
@@ -32,8 +30,8 @@
         nav ul { display: flex; list-style: none; gap: 1.8rem; align-items: center; }
         nav ul li a { text-decoration: none; color: rgba(255,255,255,0.88); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.02em; transition: color 0.3s; position: relative; white-space: nowrap; }
         nav ul li a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--white); transition: width 0.3s; }
-        nav ul li a:hover { color: var(--white); }
-        nav ul li a:hover::after { width: 100%; }
+        nav ul li a:hover, nav ul li a.active { color: var(--white); }
+        nav ul li a:hover::after, nav ul li a.active::after { width: 100%; }
         .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.88); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.6); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
         .header-cta-btn:hover { background: var(--white); color: var(--dark-blue); border-color: var(--white); }
         .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
@@ -44,94 +42,99 @@
         .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: var(--white); z-index: 999; flex-direction: column; padding: 2rem 2.5rem; overflow-y: auto; }
         .mobile-menu.open { display: flex; }
         .mobile-menu a { text-decoration: none; color: var(--black); font-weight: 600; font-size: 1.3rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
-        .mobile-menu a:hover { color: var(--primary-blue); }
-        .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--primary-blue); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
+        .mobile-menu a:hover { color: var(--page-color); }
+        .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--page-color); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
 
         /* ── HERO ── */
-        .hero { margin-top: 72px; min-height: 88vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 0; overflow: hidden; }
-        .hero-image { width: 100%; height: 88vh; position: relative; overflow: hidden; }
-        .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-        .hero-content { padding: 4rem 5rem 4rem 4rem; max-width: 620px; }
-        .hero h1 { font-size: clamp(2.2rem, 4vw, 3.8rem); font-weight: 900; color: var(--primary-blue); margin-bottom: 0.8rem; letter-spacing: -0.03em; line-height: 1.05; }
-        .hero h3 { font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 400; color: var(--dark-blue); margin-bottom: 2rem; }
-        .hero-description { font-size: 1.05rem; color: var(--medium-gray); line-height: 1.85; }
+        .hero { margin-top: 72px; position: relative; width: 100%; min-height: 72vh; overflow: hidden; display: flex; align-items: center; background: #f0f7ff; }
+        .hero-bg { position: absolute; inset: 0; }
+        .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
+        .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(240,247,255,0.97) 0%, rgba(220,238,255,0.88) 30%, rgba(180,215,245,0.4) 60%, rgba(0,39,119,0.0) 100%); }
+        .hero-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 5rem 2.5rem; width: 100%; }
+        .hero-text { max-width: 520px; }
+        .hero-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--page-color); margin-bottom: 1rem; }
+        .hero h1 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; color: var(--dark-blue); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.2rem; }
+        .hero h1 span { color: var(--page-color); }
+        .hero-sub { font-size: 1.05rem; color: var(--medium-gray); line-height: 1.8; margin-bottom: 2rem; }
+        .btn-hero { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.2rem; background: var(--page-color); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; box-shadow: 0 8px 24px rgba(0,139,186,0.3); }
+        .btn-hero:hover { background: var(--dark-blue); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,39,119,0.3); }
+        .hero-note { margin-top: 1rem; font-size: 0.8rem; color: var(--medium-gray); }
+        .hero-bottom-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to bottom, transparent, #002777); pointer-events: none; }
+        
 
-        /* ── REASON SECTION ── */
-        .reason-section { padding: 6rem 2rem 4rem; background: var(--white); text-align: center; }
-        .reason-section h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; color: var(--black); display: inline; letter-spacing: -0.02em; }
-        .reason-section .highlight { font-family: 'Georgia', serif; color: var(--primary-blue); text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 3px; margin-left: 1rem; font-size: clamp(2rem, 5vw, 3.5rem); font-style: italic; }
-        .reason-text { max-width: 900px; margin: 3rem auto 0; font-size: 1.1rem; color: var(--medium-gray); line-height: 1.85; text-align: center; }
+        /* ── ZERO FEE ── */
+        .zerofee-section {
+            background: var(--dark-blue);
+            padding: 4rem 2.5rem;
+        }
+        .zerofee-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+        .zerofee-badge { display: inline-block; background: #E8600A; color: #ffffff; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1.5rem; border: none; box-shadow: 0 4px 16px rgba(232,96,10,0.4); }
+        .zerofee-inner h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--white); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.2rem; }
+        .zerofee-inner h2 span { color: rgba(255,255,255,0.4); font-weight: 400; }
+        .zerofee-inner p { font-size: 1.05rem; color: rgba(255,255,255,0.7); line-height: 1.85; max-width: 680px; margin: 0 auto; }
+        .zerofee-details { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
+        .zerofee-item { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 1.8rem 1.5rem; text-align: left; }
+        .zerofee-item .icon { font-size: 1.4rem; margin-bottom: 0.8rem; }
+        .zerofee-item strong { display: block; font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
+        .zerofee-item p { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin: 0; }
 
-        /* ── CAROUSEL ── */
-        .carousel-section { padding: 4rem 2rem; background: var(--light-gray); }
-        .carousel-container { max-width: 1200px; margin: 0 auto; position: relative; overflow: hidden; border-radius: 20px; box-shadow: 0 8px 40px rgba(0,0,0,0.12); }
-        .carousel { display: flex; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-        .carousel-item { min-width: 100%; position: relative; }
-        .carousel-item img { width: 100%; height: auto; display: block; }
-        .carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 48px; height: 48px; font-size: 1.2rem; cursor: pointer; transition: all 0.3s; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
-        .carousel-arrow:hover { background: var(--white); transform: translateY(-50%) scale(1.08); }
-        .carousel-arrow.prev { left: 1.2rem; }
-        .carousel-arrow.next { right: 1.2rem; }
-        .carousel-controls { display: flex; justify-content: center; gap: 0.7rem; margin-top: 1.5rem; }
-        .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--medium-gray); border: none; cursor: pointer; transition: all 0.3s; opacity: 0.5; }
-        .carousel-dot.active { background: var(--primary-blue); width: 36px; border-radius: 5px; opacity: 1; }
+        /* ── FÜR WEN ── */
+        .fuerwen-section { background: var(--white); padding: 5rem 2.5rem; }
+        .section-inner { max-width: 1000px; margin: 0 auto; }
+        .section-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--page-color); margin-bottom: 0.8rem; }
+        .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; color: var(--black); letter-spacing: -0.02em; margin-bottom: 0.8rem; }
+        .section-sub { font-size: 1rem; color: var(--medium-gray); line-height: 1.8; margin-bottom: 3rem; max-width: 620px; }
+        .carousel-wrap { position: relative; overflow: hidden; }
+        .carousel-track { display: flex; gap: 1.2rem; transition: transform 0.4s ease; will-change: transform; cursor: grab; }
+        .carousel-track:active { cursor: grabbing; }
+        .painpoint-card { flex: 0 0 calc(33.33% - 0.8rem); border: 2px solid var(--border); border-radius: 18px; padding: 1.8rem 1.6rem; transition: border-color 0.3s, box-shadow 0.3s; user-select: none; }
+        .painpoint-card:hover { border-color: var(--page-color); box-shadow: 0 8px 28px rgba(0,139,186,0.1); }
+        .painpoint-card .card-icon { font-size: 1.6rem; margin-bottom: 0.8rem; }
+        .painpoint-card h3 { font-size: 0.95rem; font-weight: 800; color: var(--black); margin-bottom: 0.5rem; letter-spacing: -0.01em; line-height: 1.3; }
+        .painpoint-card p { font-size: 0.85rem; color: var(--medium-gray); line-height: 1.75; }
+        .carousel-controls { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; }
+        .carousel-btn { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--border); background: var(--white); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: all 0.2s; color: var(--black); }
+        .carousel-btn:hover { border-color: var(--page-color); color: var(--page-color); }
+        .carousel-dots { display: flex; gap: 0.4rem; align-items: center; }
+        .carousel-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); cursor: pointer; transition: all 0.3s; }
+        .carousel-dot.active { background: var(--page-color); width: 20px; border-radius: 4px; }
+        @media (max-width: 900px) { .painpoint-card { flex: 0 0 calc(50% - 0.6rem); } }
+        @media (max-width: 600px) { .painpoint-card { flex: 0 0 85%; } }
 
-        /* ── ABOUT / ACCORDION ── */
-        .about-section { padding: 6rem 2rem; background: var(--white); }
-        .about-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-        .video-container { border-radius: 20px; overflow: hidden; background: var(--light-gray); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: sticky; top: 90px; box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
-        .video-placeholder { color: var(--medium-gray); font-size: 1rem; text-align: center; padding: 2rem; }
-        .accordion-header { margin-bottom: 2rem; }
-        .accordion-header h3 { font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 800; color: var(--black); letter-spacing: -0.02em; }
-        .accordion-header .highlight { color: var(--primary-blue); }
-        .accordion { display: flex; flex-direction: column; gap: 0.6rem; }
-        .accordion-item { border: 2px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.3s; }
-        .accordion-item.active { border-color: var(--primary-blue); }
-        .accordion-button { width: 100%; padding: 1.4rem 1.5rem; background: var(--white); border: none; text-align: left; font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 600; color: var(--black); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; gap: 1rem; }
-        .accordion-button:hover { background: var(--light-gray); }
-        .accordion-icon { font-size: 1.4rem; color: var(--primary-blue); transition: transform 0.3s; flex-shrink: 0; }
-        .accordion-item.active .accordion-icon { transform: rotate(45deg); }
-        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-        .accordion-content-inner { padding: 0 1.5rem 1.5rem; color: var(--medium-gray); line-height: 1.85; font-size: 0.97rem; }
+        /* ── PROZESS ── */
+        .prozess-section { background: var(--light-gray); padding: 5rem 2.5rem; }
+        .prozess-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin-top: 3rem; position: relative; }
+        .prozess-steps::before { content: ''; position: absolute; top: 28px; left: calc(12.5% + 1rem); right: calc(12.5% + 1rem); height: 2px; background: transparent; border-top: 2.5px dashed var(--page-color); z-index: 0; opacity: 0.5; }
+        .prozess-step { text-align: center; padding: 0 1.5rem; position: relative; z-index: 1; }
+        .step-number { width: 56px; height: 56px; border-radius: 50%; background: var(--page-color); color: var(--white); font-size: 1.1rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 4px 16px rgba(0,139,186,0.35); }
+        .prozess-step h3 { font-size: 1rem; font-weight: 800; color: var(--black); margin-bottom: 0.6rem; letter-spacing: -0.01em; }
+        .prozess-step p { font-size: 0.88rem; color: var(--medium-gray); line-height: 1.75; }
+        .prozess-note { margin-top: 3rem; text-align: center; }
+        .prozess-note a { color: var(--page-color); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+        .prozess-note a:hover { text-decoration: underline; }
 
-        /* ── INSIGHT SECTION ── */
-        .insight-section { padding: 6rem 2rem; background: var(--light-gray); }
-        .insight-container { max-width: 900px; margin: 0 auto; }
-        .insight-section h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; color: var(--black); margin-bottom: 2rem; line-height: 1.3; letter-spacing: -0.02em; }
-        .insight-section p { font-size: 1.05rem; color: var(--medium-gray); line-height: 1.85; margin-bottom: 1.5rem; }
+        /* ── FAQ ── */
+        .faq-section { background: var(--white); padding: 5rem 2.5rem; }
+        .faq-list { margin-top: 2.5rem; border-top: 1px solid var(--border); }
+        .faq-item { border-bottom: 1px solid var(--border); }
+        .faq-question { width: 100%; background: none; border: none; padding: 1.4rem 0; display: flex; justify-content: space-between; align-items: center; gap: 1rem; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 0.97rem; font-weight: 700; color: var(--black); text-align: left; transition: color 0.2s; }
+        .faq-question:hover { color: var(--page-color); }
+        .faq-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--light-gray); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 400; flex-shrink: 0; transition: all 0.3s; color: var(--page-color); }
+        .faq-item.active .faq-icon { background: var(--page-color); color: var(--white); transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .faq-answer-inner { padding: 0 0 1.5rem; font-size: 0.93rem; color: var(--medium-gray); line-height: 1.9; }
+        .faq-answer-inner strong { color: var(--black); }
 
-        /* ── CTA SECTION ── */
-        .cta-section { padding: 6rem 2rem; background-image: url('https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1920,h_800,c_fill,g_auto/offener_Gespr%C3%A4chsraum_pkohvh.jpg'); background-size: cover; background-position: center; position: relative; overflow: hidden; min-height: 580px; display: flex; align-items: center; justify-content: center; }
-        .cta-section::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
-        .cta-container { max-width: 500px; background: var(--primary-blue); padding: 3rem 2.5rem; border-radius: 20px; text-align: center; position: relative; z-index: 1; box-shadow: 0 20px 60px rgba(0,0,0,0.35); }
-        .cta-section h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 800; color: var(--white); margin-bottom: 1.5rem; line-height: 1.2; letter-spacing: -0.02em; }
-        .cta-section p { font-size: 1rem; color: var(--white); margin-bottom: 1.2rem; opacity: 0.95; line-height: 1.75; }
-        .btn-primary { display: inline-block; padding: 1rem 2.4rem; background: var(--white); color: var(--primary-blue); font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,0.2); margin-top: 1rem; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(0,0,0,0.3); }
-
-        /* ── TARGET GROUPS ── */
-        .target-groups { padding: 6rem 2rem; background: var(--white); }
-        .target-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-        .target-card { padding: 3rem; background: var(--light-gray); border-radius: 20px; transition: all 0.3s; border: 2px solid transparent; }
-        .target-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: var(--primary-blue); }
-        .target-card h1 { font-size: 2.2rem; font-weight: 900; color: var(--primary-blue); margin-bottom: 1.5rem; letter-spacing: -0.03em; }
-        .target-list { background: var(--white); padding: 1rem 1.2rem; border-radius: 12px; margin: 1.5rem 0; font-size: 0.92rem; color: var(--medium-gray); line-height: 1.7; }
-        .target-card p { color: var(--medium-gray); line-height: 1.85; margin-bottom: 2rem; font-size: 0.97rem; }
-        .btn-secondary-card { display: inline-block; padding: 0.85rem 1.8rem; background: var(--primary-blue); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; }
-        .btn-secondary-card:hover { background: var(--dark-blue); transform: translateY(-2px); }
-
-        /* ── CLOSING SECTION ── */
-        .closing-section { padding: 6rem 2rem; background: var(--light-gray); }
-        .closing-container { max-width: 800px; margin: 0 auto; text-align: center; }
-        .closing-section h3 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; color: var(--black); margin-bottom: 2rem; line-height: 1.3; letter-spacing: -0.02em; }
-        .closing-section p { font-size: 1.05rem; color: var(--medium-gray); line-height: 1.85; margin-bottom: 1rem; }
-        .closing-section strong { color: var(--black); font-weight: 700; }
-        .btn-cta-main { display: inline-block; margin-top: 1.5rem; padding: 1rem 2.4rem; background: var(--primary-blue); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; box-shadow: 0 6px 20px rgba(0,98,177,0.3); }
-        .btn-cta-main:hover { background: var(--dark-blue); transform: translateY(-2px); }
-        .social-links { display: flex; justify-content: center; gap: 1rem; margin: 2rem 0 1rem; flex-wrap: wrap; }
-        .social-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.55rem 1.2rem; border: 2px solid var(--border); border-radius: 50px; color: var(--medium-gray); text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: all 0.3s; }
-        .social-link:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
-        .social-link img { width: 18px; height: 18px; object-fit: contain; }
+        /* ── CLOSING CTA ── */
+        .closing-section { background: linear-gradient(135deg, var(--page-color), var(--primary-blue)); padding: 6rem 2.5rem; text-align: center; }
+        .closing-inner { max-width: 640px; margin: 0 auto; }
+        .closing-inner h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--white); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.2rem; }
+        .closing-inner p { font-size: 1.05rem; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 2.5rem; }
+        .btn-closing { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1.1rem 2.6rem; background: var(--white); color: var(--dark-blue); font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
+        .btn-closing:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,0.25); }
+        .closing-alts { margin-top: 2rem; display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+        .closing-alts a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.88rem; font-weight: 600; transition: color 0.2s; }
+        .closing-alts a:hover { color: var(--white); }
 
         /* ── FOOTER ── */
         footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 4rem 2.5rem 2rem; }
@@ -150,23 +153,19 @@
         .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
 
         /* ── RESPONSIVE ── */
-        @media (max-width: 1024px) {
-            .hero { grid-template-columns: 1fr; min-height: auto; }
-            .hero-image { height: 50vw; max-height: 480px; }
-            .hero-content { padding: 3rem 2rem; max-width: 100%; }
-            .about-container { grid-template-columns: 1fr; gap: 2rem; }
-            .video-container { position: static; }
-            .target-container { grid-template-columns: 1fr; }
-            .footer-container { grid-template-columns: 1fr 1fr; }
+        @media (max-width: 900px) {
+            .hero-inner { grid-template-columns: 1fr; }
+            .zerofee-details { grid-template-columns: 1fr; }
+            .fuerwen-grid { grid-template-columns: 1fr; }
+            .prozess-steps { grid-template-columns: repeat(2,1fr); gap: 2.5rem; }
+            .prozess-steps::before { display: none; }
         }
         @media (max-width: 768px) {
             nav ul, .header-cta-btn { display: none; }
             .burger { display: flex; }
-            .hero-image { height: 60vw; }
-            .hero-content { padding: 2.5rem 1.5rem; text-align: center; }
             .footer-container { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
-            .carousel-item { /* height adapts to image */ }
+            .zerofee-section, .fuerwen-section, .prozess-section, .faq-section { padding-left: 1.5rem; padding-right: 1.5rem; }
         }
     </style>
 </head>
@@ -178,7 +177,7 @@
         <a href="index.html" class="logo"><img src="images/Logo_weiß.png" alt="Koppmann Karriere"></a>
         <ul>
             <li><a href="unternehmen.html">Für Unternehmen</a></li>
-            <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
+            <li><a href="arbeitnehmende.html" class="active">Für Arbeitnehmende</a></li>
             <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
             <li><a href="so-arbeite-ich.html">So Arbeite Ich</a></li>
             <li><a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
@@ -197,226 +196,154 @@
     <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="mobile-cta">Erstgespräch vereinbaren</a>
 </div>
 
-<!-- BLOCK 1: HERO -->
+<!-- HERO -->
 <section class="hero">
-    <div class="hero-image">
-        <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_960,h_900,c_fill,g_auto/Hero_Startseite_Hilfe_Bergsteigen_i5up0j.png"
-             alt="Zwei Bergsteiger – Karrierebegleitung mit Koppmann Karriere">
+    <div class="hero-bg">
+        <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1920/v1773767326/Hero_Arbeitnehmende_Knaeul_cds6dx.png"
+             alt="Vom Knäuel zum Ziel – Karrierebegleitung Koppmann Karriere">
     </div>
-    <div class="hero-content">
-        <h1>Karrierebegleitung.</h1>
-        <h3>Klarheit vor dem nächsten Schritt</h3>
-        <p class="hero-description">
-            Ich begleite Menschen und Unternehmen dabei, berufliche Entscheidungen zu treffen, die langfristig tragen.
-            Im Mittelpunkt steht das Zusammenspiel von Persönlichkeit, Rolle, Unternehmenskultur und gemeinsamen Zielen –
-            für Perspektiven und Zusammenarbeit, die nachhaltig funktionieren.
-        </p>
-    </div>
-</section>
-
-<!-- BLOCK 2: REASON -->
-<section class="reason-section">
-    <h2>Karrierebegleitung, weil</h2>
-    <span class="highlight">der Mensch mehr ist als sein Lebenslauf</span>
-    <p class="reason-text">
-        Lebensläufe zeigen, was jemand gemacht hat – selten, wer jemand ist.
-        Karrierebegleitung schaut tiefer: auf Antriebe, Haltungen, Bedürfnisse und den Kontext,
-        in dem ein Mensch wirklich aufblühen kann. Das ist die Grundlage für Entscheidungen,
-        die nicht nur auf dem Papier stimmen.
-    </p>
-</section>
-
-<!-- BLOCK 3: CAROUSEL -->
-<section class="carousel-section">
-    <div class="carousel-container">
-        <button class="carousel-arrow prev" id="prev-btn" aria-label="Vorheriges Bild">&#8592;</button>
-        <div class="carousel" id="carousel">
-            <div class="carousel-item">
-                <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1200/Startseite_Karussell_1_st5lpf.png" alt="Karrierebegleitung, weil 1">
-            </div>
-            <div class="carousel-item">
-                <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1200/Startseite_Karussell_2_ygfxgt.png" alt="Karrierebegleitung, weil 2">
-            </div>
-            <div class="carousel-item">
-                <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1200/Startseite_Karussell_3_tfxleb.png" alt="Karrierebegleitung, weil 3">
-            </div>
-            <div class="carousel-item">
-                <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1200/Startseite_Karussell_4_ycsnj3.png" alt="Karrierebegleitung, weil 4">
-            </div>
-            <div class="carousel-item">
-                <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1200/Startseite_Karussell_5_zcmij7.png" alt="Karrierebegleitung, weil 5">
-            </div>
-            <div class="carousel-item">
-                <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1200/Startseite_Karussell_6_liiinz.png" alt="Karrierebegleitung, weil 6">
-            </div>
-            <div class="carousel-item">
-                <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1200/Startseite_Karussell_7_rul4op.png" alt="Karrierebegleitung, weil 7">
-            </div>
+    <div class="hero-inner">
+        <div class="hero-text">
+            <p class="hero-eyebrow">Karrierebegleitung</p>
+            <h1>Vom Knäuel<br>zum <span>klaren Weg.</span></h1>
+            <p class="hero-sub">Berufliche Unklarheit ist normal. Was zählt, ist der Moment in dem du anfängst, sie zu entwirren. Ich begleite dich dabei – kostenlos, auf Augenhöhe, ohne Druck.</p>
+            <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="btn-hero">Erstgespräch vereinbaren →</a>
+            <p class="hero-note">Kostenlos &amp; unverbindlich · ca. 30 Minuten</p>
         </div>
-        <button class="carousel-arrow next" id="next-btn" aria-label="Nächstes Bild">&#8594;</button>
     </div>
-    <div class="carousel-controls">
-        <button class="carousel-dot active" data-index="0"></button>
-        <button class="carousel-dot" data-index="1"></button>
-        <button class="carousel-dot" data-index="2"></button>
-        <button class="carousel-dot" data-index="3"></button>
-        <button class="carousel-dot" data-index="4"></button>
-        <button class="carousel-dot" data-index="5"></button>
-        <button class="carousel-dot" data-index="6"></button>
-    </div>
+    <div class="hero-bottom-fade"></div>
 </section>
 
-<!-- BLOCK 4: JAN / ACCORDION -->
-<section class="about-section">
-    <div class="about-container">
-        <div class="video-container">
-            <div class="video-placeholder">
-                📹 Ansprache-Video<br>
-                <small>(Video folgt in Kürze)</small>
+<!-- ZERO FEE PROMISE -->
+<section class="zerofee-section">
+    <div class="zerofee-inner">
+        <span class="zerofee-badge">ZeroFeePromise</span>
+        <h2>Karrierebegleitung.<br><span>Für dich. Kostenlos.</span></h2>
+        <p>Du zahlst nichts – nicht jetzt, nicht später, nicht indirekt. Mein Honorar kommt ausschließlich vom Unternehmen, wenn eine Vermittlung erfolgreich ist. Das bedeutet: Meine Interessen sind komplett auf deine ausgerichtet.</p>
+        <div class="zerofee-details">
+            <div class="zerofee-item">
+                <div class="icon">🚫</div>
+                <strong>Keine versteckten Kosten</strong>
+                <p>Keine Bearbeitungsgebühren, keine Mitgliedschaft, kein Abo – zu keinem Zeitpunkt.</p>
             </div>
-        </div>
-        <div class="accordion-wrapper">
-            <div class="accordion-header">
-                <h3>Ich bin Jan –</h3>
-                <h3 class="highlight">Karrierebegleitung</h3>
-                <h3>ist mein Ansatz</h3>
+            <div class="zerofee-item">
+                <div class="icon">🤝</div>
+                <strong>Keine Verpflichtungen</strong>
+                <p>Du gehst keine vertragliche Bindung ein. Alle erarbeiteten Unterlagen und Erkenntnisse gehören dir.</p>
             </div>
-            <div class="accordion">
-                <div class="accordion-item">
-                    <button class="accordion-button">Meine Mission <span class="accordion-icon">+</span></button>
-                    <div class="accordion-content">
-                        <div class="accordion-content-inner">
-                            Ich unterstütze Menschen und Unternehmen dabei, berufliche Entscheidungen fundiert, realistisch und langfristig tragfähig zu treffen.
-                            <br><br>
-                            Nicht auf Basis von Momentaufnahmen, sondern auf Grundlage von Einordnung, Klarheit und einem realistischen Blick auf Zusammenarbeit.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-button">Meine Vision <span class="accordion-icon">+</span></button>
-                    <div class="accordion-content">
-                        <div class="accordion-content-inner">
-                            Ich glaube an eine Arbeitswelt, in der Jobs nicht nur besetzt, sondern passend gestaltet werden.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-button">Mein Ansatz <span class="accordion-icon">+</span></button>
-                    <div class="accordion-content">
-                        <div class="accordion-content-inner">
-                            Ich ergänze bestehende Strukturen um eine zusätzliche Entscheidungsgrundlage.
-                            <br><br>
-                            So entsteht ein Rahmen für berufliche Entscheidungen, die nicht nur fachlich funktionieren, sondern auch menschlich funktionieren.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-button">Meine Überzeugung <span class="accordion-icon">+</span></button>
-                    <div class="accordion-content">
-                        <div class="accordion-content-inner">
-                            Von einer gewachsenen, vertrauensvollen Arbeitsbeziehung profitieren sowohl Menschen als Arbeitnehmende sowie Unternehmen selbst. Es lohnt sich immer für beide Seiten zu prüfen, ob Zusammenarbeit wirklich passt.
-                            <br><br>
-                            Menschen können unter den richtigen Bedingungen aufblühen, leistungsfähig sein, sich selbstverwirklichen und gesund leben.
-                            <br><br>
-                            Unternehmen gewinnen Mitarbeitende, die dauerhaft eine Bereicherung für die Organisation sind.
-                        </div>
-                    </div>
-                </div>
+            <div class="zerofee-item">
+                <div class="icon">🎯</div>
+                <strong>Echte Interessensgleichheit</strong>
+                <p>Ich verdiene nur, wenn du erfolgreich vermittelt wirst. Das hält mich ehrlich.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- BLOCK 5: INSIGHT -->
-<section class="insight-section">
-    <div class="insight-container">
-        <h2>… weil Personen mehr sind als klassische Auswahlprozesse zeigen</h2>
-        <p>
-            Klassische Bewerbungs- und Auswahlprozesse leisten viel – vor allem bei Qualifikationen, Erfahrung und formalen Kriterien.
-            Gleichzeitig bleiben zentrale Fragen oft offen oder zeigen sich erst im Arbeitsalltag:
-            Was treibt einen Menschen an? Welche Haltung und Arbeitsweise bringt diese Person mit?
-        </p>
-        <p>
-            Was sind die Rahmenbedingungen, die diese Person braucht, um sich weiterzuentwickeln?
-            Unter welchen Bedingungen kann Zusammenarbeit wirklich gelingen?
-        </p>
-        <p>
-            In der Karrierebegleitung werden solche Fragen nicht bewertet, sondern eingeordnet.
-            Denn wer sich selbst besser versteht – und wer die Menschen im eigenen Unternehmen besser versteht –
-            trifft bessere Entscheidungen. Egal ob für die eigene Karriere oder für die eigene Unternehmenskultur.
-        </p>
-    </div>
-</section>
-
-<!-- BLOCK 6: CTA -->
-<section class="cta-section">
-    <div class="cta-container">
-        <h2>Kostenloses &amp; unverbindliches Erstgespräch</h2>
-        <p>
-            In einem ersten Gespräch klären wir gemeinsam, worum es dir geht, was du suchst und ob eine Zusammenarbeit für dich passt.
-        </p>
-        <p style="font-weight: 700;">
-            Ohne Vorbereitung. Ohne Verpflichtung. Ohne Druck.
-        </p>
-        <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="btn-primary">Erstgespräch vereinbaren</a>
-    </div>
-</section>
-
-<!-- BLOCK 7: TARGET GROUPS -->
-<section class="target-groups">
-    <div class="target-container">
-        <div class="target-card">
-            <h1>Für Arbeitnehmende</h1>
-            <div class="target-list">
-                <strong>Wer ist gemeint?</strong><br>
-                Fachkräfte · Führungskräfte · Studierende · Quereinsteigende · Schülerinnen &amp; Schüler
+<!-- FÜR WEN -->
+<section class="fuerwen-section">
+    <div class="section-inner">
+        <p class="section-eyebrow">Für wen?</p>
+        <h2 class="section-title">Karrierebegleitung ist für dich, wenn…</h2>
+        <p class="section-sub">Es gibt keinen „perfekten Moment" um anzufangen. Erkennst du dich wieder?</p>
+        <div class="carousel-wrap">
+            <div class="carousel-track" id="painpointTrack">
+                <div class="painpoint-card"><div class="card-icon">😶‍🌫️</div><h3>Du weißt, dass etwas nicht stimmt – aber nicht genau was</h3><p>Dieses diffuse Gefühl, dass irgendetwas nicht passt, ist oft der erste Hinweis. Du musst es noch nicht benennen können.</p></div>
+                <div class="painpoint-card"><div class="card-icon">⏳</div><h3>Du wartest schon zu lange auf „den richtigen Moment"</h3><p>Den gibt es nicht. Was es gibt: einen ersten Schritt, der alles andere in Bewegung bringt.</p></div>
+                <div class="painpoint-card"><div class="card-icon">😮‍💨</div><h3>Du gehst montags mit schwerem Herzen zur Arbeit</h3><p>Nicht jede Woche muss sich großartig anfühlen. Aber wenn der Gedanke daran dich regelmäßig runterzieht – dann lohnt es sich, genauer hinzuschauen.</p></div>
+                <div class="painpoint-card"><div class="card-icon">🔁</div><h3>Du bewirbst dich, aber nichts passt wirklich</h3><p>Viele Bewerbungen, wenig Resonanz – oder Zusagen, bei denen du selbst nicht sicher bist, ob du die Stelle wirklich willst.</p></div>
+                <div class="painpoint-card"><div class="card-icon">🎓</div><h3>Du stehst kurz vor dem Abschluss und weißt nicht wie es weitergeht</h3><p>Schule, Ausbildung oder Studium enden bald – und die Frage „was jetzt?" fühlt sich riesig an. Das ist normal. Und lösbar.</p></div>
+                <div class="painpoint-card"><div class="card-icon">💼</div><h3>Dein Job ist okay – aber du fragst dich, ob das alles ist</h3><p>Nicht jeder braucht einen Traumjob. Aber das Gefühl, dass da noch mehr sein könnte, verdient eine ehrliche Antwort.</p></div>
+                <div class="painpoint-card"><div class="card-icon">🌀</div><h3>Du hast zu viele Optionen und kannst dich nicht entscheiden</h3><p>Zu viel Auswahl kann lähmen. Struktur hilft – nicht welche Option richtig ist, sondern welche zu dir passt.</p></div>
+                <div class="painpoint-card"><div class="card-icon">💬</div><h3>Du hast niemanden, mit dem du das wirklich besprechen kannst</h3><p>Familie und Freunde meinen es gut – aber manchmal braucht es jemanden, der keine eigenen Interessen hat und trotzdem ehrlich ist.</p></div>
+                <div class="painpoint-card"><div class="card-icon">🔋</div><h3>Du bist gut in deinem Job – aber er gibt dir keine Energie mehr</h3><p>Kompetenz und Motivation sind zwei verschiedene Dinge. Wenn das auseinanderläuft, ist das ein Signal.</p></div>
             </div>
-            <p>
-                Berufliche Entscheidungen fallen selten leicht. Oft fehlt nicht Motivation oder Können, sondern Klarheit über die
-                eigenen Stärken, Bedürfnisse und Möglichkeiten. In der Karrierebegleitung unterstütze ich dich dabei, Orientierung
-                zu gewinnen, Entscheidungen einzuordnen und deinen nächsten Schritt bewusst zu gehen – unabhängig, fair und ohne Druck.
-            </p>
-            <a href="arbeitnehmende.html" class="btn-secondary-card">Mehr zur Karrierebegleitung</a>
         </div>
-        <div class="target-card">
-            <h1>Für Unternehmen</h1>
-            <p style="margin-top: 1rem;">
-                Gute personelle Entscheidungen entstehen oft unter Zeitdruck und mit begrenzten Informationen. Gleichzeitig haben sie
-                langfristige Auswirkungen auf Teams, Kultur und Zusammenarbeit. Ich unterstütze Unternehmen dabei, ihre Entscheidungsgrundlage
-                zu erweitern – um Arbeitsweise, Motivation und Passung realistisch einzuschätzen und Fehlbesetzungen gezielt zu vermeiden.
-            </p>
-            <a href="unternehmen.html" class="btn-secondary-card">Zum Unternehmensbereich</a>
+        <div class="carousel-controls">
+            <button class="carousel-btn" id="ppPrev">←</button>
+            <div class="carousel-dots" id="ppDots"></div>
+            <button class="carousel-btn" id="ppNext">→</button>
         </div>
     </div>
 </section>
 
-<!-- BLOCK 8: CLOSING -->
+<!-- PROZESS -->
+<section class="prozess-section">
+    <div class="section-inner">
+        <p class="section-eyebrow">So läuft es ab</p>
+        <h2 class="section-title">Einfach. Klar. In deinem Tempo.</h2>
+        <p class="section-sub">Kein komplizierter Onboarding-Prozess. Du nimmst Kontakt auf – alles weitere ergibt sich.</p>
+        <div class="prozess-steps">
+            <div class="prozess-step">
+                <div class="step-number">1</div>
+                <h3>Erstgespräch</h3>
+                <p>Wir lernen uns kennen und sprechen über deine Situation. Unverbindlich, kostenlos, ohne Vorbereitung. Ca. 30 Minuten.</p>
+            </div>
+            <div class="prozess-step">
+                <div class="step-number">2</div>
+                <h3>Analyse</h3>
+                <p>Wir analysieren zusammen deine Ist-Situation, Ziele und Werte – und entwickeln einen konkreten Fahrplan für deinen nächsten Schritt.</p>
+            </div>
+            <div class="prozess-step">
+                <div class="step-number">3</div>
+                <h3>Vermittlung</h3>
+                <p>Wenn ein Jobwechsel dein nächster Schritt ist, begleite ich dich aktiv – Bewerbung, Positionierung, Vermittlung. Ein Wechsel ist das Ziel, aber nicht zwingend der einzige Ausgang.</p>
+            </div>
+            <div class="prozess-step">
+                <div class="step-number">4</div>
+                <h3>Begleitung</h3>
+                <p>Unabhängig von einem Jobwechsel begleite ich dich langfristig in deiner Karriere – damit du deine Ziele erreichst.</p>
+            </div>
+        </div>
+        <div class="prozess-note">
+            <p>Mehr zu Methodik und Ablauf im <a href="karriere-kosmos.html">Karriere-Kosmos</a> oder unter <a href="so-arbeite-ich.html">So Arbeite Ich →</a></p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+    <div class="section-inner">
+        <p class="section-eyebrow">Häufige Fragen</p>
+        <h2 class="section-title">Häufige Fragen</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question">Muss ich mich bewerben, bevor wir sprechen? <span class="faq-icon">+</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Nein. Das Erstgespräch dient genau dazu, deine Situation einzuordnen – ganz unabhängig davon, ob du dich bereits beworben hast oder nicht.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Für wen lohnt sich Karrierebegleitung am meisten? <span class="faq-icon">+</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Für Menschen, die unsicher sind oder strukturiert wechseln möchten. Wenn du das Gefühl hast, dass „irgendetwas nicht ganz passt", ist das oft schon ein guter Moment.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Wie lange dauert das? <span class="faq-icon">+</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Das ist unterschiedlich. Oft reichen schon wenige Wochen, bis Klarheit besteht und erste Schritte konkret werden. Tempo und Tiefe bestimmst du.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Was, wenn ich noch gar nicht wechseln will? <span class="faq-icon">+</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Dann bist du trotzdem richtig. Karrierebegleitung kann auch Standortbestimmung oder strukturierte Selbstreflexion sein – ohne unmittelbaren Wechsel.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Ist eine Vermittlung garantiert? <span class="faq-icon">+</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Nein. Eine Jobvermittlung hängt immer von mehreren Faktoren ab – von dir, vom Unternehmen und vom Zeitpunkt. Mein Anspruch ist es, passende Optionen zu identifizieren, dich strukturiert vorzubereiten und aktiv auf die Suche zu gehen. Kommt es zu keiner Einstellung, erhalte ich kein Honorar.<br><br><strong>Garantiert sind Klarheit, eine saubere Positionierung und echte Chancen.</strong></div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Gehe ich irgendwelche Verpflichtungen ein? <span class="faq-icon">+</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Nein. Du gehst keine vertraglichen Verpflichtungen oder Kostenrisiken ein. Alle erarbeiteten Erkenntnisse, Strategien und Bewerbungsunterlagen kannst du selbstverständlich auch eigenständig nutzen. Grundlage unserer Zusammenarbeit ist lediglich deine Einwilligung zur datenschutzkonformen Verarbeitung deiner Daten – und ein respektvoller Umgang auf Augenhöhe.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CLOSING CTA -->
 <section class="closing-section">
-    <div class="closing-container">
-        <h3>Gute Entscheidungen brauchen Zeit – und ein Gegenüber</h3>
-        <p>Ob berufliche Orientierung oder unternehmerische Entscheidung: Gute Lösungen entstehen selten unter Druck, sondern im Austausch.</p>
-        <p>Ein erstes Gespräch bietet Raum, Anliegen einzuordnen und gemeinsame Perspektiven zu prüfen.</p>
-        <p>
-            <strong>Einblicke in meine Arbeit und meine Haltung finden sich auch auf Instagram, TikTok, YouTube und LinkedIn.</strong>
-        </p>
-        <p>
-            Dort teile ich Inhalte rund um Karriere, persönliche Entwicklung und ordne Themen ein,
-            die berufliche Entscheidungen beeinflussen.
-        </p>
-        <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="btn-cta-main">Jetzt Erstgespräch vereinbaren</a>
-        <div class="social-links">
-            <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="social-link">
-                <img src="images/Instagram_Icon.png" alt="Instagram"> Instagram
-            </a>
-            <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="social-link">
-                <img src="images/Tiktok_Icon.png" alt="TikTok"> TikTok
-            </a>
-            <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="social-link">
-                <img src="images/YouTube_Icon.png" alt="YouTube"> YouTube
-            </a>
-            <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="social-link">
-                <img src="images/Linkedin_Icon.png" alt="LinkedIn"> LinkedIn
-            </a>
+    <div class="closing-inner">
+        <h2>Der erste Schritt braucht keine Vorbereitung.</h2>
+        <p>Manche Entscheidungen brauchen Zeit. Andere beginnen mit einem Gespräch. Buch dir jetzt ein kostenloses Erstgespräch – ohne Druck, ohne Verpflichtung.</p>
+        <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="btn-closing">Erstgespräch vereinbaren →</a>
+        <div class="closing-alts">
+            <a href="kontakt-einstieg.html">→ Lieber erst schreiben</a>
+            <a href="karriere-kosmos.html">→ Mehr erfahren im Karriere-Kosmos</a>
         </div>
     </div>
 </section>
@@ -437,12 +364,9 @@
         </div>
         <div class="footer-section">
             <h4>Kontakt</h4>
-            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br>
-            <a href="mailto:jan@koppmannkarriere.de">jan@koppmannkarriere.de</a></p>
-            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br>
-            <a href="tel:+4916034028920">0160 340 2892</a></p>
-            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Adresse</strong><br>
-            Neuhurden 22,<br>51491 Overath</p>
+            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br><a href="mailto:jan@koppmannkarriere.de">jan@koppmannkarriere.de</a></p>
+            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br><a href="tel:+4916034028920">0160 340 2892</a></p>
+            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Adresse</strong><br>Neuhurden 22,<br>51491 Overath</p>
         </div>
         <div class="footer-section">
             <h4>Social Media</h4>
@@ -470,7 +394,6 @@
 </footer>
 
 <script>
-    // Burger Menu
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobile-menu');
     burger.addEventListener('click', () => {
@@ -486,63 +409,54 @@
         });
     });
 
-    // Carousel
-    const carousel = document.getElementById('carousel');
-    const dots = document.querySelectorAll('.carousel-dot');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    let currentIndex = 0;
-    let autoplay;
+    // Painpoint Carousel
+    (function() {
+        const track = document.getElementById('painpointTrack');
+        const dotsWrap = document.getElementById('ppDots');
+        if (!track) return;
+        const cards = track.querySelectorAll('.painpoint-card');
+        let perView = window.innerWidth < 600 ? 1 : window.innerWidth < 900 ? 2 : 3;
+        const total = cards.length;
+        const pages = Math.ceil(total / perView);
+        let current = 0;
 
-    function updateCarousel(index) {
-        const total = dots.length;
-        currentIndex = (index + total) % total;
-        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
-    }
+        // Build dots
+        for (let i = 0; i < pages; i++) {
+            const d = document.createElement('div');
+            d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+            d.addEventListener('click', () => goTo(i));
+            dotsWrap.appendChild(d);
+        }
 
-    function startAutoplay() {
-        autoplay = setInterval(() => updateCarousel(currentIndex + 1), 6000);
-    }
+        function goTo(page) {
+            current = Math.max(0, Math.min(page, pages - 1));
+            const cardW = cards[0].offsetWidth + 19.2;
+            track.style.transform = 'translateX(-' + (current * perView * cardW) + 'px)';
+            dotsWrap.querySelectorAll('.carousel-dot').forEach((d,i) => d.classList.toggle('active', i === current));
+        }
 
-    function resetAutoplay() {
-        clearInterval(autoplay);
-        startAutoplay();
-    }
+        document.getElementById('ppPrev').addEventListener('click', () => goTo(current - 1));
+        document.getElementById('ppNext').addEventListener('click', () => goTo(current + 1));
 
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            updateCarousel(parseInt(dot.dataset.index));
-            resetAutoplay();
-        });
-    });
+        // Touch/drag
+        let startX = 0;
+        track.addEventListener('mousedown', e => { startX = e.clientX; });
+        track.addEventListener('mouseup', e => { const diff = startX - e.clientX; if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1); });
+        track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive: true});
+        track.addEventListener('touchend', e => { const diff = startX - e.changedTouches[0].clientX; if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1); });
+    })();
 
-    prevBtn.addEventListener('click', () => { updateCarousel(currentIndex - 1); resetAutoplay(); });
-    nextBtn.addEventListener('click', () => { updateCarousel(currentIndex + 1); resetAutoplay(); });
-
-    // Touch/Swipe support
-    let touchStartX = 0;
-    carousel.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
-    carousel.addEventListener('touchend', e => {
-        const diff = touchStartX - e.changedTouches[0].screenX;
-        if (Math.abs(diff) > 50) { updateCarousel(diff > 0 ? currentIndex + 1 : currentIndex - 1); resetAutoplay(); }
-    });
-
-    startAutoplay();
-
-    // Accordion
-    document.querySelectorAll('.accordion-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const item = button.parentElement;
-            const content = item.querySelector('.accordion-content');
+    // FAQ Accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.querySelector('.faq-question').addEventListener('click', () => {
             const isActive = item.classList.contains('active');
-            document.querySelectorAll('.accordion-item').forEach(i => {
+            document.querySelectorAll('.faq-item').forEach(i => {
                 i.classList.remove('active');
-                i.querySelector('.accordion-content').style.maxHeight = null;
+                i.querySelector('.faq-answer').style.maxHeight = null;
             });
             if (!isActive) {
                 item.classList.add('active');
-                content.style.maxHeight = content.scrollHeight + 'px';
+                item.querySelector('.faq-answer').style.maxHeight = item.querySelector('.faq-answer').scrollHeight + 'px';
             }
         });
     });
