@@ -9,901 +9,377 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         :root {
             --primary-blue: #0062b1;
             --dark-blue: #002777;
-            --light-blue: #008bba;
+            --page-color: #0062b1;
             --white: #ffffff;
             --black: #0a0a0a;
             --light-gray: #f4f6f9;
             --medium-gray: #6b7280;
             --border: #e5e9f0;
         }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.7;
-            color: var(--black);
-            overflow-x: hidden;
-            font-size: 17px;
-        }
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.7; color: var(--black); overflow-x: hidden; font-size: 17px; }
 
         /* ── HEADER ── */
-        header {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            background: var(--dark-blue);
-            z-index: 1000;
-        }
-
-        nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2.5rem;
-            height: 72px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
-            height: 100%;
-            padding: 8px 0;
-        }
+        header { position: fixed; top: 0; left: 0; right: 0; background: var(--dark-blue); z-index: 1000; }
+        nav { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; height: 72px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { text-decoration: none; display: flex; align-items: center; height: 100%; padding: 8px 0; transition: opacity 0.3s; }
         .logo:hover { opacity: 0.85; }
         .logo img { height: 100%; width: auto; max-height: 56px; object-fit: contain; }
-
-        nav ul {
-            display: flex; list-style: none;
-            gap: 1.8rem; align-items: center;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: rgba(255,255,255,0.88);
-            font-weight: 500; font-size: 0.85rem;
-            letter-spacing: 0.02em;
-            transition: color 0.3s ease;
-            position: relative;
-            white-space: nowrap;
-        }
-        nav ul li a::after {
-            content: ''; position: absolute;
-            bottom: -4px; left: 0;
-            width: 0; height: 2px;
-            background: var(--white);
-            transition: width 0.3s ease;
-        }
-        nav ul li a:hover,
-        nav ul li a.active { color: var(--white); }
-        nav ul li a:hover::after,
-        nav ul li a.active::after { width: 100%; }
-
-        .header-cta-btn {
-            padding: 0.6rem 1.4rem;
-            background: var(--white);
-            color: var(--dark-blue);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem; font-weight: 700;
-            border: none; border-radius: 50px;
-            cursor: pointer; transition: all 0.3s ease;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-        .header-cta-btn:hover {
-            background: rgba(255,255,255,0.88);
-            transform: translateY(-2px);
-        }
-
-        /* Burger */
-        .burger {
-            display: none; flex-direction: column;
-            gap: 5px; cursor: pointer;
-            background: none; border: none; padding: 4px;
-        }
-        .burger span {
-            display: block; width: 24px; height: 2px;
-            background: var(--white); border-radius: 2px;
-            transition: all 0.3s ease;
-        }
+        nav ul { display: flex; list-style: none; gap: 1.8rem; align-items: center; }
+        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.88); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.02em; transition: color 0.3s; position: relative; white-space: nowrap; }
+        nav ul li a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--white); transition: width 0.3s; }
+        nav ul li a:hover, nav ul li a.active { color: var(--white); }
+        nav ul li a:hover::after, nav ul li a.active::after { width: 100%; }
+        .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.88); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.6); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
+        .header-cta-btn:hover { background: var(--white); color: var(--dark-blue); border-color: var(--white); }
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .burger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
         .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
         .burger.open span:nth-child(2) { opacity: 0; }
         .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-        .mobile-menu {
-            display: none; position: fixed;
-            top: 72px; left: 0; right: 0; bottom: 0;
-            background: var(--white); z-index: 999;
-            flex-direction: column;
-            padding: 2rem 2.5rem; overflow-y: auto;
-        }
+        .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: var(--white); z-index: 999; flex-direction: column; padding: 2rem 2.5rem; overflow-y: auto; }
         .mobile-menu.open { display: flex; }
-        .mobile-menu a {
-            text-decoration: none; color: var(--black);
-            font-weight: 600; font-size: 1.3rem;
-            padding: 1.2rem 0;
-            border-bottom: 1px solid var(--border);
-            transition: color 0.2s ease;
-        }
-        .mobile-menu a:hover { color: var(--primary-blue); }
-        .mobile-menu .mobile-cta {
-            margin-top: 2rem; padding: 1rem 2rem;
-            background: var(--primary-blue); color: var(--white);
-            border-radius: 50px; text-align: center;
-            font-size: 1rem; border-bottom: none;
-        }
-        .mobile-menu .mobile-cta:hover { background: var(--dark-blue); color: var(--white); }
+        .mobile-menu a { text-decoration: none; color: var(--black); font-weight: 600; font-size: 1.3rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+        .mobile-menu a:hover { color: var(--page-color); }
+        .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--page-color); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
 
         /* ── HERO ── */
-        .hero {
-            margin-top: 72px;
-            min-height: 50vh;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: flex-end;
-        }
+        .hero { margin-top: 72px; position: relative; width: 100%; min-height: 70vh; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .hero-image { position: absolute; inset: 0; }
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
+        .hero-image::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.48); }
+        .hero-content { position: relative; z-index: 1; text-align: center; max-width: 700px; padding: 3rem 2rem; }
+        .hero-eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 1rem; }
+        .hero h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 900; color: var(--white); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.2rem; }
+        .hero p { font-size: 1.05rem; color: rgba(255,255,255,0.85); line-height: 1.8; margin-bottom: 2.5rem; }
 
-        .hero-image {
-            position: absolute;
-            inset: 0;
-        }
-        .hero-image img {
-            width: 100%; height: 100%;
-            object-fit: cover; object-position: center 30%;
-        }
-        .hero-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(
-                135deg,
-                rgba(0,23,60,0.75) 0%,
-                rgba(0,39,119,0.5) 50%,
-                rgba(0,0,0,0.1) 100%
-            );
-        }
-        .hero-content {
-            position: relative; z-index: 2;
-            padding: 4rem 5rem;
-            max-width: 700px;
-        }
-        .hero-eyebrow {
-            font-size: 0.78rem; font-weight: 700;
-            letter-spacing: 0.14em; text-transform: uppercase;
-            color: rgba(255,255,255,0.75);
-            margin-bottom: 0.8rem;
-            display: flex; align-items: center; gap: 0.6rem;
-        }
-        .hero-eyebrow::before {
-            content: '';
-            display: inline-block; width: 20px; height: 2px;
-            background: rgba(255,255,255,0.6);
-        }
-        .hero h1 {
-            font-size: clamp(2.2rem, 5vw, 3.8rem);
-            font-weight: 900; color: var(--white);
-            line-height: 1.05; letter-spacing: -0.03em;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.2);
-        }
-        .hero h3 {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            font-weight: 400; color: rgba(255,255,255,0.85);
-            max-width: 520px; line-height: 1.7;
-        }
 
-        /* ── PAGE TABS ── */
-        .tab-nav {
-            background: var(--white);
-            border-bottom: 2px solid var(--border);
-            position: sticky; top: 72px; z-index: 900;
-        }
-        .tab-nav-inner {
-            max-width: 1100px; margin: 0 auto;
-            padding: 0 2.5rem;
-            display: flex; gap: 0;
-            overflow-x: auto; scrollbar-width: none;
-        }
-        .tab-nav-inner::-webkit-scrollbar { display: none; }
-        .tab-btn {
-            padding: 1.1rem 1.8rem;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.88rem; font-weight: 600;
-            color: var(--medium-gray);
-            background: none; border: none;
-            border-bottom: 3px solid transparent;
-            cursor: pointer; white-space: nowrap;
-            transition: all 0.25s ease;
-            margin-bottom: -2px;
-        }
-        .tab-btn:hover { color: var(--primary-blue); }
-        .tab-btn.active { color: var(--primary-blue); border-bottom-color: var(--primary-blue); }
+        /* ── MAIN TABS ── */
+        .main-tabs-bar { position: sticky; top: 72px; z-index: 100; background: var(--white); border-bottom: 2px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .main-tabs-inner { max-width: 1000px; margin: 0 auto; padding: 0 2.5rem; display: flex; }
+        .main-tab-btn { padding: 1.1rem 1.8rem; background: none; border: none; border-bottom: 3px solid transparent; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--medium-gray); cursor: pointer; transition: all 0.2s; white-space: nowrap; margin-bottom: -2px; }
+        .main-tab-btn:hover { color: var(--page-color); }
+        .main-tab-btn.active { color: var(--page-color); border-bottom-color: var(--page-color); }
 
-        /* ── SECTIONS ── */
-        .tab-section { display: none; }
-        .tab-section.active { display: block; }
-
-        .section-wrap {
-            max-width: 1100px; margin: 0 auto;
-            padding: 4rem 2.5rem;
-        }
-        .section-title {
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
-            font-weight: 800; color: var(--black);
-            letter-spacing: -0.02em; margin-bottom: 0.5rem;
-        }
-        .section-subtitle {
-            font-size: 1.05rem; color: var(--medium-gray);
-            margin-bottom: 2.5rem;
-        }
+        /* ── TAB PANELS ── */
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
 
         /* ── KONTAKTDATEN ── */
-        #sec-kontakt { background: var(--white); }
+        .kontakt-section { padding: 5rem 2.5rem; background: var(--white); }
+        .kontakt-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+        .kontakt-block h2 { font-size: 1.6rem; font-weight: 900; color: var(--black); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+        .kontakt-block .sub { font-size: 0.95rem; color: var(--medium-gray); margin-bottom: 2rem; }
+        .kontakt-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.6rem; }
+        .kontakt-icon { width: 42px; height: 42px; background: var(--light-gray); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+        .kontakt-item-text strong { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--medium-gray); margin-bottom: 0.2rem; }
+        .kontakt-item-text a { color: var(--black); text-decoration: none; font-size: 0.97rem; font-weight: 600; transition: color 0.2s; }
+        .kontakt-item-text a:hover { color: var(--page-color); }
+        .kontakt-item-text p { color: var(--black); font-size: 0.97rem; font-weight: 600; }
+        .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 0.5rem; }
+        .social-card { display: flex; align-items: center; gap: 0.8rem; padding: 0.9rem 1.1rem; background: var(--light-gray); border-radius: 12px; text-decoration: none; color: var(--black); font-weight: 600; font-size: 0.88rem; transition: all 0.25s; border: 2px solid transparent; }
+        .social-card:hover { border-color: var(--page-color); background: var(--white); }
+        .social-card img { width: 24px; height: 24px; object-fit: contain; }
 
-        .kontakt-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .contact-card {
-            background: var(--light-gray);
-            border-radius: 16px; padding: 2rem;
-        }
-        .contact-card h3 {
-            font-size: 0.78rem; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.1em;
-            color: var(--medium-gray); margin-bottom: 1.5rem;
-        }
-        .contact-item {
-            display: flex; align-items: center;
-            gap: 1rem; margin-bottom: 1.2rem;
-        }
-        .contact-item:last-child { margin-bottom: 0; }
-        .contact-icon {
-            width: 44px; height: 44px; flex-shrink: 0;
-            background: var(--white); border-radius: 10px;
-            display: flex; align-items: center;
-            justify-content: center; font-size: 1.2rem;
-        }
-        .contact-text strong {
-            display: block; font-size: 0.75rem;
-            text-transform: uppercase; letter-spacing: 0.07em;
-            color: var(--medium-gray); font-weight: 600;
-            margin-bottom: 0.15rem;
-        }
-        .contact-text a, .contact-text span {
-            font-size: 1rem; font-weight: 500; color: var(--black);
-            text-decoration: none; transition: color 0.3s;
-        }
-        .contact-text a:hover { color: var(--primary-blue); }
-
-        /* Zeeg embed */
-        .zeeg-section {
-            margin-top: 2.5rem;
-        }
-        .zeeg-label {
-            font-size: 0.78rem; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.1em;
-            color: var(--medium-gray); margin-bottom: 1.2rem;
-        }
-        .zeeg-inline-widget {
-            width: 100% !important;
-            min-height: 700px;
-        }
-
-        .socials-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-        .social-card-btn {
-            display: flex; align-items: center;
-            gap: 0.9rem;
-            background: var(--white); border-radius: 12px;
-            padding: 1rem 1.2rem;
-            text-decoration: none; color: var(--black);
-            font-weight: 600; font-size: 0.95rem;
-            transition: all 0.25s ease;
-            border: 2px solid transparent;
-        }
-        .social-card-btn:hover {
-            border-color: var(--primary-blue);
-            color: var(--primary-blue);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(0,98,177,0.12);
-        }
-        .s-icon {
-            width: 38px; height: 38px;
-            border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0; overflow: hidden;
-            background: transparent;
-        }
-        .s-icon img {
-            width: 100%; height: 100%;
-            object-fit: contain; display: block;
-        }
-        .s-yt  { background: transparent; }
-        .s-ig  { background: transparent; }
-        .s-tt  { background: transparent; }
-        .s-li  { background: transparent; }
-
-        /* ── FORMULARE ── */
-        #sec-formular { background: var(--light-gray); }
-
-        .form-tabs {
-            display: flex; gap: 0.5rem;
-            margin-bottom: 2.5rem; flex-wrap: wrap;
-        }
-        .form-tab-btn {
-            padding: 0.7rem 1.4rem;
-            border-radius: 50px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem; font-weight: 600;
-            border: 2px solid var(--primary-blue);
-            background: transparent;
-            color: var(--primary-blue);
-            cursor: pointer; transition: all 0.25s ease;
-        }
-        .form-tab-btn.active,
-        .form-tab-btn:hover { background: var(--primary-blue); color: var(--white); }
-
+        /* ── FORMULARE TABS ── */
+        .formulare-section { padding: 4rem 2.5rem 5rem; background: var(--light-gray); }
+        .formulare-inner { max-width: 1000px; margin: 0 auto; }
+        .formulare-inner h2 { font-size: 1.6rem; font-weight: 900; color: var(--black); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+        .formulare-inner .sub { font-size: 0.95rem; color: var(--medium-gray); margin-bottom: 2rem; }
+        .form-tabs-bar { display: flex; gap: 0; border-bottom: 2px solid var(--border); margin-bottom: 2.5rem; }
+        .form-tab-btn { padding: 0.9rem 1.5rem; background: none; border: none; border-bottom: 3px solid transparent; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--medium-gray); cursor: pointer; transition: all 0.2s; white-space: nowrap; margin-bottom: -2px; }
+        .form-tab-btn:hover { color: var(--page-color); }
+        .form-tab-btn.active { color: var(--page-color); border-bottom-color: var(--page-color); }
         .form-panel { display: none; }
-        .form-panel.active { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
-
-        .form-intro h3 {
-            font-size: 1.4rem; font-weight: 700;
-            color: var(--black); margin-bottom: 1rem;
-            letter-spacing: -0.01em;
-        }
-        .form-intro p {
-            font-size: 1rem; color: var(--medium-gray);
-            line-height: 1.8; margin-bottom: 1rem;
-        }
-        .tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
-        .tag {
-            background: var(--white); border-radius: 50px;
-            padding: 0.35rem 1rem;
-            font-size: 0.82rem; font-weight: 600;
-            color: var(--primary-blue);
-        }
-
-        .form-box {
-            background: var(--white); border-radius: 20px;
-            padding: 2.5rem;
-        }
-        .form-box h4 {
-            font-size: 1.1rem; font-weight: 700;
-            color: var(--black); margin-bottom: 0.3rem;
-        }
-        .form-meta { font-size: 0.82rem; color: var(--medium-gray); margin-bottom: 2rem; }
-
-        .form-group { margin-bottom: 1.2rem; }
-        .form-group label {
-            display: block; font-size: 0.85rem; font-weight: 600;
-            color: var(--black); margin-bottom: 0.4rem;
-        }
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%; padding: 0.85rem 1rem;
-            border: 2px solid var(--border);
-            background: var(--light-gray);
-            border-radius: 10px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem; color: var(--black);
-            transition: all 0.3s; outline: none;
-        }
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus { border-color: var(--primary-blue); background: var(--white); }
-        .form-group textarea { resize: vertical; min-height: 110px; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-        .form-submit {
-            width: 100%; padding: 1rem 2rem;
-            background: var(--primary-blue); color: var(--white);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem; font-weight: 700;
-            border: none; border-radius: 50px;
-            cursor: pointer; transition: all 0.3s;
-            margin-top: 0.5rem;
-        }
-        .form-submit:hover { background: var(--dark-blue); transform: translateY(-2px); }
-        .form-submit:disabled { background: #16a34a; cursor: default; transform: none; }
-
-        .form-note {
-            font-size: 0.76rem; color: var(--medium-gray);
-            text-align: center; margin-top: 0.8rem;
-        }
-        .form-note a { color: var(--medium-gray); }
+        .form-panel.active { display: block; }
+        .form-intro { background: var(--white); border-radius: 16px; padding: 2rem 2.5rem; margin-bottom: 1.5rem; border: 1.5px solid var(--border); }
+        .form-intro h3 { font-size: 1.1rem; font-weight: 800; color: var(--black); margin-bottom: 0.5rem; }
+        .form-intro p { font-size: 0.92rem; color: var(--medium-gray); line-height: 1.75; }
+        .who-box { display: inline-block; margin-top: 0.8rem; background: var(--light-gray); border-radius: 8px; padding: 0.5rem 1rem; font-size: 0.82rem; color: var(--medium-gray); font-weight: 600; }
+        .tally-wrapper { background: var(--white); border-radius: 16px; padding: 2rem 2.5rem; border: 1.5px solid var(--border); }
 
         /* ── TIPPGEBER ── */
-        #sec-tippgeber { background: var(--white); }
-
-        .tipp-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 3rem; align-items: center;
-        }
-        .tipp-text h2 {
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
-            font-weight: 800; color: var(--black);
-            line-height: 1.2; margin-bottom: 1.2rem;
-            letter-spacing: -0.02em;
-        }
-        .tipp-text h2 span { color: var(--primary-blue); }
-        .tipp-text p { font-size: 1rem; color: var(--medium-gray); line-height: 1.8; margin-bottom: 1.2rem; }
-        .tipp-text p strong { color: var(--black); }
-
-        .btn-primary {
-            display: inline-block; padding: 1rem 2.2rem;
-            background: var(--primary-blue); color: var(--white);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem; font-weight: 700;
-            border-radius: 50px; text-decoration: none;
-            transition: all 0.3s;
-        }
-        .btn-primary:hover { background: var(--dark-blue); transform: translateY(-2px); }
-
-        .tipp-card { background: var(--light-gray); border-radius: 20px; padding: 2.5rem; }
-        .tipp-card h3 { font-size: 1rem; font-weight: 700; color: var(--black); margin-bottom: 1.5rem; }
-        .tipp-steps { display: flex; flex-direction: column; gap: 1.5rem; }
-        .tipp-step { display: flex; gap: 1.2rem; align-items: flex-start; }
-        .tipp-step-num {
-            width: 34px; height: 34px; flex-shrink: 0;
-            background: var(--primary-blue); color: var(--white);
-            border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; font-weight: 700; font-size: 0.88rem;
-        }
-        .tipp-step-text strong { display: block; font-weight: 700; color: var(--black); margin-bottom: 0.2rem; }
-        .tipp-step-text span { font-size: 0.92rem; color: var(--medium-gray); }
-        .tipp-eyebrow {
-            font-size: 0.78rem; font-weight: 700;
-            letter-spacing: 0.12em; text-transform: uppercase;
-            color: var(--primary-blue); margin-bottom: 0.8rem;
-        }
-        .tipp-legal { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.6; margin-top: -0.4rem; }
-        .tipp-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.8rem; align-items: center; }
-        .btn-share {
-            display: inline-flex; align-items: center; gap: 0.4rem;
-            padding: 1rem 2rem;
-            background: transparent; color: var(--primary-blue);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem; font-weight: 700;
-            border: 2px solid var(--primary-blue);
-            border-radius: 50px; cursor: pointer; transition: all 0.3s;
-        }
-        .btn-share:hover { background: var(--primary-blue); color: var(--white); }
+        .tippgeber-section { padding: 5rem 2.5rem; background: var(--white); }
+        .tippgeber-inner { max-width: 1000px; margin: 0 auto; }
+        .tippgeber-inner h2 { font-size: 1.6rem; font-weight: 900; color: var(--black); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+        .tippgeber-inner .sub { font-size: 0.95rem; color: var(--medium-gray); margin-bottom: 3rem; }
+        .tippgeber-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .tippgeber-card { border-radius: 20px; overflow: hidden; border: 2px solid var(--border); transition: all 0.3s; }
+        .tippgeber-card:hover { border-color: var(--page-color); box-shadow: 0 12px 40px rgba(0,98,177,0.1); }
+        .tippgeber-card-header { padding: 2rem 2rem 1.5rem; }
+        .tippgeber-card-header.privat { background: linear-gradient(135deg, var(--primary-blue), #0077cc); }
+        .tippgeber-card-header.multiplikator { background: linear-gradient(135deg, var(--dark-blue), #003fa3); }
+        .tippgeber-badge { display: inline-block; background: rgba(255,255,255,0.2); color: var(--white); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 50px; margin-bottom: 1rem; }
+        .tippgeber-card-header h3 { font-size: 1.3rem; font-weight: 900; color: var(--white); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+        .tippgeber-card-header p { font-size: 0.88rem; color: rgba(255,255,255,0.8); line-height: 1.7; }
+        .provision-pill { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1rem; background: rgba(255,255,255,0.15); color: var(--white); font-size: 0.82rem; font-weight: 700; padding: 0.35rem 0.9rem; border-radius: 50px; border: 1px solid rgba(255,255,255,0.3); }
+        .tippgeber-card-body { padding: 1.8rem 2rem; background: var(--white); }
+        .tippgeber-card-body ul { list-style: none; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+        .tippgeber-card-body ul li { font-size: 0.88rem; color: var(--medium-gray); display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.6; }
+        .tippgeber-card-body ul li::before { content: '✓'; color: var(--page-color); font-weight: 700; flex-shrink: 0; margin-top: 0.1rem; }
+        .btn-tippgeber { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.8rem; background: var(--page-color); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
+        .btn-tippgeber:hover { background: var(--dark-blue); transform: translateY(-2px); }
+        .multiplikator-form-toggle { margin-top: 1rem; width: 100%; padding: 0.85rem 1.8rem; background: var(--light-gray); color: var(--black); font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 700; border: 2px solid var(--border); border-radius: 50px; cursor: pointer; transition: all 0.3s; }
+        .multiplikator-form-toggle:hover { border-color: var(--page-color); color: var(--page-color); }
+        .multiplikator-form-wrap { margin-top: 1.5rem; display: none; background: var(--light-gray); border-radius: 16px; padding: 1.5rem; border: 1.5px solid var(--border); }
+        .multiplikator-form-wrap.open { display: block; }
 
         /* ── FOOTER ── */
-        footer {
-            background: var(--black);
-            color: rgba(255,255,255,0.7);
-            padding: 4rem 2.5rem 2rem;
-        }
-        .footer-container {
-            max-width: 1400px; margin: 0 auto;
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 3rem; margin-bottom: 3rem;
-        }
-        .footer-section h4 {
-            font-size: 0.78rem; font-weight: 800;
-            letter-spacing: 0.12em; text-transform: uppercase;
-            color: var(--white); margin-bottom: 1.4rem;
-        }
+        footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 4rem 2.5rem 2rem; }
+        .footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem; margin-bottom: 3rem; }
+        .footer-section h4 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1.4rem; }
         .footer-section ul { list-style: none; }
         .footer-section ul li { margin-bottom: 0.7rem; }
-        .footer-section a {
-            color: rgba(255,255,255,0.6); text-decoration: none;
-            font-size: 0.9rem; transition: color 0.3s ease;
-        }
+        .footer-section a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
         .footer-section a:hover { color: var(--white); }
         .footer-section p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
         .footer-social-icons { display: flex; gap: 0.8rem; margin-top: 0.5rem; }
-        .footer-social-icon {
-            width: 36px; height: 36px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 8px; display: flex; align-items: center;
-            justify-content: center; text-decoration: none;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        .footer-social-icon img {
-            width: 22px; height: 22px;
-            object-fit: contain; display: block;
-        }
+        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
+        .footer-social-icon img { width: 22px; height: 22px; object-fit: contain; display: block; }
         .footer-social-icon:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
-        .footer-bottom {
-            max-width: 1400px; margin: 0 auto;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            display: flex; justify-content: space-between;
-            align-items: center; flex-wrap: wrap; gap: 1rem;
-        }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
         .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
 
         /* ── RESPONSIVE ── */
-        @media (max-width: 1024px) {
-            .kontakt-grid,
-            .tipp-grid { grid-template-columns: 1fr; }
-            .form-panel.active { grid-template-columns: 1fr; gap: 2rem; }
-            .footer-container { grid-template-columns: 1fr 1fr; }
-        }
         @media (max-width: 768px) {
-            nav ul { display: none; }
-            .header-cta-btn { display: none; }
+            nav ul, .header-cta-btn { display: none; }
             .burger { display: flex; }
-            .hero-content { padding: 3rem 1.5rem; }
-            .section-wrap { padding: 3rem 1.5rem; }
-            .form-row { grid-template-columns: 1fr; }
-            .form-box { padding: 1.8rem 1.4rem; }
-            .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+            .hero { min-height: 55vh; }
+            .kontakt-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+            .tippgeber-grid { grid-template-columns: 1fr; }
+            .main-tabs-inner { padding: 0 1rem; overflow-x: auto; }
+            .formulare-section, .kontakt-section, .tippgeber-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .tally-wrapper { padding: 1rem; }
+            .footer-container { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
-            .socials-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
 <!-- HEADER -->
-<header id="header">
+<header>
     <nav>
-        <a href="index.html" class="logo">
-            <img src="images/Logo_weiß.png" alt="Koppmann Karriere">
-        </a>
+        <a href="index.html" class="logo"><img src="images/Logo_weiß.png" alt="Koppmann Karriere"></a>
         <ul>
             <li><a href="unternehmen.html">Für Unternehmen</a></li>
             <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
             <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
             <li><a href="so-arbeite-ich.html">So Arbeite Ich</a></li>
-            <li><a href="kontakt-einstieg.html" class="active">Kontakt & Einstieg</a></li>
+            <li><a href="kontakt-einstieg.html" class="active">Kontakt &amp; Einstieg</a></li>
         </ul>
-        <a href="#sec-formular" class="header-cta-btn" id="cta-to-form">Erstgespräch vereinbaren</a>
-        <button class="burger" id="burger" aria-label="Menü öffnen">
-            <span></span><span></span><span></span>
-        </button>
+        <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="header-cta-btn">Erstgespräch vereinbaren</a>
+        <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
     </nav>
 </header>
 
-<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobile-menu">
     <a href="unternehmen.html">Für Unternehmen</a>
     <a href="arbeitnehmende.html">Für Arbeitnehmende</a>
     <a href="karriere-kosmos.html">Karriere-Kosmos</a>
     <a href="so-arbeite-ich.html">So Arbeite Ich</a>
-    <a href="kontakt-einstieg.html">Kontakt & Einstieg</a>
-    <a href="#sec-formular" class="mobile-cta">Erstgespräch vereinbaren</a>
+    <a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a>
+    <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="mobile-cta">Erstgespräch vereinbaren</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
     <div class="hero-image">
-        <img src="images/offener Gesprächsraum.jpg" alt="Offener Gesprächsraum – Koppmann Karriere">
+        <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1920,h_1080,c_fill,g_center/offener_Gespr%C3%A4chsraum_pkohvh.jpg"
+             alt="Offener Gesprächsraum – Koppmann Karriere">
     </div>
-    <div class="hero-overlay"></div>
     <div class="hero-content">
-        <p class="hero-eyebrow">Kontakt & Einstieg</p>
-        <h1>Lass uns reden.</h1>
-        <h3>Alles, was du brauchst, um den ersten Schritt zu machen – auf einer Seite.</h3>
+        <p class="hero-eyebrow">Koppmann Karriere</p>
+        <h1>Kontakt &amp; Einstieg</h1>
+        <p>Der erste Schritt braucht keine Vorbereitung. Meld dich einfach – ich höre zu.</p>
+
     </div>
 </section>
 
-<!-- PAGE TABS -->
-<div class="tab-nav" id="tab-nav">
-    <div class="tab-nav-inner">
-        <button class="tab-btn active" data-target="sec-kontakt">Kontaktdaten & Socials</button>
-        <button class="tab-btn" data-target="sec-formular">Formulare</button>
-        <button class="tab-btn" data-target="sec-tippgeber">Tippgeber:in werden</button>
+<!-- MAIN TAB BAR -->
+<div class="main-tabs-bar">
+    <div class="main-tabs-inner">
+        <button class="main-tab-btn active" data-tab="kontaktdaten">Kontaktdaten &amp; Socials</button>
+        <button class="main-tab-btn" data-tab="formulare">Formulare</button>
+        <button class="main-tab-btn" data-tab="tippgeber">Tippgeber:in werden</button>
     </div>
 </div>
 
-<!-- ══ SECTION 1: KONTAKTDATEN & SOCIALS ══ -->
-<section id="sec-kontakt" class="tab-section active">
-    <div class="section-wrap">
-        <h2 class="section-title">Kontaktdaten & Socials</h2>
-        <p class="section-subtitle">Direkte Wege zu Jan – per Mail, Telefon oder auf den Kanälen.</p>
+<!-- TAB 1: KONTAKTDATEN -->
+<div class="tab-panel active" id="tab-kontaktdaten">
+    <section class="kontakt-section">
+        <div class="kontakt-inner">
+            <div class="kontakt-block">
+                <h2>Direkt in Kontakt</h2>
+                <p class="sub">Alle Wege die du nutzen kannst, um Jan zu erreichen.</p>
 
-        <div class="kontakt-grid">
-            <div class="contact-card">
-                <h3>Direkt erreichen</h3>
-                <div class="contact-item">
-                    <div class="contact-icon">✉️</div>
-                    <div class="contact-text">
+                <div class="kontakt-item">
+                    <div class="kontakt-icon">✉️</div>
+                    <div class="kontakt-item-text">
                         <strong>E-Mail</strong>
-                        <a href="/cdn-cgi/l/email-protection#b8d2d9d6f8d3d7c8c8d5d9d6d6d3d9cacad1ddcadd96dcdd"><span class="__cf_email__" data-cfemail="aec4cfc0eec5c1dedec3cfc0c0c5cfdcdcc7cbdccb80cacb">[email&#160;protected]</span></a>
+                        <a href="mailto:jan@koppmannkarriere.de">jan@koppmannkarriere.de</a>
                     </div>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">📞</div>
-                    <div class="contact-text">
+                <div class="kontakt-item">
+                    <div class="kontakt-icon">📞</div>
+                    <div class="kontakt-item-text">
                         <strong>Telefon</strong>
-                        <span>folgt</span>
+                        <a href="tel:+4916034028920">0160 340 2892</a>
                     </div>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">🕐</div>
-                    <div class="contact-text">
-                        <strong>Antwortzeit</strong>
-                        <span>Meist am gleichen Tag oder am nächsten Tag</span>
+                <div class="kontakt-item">
+                    <div class="kontakt-icon">📍</div>
+                    <div class="kontakt-item-text">
+                        <strong>Adresse</strong>
+                        <p>Neuhurden 22, 51491 Overath</p>
+                    </div>
+                </div>
+                <div class="kontakt-item">
+                    <div class="kontakt-icon">📅</div>
+                    <div class="kontakt-item-text">
+                        <strong>Termin buchen</strong>
+                        <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener">zeeg.me/koppmannkarriere</a>
                     </div>
                 </div>
             </div>
 
-            <div class="contact-card">
-                <h3>Social Media</h3>
-                <div class="socials-grid">
-                    <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="social-card-btn">
-                        <div class="s-icon s-yt"><img src="images/YouTube_Icon.png" alt="YouTube"></div>
-                        YouTube
+            <div class="kontakt-block">
+                <h2>Termin direkt buchen</h2>
+                <p class="sub" style="margin-bottom:1.5rem;">Erstgespräch kostenlos & unverbindlich – wähle direkt einen Termin.</p>
+                <!-- Zeeg inline embed begins -->
+                <div class="zeeg-inline-widget" id="zeeg-embed-koppmannkarriere" style="width: auto; height: auto"></div>
+                <script type="text/javascript" src="https://assets.zeeg.me/embed.min.js" data-user="koppmannkarriere" async></script>
+                <!-- Zeeg inline embed ends -->
+            </div>
+
+            <div class="kontakt-block" style="margin-top:0; grid-column: 1 / -1;">
+                <h2>Social Media</h2>
+                <p class="sub">Einblicke in meine Arbeit, Haltung und berufliche Themen.</p>
+                <div class="social-grid" style="max-width:480px;">
+                    <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="social-card">
+                        <img src="images/Instagram_Icon.png" alt="Instagram"> Instagram
                     </a>
-                    <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="social-card-btn">
-                        <div class="s-icon s-ig"><img src="images/Instagram_Icon.png" alt="Instagram"></div>
-                        Instagram
+                    <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="social-card">
+                        <img src="images/Tiktok_Icon.png" alt="TikTok"> TikTok
                     </a>
-                    <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="social-card-btn">
-                        <div class="s-icon s-tt"><img src="images/Tiktok_Icon.png" alt="TikTok"></div>
-                        TikTok
+                    <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="social-card">
+                        <img src="images/YouTube_Icon.png" alt="YouTube"> YouTube
                     </a>
-                    <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="social-card-btn">
-                        <div class="s-icon s-li"><img src="images/Linkedin_Icon.png" alt="LinkedIn"></div>
-                        LinkedIn
+                    <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="social-card">
+                        <img src="images/Linkedin_Icon.png" alt="LinkedIn"> LinkedIn
                     </a>
                 </div>
             </div>
         </div>
+    </section>
+</div>
 
-        <!-- Zeeg Terminbuchung -->
-        <div class="zeeg-section">
-            <p class="zeeg-label">Erstgespräch direkt buchen</p>
-            <div class="zeeg-inline-widget" id="zeeg-embed-koppmannkarriere" style="width: 100%; min-height: 700px;"></div>
-            <script type="text/javascript" src="https://assets.zeeg.me/embed.min.js" data-user="koppmannkarriere" async></script>
-        </div>
+<!-- TAB 2: FORMULARE -->
+<div class="tab-panel" id="tab-formulare" id="formulare">
+    <section class="formulare-section">
+        <div class="formulare-inner">
+            <h2>Formulare</h2>
+            <p class="sub">Wähle den Bereich der zu dir passt und schreib uns direkt.</p>
 
-    </div>
-</section>
+            <div class="form-tabs-bar">
+                <button class="form-tab-btn active" data-form="arbeitnehmer">Für Arbeitnehmer:innen</button>
+                <button class="form-tab-btn" data-form="unternehmen">Für Unternehmen</button>
+                <button class="form-tab-btn" data-form="jobprofil">Jobprofil hinterlegen</button>
+            </div>
 
-<!-- ══ SECTION 2: FORMULARE ══ -->
-<section id="sec-formular" class="tab-section">
-    <div class="section-wrap">
-        <h2 class="section-title">Formulare</h2>
-        <p class="section-subtitle">Wähle, was für dich gerade passt.</p>
-
-        <div class="form-tabs">
-            <button class="form-tab-btn active" data-form="form-kontakt">Kontakt aufnehmen</button>
-            <button class="form-tab-btn" data-form="form-jobprofil">Jobprofil hinterlegen</button>
-        </div>
-
-        <!-- Formular 1: Kontakt -->
-        <div class="form-panel active" id="form-kontakt">
-            <div class="form-intro">
-                <h3>Erstgespräch oder einfach Kontakt aufnehmen</h3>
-                <p>Du hast ein Anliegen, eine Frage oder möchtest herausfinden, ob Karrierebegleitung für dich passt?</p>
-                <p>Schreib mir kurz – ohne Vorbereitung, ohne Verpflichtung.</p>
-                <div class="tag-list">
-                    <span class="tag">Berufliche Orientierung</span>
-                    <span class="tag">Jobwechsel</span>
-                    <span class="tag">Unternehmen / HR</span>
-                    <span class="tag">Allgemeine Frage</span>
+            <!-- FORMULAR: ARBEITNEHMER:IN -->
+            <div class="form-panel active" id="form-arbeitnehmer">
+                <div class="form-intro">
+                    <h3>Kontakt aufnehmen als Arbeitnehmer:in</h3>
+                    <p>Du suchst Orientierung, möchtest berufliche Entscheidungen besprechen oder weißt noch nicht genau wo du stehst? Meld dich – das Erstgespräch ist kostenlos und unverbindlich.</p>
+                    <span class="who-box">Für: Schüler:innen · Auszubildende · Studierende · Berufstätige · Arbeitssuchende · Quereinsteiger:innen</span>
+                </div>
+                <div class="tally-wrapper">
+                    <iframe data-tally-src="https://tally.so/embed/eqEBZO?alignLeft=1&hideTitle=1&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Kontakt Arbeitnehmer:in"></iframe>
                 </div>
             </div>
-            <div class="form-box">
-                <h4>Kontaktformular</h4>
-                <p class="form-meta">Alle Felder mit * sind Pflichtfelder</p>
-                <form id="contact-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="c-vorname">Vorname *</label>
-                            <input type="text" id="c-vorname" placeholder="Vorname" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="c-nachname">Nachname *</label>
-                            <input type="text" id="c-nachname" placeholder="Nachname" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="c-email">E-Mail *</label>
-                        <input type="email" id="c-email" placeholder="deine@email.de" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="c-telefon">Telefon (optional)</label>
-                        <input type="tel" id="c-telefon" placeholder="Deine Nummer">
-                    </div>
-                    <div class="form-group">
-                        <label for="c-ich-bin">Ich bin …</label>
-                        <select id="c-ich-bin">
-                            <option value="" disabled selected>Bitte wählen</option>
-                            <option>Arbeitnehmende:r / auf Jobsuche</option>
-                            <option>Unternehmen / HR</option>
-                            <option>Studierend / Berufseinsteiger:in</option>
-                            <option>Sonstiges</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="c-anliegen">Was beschäftigt dich? *</label>
-                        <textarea id="c-anliegen" placeholder="Ein paar Sätze reichen." required></textarea>
-                    </div>
-                    <button type="submit" class="form-submit" id="c-submit">Nachricht senden →</button>
-                    <p class="form-note">Mit dem Absenden stimmst du der Verarbeitung deiner Daten gemäß <a href="datenschutz.html">Datenschutzerklärung</a> zu.</p>
-                </form>
-            </div>
-        </div>
 
-        <!-- Formular 2: Jobprofil -->
-        <div class="form-panel" id="form-jobprofil">
-            <div class="form-intro">
-                <h3>Jobprofil hinterlegen</h3>
-                <p>Du weißt, was du suchst – oder zumindest in welche Richtung es gehen soll? Dann hinterleg dein Profil.</p>
-                <p>So kann ich dich aktiv ansprechen, wenn sich passende Möglichkeiten oder Kontakte ergeben.</p>
-                <div class="tag-list">
-                    <span class="tag">Fachkraft</span>
-                    <span class="tag">Führungskraft</span>
-                    <span class="tag">Quereinsteiger:in</span>
-                    <span class="tag">Berufseinsteiger:in</span>
+            <!-- FORMULAR: UNTERNEHMEN -->
+            <div class="form-panel" id="form-unternehmen">
+                <p style="font-size:0.95rem; color:var(--medium-gray); line-height:1.75; margin-bottom:1.5rem;">Schreiben Sie mir – ich melde mich zeitnah.</p>
+                <div class="tally-wrapper">
+                    <iframe data-tally-src="https://tally.so/embed/BzBGQR?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Kontakt Unternehmen"></iframe>
                 </div>
             </div>
-            <div class="form-box">
-                <h4>Jobprofil hinterlegen</h4>
-                <p class="form-meta">Alle Felder mit * sind Pflichtfelder</p>
-                <form id="jobprofil-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="j-vorname">Vorname *</label>
-                            <input type="text" id="j-vorname" placeholder="Vorname" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="j-nachname">Nachname *</label>
-                            <input type="text" id="j-nachname" placeholder="Nachname" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="j-email">E-Mail *</label>
-                        <input type="email" id="j-email" placeholder="deine@email.de" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="j-bereich">Gewünschter Bereich / Branche *</label>
-                        <input type="text" id="j-bereich" placeholder="z. B. Marketing, IT, Gesundheit …" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="j-region">Region / Arbeitsort</label>
-                        <input type="text" id="j-region" placeholder="z. B. Köln, remote, bundesweit …">
-                    </div>
-                    <div class="form-group">
-                        <label for="j-level">Erfahrungslevel</label>
-                        <select id="j-level">
-                            <option value="" disabled selected>Bitte wählen</option>
-                            <option>Berufseinsteiger:in (0–2 Jahre)</option>
-                            <option>Berufserfahren (3–7 Jahre)</option>
-                            <option>Senior / Führungskraft (8+ Jahre)</option>
-                            <option>Quereinsteiger:in</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="j-wichtig">Was ist dir besonders wichtig? *</label>
-                        <textarea id="j-wichtig" placeholder="Arbeitsklima, Flexibilität, Sinn, Gehalt – schreib, was für dich zählt." required></textarea>
-                    </div>
-                    <button type="submit" class="form-submit" id="j-submit">Jobprofil hinterlegen →</button>
-                    <p class="form-note">Mit dem Absenden stimmst du der Verarbeitung deiner Daten gemäß <a href="datenschutz.html">Datenschutzerklärung</a> zu.</p>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- ══ SECTION 3: TIPPGEBER ══ -->
-<section id="sec-tippgeber" class="tab-section">
-    <div class="section-wrap">
-
-        <!-- Block 1 -->
-        <div class="tipp-grid" style="margin-bottom:4rem;">
-            <div class="tipp-text">
-                <p class="tipp-eyebrow">Modell 1</p>
-                <h2>Du kennst jemanden,<br>dem <span>Karrierebegleitung helfen könnte?</span></h2>
-                <p>Du magst das Konzept Karrierebegleitung – und in deinem Umfeld gibt es Freunde, Kolleg:innen oder Bekannte, die gerade beruflich vor einer Entscheidung stehen, sich neu orientieren wollen oder einfach noch nicht wissen, wohin die Reise geht.</p>
-                <p>Manchmal ist ein gezielter Hinweis alles, was fehlt. <strong>Empfiehl mich weiter und profitiere selbst:</strong> Als Tippgeber:in erhältst du eine Provision, wenn dein Kontakt erfolgreich vermittelt wird.</p>
-                <p class="tipp-legal">Provision unter 18 Jahren möglich – Auszahlung unterliegt besonderen Bedingungen (siehe Aktionsinformationen).</p>
-                <div class="tipp-actions">
-                    <a href="tippgeber.html" class="btn-primary">Zum Tippgeber-Modell →</a>
-                    <button class="btn-share" id="share-btn">↗ Seite teilen</button>
+            <!-- FORMULAR: JOBPROFIL -->
+            <div class="form-panel" id="form-jobprofil">
+                <div class="form-intro">
+                    <h3>Jobprofil hinterlegen</h3>
+                    <p>Sie haben eine offene Stelle und möchten passende Kandidaten finden? Hinterlegen Sie hier Ihr vollständiges Jobprofil – je detaillierter, desto besser die Passung.</p>
+                    <span class="who-box">Hinweis: Das Jobprofil wird ausschließlich intern genutzt und nicht veröffentlicht.</span>
+                </div>
+                <div class="tally-wrapper">
+                    <iframe data-tally-src="https://tally.so/embed/A78l4D?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Jobprofil hinterlegen"></iframe>
                 </div>
             </div>
-            <div class="tipp-card">
-                <h3>So funktioniert es – kurz & knapp</h3>
-                <div class="tipp-steps">
-                    <div class="tipp-step">
-                        <div class="tipp-step-num">1</div>
-                        <div class="tipp-step-text">
-                            <strong>Du empfiehlst</strong>
-                            <span>Du teilst die Website oder den Link – dein Freund / deine Bekannte erfährt von Koppmann Karriere.</span>
-                        </div>
+
+        </div>
+    </section>
+</div>
+
+<!-- TAB 3: TIPPGEBER -->
+<div class="tab-panel" id="tab-tippgeber">
+    <section class="tippgeber-section">
+        <div class="tippgeber-inner">
+            <h2>Tippgeber:in werden</h2>
+            <p class="sub">Empfehle Koppmann Karriere weiter und erhalte eine Provision bei erfolgreicher Vermittlung – ohne Aufwand, ohne Verpflichtung.</p>
+
+            <div class="tippgeber-grid">
+
+                <!-- KARTE 1: PRIVATER TIPP -->
+                <div class="tippgeber-card">
+                    <div class="tippgeber-card-header privat">
+                        <span class="tippgeber-badge">👤 Privater Tipp</span>
+                        <h3>Ich kenne jemanden –<br>und empfehle weiter</h3>
+                        <p>Du kennst jemanden der einen neuen Job sucht, sich beruflich neu orientieren möchte oder Unterstützung braucht? Teile deinen persönlichen Code – und erhalte eine Provision wenn die Begleitung erfolgreich ist.</p>
+                        <div class="provision-pill">💶 100 € (Ausbildung) · 200 € (Fachkraft)</div>
                     </div>
-                    <div class="tipp-step">
-                        <div class="tipp-step-num">2</div>
-                        <div class="tipp-step-text">
-                            <strong>Dein Kontakt meldet sich an</strong>
-                            <span>Er oder sie bucht das kostenlose Erstgespräch – unverbindlich und ohne Vorbereitung.</span>
-                        </div>
+                    <div class="tippgeber-card-body">
+                        <ul>
+                            <li>Persönlicher QR-Code &amp; Promo-Link</li>
+                            <li>Nur bei Erfolg – kein Risiko</li>
+                            <li>Provision steuerfrei bis 256 € / Jahr</li>
+                            <li>Statusverfolgung jederzeit möglich</li>
+                        </ul>
+                        <a href="tippgeberschaft/tippgeber.html" class="btn-tippgeber">Zum Tippgeber-Modell →</a>
                     </div>
-                    <div class="tipp-step">
-                        <div class="tipp-step-num">3</div>
-                        <div class="tipp-step-text">
-                            <strong>Die Zuordnung wird gesichert</strong>
-                            <span>Im Erstgespräch erwähnt dein Kontakt, von dir empfohlen worden zu sein. Jan schickt dir einen Link – du füllst dein Tippgeber-Formular aus und bist offiziell hinterlegt.</span>
-                        </div>
+                </div>
+
+                <!-- KARTE 2: MULTIPLIKATOR -->
+                <div class="tippgeber-card">
+                    <div class="tippgeber-card-header multiplikator">
+                        <span class="tippgeber-badge">🏢 Multiplikator</span>
+                        <h3>Wir erreichen viele –<br>und kooperieren</h3>
+                        <p>Du bist Teil einer Organisation, eines Vereins oder einer Beratungsstelle die Menschen in beruflichen Übergängen begleitet? Werde Multiplikator und empfehle Karrierebegleitung strukturiert weiter.</p>
+
                     </div>
-                    <div class="tipp-step">
-                        <div class="tipp-step-num">4</div>
-                        <div class="tipp-step-text">
-                            <strong>Erfolgreiche Jobvermittlung</strong>
-                            <span>Dein Kontakt wird vermittelt, unterschreibt seinen Arbeitsvertrag und schließt den ersten Monat ab.</span>
-                        </div>
-                    </div>
-                    <div class="tipp-step">
-                        <div class="tipp-step-num">5</div>
-                        <div class="tipp-step-text">
-                            <strong>Du bekommst deine Provision</strong>
-                            <span><strong style="color:var(--primary-blue);">100 €</strong> bei einer Ausbildungsstelle &nbsp;·&nbsp; <strong style="color:var(--primary-blue);">200 €</strong> bei einer Fachkraft-Vermittlung.</span>
+                    <div class="tippgeber-card-body">
+                        <ul>
+                            <li>Eigener QR-Code für deine Organisation</li>
+                            <li>Kooperationsvereinbarung möglich</li>
+                            <li>Höhere Pauschale als privater Tipp</li>
+                            <li>Persönliche Absprache &amp; Begleitung</li>
+                        </ul>
+                        <a href="tippgeberschaft/multiplikatoren.html" class="btn-tippgeber">Zum Multiplikatoren-Modell →</a>
+                        <button class="multiplikator-form-toggle" id="multiplikator-toggle">✉️ Jetzt als Multiplikator Kontakt aufnehmen</button>
+                        <div class="multiplikator-form-wrap" id="multiplikator-form">
+                            <iframe data-tally-src="https://tally.so/embed/pbVVjZ?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Multiplikator Kontakt"></iframe>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
-
-        <div style="border-top:2px solid var(--border); margin-bottom:4rem;"></div>
-
-        <!-- Block 2: Multiplikator -->
-        <div class="tipp-grid">
-            <div class="tipp-text">
-                <p class="tipp-eyebrow">Modell 2</p>
-                <h2>Du hast ein Geschäft<br>mit <span>viel Publikum?</span></h2>
-                <p>Fitnessstudio, Friseur, Café, Kiosk, Beautysalon, Massagepraxis, Online-Stream – überall dort, wo Menschen vorbeikommen, steckt Potenzial.</p>
-                <p>Mit einem <strong>personalisierten QR-Code</strong> können deine Gäste im Vorbeigehen scannen, sich informieren – und dir ganz automatisch eine Provision einbringen. Ohne aktiven Aufwand.</p>
-                <a href="tippgeber.html" class="btn-primary">Zum Multiplikatoren-Modell →</a>
-            </div>
-            <div class="tipp-card">
-                <h3>Interesse? Trag dich ein.</h3>
-                <p style="font-size:0.92rem; color:var(--medium-gray); margin-bottom:1.8rem; line-height:1.7;">Kurz eintragen – Jan meldet sich persönlich bei dir.</p>
-                <form id="multiplikator-form">
-                    <div class="form-group">
-                        <label for="m-name">Name *</label>
-                        <input type="text" id="m-name" placeholder="Dein Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="m-geschaeft">Geschäft / Kanal *</label>
-                        <input type="text" id="m-geschaeft" placeholder="z. B. Fitnessstudio XY, TikTok @name …" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="m-adresse">Adresse des Geschäfts</label>
-                        <input type="text" id="m-adresse" placeholder="Straße, PLZ, Stadt">
-                    </div>
-                    <div class="form-group">
-                        <label for="m-email">E-Mail *</label>
-                        <input type="email" id="m-email" placeholder="deine@email.de" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="m-telefon">Telefon (optional)</label>
-                        <input type="tel" id="m-telefon" placeholder="Deine Nummer">
-                    </div>
-                    <div class="form-group">
-                        <label for="m-kontakt">Wie soll Jan dich kontaktieren?</label>
-                        <select id="m-kontakt">
-                            <option value="" disabled selected>Bitte wählen</option>
-                            <option>Per E-Mail</option>
-                            <option>Per Telefon</option>
-                            <option>Egal – was am schnellsten geht</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="form-submit" id="m-submit">Eintragen – Jan meldet sich →</button>
-                </form>
-            </div>
-        </div>
-
-    </div>
-</section>
+    </section>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -916,44 +392,45 @@
                 <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
                 <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
                 <li><a href="so-arbeite-ich.html">So Arbeite Ich</a></li>
-                <li><a href="kontakt-einstieg.html">Kontakt & Einstieg</a></li>
+                <li><a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
             </ul>
         </div>
         <div class="footer-section">
             <h4>Kontakt</h4>
             <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br>
-            <a href="/cdn-cgi/l/email-protection#660c0708260d0916160b0708080d0714140f031403480203"><span class="__cf_email__" data-cfemail="c8a2a9a688a3a7b8b8a5a9a6a6a3a9babaa1adbaade6acad">[email&#160;protected]</span></a></p>
-            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br>folgt</p>
+            <a href="mailto:jan@koppmannkarriere.de">jan@koppmannkarriere.de</a></p>
+            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br>
+            <a href="tel:+4916034028920">0160 340 2892</a></p>
             <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Adresse</strong><br>
-            Neuhurden 22<br>51491 Overath</p>
+            Neuhurden 22,<br>51491 Overath</p>
         </div>
         <div class="footer-section">
             <h4>Social Media</h4>
             <div class="footer-social-icons">
-                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="YouTube"><img src="images/YouTube_Icon.png" alt="YouTube"></a>
-                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon" title="LinkedIn"><img src="images/Linkedin_Icon.png" alt="LinkedIn"></a>
                 <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="footer-social-icon" title="Instagram"><img src="images/Instagram_Icon.png" alt="Instagram"></a>
                 <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="TikTok"><img src="images/Tiktok_Icon.png" alt="TikTok"></a>
+                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="YouTube"><img src="images/YouTube_Icon.png" alt="YouTube"></a>
+                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon" title="LinkedIn"><img src="images/Linkedin_Icon.png" alt="LinkedIn"></a>
             </div>
         </div>
         <div class="footer-section">
             <h4>Rechtliches</h4>
             <ul>
-                <li><a href="impressum.html">Impressum</a></li>
-                <li><a href="datenschutz.html">Datenschutz</a></li>
+                <li><a href="transparenz/impressum.html">Impressum</a></li>
+                <li><a href="transparenz/datenschutz.html">Datenschutz</a></li>
             </ul>
             <h4 style="margin-top:1.8rem;">Tippgeber:in werden</h4>
-            <p><a href="tippgeber.html">Weiterempfehlen & Provision erhalten</a></p>
+            <p><a href="tippgeberschaft/tippgeber.html">Weiterempfehlen &amp; Provision erhalten</a></p>
         </div>
     </div>
     <div class="footer-bottom">
         <p>© 2026 Jan Koppmann – Karrierebegleitung</p>
-        <p>Hosted on Netlify · Made with ♥ in Overath</p>
+        <p>Made with ♥ in Overath</p>
     </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Burger Menu
+<script>
+    // ── BURGER ──
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobile-menu');
     burger.addEventListener('click', () => {
@@ -969,48 +446,48 @@
         });
     });
 
-    // Page tabs
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const tabSections = document.querySelectorAll('.tab-section');
-
-    function activateTab(targetId) {
-        tabBtns.forEach(b => b.classList.toggle('active', b.dataset.target === targetId));
-        tabSections.forEach(s => s.classList.toggle('active', s.id === targetId));
-    }
-
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => activateTab(btn.dataset.target));
+    // ── MAIN TABS ──
+    document.querySelectorAll('.main-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.main-tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+            // Load Tally when tab becomes visible
+            if (window.Tally) window.Tally.loadEmbeds();
+        });
     });
 
-    // Header CTA → Formulare tab
-    document.getElementById('cta-to-form').addEventListener('click', (e) => {
-        e.preventDefault();
-        activateTab('sec-formular');
-        document.getElementById('tab-nav').scrollIntoView({ behavior: 'smooth' });
-    });
-
-    // Form sub-tabs
+    // ── FORM TABS ──
     document.querySelectorAll('.form-tab-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-            document.querySelectorAll('.form-tab-btn').forEach(b => b.classList.toggle('active', b === btn));
-            document.querySelectorAll('.form-panel').forEach(p => p.classList.toggle('active', p.id === btn.dataset.form));
+            document.querySelectorAll('.form-tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('form-' + btn.dataset.form).classList.add('active');
+            if (window.Tally) window.Tally.loadEmbeds();
         });
     });
 
-    // Form submit feedback
-    function bindForm(formId, btnId, label) {
-        const form = document.getElementById(formId);
-        if (!form) return;
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = document.getElementById(btnId);
-            btn.textContent = '✓ ' + label;
-            btn.disabled = true;
-        });
-    }
-    bindForm('contact-form', 'c-submit', 'Nachricht gesendet!');
-    bindForm('jobprofil-form', 'j-submit', 'Profil hinterlegt!');
-    bindForm('multiplikator-form', 'm-submit', 'Eingetragen – Jan meldet sich!');
+    // ── MULTIPLIKATOR FORM TOGGLE ──
+    document.getElementById('multiplikator-toggle').addEventListener('click', () => {
+        const form = document.getElementById('multiplikator-form');
+        form.classList.toggle('open');
+        if (form.classList.contains('open') && window.Tally) window.Tally.loadEmbeds();
+    });
 
-    // Share button
-    const shareBtn = document.getE
+    // ── TALLY EMBED LOADER ──
+    var d = document, w = "https://tally.so/widgets/embed.js",
+    v = function() {
+        if (typeof Tally !== "undefined") { Tally.loadEmbeds(); return; }
+        d.querySelectorAll("[data-tally-src]:not([src])").forEach(function(e) {
+            e.src = e.dataset.tallySrc;
+        });
+    };
+    if (d.querySelector('script[src="' + w + '"]') === null) {
+        var s = d.createElement("script");
+        s.src = w; s.onload = v; s.onerror = v; d.body.appendChild(s);
+    } else { v(); }
+</script>
+</body>
+</html>
