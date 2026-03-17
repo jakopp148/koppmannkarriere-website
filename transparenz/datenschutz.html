@@ -59,16 +59,14 @@
 
         /* ── TOC ── */
         .toc { background: var(--light-gray); border-radius: 16px; margin-bottom: 3rem; overflow: hidden; }
-        .toc-toggle { width: 100%; background: none; border: none; padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'Montserrat', sans-serif; border-radius: 16px; transition: background 0.2s; }
-        .toc-toggle-label { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--medium-gray); }
-        .toc-arrow { font-size: 0.75rem; color: var(--medium-gray); transition: transform 0.3s; line-height: 1; }
-        .toc-toggle.open .toc-arrow { transform: rotate(180deg); }
-        .toc-body { display: none; padding: 0.5rem 2rem 1.5rem; border-top: 1px solid var(--border); }
-        .toc-body.open { display: block; }
-        .toc-body ol { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; }
-        .toc-body ol li { font-size: 0.9rem; }
-        .toc-body ol li a { color: var(--primary-blue); text-decoration: none; font-weight: 600; }
-        .toc-body ol li a:hover { text-decoration: underline; }
+        .toc summary { padding: 1.2rem 2rem; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--medium-gray); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        .toc summary::-webkit-details-marker { display: none; }
+        .toc summary::after { content: '▼'; font-size: 0.7rem; transition: transform 0.3s; }
+        .toc[open] summary::after { transform: rotate(180deg); }
+        .toc ol { padding: 0.5rem 2rem 1.5rem 3rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.5rem; }
+        .toc ol li { font-size: 0.9rem; }
+        .toc ol li a { color: var(--primary-blue); text-decoration: none; font-weight: 600; }
+        .toc ol li a:hover { text-decoration: underline; }
 
         /* ── BLOCKS ── */
         .ds-block { margin-bottom: 3.5rem; padding-bottom: 3.5rem; border-bottom: 1px solid var(--border); scroll-margin-top: 90px; }
@@ -162,28 +160,23 @@
 <div class="content-wrap">
 
     <!-- INHALTSVERZEICHNIS -->
-    <nav class="toc" aria-label="Inhaltsverzeichnis">
-        <button class="toc-toggle" id="toc-toggle" aria-expanded="false">
-            <span class="toc-toggle-label">Inhaltsverzeichnis</span>
-            <span class="toc-arrow">▼</span>
-        </button>
-        <div class="toc-body" id="toc-body">
-            <ol>
-                <li><a href="#verantwortlicher">Verantwortlicher</a></li>
-                <li><a href="#grundsaetze">Grundsätze der Datenverarbeitung</a></li>
-                <li><a href="#website">Website &amp; Hosting</a></li>
-                <li><a href="#formulare">Kontaktformulare</a></li>
-                <li><a href="#terminbuchung">Terminbuchung (Zeeg)</a></li>
-                <li><a href="#bilder">Bildhosting (Cloudinary)</a></li>
-                <li><a href="#ki">KI-Einsatz &amp; Datenverarbeitung</a></li>
-                <li><a href="#klienten">Klientendaten &amp; Karrierebegleitung</a></li>
-                <li><a href="#aufbewahrung">Aufbewahrungsfristen</a></li>
-                <li><a href="#rechte">Ihre Rechte</a></li>
-                <li><a href="#loeschung">Datenlöschungsantrag</a></li>
-                <li><a href="#aenderungen">Änderungen dieser Erklärung</a></li>
-            </ol>
-        </div>
-    </nav>
+    <details class="toc">
+        <summary>Inhaltsverzeichnis</summary>
+        <ol>
+            <li><a href="#verantwortlicher">Verantwortlicher</a></li>
+            <li><a href="#grundsaetze">Grundsätze der Datenverarbeitung</a></li>
+            <li><a href="#website">Website &amp; Hosting</a></li>
+            <li><a href="#formulare">Kontaktformulare</a></li>
+            <li><a href="#terminbuchung">Terminbuchung (Zeeg)</a></li>
+            <li><a href="#bilder">Bildhosting (Cloudinary)</a></li>
+            <li><a href="#ki">KI-Einsatz &amp; Datenverarbeitung</a></li>
+            <li><a href="#klienten">Klientendaten &amp; Karrierebegleitung</a></li>
+            <li><a href="#aufbewahrung">Aufbewahrungsfristen</a></li>
+            <li><a href="#rechte">Ihre Rechte</a></li>
+            <li><a href="#loeschung">Datenlöschungsantrag</a></li>
+            <li><a href="#aenderungen">Änderungen dieser Erklärung</a></li>
+        </ol>
+    </details>
 
     <!-- 1. VERANTWORTLICHER -->
     <div class="ds-block" id="verantwortlicher">
@@ -433,21 +426,6 @@
         });
     });
 
-    // TOC Dropdown
-    const tocToggle = document.getElementById('toc-toggle');
-    const tocBody = document.getElementById('toc-body');
-    tocToggle.addEventListener('click', () => {
-        tocToggle.classList.toggle('open');
-        tocBody.classList.toggle('open');
-        tocToggle.setAttribute('aria-expanded', tocBody.classList.contains('open'));
-    });
-    // Close TOC when a link is clicked
-    tocBody.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-            tocToggle.classList.remove('open');
-            tocBody.classList.remove('open');
-        });
-    });
 </script>
 </body>
 </html>
