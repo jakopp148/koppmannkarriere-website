@@ -349,6 +349,61 @@
         }
         .btn-primary:hover { background: var(--dark-blue); transform: translateY(-2px); }
 
+
+        /* ── SPORT SPLIT BLOCK ── */
+        .sport-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 520px;
+            overflow: hidden;
+        }
+        .sport-text-panel {
+            background: var(--dark-blue);
+            padding: 5rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        .sport-text-panel::after {
+            content: '';
+            position: absolute;
+            top: 0; right: -80px; bottom: 0;
+            width: 80px;
+            background: linear-gradient(to right, var(--dark-blue), transparent);
+            z-index: 2;
+        }
+        .sport-text-panel .eyebrow {
+            font-size: 0.75rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: rgba(255,255,255,0.5); margin-bottom: 1rem;
+        }
+        .sport-text-panel h2 {
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-weight: 800; color: var(--white);
+            letter-spacing: -0.02em; line-height: 1.2;
+            margin-bottom: 1.4rem;
+        }
+        .sport-text-panel p {
+            font-size: 0.97rem; color: rgba(255,255,255,0.7);
+            line-height: 1.9; margin-bottom: 1rem;
+        }
+        .sport-text-panel p:last-child { margin-bottom: 0; }
+        .sport-image-panel {
+            position: relative;
+            overflow: hidden;
+        }
+        .sport-image-panel img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            display: block;
+        }
+        @media (max-width: 900px) {
+            .sport-section { grid-template-columns: 1fr; }
+            .sport-text-panel::after { display: none; }
+            .sport-image-panel { min-height: 320px; }
+        }
         /* ── FOOTER ── */
         footer {
             background: var(--black);
@@ -456,7 +511,7 @@
         <p class="hero-eyebrow">So arbeite ich</p>
         <h1>
             Ich bin Jan.
-            <em>Nicht Agentur. Nicht Konzept. Ich.</em>
+            <em>Nicht Agentur.<br>Nicht Konzept.<br>Ich.</em>
         </h1>
     </div>
 </section>
@@ -473,7 +528,7 @@
 <!-- MINI-BLOCK: LGBTQIA+ -->
 <div class="lgbtq-block">
     <div class="lgbtq-inner">
-        <img src="images/LGBTQIA__FRIENDLY.png" alt="LGBTQIA+ Friendly" class="lgbtq-block-badge">
+        <img src="https://res.cloudinary.com/duglcydsz/image/upload/v1773600181/LGBTQIA_FRIENDLY_by1xim.png" alt="LGBTQIA+ Friendly" class="lgbtq-block-badge">
         <p>„Jeder Mensch hat es verdient, selbstbestimmt zu sein und sich selbst zu verwirklichen – im Berufsleben wie im Privatleben."</p>
     </div>
 </div>
@@ -505,26 +560,23 @@
             <p><strong>Diese Erfahrung ist der Grund, warum ich Karrierebegleitung nicht als Dienstleistung sehe, sondern als Überzeugung.</strong></p>
         </div>
         <div class="story-image">
-            <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_800/Tiefpunkt_Bild_Website_aqjlrb.jpg" alt="Krankenhausaufenthalt November 2021" style="object-position: center top;">
+            <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_800/Tiefpunkt_Bild_Website_aqjlrb.jpg" alt="Krankenhausaufenthalt November 2021" style="object-position: center bottom;">
             <div class="img-caption">November 2021</div>
         </div>
     </div>
 </section>
 
 <!-- BLOCK 3: Powerlifting -->
-<section class="story-section">
-    <div class="story-grid">
-        <div class="story-text">
-            <p class="eyebrow">Sport & Disziplin</p>
-            <h2>Powerlifting als Teil meines Wegs.</h2>
-            <p>Als Konsequenz aus meiner Erkrankung habe ich entschieden, aktiv an meiner Gesundheit zu arbeiten. Erst im Fitnessstudio mit normalem Training. Dann immer fokussierter – bis aus „normalem" Training sich der Weg zum Powerlifting entwickelt hat.</p>
-            <p>Kraftsport hat mir gezeigt, was möglich ist, wenn man realistisch plant und konsequent umsetzt. Kein Blendwerk – nur messbarer Fortschritt über Zeit.</p>
-            <p>Für 2026 und 2027 plane ich meine ersten Wettkämpfe. Nicht weil ich gewinnen muss. Sondern weil ich sehen will, wohin mich dieser Weg führt.</p>
-        </div>
-        <div class="story-image">
-            <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_800/Powerlifting_Bild_Website_yyol6j.png" alt="Jan beim Powerlifting – Deadlift">
-            <div class="img-caption">Training – Deadlift</div>
-        </div>
+<section class="sport-section">
+    <div class="sport-text-panel">
+        <p class="eyebrow">Sport &amp; Disziplin</p>
+        <h2>Powerlifting als Teil meines Wegs.</h2>
+        <p>Als Konsequenz aus meiner Erkrankung habe ich entschieden, aktiv an meiner Gesundheit zu arbeiten. Erst im Fitnessstudio mit normalem Training. Dann immer fokussierter – bis aus „normalem" Training sich der Weg zum Powerlifting entwickelt hat.</p>
+        <p>Kraftsport hat mir gezeigt, was möglich ist, wenn man realistisch plant und konsequent umsetzt. Kein Blendwerk – nur messbarer Fortschritt über Zeit.</p>
+        <p>Für 2026 und 2027 plane ich meine ersten Wettkämpfe. Nicht weil ich gewinnen muss. Sondern weil ich sehen will, wohin mich dieser Weg führt.</p>
+    </div>
+    <div class="sport-image-panel">
+        <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_900/Powerlifting_Bild_Website_yyol6j.png" alt="Jan beim Powerlifting – Deadlift">
     </div>
 </section>
 
@@ -566,11 +618,7 @@
             <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_800/Sportstadion_Bild_Website_xunqva.jpg" alt="Fan im Stadion – 1. FC Köln">
             <div class="gallery-caption">Sportbegeistert – egal ob selbst aktiv oder als Fan</div>
         </div>
-        <div class="gallery-item">
-            <img src="images/Karneval_Bild_Website.jpeg" alt="Jan als Heiland – Karneval">
-            <div class="gallery-caption">Selbstironie zur fünften Jahreszeit</div>
-        </div>
-        <div class="gallery-item">
+<div class="gallery-item">
             <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_800/Katzen_Bild_Website_mt02iz.jpg" alt="Die zwei Katzen – eigentliche Chefs">
             <div class="gallery-caption">Die zwei, die hier wirklich das Sagen haben</div>
         </div>
