@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tippgeber:in werden – Koppmann Karriere</title>
+    <meta name="description" content="Empfehle Koppmann Karriere weiter und erhalte eine Provision bei erfolgreicher Vermittlung – kostenlos, ohne Risiko.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --page-color: #008bba;
-            --page-dark: #006a8e;
+            --primary-blue: #0062b1;
             --dark-blue: #002777;
+            --page-color: #0062b1;
             --white: #ffffff;
             --black: #0a0a0a;
             --light-gray: #f4f6f9;
             --medium-gray: #6b7280;
             --border: #e5e9f0;
+            --green: #16a34a;
+            --green-light: #dcfce7;
         }
-        body { font-family: 'Montserrat', sans-serif; background: var(--white); color: var(--black); overflow-x: hidden; }
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.7; color: var(--black); overflow-x: hidden; font-size: 17px; background: var(--white); }
 
-        /* HEADER */
+        /* ── HEADER ── */
         header { position: fixed; top: 0; left: 0; right: 0; background: var(--dark-blue); z-index: 1000; }
         nav { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; height: 72px; display: flex; justify-content: space-between; align-items: center; }
         .logo { text-decoration: none; display: flex; align-items: center; height: 100%; padding: 8px 0; transition: opacity 0.3s; }
@@ -43,104 +46,557 @@
         .mobile-menu.open { display: flex; }
         .mobile-menu a { text-decoration: none; color: var(--black); font-weight: 600; font-size: 1.3rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
         .mobile-menu a:hover { color: var(--page-color); }
-        .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--page-color); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
+        .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--dark-blue); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
 
-        /* MAIN */
-        main { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 100px 2rem 4rem; background: linear-gradient(160deg, var(--light-gray) 0%, var(--white) 60%); position: relative; overflow: hidden; }
-        main::before { content: ''; position: absolute; top: -120px; right: -120px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, #008bba18 0%, transparent 70%); pointer-events: none; }
-        main::after { content: ''; position: absolute; bottom: -80px; left: -80px; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, #006a8e10 0%, transparent 70%); pointer-events: none; }
+        /* ── HERO ── */
+        .hero { margin-top: 72px; background: linear-gradient(135deg, #001a55 0%, var(--dark-blue) 50%, #003d99 100%); padding: 5rem 2.5rem 5rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 480px; height: 480px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.05); pointer-events: none; }
+        .hero::after { content: ''; position: absolute; top: -50px; right: -50px; width: 280px; height: 280px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.07); pointer-events: none; }
+        .hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero-back { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.5); font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-bottom: 2rem; transition: color 0.2s; }
+        .hero-back:hover { color: var(--white); }
+        .hero-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 1rem; }
+        .hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 900; color: var(--white); letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 1.2rem; }
+        .hero h1 span { color: rgba(255,255,255,0.55); font-weight: 300; display: block; font-size: 0.75em; margin-top: 0.3rem; }
+        .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.8; max-width: 580px; margin-bottom: 2.5rem; }
+        .hero-pills { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+        .hero-pill { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.85); font-size: 0.82rem; font-weight: 600; padding: 0.4rem 1rem; border-radius: 50px; }
 
-        .placeholder-card { max-width: 640px; text-align: center; position: relative; z-index: 1; }
-        .placeholder-icon { font-size: 4rem; margin-bottom: 1.5rem; display: block; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1)); }
-        .placeholder-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--page-color); color: var(--white); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1.5rem; }
-        .placeholder-badge::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--white); border-radius: 50%; animation: pulse 1.5s ease-in-out infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.7); } }
-        .placeholder-card h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; color: var(--black); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.6rem; }
-        .placeholder-card .sub { font-size: 1.05rem; font-weight: 600; color: var(--page-color); margin-bottom: 1.5rem; }
-        .placeholder-card p { font-size: 0.97rem; color: var(--medium-gray); line-height: 1.85; margin-bottom: 2.5rem; max-width: 520px; margin-left: auto; margin-right: auto; }
-        .divider { width: 60px; height: 3px; background: linear-gradient(90deg, var(--page-color), var(--page-dark)); border-radius: 2px; margin: 0 auto 2.5rem; }
-        .btn-back { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.8rem; background: var(--page-color); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; box-shadow: 0 6px 20px #008bba40; }
-        .btn-back:hover { background: var(--page-dark); transform: translateY(-2px); box-shadow: 0 10px 28px #008bba50; }
-        .btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.8rem; background: transparent; color: var(--page-color); font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 700; border: 2px solid var(--page-color); border-radius: 50px; text-decoration: none; transition: all 0.3s; margin-left: 1rem; }
-        .btn-secondary:hover { background: var(--page-color); color: var(--white); }
-        .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        /* ── ANCHOR NAV ── */
+        .anchor-nav { background: var(--white); border-bottom: 2px solid var(--border); position: sticky; top: 72px; z-index: 900; }
+        .anchor-nav-inner { max-width: 900px; margin: 0 auto; padding: 0 2.5rem; display: flex; overflow-x: auto; scrollbar-width: none; }
+        .anchor-nav-inner::-webkit-scrollbar { display: none; }
+        .anchor-btn { padding: 0.85rem 1.1rem; background: none; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--medium-gray); cursor: pointer; white-space: nowrap; transition: all 0.25s; }
+        .anchor-btn:hover, .anchor-btn.active { color: var(--page-color); border-bottom-color: var(--page-color); }
 
-        /* FOOTER */
-        footer { background: #0a0a0a; color: rgba(255,255,255,0.4); padding: 1.5rem 2.5rem; text-align: center; font-size: 0.8rem; }
-        footer a { color: rgba(255,255,255,0.4); text-decoration: none; margin: 0 0.5rem; transition: color 0.2s; }
-        footer a:hover { color: rgba(255,255,255,0.8); }
+        /* ── SECTIONS ── */
+        .sec { padding: 5rem 2.5rem; }
+        .sec.gray { background: var(--light-gray); }
+        .sec.dark { background: var(--dark-blue); }
+        .sec-inner { max-width: 900px; margin: 0 auto; }
+        .sec-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary-blue); margin-bottom: 0.8rem; }
+        .sec-eyebrow.light { color: rgba(255,255,255,0.5); }
+        .sec-title { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 900; color: var(--black); letter-spacing: -0.02em; margin-bottom: 0.8rem; }
+        .sec-title.light { color: var(--white); }
+        .sec-sub { font-size: 1rem; color: var(--medium-gray); line-height: 1.8; margin-bottom: 2.5rem; }
+        .sec-sub.light { color: rgba(255,255,255,0.65); }
 
+        /* ── 3 SCHRITTE ── */
+        .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 1rem; }
+        .step { background: var(--white); border-radius: 20px; padding: 2rem; border-top: 4px solid var(--primary-blue); box-shadow: 0 4px 24px rgba(0,0,0,0.06); position: relative; }
+        .step-num { width: 44px; height: 44px; background: var(--dark-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 900; color: var(--white); margin-bottom: 1.2rem; }
+        .step h3 { font-size: 1rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.6rem; }
+        .step p { font-size: 0.88rem; color: var(--medium-gray); line-height: 1.75; }
+        .step-arrow { position: absolute; right: -1.3rem; top: 50%; transform: translateY(-50%); color: var(--border); font-size: 1.5rem; font-weight: 300; z-index: 1; }
+
+        /* ── PROVISION ── */
+        .provision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+        .provision-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 1.8rem; }
+        .provision-card-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.8rem; }
+        .provision-card-amount { font-size: 2.5rem; font-weight: 900; color: var(--white); letter-spacing: -0.03em; margin-bottom: 0.3rem; }
+        .provision-card-desc { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+        .steuer-box { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 1.4rem 1.8rem; font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.75; }
+        .steuer-box strong { color: var(--white); }
+
+        /* ── SPENDEN ── */
+        .spende-box { background: var(--green-light); border: 1.5px solid #86efac; border-radius: 14px; padding: 1.5rem 1.8rem; margin-top: 2rem; }
+        .spende-box-title { font-size: 0.85rem; font-weight: 800; color: var(--green); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .spende-box p { font-size: 0.88rem; color: #166534; line-height: 1.75; }
+
+        /* ── REGISTRIERUNG ── */
+        .reg-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; }
+        .reg-info { position: sticky; top: 140px; }
+        .reg-info h3 { font-size: 1.1rem; font-weight: 800; color: var(--black); margin-bottom: 1.2rem; }
+        .reg-checklist { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; }
+        .reg-checklist li { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.9rem; color: var(--medium-gray); line-height: 1.6; word-break: normal; }
+        .reg-check { width: 20px; height: 20px; background: var(--dark-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+        .reg-check svg { width: 10px; height: 10px; stroke: var(--white); stroke-width: 2.5; fill: none; }
+        .spam-hint { background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 12px; padding: 1rem 1.2rem; font-size: 0.82rem; color: #78350f; line-height: 1.7; }
+        .spam-hint strong { color: #92400e; }
+        .formbricks-wrap { background: var(--white); border: 1.5px solid var(--border); border-radius: 20px; padding: 2rem; min-height: 400px; }
+
+        /* ── STATUS ── */
+        .status-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+        .status-steps { display: flex; flex-direction: column; gap: 0; }
+        .status-step { display: flex; gap: 1.2rem; align-items: flex-start; padding: 1.2rem 0; border-bottom: 1px solid var(--border); }
+        .status-step:last-child { border-bottom: none; }
+        .status-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+        .dot-gray { background: #d1d5db; }
+        .dot-blue { background: var(--primary-blue); }
+        .dot-green { background: var(--green); }
+        .dot-orange { background: #f59e0b; }
+        .status-step-content h4 { font-size: 0.92rem; font-weight: 700; color: var(--black); margin-bottom: 0.2rem; }
+        .status-step-content p { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.6; }
+
+        .status-query-box { background: var(--light-gray); border-radius: 20px; padding: 2rem; }
+        .status-query-box h3 { font-size: 1rem; font-weight: 800; color: var(--black); margin-bottom: 0.5rem; }
+        .status-query-box p { font-size: 0.88rem; color: var(--medium-gray); margin-bottom: 1.5rem; line-height: 1.7; }
+        .status-input-wrap { display: flex; gap: 0.8rem; flex-direction: column; }
+        .status-input { width: 100%; padding: 0.85rem 1.2rem; background: var(--white); border: 2px solid var(--border); border-radius: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 500; color: var(--black); transition: border-color 0.2s; }
+        .status-input:focus { outline: none; border-color: var(--primary-blue); }
+        .status-btn { width: 100%; padding: 0.9rem 1.5rem; background: var(--dark-blue); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; transition: all 0.3s; }
+        .status-btn:hover { background: var(--primary-blue); }
+        .status-result { margin-top: 1.2rem; padding: 1rem 1.2rem; border-radius: 10px; font-size: 0.88rem; line-height: 1.7; display: none; }
+        .status-result.success { background: var(--green-light); color: #166534; border: 1px solid #86efac; }
+        .status-result.info { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+        .status-result.error { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+        .status-hint { margin-top: 1rem; font-size: 0.78rem; color: var(--medium-gray); line-height: 1.6; }
+
+        /* ── FAQ ── */
+        .faq-list { display: flex; flex-direction: column; gap: 0.8rem; }
+        .faq-item { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+        .faq-q { width: 100%; padding: 1.2rem 1.6rem; background: none; border: none; text-align: left; font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--dark-blue); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; transition: background 0.2s; }
+        .faq-q:hover { background: var(--light-gray); }
+        .faq-icon { font-size: 1.3rem; color: var(--primary-blue); transition: transform 0.3s; font-weight: 300; flex-shrink: 0; }
+        .faq-item.open .faq-icon { transform: rotate(45deg); }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-a-inner { padding: 0 1.6rem 1.4rem; font-size: 0.92rem; color: var(--medium-gray); line-height: 1.85; }
+
+        /* ── CTA STRIP ── */
+        .cta-strip { padding: 5rem 2.5rem; background: linear-gradient(135deg, #001a55, var(--dark-blue)); text-align: center; }
+        .cta-strip h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 900; color: var(--white); margin-bottom: 0.8rem; letter-spacing: -0.02em; }
+        .cta-strip p { font-size: 1rem; color: rgba(255,255,255,0.65); margin-bottom: 2rem; }
+        .btn-white { display: inline-block; padding: 1rem 2.4rem; background: var(--white); color: var(--dark-blue); font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.2); }
+
+        /* ── FOOTER ── */
+        footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 4rem 2.5rem 2rem; }
+        .footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem; margin-bottom: 3rem; }
+        .footer-section h4 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1.4rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.7rem; }
+        .footer-section a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--white); }
+        .footer-section p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
+        .footer-social-icons { display: flex; gap: 0.8rem; margin-top: 0.5rem; }
+        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
+        .footer-social-icon img { width: 22px; height: 22px; object-fit: contain; display: block; }
+        .footer-social-icon:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .steps { grid-template-columns: 1fr; }
+            .step-arrow { display: none; }
+            .reg-layout { grid-template-columns: 1fr; }
+            .reg-info { position: static; }
+            .status-layout { grid-template-columns: 1fr; }
+            .provision-grid { grid-template-columns: 1fr; }
+        }
         @media (max-width: 768px) {
             nav ul, .header-cta-btn { display: none; }
             .burger { display: flex; }
-            .btn-secondary { margin-left: 0; }
+            .footer-container { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .footer-container { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
     <nav>
         <a href="../index.html" class="logo"><img src="../images/Logo_weiß.png" alt="Koppmann Karriere"></a>
-                <ul>
+        <ul>
             <li><a href="../unternehmen.html">Für Unternehmen</a></li>
-            <li><a href="../fuer-arbeitnehmende.html">Für Arbeitnehmende</a></li>
+            <li><a href="../arbeitnehmende.html">Für Arbeitnehmende</a></li>
             <li><a href="../karriere-kosmos.html">Karriere-Kosmos</a></li>
             <li><a href="../so-arbeite-ich.html">So Arbeite Ich</a></li>
             <li><a href="../kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
         </ul>
-        <a href="https://zeeg.me/koppmannkarriere" class="header-cta-btn" target="_blank" rel="noopener">Erstgespräch vereinbaren</a>
+        <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="header-cta-btn">Erstgespräch vereinbaren</a>
         <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
     </nav>
 </header>
 
 <div class="mobile-menu" id="mobile-menu">
     <a href="../unternehmen.html">Für Unternehmen</a>
-    <a href="../fuer-arbeitnehmende.html">Für Arbeitnehmende</a>
+    <a href="../arbeitnehmende.html">Für Arbeitnehmende</a>
     <a href="../karriere-kosmos.html">Karriere-Kosmos</a>
     <a href="../so-arbeite-ich.html">So Arbeite Ich</a>
     <a href="../kontakt-einstieg.html">Kontakt &amp; Einstieg</a>
     <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="mobile-cta">Erstgespräch vereinbaren</a>
 </div>
 
-<main>
-    <div class="placeholder-card">
-        <span class="placeholder-icon">💡</span>
-        <div class="placeholder-badge">In Entwicklung</div>
-        <h1>Tippgeber:in werden</h1>
-        <p class="sub">Empfehlen, begleiten, profitieren</p>
-        <div class="divider"></div>
-        <p>Hier entsteht das vollständige Tippgeber-System: Registrierung, persönlicher Empfehlungscode, QR-Code-Generator und dein persönliches Status-Dashboard. Du siehst jederzeit, was aus deiner Empfehlung geworden ist – und wann deine Provision ausgezahlt wird.</p>
-        <div class="btn-group">
-            <a href="../index.html" class="btn-back">← Zurück zur Startseite</a>
-            <a href="https://zeeg.me/koppmannkarriere" class="btn-secondary" target="_blank" rel="noopener">Erstgespräch vereinbaren</a>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <a href="../kontakt-einstieg.html" class="hero-back">← Zurück zu Kontakt &amp; Einstieg</a>
+        <p class="hero-eyebrow">Tippgeberschaft · Privatpersonen</p>
+        <h1>Empfehle weiter.<span>Profitiere mit.</span></h1>
+        <p class="hero-sub">Du kennst jemanden der Karrierebegleitung gebrauchen könnte? Teile deinen persönlichen Code – und erhalte eine Provision wenn die Vermittlung erfolgreich ist. Ohne Aufwand. Ohne Risiko.</p>
+        <div class="hero-pills">
+            <span class="hero-pill">💶 100 € bei Ausbildungsvermittlung</span>
+            <span class="hero-pill">💶 200 € bei Fachkraftvermittlung</span>
+            <span class="hero-pill">✅ Provision bei Erfolg</span>
         </div>
     </div>
-</main>
 
+</section>
+
+<!-- ANCHOR NAV -->
+<div class="anchor-nav">
+    <div class="anchor-nav-inner">
+        <button class="anchor-btn active" data-target="sec-wie">📋 So geht's</button>
+        <button class="anchor-btn" data-target="sec-provision">💶 Provision</button>
+        <button class="anchor-btn" data-target="sec-registrierung">✍️ Registrieren</button>
+        <button class="anchor-btn" data-target="sec-status">📊 Status</button>
+        <button class="anchor-btn" data-target="sec-faq">❓ FAQ</button>
+    </div>
+</div>
+
+<!-- WIE ES FUNKTIONIERT -->
+<section class="sec gray" id="sec-wie">
+    <div class="sec-inner">
+        <p class="sec-eyebrow">In drei Schritten</p>
+        <h2 class="sec-title">So einfach funktioniert es</h2>
+        <p class="sec-sub">Kein Aufwand, keine Verpflichtung – nur weiterempfehlen und auf die Bestätigung warten.</p>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h3>Registrieren &amp; Code erhalten</h3>
+                <p>Du registrierst dich einmalig mit deiner E-Mail-Adresse. Du erhältst automatisch deinen persönlichen Empfehlungscode per Mail – zusammen mit einem QR-Code-Link den du direkt teilen kannst.</p>
+                <span class="step-arrow">›</span>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h3>Code teilen</h3>
+                <p>Schick deinen Code oder Link an die Person die du empfehlen möchtest. Sie bucht darüber ein kostenloses Erstgespräch – fertig. Mehr musst du nicht tun.</p>
+                <span class="step-arrow">›</span>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h3>Provision erhalten</h3>
+                <p>Wenn die empfohlene Person erfolgreich vermittelt wird und das Unternehmen bezahlt hat, melde ich mich bei dir – mit der Auszahlungsinfo und deiner Provision.</p>
+            </div>
+        </div>
+
+        <div class="spende-box">
+            <div class="spende-box-title">🌱 Spendenoption</div>
+            <p>Du möchtest deine Provision lieber spenden? Kein Problem – trag das einfach bei der Registrierung ein. Du bekommst auf Wunsch eine Spendenquittung per Mail – direkt verwendbar für deine Steuererklärung. Die Spende geht an einen von dir wählbaren gemeinnützigen Zweck.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PROVISION -->
+<section class="sec dark" id="sec-provision">
+    <div class="sec-inner">
+        <p class="sec-eyebrow light">Vergütung</p>
+        <h2 class="sec-title light">Was du verdienst</h2>
+        <p class="sec-sub light">Die Provision wird fällig sobald das Unternehmen bezahlt hat – bis zu 10 Werktage danach erhältst du deine Auszahlung.</p>
+
+        <div class="provision-grid">
+            <div class="provision-card">
+                <div class="provision-card-label">🎓 Ausbildungsvermittlung</div>
+                <div class="provision-card-amount">100 €</div>
+                <div class="provision-card-desc">Einmalige Provision bei erfolgreicher Vermittlung eines Ausbildungsplatzes.</div>
+            </div>
+            <div class="provision-card">
+                <div class="provision-card-label">👤 Fachkraftvermittlung</div>
+                <div class="provision-card-amount">200 €</div>
+                <div class="provision-card-desc">Einmalige Provision bei erfolgreicher Vermittlung einer Fachkraft in eine Festanstellung.</div>
+            </div>
+        </div>
+
+        <div class="steuer-box">
+            <strong>Steuerlicher Hinweis:</strong> Die Freigrenze für sonstige Einkünfte (§ 22 EStG) liegt bei <strong>256 € pro Jahr</strong>. Provisionen unterhalb dieser Grenze sind für Privatpersonen steuerfrei. Ab 257 € ist der gesamte Betrag steuerpflichtig und in der Steuererklärung anzugeben. Bei mehr als einer Vermittlung pro Jahr empfehlen wir, dies unter „sonstige Einkünfte" anzugeben. Die steuerliche Verantwortung liegt beim Tippgeber.
+        </div>
+    </div>
+</section>
+
+<!-- REGISTRIERUNG -->
+<section class="sec" id="sec-registrierung">
+    <div class="sec-inner">
+        <p class="sec-eyebrow">Jetzt starten</p>
+        <h2 class="sec-title">Registrierung</h2>
+        <p class="sec-sub">Einmalige Anmeldung – danach hast du deinen persönlichen Code und kannst sofort empfehlen.</p>
+
+        <div class="reg-layout">
+            <div class="reg-info">
+                <h3>Was du brauchst</h3>
+                <ul class="reg-checklist">
+                    <li>
+                        <span class="reg-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></span>
+                        Deine E-Mail-Adresse – darüber erhältst du deinen Code und alle Status-Updates
+                    </li>
+                    <li>
+                        <span class="reg-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></span>
+                        Optional: PayPal-Adresse oder Bankdaten für die Auszahlung – kannst du auch später nachreichen
+                    </li>
+                    <li>
+                        <span class="reg-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></span>
+                        Optional: Wunsch zur Spende statt Auszahlung – inkl. Spendenquittung per Mail
+                    </li>
+                    <li>
+                        <span class="reg-check"><svg viewBox="0 0 10 10"><polyline points="2,6 4.5,8 8,2"/></svg></span>
+                        Zustimmung zu den <a href="../transparenz/datenschutz.html" style="color:var(--primary-blue);">Datenschutzhinweisen</a> und den <a href="#" style="color:var(--primary-blue);">Tippgeber-Bedingungen</a>
+                    </li>
+                </ul>
+
+                <div class="spam-hint">
+                    <strong>📬 Hinweis:</strong> Dein Code wird automatisch per Mail verschickt. Bitte schau auch im <strong>Spam-Ordner</strong> nach, falls du nach wenigen Minuten keine Mail erhalten hast. Du kannst den Code jederzeit erneut anfordern.<br><br>
+                    Bei Fragen melde dich gerne direkt: <a href="mailto:jan@koppmannkarriere.de" style="color:#92400e; font-weight:700;">jan@koppmannkarriere.de</a>
+                </div>
+            </div>
+
+            <div class="formbricks-wrap">
+                <!-- Formbricks Embed – bitte Survey-ID eintragen -->
+                <div id="formbricks-tippgeber" style="min-height:350px; display:flex; align-items:center; justify-content:center;">
+                    <div style="text-align:center; color:var(--medium-gray);">
+                        <div style="font-size:2rem; margin-bottom:1rem;">📋</div>
+                        <div style="font-size:0.85rem; font-weight:600;">Formbricks-Formular wird hier eingebettet</div>
+                        <div style="font-size:0.78rem; margin-top:0.5rem; color:#9ca3af;">Bitte Survey-ID in den Script-Tag eintragen</div>
+                    </div>
+                </div>
+                <!-- Formbricks SDK -->
+                <!-- <script type="text/javascript">
+                !function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://unpkg.com/@formbricks/js@^1.5.1/dist/index.umd.js";var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e),t.addEventListener("load",function(){window.formbricks&&window.formbricks.init({environmentId:"DEINE_ENVIRONMENT_ID",apiHost:"https://app.formbricks.com",userId:"tippgeber-anonym"})})}();
+                </script> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATUS ABFRAGEN -->
+<section class="sec gray" id="sec-status">
+    <div class="sec-inner">
+        <p class="sec-eyebrow">Dein Überblick</p>
+        <h2 class="sec-title">Status deiner Empfehlung</h2>
+        <p class="sec-sub">Gib deine E-Mail-Adresse ein – wir schicken dir den aktuellen Stand deiner Empfehlung direkt per Mail.</p>
+
+        <div class="status-layout">
+            <div>
+                <h3 style="font-size:1rem; font-weight:800; color:var(--black); margin-bottom:1.5rem;">Was dich erwartet</h3>
+                <div class="status-steps">
+                    <div class="status-step">
+                        <span class="status-dot dot-blue"></span>
+                        <div class="status-step-content">
+                            <h4>Erstgespräch erfolgt</h4>
+                            <p>Die von dir empfohlene Person hat ihr Erstgespräch wahrgenommen.</p>
+                        </div>
+                    </div>
+                    <div class="status-step">
+                        <span class="status-dot dot-blue"></span>
+                        <div class="status-step-content">
+                            <h4>Wird begleitet</h4>
+                            <p>Die Karrierebegleitung ist aktiv gestartet.</p>
+                        </div>
+                    </div>
+                    <div class="status-step">
+                        <span class="status-dot dot-green"></span>
+                        <div class="status-step-content">
+                            <h4>Vermittlung erfolgt 🎉</h4>
+                            <p>Glückwunsch – die Person wurde erfolgreich vermittelt. Deine Provision ist auf dem Weg.</p>
+                        </div>
+                    </div>
+                    <div class="status-step">
+                        <span class="status-dot dot-orange"></span>
+                        <div class="status-step-content">
+                            <h4>Zahlung angekündigt</h4>
+                            <p>Die Auszahlung deiner Provision wird gerade vorbereitet.</p>
+                        </div>
+                    </div>
+                    <div class="status-step">
+                        <span class="status-dot dot-green"></span>
+                        <div class="status-step-content">
+                            <h4>Provision ausgezahlt ✅</h4>
+                            <p>Deine Provision wurde überwiesen – du erhältst einen Beleg per Mail.</p>
+                        </div>
+                    </div>
+                </div>
+                <p style="font-size:0.82rem; color:var(--medium-gray); margin-top:1.5rem; line-height:1.7;">
+                    Keine Namen werden geteilt – du siehst nur den Statuswechsel. So bleibt alles DSGVO-konform.
+                </p>
+            </div>
+
+            <div class="status-query-box">
+                <h3>Status per Mail abfragen</h3>
+                <p>Gib deine registrierte E-Mail-Adresse ein – du bekommst den aktuellen Stand deiner Empfehlungen innerhalb weniger Minuten zugeschickt.</p>
+                <div class="status-input-wrap">
+                    <input type="email" class="status-input" id="status-email" placeholder="deine@email.de">
+                    <button class="status-btn" id="status-btn" onclick="handleStatusAbfrage()">Status per Mail anfordern →</button>
+                </div>
+                <div class="status-result" id="status-result"></div>
+                <p class="status-hint">
+                    Die Mail-Abfrage läuft über ein automatisiertes System und ist in wenigen Minuten in deinem Postfach. Falls du innerhalb von 10 Minuten nichts erhältst, prüfe deinen Spam-Ordner oder schreib direkt an <a href="/cdn-cgi/l/email-protection#cda7aca38da6a2bdbda0aca3a3a6acbfbfa4a8bfa8e3a9a8" style="color:var(--primary-blue);"><span class="__cf_email__" data-cfemail="2c464d426c47435c5c414d4242474d5e5e45495e49024849">[email&#160;protected]</span></a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="sec-faq">
+    <div class="sec-inner">
+        <p class="sec-eyebrow">Häufige Fragen</p>
+        <h2 class="sec-title">FAQ</h2>
+        <p class="sec-sub">Alles was du wissen musst – transparent und ehrlich.</p>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-q">Wann genau bekomme ich meine Provision? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Die Provision wird fällig, sobald das vermittelte Unternehmen die Rechnung bezahlt hat. Du erhältst deine Auszahlung innerhalb von 10 Werktagen nach Zahlungseingang – und wirst vorher per Mail informiert.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Was passiert, wenn die Vermittlung doch nicht klappt? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Kein Stress – die Provision entfällt einfach. Du hast kein Risiko und keine Verpflichtung. Das Modell gilt ausschließlich bei erfolgreicher Vermittlung und Zahlung durch das Unternehmen.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Ich habe meinen Code nicht erhalten – was tun? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Bitte prüfe zuerst deinen Spam-Ordner – die Bestätigungsmail landet manchmal dort. Falls du nach 10 Minuten noch nichts erhalten hast, schreib einfach an <a href="/cdn-cgi/l/email-protection#452f242b052e2a353528242b2b2e2437372c2037206b2120" style="color:var(--primary-blue);"><span class="__cf_email__" data-cfemail="7812191638131708081519161613190a0a111d0a1d561c1d">[email&#160;protected]</span></a> – ich schicke dir deinen Code manuell zu.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Kann ich mehrere Personen empfehlen? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Ja, absolut – dein Code ist unbegrenzt verwendbar. Jede erfolgreiche Vermittlung zählt separat. Bitte beachte aber den steuerlichen Hinweis: Ab 257 € Provision pro Jahr musst du das in deiner Steuererklärung angeben.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Ich bin minderjährig – kann ich trotzdem mitmachen? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Ja, du kannst dich registrieren und deinen Code teilen – dein Code ist sofort aktiv.<br><br>Bei der Auszahlung gibt es zwei Optionen: Entweder du wartest bis zu deinem 18. Geburtstag (die Provision verfällt nicht – stell dir das als Geburtstagsgeschenk vor 🎂), oder die Auszahlung erfolgt in Abstimmung mit einem Erziehungsberechtigten an dessen Konto. Eine direkte Auszahlung an Minderjährige ist leider nicht möglich.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Wie funktioniert die Spendenoption? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Du kannst bei der Registrierung angeben, dass du deine Provision spenden möchtest – statt einer Auszahlung. Auf Wunsch erhältst du eine Spendenquittung per Mail, die du für deine Steuererklärung nutzen kannst. Die Spende betrifft nur den Betrag der über dem Steuerfreibetrag liegt.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Ich mache keine Steuererklärung – gilt die 256 €-Grenze trotzdem für mich? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Ja – die Freigrenze von 256 € gilt unabhängig davon, ob du eine Steuererklärung machst oder nicht. Sie ist gesetzlich verankert (§ 22 Nr. 3 EStG).<br><br>
+                    Für Schüler:innen, Azubis und Studierende ohne weiteres Einkommen gilt außerdem: Selbst wenn die Provision über 256 € liegt, ist sie oft faktisch steuerfrei – weil das Gesamteinkommen unter dem Grundfreibetrag (~11.784 € pro Jahr) bleibt.<br><br>
+                    <strong>Wichtig:</strong> Das ist keine Steuerberatung – bei konkreten Fragen bitte einen Steuerberater oder das Finanzamt fragen.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Was passiert mit meinen Daten? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Deine Daten werden ausschließlich zur Verwaltung des Tippgeber-Systems genutzt. An KI-Systeme werden keine persönlichen Daten weitergegeben – nur anonymisierte Nummern. Tippgeber-Daten werden nach vollständiger Auszahlung für 6 Jahre aufbewahrt (steuerrelevant). Konten ohne Empfehlung werden nach 3 Jahren automatisch gelöscht. Mehr dazu in der <a href="../transparenz/datenschutz.html" style="color:var(--primary-blue);">Datenschutzerklärung</a>.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Ich habe meine E-Mail-Adresse geändert – was nun? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Schick eine Mail von deiner <strong>bisherigen E-Mail-Adresse</strong> an <a href="mailto:jan@koppmannkarriere.de" style="color:var(--primary-blue);">jan@koppmannkarriere.de</a> mit deinem Code und der neuen Adresse. Ich schicke dir dann eine Bestätigungsanfrage an deine alte Adresse – erst nach deiner Bestätigung wird die Änderung durchgeführt.<br><br>Dieser Schritt schützt dich davor, dass jemand anderes deinen Code auf eine fremde Adresse umleitet.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+    <h2>Noch Fragen?</h2>
+    <p>Meld dich einfach – ich antworte persönlich.</p>
+    <a href="/cdn-cgi/l/email-protection#3b515a557b50544b4b565a5555505a4949525e495e155f5e" class="btn-white"><span class="__cf_email__" data-cfemail="4b212a250b20243b3b262a2525202a3939222e392e652f2e">[email&#160;protected]</span></a>
+</section>
+
+<!-- FOOTER -->
 <footer>
-    <p>
-        © 2026 Jan Koppmann – Karrierebegleitung &nbsp;·&nbsp;
-        <a href="../transparenz/impressum.html">Impressum</a>
-        <a href="../transparenz/datenschutz.html">Datenschutz</a>
-    </p>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="../index.html">Start</a></li>
+                <li><a href="../unternehmen.html">Für Unternehmen</a></li>
+                <li><a href="../arbeitnehmende.html">Für Arbeitnehmende</a></li>
+                <li><a href="../karriere-kosmos.html">Karriere-Kosmos</a></li>
+                <li><a href="../so-arbeite-ich.html">So Arbeite Ich</a></li>
+                <li><a href="../kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Kontakt</h4>
+            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br><a href="/cdn-cgi/l/email-protection#2842494668434758584549464643495a5a414d5a4d064c4d"><span class="__cf_email__" data-cfemail="0862696648636778786569666663697a7a616d7a6d266c6d">[email&#160;protected]</span></a></p>
+            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br><a href="tel:+4916034028920">0160 340 2892</a></p>
+            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Adresse</strong><br>Neuhurden 22,<br>51491 Overath</p>
+        </div>
+        <div class="footer-section">
+            <h4>Social Media</h4>
+            <div class="footer-social-icons">
+                <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="footer-social-icon"><img src="../images/Instagram_Icon.png" alt="Instagram"></a>
+                <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon"><img src="../images/Tiktok_Icon.png" alt="TikTok"></a>
+                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon"><img src="../images/YouTube_Icon.png" alt="YouTube"></a>
+                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon"><img src="../images/Linkedin_Icon.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h4>Rechtliches</h4>
+            <ul>
+                <li><a href="../transparenz/impressum.html">Impressum</a></li>
+                <li><a href="../transparenz/datenschutz.html">Datenschutz</a></li>
+            </ul>
+            <h4 style="margin-top:1.8rem;">Tippgeber:in werden</h4>
+            <p><a href="tippgeber.html">Weiterempfehlen &amp; Provision erhalten</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Jan Koppmann – Karrierebegleitung</p>
+        <p>Made with ♥ in Overath</p>
+    </div>
 </footer>
 
-<script>
-    const burger = document.getElementById('burger');
-    const mobileMenu = document.getElementById('mobile-menu');
-    burger.addEventListener('click', () => {
-        burger.classList.toggle('open');
-        mobileMenu.classList.toggle('open');
-        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── BURGER ──
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobile-menu');
+burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-menu a').forEach(l => l.addEventListener('click', () => {
+    burger.classList.remove('open'); mobileMenu.classList.remove('open'); document.body.style.overflow = '';
+}));
+
+// ── ANCHOR NAV ──
+const anchorBtns = document.querySelectorAll('.anchor-btn');
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 160) current = sec.id; });
+    anchorBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.target === current));
+});
+anchorBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.getElementById(btn.dataset.target)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            burger.classList.remove('open');
-            mobileMenu.classList.remove('open');
-            document.body.style.overflow = '';
+});
+
+// ── FAQ ──
+document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => {
+            i.classList.remove('open');
+            i.querySelector('.faq-a').style.maxHeight = null;
         });
+        if (!isOpen) {
+            item.classList.add('open');
+            const a = item.querySelector('.faq-a');
+            a.style.maxHeight = a.scrollHeight + 'px';
+        }
     });
-</script>
-</body>
-</html>
+});
+
+// ── STATUS ABFRAGE ──
+function handleStatusAbfrage() {
+    const email = document.getElementById('status-email').value.trim();
+    const result = document.getElementById('status-result');
+    const btn = document.getElementById('status-btn');
+
+    if (!email || !email.includes('@')) {
+        result.className = 'status-result error';
+        result.style.display = 'block';
+        result.textContent = 'Bitte gib eine gültige E-Mail-Adresse ein.';
+        return;
+    }
+
+    btn.textContent = 'Wird gesendet...';
+    btn.disabled = true;
+
+    // Webhook an n8n – URL bitte eintragen
+    const N8N_WEBHOOK = 'https://DEINE-N8N-URL/webhook/tippgeber-status';
+
+    fetch(N8N_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+    })
+    .then(res => {
+       
