@@ -6,22 +6,26 @@
     <title>Guides & Tools – Koppmann Karriere</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         :root {
-            --page-color: #008bba;
-            --page-dark: #006a8e;
+            --primary-blue: #0062b1;
             --dark-blue: #002777;
+            --page-color: #008bba;
+            --page-color-dark: #006a8e;
+            --page-color-light: #e0f6fb;
             --white: #ffffff;
             --black: #0a0a0a;
             --light-gray: #f4f6f9;
             --medium-gray: #6b7280;
             --border: #e5e9f0;
         }
-        body { font-family: 'Montserrat', sans-serif; background: var(--white); color: var(--black); overflow-x: hidden; }
 
-        /* HEADER */
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.8; color: var(--black); overflow-x: hidden; font-size: 17px; background: var(--white); }
+
+        /* ── HEADER ── */
         header { position: fixed; top: 0; left: 0; right: 0; background: var(--dark-blue); z-index: 1000; }
         nav { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; height: 72px; display: flex; justify-content: space-between; align-items: center; }
         .logo { text-decoration: none; display: flex; align-items: center; height: 100%; padding: 8px 0; transition: opacity 0.3s; }
@@ -30,8 +34,8 @@
         nav ul { display: flex; list-style: none; gap: 1.8rem; align-items: center; }
         nav ul li a { text-decoration: none; color: rgba(255,255,255,0.88); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.02em; transition: color 0.3s; position: relative; white-space: nowrap; }
         nav ul li a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--white); transition: width 0.3s; }
-        nav ul li a:hover { color: var(--white); }
-        nav ul li a:hover::after { width: 100%; }
+        nav ul li a:hover, nav ul li a.active { color: var(--white); }
+        nav ul li a:hover::after, nav ul li a.active::after { width: 100%; }
         .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.88); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.6); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
         .header-cta-btn:hover { background: var(--white); color: var(--dark-blue); border-color: var(--white); }
         .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
@@ -44,89 +48,437 @@
         .mobile-menu a { text-decoration: none; color: var(--black); font-weight: 600; font-size: 1.3rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
         .mobile-menu a:hover { color: var(--page-color); }
         .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--page-color); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
+        .breadcrumb a { color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
+        .breadcrumb a:hover { color: var(--white); }
+        .breadcrumb span { opacity: 0.5; }
 
-        /* MAIN */
-        main { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 100px 2rem 4rem; background: linear-gradient(160deg, var(--light-gray) 0%, var(--white) 60%); position: relative; overflow: hidden; }
-        main::before { content: ''; position: absolute; top: -120px; right: -120px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, #008bba18 0%, transparent 70%); pointer-events: none; }
-        main::after { content: ''; position: absolute; bottom: -80px; left: -80px; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, #006a8e10 0%, transparent 70%); pointer-events: none; }
+        /* ── HERO ── */
+        .hero { background: linear-gradient(135deg, var(--dark-blue) 0%, var(--page-color-dark) 60%, var(--page-color) 100%); padding: 4rem 2.5rem 0; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 60px 60px; }
+        .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 2; padding-bottom: 3.5rem; }
+        .hero-back { display: inline-flex; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.82rem; font-weight: 600; margin-bottom: 1.5rem; transition: color 0.2s; }
+        .hero-back:hover { color: var(--white); }
+        .hero-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+        .hero h1 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; color: var(--white); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1rem; }
+        .hero-desc { font-size: 1rem; color: rgba(255,255,255,0.72); line-height: 1.8; max-width: 620px; }
+        .hero-wave { line-height: 0; }
+        .hero-wave svg { display: block; width: 100%; }
 
-        .placeholder-card { max-width: 640px; text-align: center; position: relative; z-index: 1; }
-        .placeholder-icon { font-size: 4rem; margin-bottom: 1.5rem; display: block; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1)); }
-        .placeholder-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--page-color); color: var(--white); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1.5rem; }
-        .placeholder-badge::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--white); border-radius: 50%; animation: pulse 1.5s ease-in-out infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.7); } }
-        .placeholder-card h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; color: var(--black); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.6rem; }
-        .placeholder-card .sub { font-size: 1.05rem; font-weight: 600; color: var(--page-color); margin-bottom: 1.5rem; }
-        .placeholder-card p { font-size: 0.97rem; color: var(--medium-gray); line-height: 1.85; margin-bottom: 2.5rem; max-width: 520px; margin-left: auto; margin-right: auto; }
-        .divider { width: 60px; height: 3px; background: linear-gradient(90deg, var(--page-color), var(--page-dark)); border-radius: 2px; margin: 0 auto 2.5rem; }
-        .btn-back { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.8rem; background: var(--page-color); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; box-shadow: 0 6px 20px #008bba40; }
-        .btn-back:hover { background: var(--page-dark); transform: translateY(-2px); box-shadow: 0 10px 28px #008bba50; }
-        .btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.8rem; background: transparent; color: var(--page-color); font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 700; border: 2px solid var(--page-color); border-radius: 50px; text-decoration: none; transition: all 0.3s; margin-left: 1rem; }
-        .btn-secondary:hover { background: var(--page-color); color: var(--white); }
-        .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        /* ── ANCHOR NAV ── */
+        .anchor-nav { position: sticky; top: 72px; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .anchor-nav-inner { max-width: 1000px; margin: 0 auto; padding: 0 2.5rem; display: flex; overflow-x: auto; }
+        .anchor-btn { padding: 1rem 1.4rem; background: none; border: none; border-bottom: 3px solid transparent; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--medium-gray); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+        .anchor-btn:hover { color: var(--page-color); }
+        .anchor-btn.active { color: var(--page-color); border-bottom-color: var(--page-color); }
 
-        /* FOOTER */
-        footer { background: #0a0a0a; color: rgba(255,255,255,0.4); padding: 1.5rem 2.5rem; text-align: center; font-size: 0.8rem; }
-        footer a { color: rgba(255,255,255,0.4); text-decoration: none; margin: 0 0.5rem; transition: color 0.2s; }
-        footer a:hover { color: rgba(255,255,255,0.8); }
+        /* ── SECTIONS ── */
+        .sec-wrap { max-width: 1000px; margin: 0 auto; padding: 4.5rem 2.5rem; }
+        .sec-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: var(--black); letter-spacing: -0.02em; margin-bottom: 0.6rem; }
+        .sec-sub { font-size: 0.97rem; color: var(--medium-gray); line-height: 1.7; margin-bottom: 2.5rem; }
 
+        /* ── TOOL CARDS ── */
+        .tool-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+        .tool-kachel { background: var(--white); border: 1.5px solid var(--border); border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; gap: 0.7rem; transition: box-shadow 0.25s, transform 0.25s; }
+        .tool-kachel:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.09); transform: translateY(-3px); }
+        .tool-kachel.highlight { border-color: var(--page-color); border-width: 2px; background: var(--page-color-light); }
+        .tool-kachel-icon { width: 50px; height: 50px; background: var(--page-color-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+        .tool-kachel.highlight .tool-kachel-icon { background: rgba(0,139,186,0.18); }
+        .tool-kachel-type { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--page-color); }
+        .tool-kachel h3 { font-size: 1.05rem; font-weight: 800; color: var(--black); line-height: 1.3; }
+        .tool-kachel p { font-size: 0.9rem; color: var(--medium-gray); line-height: 1.7; flex: 1; }
+        .tool-kachel-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .tool-tag { font-size: 0.73rem; font-weight: 600; padding: 0.2rem 0.65rem; border-radius: 50px; background: var(--light-gray); color: var(--black); }
+        .tool-kachel.highlight .tool-tag { background: rgba(0,139,186,0.12); }
+        .btn-tool { display: inline-block; padding: 0.75rem 1.6rem; background: var(--page-color); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer; align-self: flex-start; }
+        .btn-tool:hover { background: var(--page-color-dark); transform: translateY(-2px); }
+        .btn-tool-disabled { background: var(--light-gray); color: var(--medium-gray); cursor: not-allowed; }
+        .btn-tool-disabled:hover { transform: none; background: var(--light-gray); }
+        .coming-badge { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 0.25rem 0.7rem; background: #fef3c7; color: #92400e; border-radius: 50px; border: 1px solid #fde68a; align-self: flex-start; }
+
+        /* ── SCAN EMBED ── */
+        .scan-embed-section { background: var(--light-gray); }
+        .scan-embed-inner { max-width: 800px; margin: 0 auto; padding: 4rem 2.5rem; text-align: center; }
+        .scan-embed-inner h2 { font-size: 1.5rem; font-weight: 800; color: var(--black); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+        .scan-embed-inner > p { font-size: 0.95rem; color: var(--medium-gray); margin-bottom: 2rem; }
+        .formbricks-wrapper { background: var(--white); border-radius: 16px; border: 1.5px solid var(--border); overflow: hidden; min-height: 400px; }
+        .formbricks-wrapper iframe { width: 100%; height: 600px; border: none; display: block; }
+        .formbricks-placeholder { padding: 4rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+        .formbricks-placeholder .placeholder-icon { font-size: 3rem; }
+        .formbricks-placeholder h3 { font-size: 1.1rem; font-weight: 700; color: var(--black); }
+        .formbricks-placeholder p { font-size: 0.9rem; color: var(--medium-gray); max-width: 420px; }
+        .fallback-btn { display: inline-block; padding: 0.8rem 1.8rem; background: var(--page-color); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; margin-top: 0.5rem; }
+        .fallback-btn:hover { background: var(--page-color-dark); }
+
+        /* ── JAN BEGLEITUNG ── */
+        .jan-section { background: var(--light-gray); }
+        .jan-wrap { max-width: 1000px; margin: 0 auto; padding: 4.5rem 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .jan-text h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 900; color: var(--black); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.2rem; }
+        .jan-text h2 span { color: var(--page-color); }
+        .jan-text p { font-size: 0.95rem; color: var(--medium-gray); line-height: 1.85; margin-bottom: 1rem; }
+        .jan-text p strong { color: var(--black); }
+        .btn-primary { display: inline-block; padding: 0.9rem 2.2rem; background: var(--page-color); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.92rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; margin-top: 0.5rem; }
+        .btn-primary:hover { background: var(--page-color-dark); transform: translateY(-2px); }
+        .jan-card { background: var(--white); border-radius: 16px; padding: 2rem; box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+        .jan-card h3 { font-size: 1rem; font-weight: 800; color: var(--black); margin-bottom: 1.4rem; }
+        .jan-includes { display: flex; flex-direction: column; gap: 1.2rem; }
+        .jan-include { display: flex; gap: 1rem; align-items: flex-start; }
+        .jan-include-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+        .jan-include-text { display: flex; flex-direction: column; gap: 0.2rem; }
+        .jan-include-text strong { font-size: 0.88rem; color: var(--black); font-weight: 700; }
+        .jan-include-text span { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.6; }
+
+        /* ── CTA STRIP ── */
+        .cta-strip { padding: 4.5rem 2.5rem; background: var(--page-color); text-align: center; }
+        .cta-strip h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; color: var(--white); margin-bottom: 0.8rem; letter-spacing: -0.02em; }
+        .cta-strip p { font-size: 1rem; color: rgba(255,255,255,0.82); margin-bottom: 2rem; }
+        .btn-white { display: inline-block; padding: 0.9rem 2.4rem; background: var(--white); color: var(--dark-blue); font-family: 'Montserrat', sans-serif; font-size: 0.92rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.2); }
+
+        /* ── FOOTER ── */
+        footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 4rem 2.5rem 2rem; }
+        .footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem; margin-bottom: 3rem; }
+        .footer-section h4 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1.4rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.7rem; }
+        .footer-section a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--white); }
+        .footer-section p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
+        .footer-social-icons { display: flex; gap: 0.8rem; margin-top: 0.5rem; }
+        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
+        .footer-social-icon img { width: 22px; height: 22px; object-fit: contain; display: block; }
+        .footer-social-icon:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .jan-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+            .tool-grid { grid-template-columns: 1fr 1fr; }
+            .footer-container { grid-template-columns: 1fr 1fr; }
+        }
         @media (max-width: 768px) {
             nav ul, .header-cta-btn { display: none; }
             .burger { display: flex; }
-            .btn-secondary { margin-left: 0; }
+            .breadcrumb { padding: 0.7rem 1.5rem; }
+            .hero { padding: 3rem 1.5rem 0; }
+            .sec-wrap, .jan-wrap, .scan-embed-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .tool-grid { grid-template-columns: 1fr; }
+            .anchor-nav-inner { padding: 0 1rem; }
+            .footer-container { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
     <nav>
         <a href="../index.html" class="logo"><img src="../images/Logo_weiß.png" alt="Koppmann Karriere"></a>
-                <ul>
+        <ul>
             <li><a href="../unternehmen.html">Für Unternehmen</a></li>
-            <li><a href="../fuer-arbeitnehmende.html">Für Arbeitnehmende</a></li>
-            <li><a href="../karriere-kosmos.html">Karriere-Kosmos</a></li>
+            <li><a href="../arbeitnehmende.html">Für Arbeitnehmende</a></li>
+            <li><a href="../karriere-kosmos.html" class="active">Karriere-Kosmos</a></li>
             <li><a href="../so-arbeite-ich.html">So Arbeite Ich</a></li>
-            <li><a href="../kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
+            <li><a href="../kontakt-einstieg.html">Kontakt & Einstieg</a></li>
         </ul>
-        <a href="https://zeeg.me/koppmannkarriere" class="header-cta-btn" target="_blank" rel="noopener">Erstgespräch vereinbaren</a>
+        <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="header-cta-btn">Erstgespräch vereinbaren</a>
         <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
     </nav>
 </header>
 
 <div class="mobile-menu" id="mobile-menu">
     <a href="../unternehmen.html">Für Unternehmen</a>
-    <a href="../fuer-arbeitnehmende.html">Für Arbeitnehmende</a>
+    <a href="../arbeitnehmende.html">Für Arbeitnehmende</a>
     <a href="../karriere-kosmos.html">Karriere-Kosmos</a>
     <a href="../so-arbeite-ich.html">So Arbeite Ich</a>
     <a href="../kontakt-einstieg.html">Kontakt &amp; Einstieg</a>
     <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="mobile-cta">Erstgespräch vereinbaren</a>
 </div>
 
-<main>
-    <div class="placeholder-card">
-        <span class="placeholder-icon">🛠️</span>
-        <div class="placeholder-badge">In Entwicklung</div>
-        <h1>Guides & Tools</h1>
-        <p class="sub">Praktische Helfer für deinen Berufsweg</p>
-        <div class="divider"></div>
-        <p>Hier entstehen kostenlose Guides, interaktive Tools und der Jobzufriedenheits-Scan – praktische Helfer, die dir helfen, deine berufliche Situation einzuordnen und konkrete Schritte einzuleiten.</p>
-        <div class="btn-group">
-            <a href="../index.html" class="btn-back">← Zurück zur Startseite</a>
-            <a href="https://zeeg.me/koppmannkarriere" class="btn-secondary" target="_blank" rel="noopener">Erstgespräch vereinbaren</a>
+<!-- BREADCRUMB -->
+<!-- HERO -->
+<section class="hero">
+    
+    <div class="hero-wave">
+        <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,32 C360,56 1080,8 1440,32 L1440,48 L0,48 Z" fill="#ffffff"/>
+        </svg>
+    </div>
+</section>
+
+<!-- ANCHOR NAV -->
+<div class="anchor-nav">
+    <div class="anchor-nav-inner">
+        <button class="anchor-btn active" data-target="sec-tools">🛠️ Helfer-Tools</button>
+        <button class="anchor-btn" data-target="sec-scan">📊 Jobzufriedenheits-Scan</button>
+        <button class="anchor-btn" data-target="sec-karriere">🗺️ Karriereplanung</button>
+        <button class="anchor-btn" data-target="sec-begleitung">🤝 Persönliche Begleitung</button>
+    </div>
+</div>
+
+<!-- ══ HELFER-TOOLS ══ -->
+<section id="sec-tools">
+    <div class="sec-wrap">
+        <h2 class="sec-title">Helfer-Tools & Guides</h2>
+        <p class="sec-sub">Kostenlose Werkzeuge – direkt nutzbar, ohne Anmeldung.</p>
+
+        <div class="tool-grid">
+
+            <div class="tool-kachel highlight">
+                <div class="tool-kachel-icon">📊</div>
+                <div class="tool-kachel-type">Interaktiver Scan · Kostenlos</div>
+                <h3>Jobzufriedenheits-Scan</h3>
+                <p>Wie zufrieden bist du eigentlich mit deinem Job – wirklich? Der Scan gibt dir Klarheit in ca. 5 Minuten, direkt hier auf der Seite.</p>
+                <div class="tool-kachel-tags">
+                    <span class="tool-tag">⏱ ca. 5 Min.</span>
+                    <span class="tool-tag">📊 Sofort-Ergebnis</span>
+                    <span class="tool-tag">Kostenlos</span>
+                </div>
+                <a href="#sec-scan" class="btn-tool">Scan starten ↓</a>
+            </div>
+
+            <div class="tool-kachel">
+                <div class="tool-kachel-icon">📄</div>
+                <div class="tool-kachel-type">PDF-Guide · Kostenlos</div>
+                <h3>Bewerbungsunterlagen-Guide</h3>
+                <p>Was gehört rein, was kommt an, was fällt negativ auf – kompakt und verständlich erklärt.</p>
+                <div class="tool-kachel-tags">
+                    <span class="tool-tag">📄 PDF</span>
+                    <span class="tool-tag">Lebenslauf + Anschreiben</span>
+                </div>
+                <span class="coming-badge">In Vorbereitung</span>
+                <button class="btn-tool btn-tool-disabled" disabled>Guide folgt</button>
+            </div>
+
+            <div class="tool-kachel">
+                <div class="tool-kachel-icon">✏️</div>
+                <div class="tool-kachel-type">KI-Tool · Bald verfügbar</div>
+                <h3>Lebenslauf-Generator</h3>
+                <p>Formular ausfüllen, fertigen Lebenslauf per Mail erhalten – KI-gestützt und individuell.</p>
+                <div class="tool-kachel-tags">
+                    <span class="tool-tag">🤖 KI-gestützt</span>
+                    <span class="tool-tag">📬 Per Mail</span>
+                </div>
+                <span class="coming-badge">In Vorbereitung</span>
+                <button class="btn-tool btn-tool-disabled" disabled>Bald verfügbar</button>
+            </div>
+
+            <div class="tool-kachel">
+                <div class="tool-kachel-icon">✍️</div>
+                <div class="tool-kachel-type">PDF + KI-Tool · Bald verfügbar</div>
+                <h3>Anschreiben-Formulierungshelfer</h3>
+                <p>Anleitungs-PDF + KI-Tool, das individuelle Anschreiben-Bausteine generiert – ohne Floskeln.</p>
+                <div class="tool-kachel-tags">
+                    <span class="tool-tag">📄 PDF-Anleitung</span>
+                    <span class="tool-tag">🤖 KI-Tool</span>
+                </div>
+                <span class="coming-badge">In Vorbereitung</span>
+                <button class="btn-tool btn-tool-disabled" disabled>Bald verfügbar</button>
+            </div>
+
+            <div class="tool-kachel">
+                <div class="tool-kachel-icon">🎤</div>
+                <div class="tool-kachel-type">PDF + KI-Simulator · Bald verfügbar</div>
+                <h3>Bewerbungsgespräche-Guide & KI-Simulator</h3>
+                <p>Der Guide erklärt Aufbau, typische Fragen und No-Gos. Der KI-Simulator lässt dich ein echtes Gespräch üben – mit Feedback.</p>
+                <div class="tool-kachel-tags">
+                    <span class="tool-tag">📄 PDF-Guide</span>
+                    <span class="tool-tag">🤖 KI-Simulator</span>
+                </div>
+                <span class="coming-badge">In Vorbereitung</span>
+                <button class="btn-tool btn-tool-disabled" disabled>Bald verfügbar</button>
+            </div>
+
+            <div class="tool-kachel">
+                <div class="tool-kachel-icon">📖</div>
+                <div class="tool-kachel-type">Wissen & Einordnungen</div>
+                <h3>Artikel rund um Bewerbung & Karriere</h3>
+                <p>Fachliche Beiträge zu Themen, die im Bewerbungsprozess wirklich eine Rolle spielen.</p>
+                <div class="tool-kachel-tags">
+                    <span class="tool-tag">Artikel</span>
+                    <span class="tool-tag">YouTube-Playlist</span>
+                </div>
+                <a href="wissen-entwicklung.html" class="btn-tool">Zu den Artikeln →</a>
+            </div>
+
         </div>
     </div>
-</main>
+</section>
 
+<!-- ══ JOBZUFRIEDENHEITS-SCAN EMBED ══ -->
+<section class="scan-embed-section" id="sec-scan">
+    <div class="scan-embed-inner">
+        <h2>Jobzufriedenheits-Scan</h2>
+        <p>Beantworte ein paar Fragen zu deiner aktuellen Situation – und erhalte sofort eine erste Einordnung.</p>
+
+        <div class="formbricks-wrapper">
+            <!--
+                PLATZHALTER: Sobald deine Formbricks-URL vorliegt:
+                1. Kommentiere den Platzhalter-Block aus (formbricks-placeholder)
+                2. Entkommentiere das iframe darunter und trage deine ID ein
+            -->
+            <div class="formbricks-placeholder" id="formbricks-placeholder">
+                <div class="placeholder-icon">📋</div>
+                <h3>Formbricks-Umfrage</h3>
+                <p>Sobald dein Formbricks-Formular eingerichtet ist, wird es hier direkt eingebettet.</p>
+                <a href="#" class="fallback-btn">Zum Jobzufriedenheits-Scan →</a>
+            </div>
+            <!-- <iframe src="https://app.formbricks.com/s/DEINE-ID" allowfullscreen></iframe> -->
+        </div>
+
+        <p style="font-size:0.82rem; color:var(--medium-gray); margin-top:1.2rem;">
+            Powered by <a href="https://formbricks.com" target="_blank" style="color:var(--page-color);">Formbricks</a> ·
+            Deine Daten werden nur zur Auswertung verwendet. Keine Weitergabe an Dritte.
+        </p>
+    </div>
+</section>
+
+<!-- ══ KARRIEREPLANUNG I ══ -->
+<section id="sec-karriere">
+    <div class="sec-wrap">
+        <h2 class="sec-title">Karriereplanung I</h2>
+        <p class="sec-sub">PDF-Guides und ein Einstiegsvideo – dein Appetizer auf den Karriere-Kosmos.</p>
+
+        <div class="tool-grid">
+
+            <div class="tool-kachel">
+                <div class="tool-kachel-icon">🎥</div>
+                <div class="tool-kachel-type">Video · Kostenlos</div>
+                <h3>Einstiegsvideo: Was bedeutet Karriereplanung?</h3>
+                <p>Ein kurzes Einführungsvideo, das erklärt, was Karriereplanung bedeutet – und wie du den Karriere-Kosmos sinnvoll nutzen kannst.</p>
+                <div class="tool-kachel-tags">
+                    <span class="tool-tag">🎥 Video</span>
+                    <span class="tool-tag">⏱ ca. 6 Min.</span>
+                </div>
+                <span class="coming-badge">In Vorbereitung</span>
+                <button class="btn-tool btn-tool-disabled" disabled>Video folgt</button>
+            </div>
+
+            <div class="tool-kachel">
+                <div class="tool-kachel-icon">🗺️</div>
+                <div class="tool-kachel-type">PDF-Guide · Kostenlos</div>
+                <h3>Karriereplanung I – Orientierungsguide</h3>
+                <p>Grundlagen, Fragen und erste Schritte für Menschen, die ihre berufliche Richtung klären wollen.</p>
+                <div class="tool-kachel-tags">
+                    <span class="tool-tag">📄 PDF</span>
+                    <span class="tool-tag">Einstieg</span>
+                </div>
+                <span class="coming-badge">In Vorbereitung</span>
+                <button class="btn-tool btn-tool-disabled" disabled>Guide folgt</button>
+            </div>
+
+            <div class="tool-kachel" style="background: linear-gradient(135deg, var(--dark-blue), var(--page-color-dark)); border: none;">
+                <div class="tool-kachel-icon" style="background: rgba(255,255,255,0.15);">🌐</div>
+                <div class="tool-kachel-type" style="color: rgba(255,255,255,0.6);">Karriere-Kosmos</div>
+                <h3 style="color: white;">Mehr entdecken im Kosmos</h3>
+                <p style="color: rgba(255,255,255,0.78); flex:1;">Im Karriere-Kosmos findest du Kurse, Artikel und weitere Tools, die auf Karriereplanung I aufbauen.</p>
+                <a href="../karriere-kosmos.html" class="btn-tool" style="background: rgba(255,255,255,0.15); color: white; border: 2px solid rgba(255,255,255,0.35);">Zum Karriere-Kosmos →</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══ PERSÖNLICHE BEGLEITUNG ══ -->
+<section id="sec-begleitung" class="jan-section">
+    <div class="jan-wrap">
+        <div class="jan-text">
+            <h2>Du willst nicht alleine<br>durch den Prozess?<br><span>Jan begleitet dich.</span></h2>
+            <p>Guides und Tools helfen – aber manchmal braucht es jemanden, der mitdenkt, Feedback gibt und den Überblick behält. Genau das ist Karrierebegleitung.</p>
+            <p>Von der ersten Einschätzung deiner Unterlagen über die Gesprächsvorbereitung bis zur Vertragsunterschrift: <strong>Ich bin dabei, so lange du mich brauchst.</strong></p>
+            <p>Das Erstgespräch ist kostenlos, unverbindlich und ohne Vorbereitung.</p>
+            <a href="../kontakt-einstieg.html" class="btn-primary">Jetzt Erstgespräch anfragen →</a>
+        </div>
+
+        <div class="jan-card">
+            <h3>Was persönliche Begleitung bedeutet</h3>
+            <div class="jan-includes">
+                <div class="jan-include">
+                    <div class="jan-include-icon">📋</div>
+                    <div class="jan-include-text">
+                        <strong>Bewerbungsunterlagen-Check</strong>
+                        <span>Ehrliches Feedback zu Lebenslauf und Anschreiben – konkret, nicht allgemein.</span>
+                    </div>
+                </div>
+                <div class="jan-include">
+                    <div class="jan-include-icon">🎯</div>
+                    <div class="jan-include-text">
+                        <strong>Stellenauswahl & Strategie</strong>
+                        <span>Welche Stellen passen wirklich zu dir – und wie gehst du die Suche strukturiert an?</span>
+                    </div>
+                </div>
+                <div class="jan-include">
+                    <div class="jan-include-icon">🎤</div>
+                    <div class="jan-include-text">
+                        <strong>Gesprächsvorbereitung</strong>
+                        <span>Typische Fragen, deine Geschichte, Simulationsgespräche – bis du dich sicher fühlst.</span>
+                    </div>
+                </div>
+                <div class="jan-include">
+                    <div class="jan-include-icon">🤝</div>
+                    <div class="jan-include-text">
+                        <strong>Begleitung bis zum Abschluss</strong>
+                        <span>Vertragsverhandlung, erste Wochen im Job – ich bin da, solange du mich brauchst.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+    <h2>Tool genutzt – und jetzt?</h2>
+    <p>Im Erstgespräch können wir deine Ergebnisse gemeinsam einordnen und den nächsten Schritt planen.</p>
+    <a href="../kontakt-einstieg.html" class="btn-white">Zum Erstgespräch →</a>
+</section>
+
+<!-- FOOTER -->
 <footer>
-    <p>
-        © 2026 Jan Koppmann – Karrierebegleitung &nbsp;·&nbsp;
-        <a href="../transparenz/impressum.html">Impressum</a>
-        <a href="../transparenz/datenschutz.html">Datenschutz</a>
-    </p>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="../index.html">Start</a></li>
+                <li><a href="../arbeitnehmende.html">Für Arbeitnehmende</a></li>
+                <li><a href="../karriere-kosmos.html">Karriere-Kosmos</a></li>
+                <li><a href="../unternehmen.html">Für Unternehmen</a></li>
+                <li><a href="../so-arbeite-ich.html">So Arbeite Ich</a></li>
+                <li><a href="../kontakt-einstieg.html">Kontakt & Einstieg</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Kontakt</h4>
+            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br><a href="/cdn-cgi/l/email-protection#7319121d33181c03031e121d1d181201011a1601165d1716"><span class="__cf_email__" data-cfemail="e8828986a8838798988589868683899a9a818d9a8dc68c8d">[email&#160;protected]</span></a></p>
+            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br>folgt</p>
+        </div>
+        <div class="footer-section">
+            <h4>Social Media</h4>
+            <div class="footer-social-icons">
+                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="YouTube"><img src="../images/YouTube_Icon.png" alt="YouTube"></a>
+                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon" title="LinkedIn"><img src="../images/Linkedin_Icon.png" alt="LinkedIn"></a>
+                <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="footer-social-icon" title="Instagram"><img src="../images/Instagram_Icon.png" alt="Instagram"></a>
+                <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="TikTok"><img src="../images/Tiktok_Icon.png" alt="TikTok"></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h4>Rechtliches</h4>
+            <ul>
+                <li><a href="../transparenz/impressum.html">Impressum</a></li>
+                <li><a href="../transparenz/datenschutz.html">Datenschutz</a></li>
+            </ul>
+            <h4 style="margin-top:1.8rem;">Tippgeber:in werden</h4>
+            <p><a href="tippgeber.html">Weiterempfehlen & Provision erhalten</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Jan Koppmann – Karrierebegleitung</p>
+        <p>Hosted on Netlify · Made with ♥ in Overath</p>
+    </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobile-menu');
     burger.addEventListener('click', () => {
@@ -141,6 +493,27 @@
             document.body.style.overflow = '';
         });
     });
-</script>
+
+    const sections = document.querySelectorAll('section[id]');
+    const anchorBtns = document.querySelectorAll('.anchor-btn');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(sec => {
+            if (window.scrollY >= sec.offsetTop - 160) current = sec.id;
+        });
+        anchorBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.target === current));
+    });
+    anchorBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = document.getElementById(btn.dataset.target);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    /*
+    ── FORMBRICKS AKTIVIEREN ──
+    Sobald deine Formbricks-URL vorliegt:
+    1. document.getElementById('formbricks-placeholder').style.display = 'none';
+    2. const iframe = document.createElement('iframe');
 </body>
 </html>
