@@ -6,22 +6,26 @@
     <title>Kurse & Lernpfade – Koppmann Karriere</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         :root {
-            --page-color: #008bba;
-            --page-dark: #006a8e;
+            --primary-blue: #0062b1;
             --dark-blue: #002777;
+            --page-color: #008bba;
+            --page-color-dark: #006a8e;
+            --page-color-light: #e0f6fb;
             --white: #ffffff;
             --black: #0a0a0a;
             --light-gray: #f4f6f9;
             --medium-gray: #6b7280;
             --border: #e5e9f0;
         }
-        body { font-family: 'Montserrat', sans-serif; background: var(--white); color: var(--black); overflow-x: hidden; }
 
-        /* HEADER */
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.8; color: var(--black); overflow-x: hidden; font-size: 17px; background: var(--white); }
+
+        /* ── HEADER ── */
         header { position: fixed; top: 0; left: 0; right: 0; background: var(--dark-blue); z-index: 1000; }
         nav { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; height: 72px; display: flex; justify-content: space-between; align-items: center; }
         .logo { text-decoration: none; display: flex; align-items: center; height: 100%; padding: 8px 0; transition: opacity 0.3s; }
@@ -30,8 +34,8 @@
         nav ul { display: flex; list-style: none; gap: 1.8rem; align-items: center; }
         nav ul li a { text-decoration: none; color: rgba(255,255,255,0.88); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.02em; transition: color 0.3s; position: relative; white-space: nowrap; }
         nav ul li a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--white); transition: width 0.3s; }
-        nav ul li a:hover { color: var(--white); }
-        nav ul li a:hover::after { width: 100%; }
+        nav ul li a:hover, nav ul li a.active { color: var(--white); }
+        nav ul li a:hover::after, nav ul li a.active::after { width: 100%; }
         .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.88); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.6); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
         .header-cta-btn:hover { background: var(--white); color: var(--dark-blue); border-color: var(--white); }
         .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
@@ -44,89 +48,549 @@
         .mobile-menu a { text-decoration: none; color: var(--black); font-weight: 600; font-size: 1.3rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
         .mobile-menu a:hover { color: var(--page-color); }
         .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--page-color); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
+        .breadcrumb a { color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
+        .breadcrumb a:hover { color: var(--white); }
+        .breadcrumb span { opacity: 0.5; }
 
-        /* MAIN */
-        main { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 100px 2rem 4rem; background: linear-gradient(160deg, var(--light-gray) 0%, var(--white) 60%); position: relative; overflow: hidden; }
-        main::before { content: ''; position: absolute; top: -120px; right: -120px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, #008bba18 0%, transparent 70%); pointer-events: none; }
-        main::after { content: ''; position: absolute; bottom: -80px; left: -80px; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, #006a8e10 0%, transparent 70%); pointer-events: none; }
+        /* ── HERO ── */
+        .hero { background: linear-gradient(135deg, var(--dark-blue) 0%, var(--page-color-dark) 60%, var(--page-color) 100%); padding: 4rem 2.5rem 0; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 60px 60px; }
+        .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 2; padding-bottom: 3.5rem; }
+        .hero-back { display: inline-flex; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.82rem; font-weight: 600; margin-bottom: 1.5rem; transition: color 0.2s; }
+        .hero-back:hover { color: var(--white); }
+        .hero-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+        .hero h1 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; color: var(--white); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1rem; }
+        .hero-desc { font-size: 1rem; color: rgba(255,255,255,0.72); line-height: 1.8; max-width: 620px; margin-bottom: 2rem; }
+        .hero-stats { display: flex; gap: 2.5rem; }
+        .hero-stat { display: flex; flex-direction: column; }
+        .hero-stat strong { font-size: 1.8rem; font-weight: 900; color: var(--white); line-height: 1; }
+        .hero-stat span { font-size: 0.78rem; color: rgba(255,255,255,0.6); font-weight: 500; margin-top: 0.25rem; }
+        .hero-wave { line-height: 0; }
+        .hero-wave svg { display: block; width: 100%; }
 
-        .placeholder-card { max-width: 640px; text-align: center; position: relative; z-index: 1; }
-        .placeholder-icon { font-size: 4rem; margin-bottom: 1.5rem; display: block; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1)); }
-        .placeholder-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--page-color); color: var(--white); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1.5rem; }
-        .placeholder-badge::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--white); border-radius: 50%; animation: pulse 1.5s ease-in-out infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.7); } }
-        .placeholder-card h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; color: var(--black); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.6rem; }
-        .placeholder-card .sub { font-size: 1.05rem; font-weight: 600; color: var(--page-color); margin-bottom: 1.5rem; }
-        .placeholder-card p { font-size: 0.97rem; color: var(--medium-gray); line-height: 1.85; margin-bottom: 2.5rem; max-width: 520px; margin-left: auto; margin-right: auto; }
-        .divider { width: 60px; height: 3px; background: linear-gradient(90deg, var(--page-color), var(--page-dark)); border-radius: 2px; margin: 0 auto 2.5rem; }
-        .btn-back { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.8rem; background: var(--page-color); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; box-shadow: 0 6px 20px #008bba40; }
-        .btn-back:hover { background: var(--page-dark); transform: translateY(-2px); box-shadow: 0 10px 28px #008bba50; }
-        .btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.8rem; background: transparent; color: var(--page-color); font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 700; border: 2px solid var(--page-color); border-radius: 50px; text-decoration: none; transition: all 0.3s; margin-left: 1rem; }
-        .btn-secondary:hover { background: var(--page-color); color: var(--white); }
-        .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        /* ── INFOBOX TEILNAHMEBESCHEINIGUNG ── */
+        .infobox-section { background: var(--white); }
+        .infobox-wrap { max-width: 1000px; margin: 0 auto; padding: 3rem 2.5rem; }
+        .infobox { background: var(--page-color-light); border: 2px solid var(--page-color); border-radius: 16px; padding: 1.6rem 2rem; display: flex; align-items: flex-start; gap: 1.2rem; }
+        .infobox-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 2px; }
+        .infobox-text h4 { font-size: 0.9rem; font-weight: 800; color: var(--page-color-dark); margin-bottom: 0.4rem; letter-spacing: 0.02em; }
+        .infobox-text p { font-size: 0.88rem; color: var(--black); line-height: 1.75; }
 
-        /* FOOTER */
-        footer { background: #0a0a0a; color: rgba(255,255,255,0.4); padding: 1.5rem 2.5rem; text-align: center; font-size: 0.8rem; }
-        footer a { color: rgba(255,255,255,0.4); text-decoration: none; margin: 0 0.5rem; transition: color 0.2s; }
-        footer a:hover { color: rgba(255,255,255,0.8); }
+        /* ── LERNPFAD ── */
+        .lernpfad-section { background: var(--light-gray); }
+        .lernpfad-wrap { max-width: 1000px; margin: 0 auto; padding: 4rem 2.5rem; }
+        .sec-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: var(--black); letter-spacing: -0.02em; margin-bottom: 0.6rem; }
+        .sec-sub { font-size: 0.97rem; color: var(--medium-gray); line-height: 1.7; margin-bottom: 2rem; }
+        .lernpfad-card { background: linear-gradient(135deg, var(--dark-blue), var(--page-color-dark)); border-radius: 20px; padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+        .lernpfad-badge { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); padding: 0.3rem 0.8rem; border-radius: 50px; margin-bottom: 1rem; }
+        .lernpfad-card h3 { font-size: 1.6rem; font-weight: 900; color: var(--white); letter-spacing: -0.02em; margin-bottom: 0.8rem; }
+        .lernpfad-card > div > p { font-size: 0.92rem; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 1.8rem; }
+        .btn-lp { display: inline-block; padding: 0.75rem 1.6rem; background: rgba(255,255,255,0.15); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border-radius: 50px; text-decoration: none; border: 2px solid rgba(255,255,255,0.35); transition: all 0.3s; cursor: pointer; }
+        .btn-lp:hover { background: rgba(255,255,255,0.25); }
+        .lernpfad-modules { display: flex; flex-direction: column; gap: 0.7rem; }
+        .lernpfad-module { display: flex; align-items: center; gap: 0.9rem; background: rgba(255,255,255,0.08); border-radius: 10px; padding: 0.75rem 1rem; }
+        .lernpfad-module-num { width: 26px; height: 26px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 800; color: var(--white); flex-shrink: 0; }
+        .lernpfad-module span:not(.coming) { font-size: 0.88rem; color: rgba(255,255,255,0.88); font-weight: 500; flex: 1; }
+        .coming { font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.6); padding: 0.15rem 0.55rem; border-radius: 50px; white-space: nowrap; }
 
+        /* ── FILTER BAR ── */
+        .filter-bar { position: sticky; top: 72px; z-index: 100; background: var(--light-gray); padding: 1.5rem 2.5rem 0; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .filter-bar-inner { max-width: 1000px; margin: 0 auto; display: flex; gap: 0.6rem; flex-wrap: wrap; padding-bottom: 1.4rem; border-bottom: 2px solid var(--border); overflow-x: auto; }
+        .filter-btn { padding: 0.5rem 1.1rem; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-size: 0.83rem; font-weight: 600; border: 2px solid var(--border); background: var(--white); color: var(--medium-gray); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+        .filter-btn:hover { border-color: var(--page-color); color: var(--page-color); }
+        .filter-btn.active { background: var(--page-color); color: var(--white); border-color: var(--page-color); }
+
+        /* ── KURSE ── */
+        .kurse-section { background: var(--light-gray); padding-bottom: 4rem; }
+        .kurse-inner { max-width: 1000px; margin: 0 auto; padding: 3.5rem 2.5rem; display: flex; flex-direction: column; gap: 3.5rem; }
+        .kategorie-block { }
+        .kategorie-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.4rem; padding-bottom: 1rem; border-bottom: 2px solid var(--border); }
+        .kategorie-icon { width: 42px; height: 42px; border-radius: 10px; background: var(--page-color-light); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+        .kategorie-header h3 { font-size: 1.1rem; font-weight: 800; color: var(--black); flex: 1; }
+        .kategorie-count { font-size: 0.78rem; font-weight: 700; color: var(--medium-gray); background: var(--white); padding: 0.2rem 0.7rem; border-radius: 50px; border: 1.5px solid var(--border); }
+        .kurs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+        .kurs-card { background: var(--white); border-radius: 14px; padding: 1.6rem; border: 2px solid transparent; transition: all 0.25s; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+        .kurs-card:hover { border-color: var(--page-color); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,139,186,0.12); }
+        .coming-badge { position: absolute; top: 1rem; right: 1rem; font-size: 0.67rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.2rem 0.6rem; background: #fef9ec; color: #92400e; border-radius: 50px; border: 1px solid #fde68a; }
+        .kurs-icon { font-size: 1.5rem; margin-bottom: 0.7rem; }
+        .kurs-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--black); margin-bottom: 0.4rem; line-height: 1.35; padding-right: 3.5rem; }
+        .kurs-card p { font-size: 0.85rem; color: var(--medium-gray); line-height: 1.7; flex: 1; }
+        .kurs-tag { display: inline-block; margin-top: 0.9rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--page-color); background: var(--page-color-light); padding: 0.2rem 0.6rem; border-radius: 50px; align-self: flex-start; }
+        .kurs-tag.extern { color: #059669; background: #d1fae5; }
+        .kurs-tag.mathe { color: #854d0e; background: #fef9c3; }
+
+        /* ── NOTIFY ── */
+        .notify-section { background: var(--page-color); padding: 4rem 2.5rem; text-align: center; }
+        .notify-inner { max-width: 560px; margin: 0 auto; }
+        .notify-inner h2 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 900; color: var(--white); letter-spacing: -0.02em; margin-bottom: 0.7rem; }
+        .notify-inner > p { font-size: 0.95rem; color: rgba(255,255,255,0.78); line-height: 1.8; margin-bottom: 1.8rem; }
+        .notify-form { display: flex; gap: 0.5rem; max-width: 440px; margin: 0 auto; }
+        .notify-form input { flex: 1; padding: 0.85rem 1.2rem; border: none; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; outline: none; }
+        .notify-form button { padding: 0.85rem 1.8rem; background: var(--dark-blue); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 700; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s; white-space: nowrap; }
+        .notify-form button:hover { background: var(--black); }
+        .notify-note { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 1rem; }
+
+        /* ── CTA ── */
+        .cta-strip { padding: 4.5rem 2.5rem; background: var(--white); text-align: center; border-top: 1px solid var(--border); }
+        .cta-strip h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; color: var(--black); margin-bottom: 0.8rem; letter-spacing: -0.02em; }
+        .cta-strip p { font-size: 1rem; color: var(--medium-gray); margin-bottom: 2rem; }
+        .btn-primary { display: inline-block; padding: 0.9rem 2.4rem; background: var(--page-color); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.92rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; box-shadow: 0 6px 20px rgba(0,139,186,0.25); }
+        .btn-primary:hover { background: var(--page-color-dark); transform: translateY(-2px); }
+
+        /* ── FOOTER ── */
+        footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 4rem 2.5rem 2rem; }
+        .footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem; margin-bottom: 3rem; }
+        .footer-section h4 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1.4rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.7rem; }
+        .footer-section a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--white); }
+        .footer-section p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
+        .footer-social-icons { display: flex; gap: 0.8rem; margin-top: 0.5rem; }
+        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
+        .footer-social-icon img { width: 22px; height: 22px; object-fit: contain; display: block; }
+        .footer-social-icon:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .lernpfad-card { grid-template-columns: 1fr; gap: 2rem; }
+            .kurs-grid { grid-template-columns: 1fr 1fr; }
+            .kurs-card:nth-child(3n) { border-right: 1px solid var(--border); }
+            .kurs-card:nth-child(2n) { border-right: none; }
+            .footer-container { grid-template-columns: 1fr 1fr; }
+        }
         @media (max-width: 768px) {
             nav ul, .header-cta-btn { display: none; }
             .burger { display: flex; }
-            .btn-secondary { margin-left: 0; }
+            .breadcrumb { padding: 0.7rem 1.5rem; }
+            .hero { padding: 3rem 1.5rem 0; }
+            .hero-stats { gap: 1.5rem; }
+            .infobox-wrap, .lernpfad-wrap, .kurse-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .kurs-grid { grid-template-columns: 1fr; }
+            .kurs-card { border-right: none !important; }
+            .filter-bar-inner { padding: 0 1rem; }
+            .notify-form { flex-direction: column; }
+            .footer-container { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
     <nav>
         <a href="../index.html" class="logo"><img src="../images/Logo_weiß.png" alt="Koppmann Karriere"></a>
-                <ul>
+        <ul>
             <li><a href="../unternehmen.html">Für Unternehmen</a></li>
-            <li><a href="../fuer-arbeitnehmende.html">Für Arbeitnehmende</a></li>
-            <li><a href="../karriere-kosmos.html">Karriere-Kosmos</a></li>
+            <li><a href="../arbeitnehmende.html">Für Arbeitnehmende</a></li>
+            <li><a href="../karriere-kosmos.html" class="active">Karriere-Kosmos</a></li>
             <li><a href="../so-arbeite-ich.html">So Arbeite Ich</a></li>
-            <li><a href="../kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
+            <li><a href="../kontakt-einstieg.html">Kontakt & Einstieg</a></li>
         </ul>
-        <a href="https://zeeg.me/koppmannkarriere" class="header-cta-btn" target="_blank" rel="noopener">Erstgespräch vereinbaren</a>
+        <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="header-cta-btn">Erstgespräch vereinbaren</a>
         <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
     </nav>
 </header>
 
 <div class="mobile-menu" id="mobile-menu">
     <a href="../unternehmen.html">Für Unternehmen</a>
-    <a href="../fuer-arbeitnehmende.html">Für Arbeitnehmende</a>
+    <a href="../arbeitnehmende.html">Für Arbeitnehmende</a>
     <a href="../karriere-kosmos.html">Karriere-Kosmos</a>
     <a href="../so-arbeite-ich.html">So Arbeite Ich</a>
     <a href="../kontakt-einstieg.html">Kontakt &amp; Einstieg</a>
     <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="mobile-cta">Erstgespräch vereinbaren</a>
 </div>
 
-<main>
-    <div class="placeholder-card">
-        <span class="placeholder-icon">🎓</span>
-        <div class="placeholder-badge">In Entwicklung</div>
-        <h1>Kurse & Lernpfade</h1>
-        <p class="sub">Strukturiertes Lernen für deinen Berufsweg</p>
-        <div class="divider"></div>
-        <p>Hier entsteht eine vollständige Kursübersicht mit Lernpfaden zu Karriere, Persönlichkeit, Kommunikation und mehr – darunter der Karriereführerschein als strukturierter Einstieg in die Berufswelt.</p>
-        <div class="btn-group">
-            <a href="../index.html" class="btn-back">← Zurück zur Startseite</a>
-            <a href="https://zeeg.me/koppmannkarriere" class="btn-secondary" target="_blank" rel="noopener">Erstgespräch vereinbaren</a>
+<!-- BREADCRUMB -->
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <a href="../karriere-kosmos.html" class="hero-back">← Zurück zum Karriere-Kosmos</a>
+        <p class="hero-eyebrow">Karriere-Kosmos · Kurse & Lernpfade</p>
+        <h1>Strukturierte Module<br>zur beruflichen Entwicklung</h1>
+        <p class="hero-desc">Von Karriereplanung bis Resilienz – Kurse, die dabei helfen, den eigenen Weg klarer zu sehen und bewusster zu gehen.</p>
+        <div class="hero-stats">
+            <div class="hero-stat"><strong>20+</strong><span>Geplante Kurse</span></div>
+            <div class="hero-stat"><strong>1</strong><span>Lernpfad</span></div>
+            <div class="hero-stat"><strong>4</strong><span>Kategorien</span></div>
         </div>
     </div>
-</main>
+    <div class="hero-wave">
+        <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,32 C360,56 1080,8 1440,32 L1440,48 L0,48 Z" fill="#ffffff"/>
+        </svg>
+    </div>
+</section>
 
+<!-- INFOBOX TEILNAHMEBESCHEINIGUNG -->
+<div class="infobox-section">
+    <div class="infobox-wrap">
+        <div class="infobox">
+            <div class="infobox-icon">🎓</div>
+            <div class="infobox-text">
+                <h4>Teilnahmebescheinigungen – in Planung</h4>
+                <p>Ein System zur Ausstellung von Teilnahmebescheinigungen ist geplant und wird zeitnah integriert. Wer Kurse absolviert, soll das auch nachweisen können.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- LERNPFAD -->
+<section class="lernpfad-section">
+    <div class="lernpfad-wrap">
+        <h2 class="sec-title">Lernpfade</h2>
+        <p class="sec-sub">Kuratierte Abfolgen mehrerer Kurse – für einen strukturierten Einstieg ins Thema.</p>
+
+        <div class="lernpfad-card">
+            <div>
+                <div class="lernpfad-badge">🎓 Lernpfad</div>
+                <h3>Karriereführerschein</h3>
+                <p>Begleitet dich von den Grundlagen beruflicher Orientierung bis zu konkreten Entscheidungen – Schritt für Schritt, mit klaren Modulen und praktischen Übungen.</p>
+                <button class="btn-lp">🔔 Benachrichtigen wenn verfügbar</button>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+    <div class="filter-bar-inner">
+        <button class="filter-btn active" data-filter="all">Alle Kurse</button>
+        <button class="filter-btn" data-filter="karriere">🎯 Karriere</button>
+        <button class="filter-btn" data-filter="mindset">🧠 Persönlichkeit & Mindset</button>
+        <button class="filter-btn" data-filter="kommunikation">💬 Kommunikation & Kultur</button>
+        <button class="filter-btn" data-filter="gesellschaft">📚 Grundlagen</button>
+        <button class="filter-btn" data-filter="extern">🌐 Kooperationen</button>
+    </div>
+</div>
+
+<!-- KURSE -->
+<section class="kurse-section">
+    <div class="kurse-inner">
+
+        <!-- ── Karriere ── -->
+        <div class="kategorie-block" data-kategorie="karriere">
+            <div class="kategorie-header">
+                <div class="kategorie-icon">🎯</div>
+                <h3>Karriere</h3>
+                <span class="kategorie-count">7 Kurse</span>
+            </div>
+            <div class="kurs-grid">
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">⚖️</div>
+                    <h4>Arbeitsrecht Basics</h4>
+                    <p>Deine Rechte im Berufsleben – verständlich erklärt, ohne Juristendeutsch. Für alle, die wissen wollen, wo sie stehen.</p>
+                    <span class="kurs-tag">Karriere</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">🗺️</div>
+                    <h4>Karriereplanung I</h4>
+                    <p>Einstieg in die berufliche Orientierung – was Karriereplanung bedeutet und wie du den Karriere-Kosmos sinnvoll nutzt.</p>
+                    <span class="kurs-tag">Karriere</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">📈</div>
+                    <h4>Karriereplanung II</h4>
+                    <p>Vertiefte Strategien für den nächsten beruflichen Schritt – aufbauend auf Karriereplanung I, mit 8 Modulen.</p>
+                    <span class="kurs-tag">Karriere</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">🚀</div>
+                    <h4>Erfolgreich in den Beruf starten</h4>
+                    <p>Für alle, die ins Berufsleben einsteigen – was dich erwartet, worauf es ankommt und wie du gut startest.</p>
+                    <span class="kurs-tag">Karriere</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">🏫</div>
+                    <h4>Realitätscheck: Schule → Ausbildung & Studium</h4>
+                    <p>Was nach der Schule wirklich auf dich wartet – ein ehrlicher Einblick in beide Wege, mit 4 Modulen.</p>
+                    <span class="kurs-tag">Karriere</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">📝</div>
+                    <h4>Berufsvokabular</h4>
+                    <p>Die wichtigsten Begriffe des Berufslebens – verständlich erklärt für Berufseinsteiger:innen.</p>
+                    <span class="kurs-tag">Karriere</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">⚖️</div>
+                    <h4>Arbeitsrecht: Spot On</h4>
+                    <p>Kompakte Einblicke in die wichtigsten Situationen des Arbeitsrechts – praxisnah und ohne Juristendeutsch.</p>
+                    <span class="kurs-tag">Karriere</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Persönlichkeit & Mindset ── -->
+        <div class="kategorie-block" data-kategorie="mindset">
+            <div class="kategorie-header">
+                <div class="kategorie-icon">🧠</div>
+                <h3>Persönlichkeit & Mindset</h3>
+                <span class="kategorie-count">8 Kurse</span>
+            </div>
+            <div class="kurs-grid">
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">🧩</div>
+                    <h4>Konzentrationstraining</h4>
+                    <p>Fokus als Fähigkeit – wie du deine Konzentration trainierst und Ablenkung produktiv begegnest.</p>
+                    <span class="kurs-tag">Gesellschaft</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">⚙️</div>
+                    <h4>Selbstmanagement I: Produktivität & Organisation</h4>
+                    <p>Strukturen, Routinen und Techniken, die dir helfen, fokussiert und produktiv zu bleiben – 4 Module.</p>
+                    <span class="kurs-tag">Mindset</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">🪞</div>
+                    <h4>Selbstmanagement II: Innere Haltung & Selbstführung</h4>
+                    <p>Wie du dich selbst besser verstehst und führst – Haltung, Werte und innere Klarheit, 5 Module.</p>
+                    <span class="kurs-tag">Mindset</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">🎯</div>
+                    <h4>Ziele: How-to Ziele und Zielsysteme</h4>
+                    <p>Wie du Ziele setzt, die wirklich zu dir passen – und wie du dranbleibst.</p>
+                    <span class="kurs-tag">Mindset</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">🌀</div>
+                    <h4>Entscheidungen & Entscheidungsfähigkeit</h4>
+                    <p>Wie gute Entscheidungen entstehen – und wie du mit schwierigen Wahlmomenten umgehst.</p>
+                    <span class="kurs-tag">Mindset</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">🌊</div>
+                    <h4>Umgang mit Unsicherheit & Übergängen</h4>
+                    <p>Orientierung in Phasen, die kein klares Ziel haben – Übergänge, Veränderungen und offene Fragen.</p>
+                    <span class="kurs-tag">Mindset</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">🌱</div>
+                    <h4>Zukunftsoptimismus als erlernbare Fähigkeit</h4>
+                    <p>Warum Optimismus keine Naivität ist – und wie du ihn gezielt aufbaust.</p>
+                    <span class="kurs-tag">Mindset</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">📖</div>
+                    <h4>Lernen lernen</h4>
+                    <p>Wie Lernen wirklich funktioniert – Techniken, Gedächtnis und der Umgang mit Lernblockaden, 9 Module.</p>
+                    <span class="kurs-tag">Mindset</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">🔋</div>
+                    <h4>Resilienz und Stressmanagement</h4>
+                    <p>Wie du belastbar bleibst, dich erholst und mit Druck konstruktiv umgehst.</p>
+                    <span class="kurs-tag">Mindset</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Kommunikation & Kultur ── -->
+        <div class="kategorie-block" data-kategorie="kommunikation">
+            <div class="kategorie-header">
+                <div class="kategorie-icon">💬</div>
+                <h3>Kommunikation & Kultur</h3>
+                <span class="kategorie-count">4 Kurse</span>
+            </div>
+            <div class="kurs-grid">
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">💬</div>
+                    <h4>Feedbackkultur</h4>
+                    <p>Feedback geben und nehmen als Kernkompetenz – im Team, im Job und im Alltag.</p>
+                    <span class="kurs-tag">Kommunikation</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">⚡</div>
+                    <h4>Fehlerkultur</h4>
+                    <p>Warum Fehler nicht nur okay sind, sondern notwendig – und wie ein gesunder Umgang damit aussieht.</p>
+                    <span class="kurs-tag">Kommunikation</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">🛡️</div>
+                    <h4>Rhetorik: Selbstverteidigung</h4>
+                    <p>Manipulation erkennen, Grenzen setzen und souverän antworten – ohne Konflikte zu eskalieren.</p>
+                    <span class="kurs-tag">Kommunikation</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">🎙️</div>
+                    <h4>Rhetorik: Eigene Kommunikation stärken</h4>
+                    <p>Klar, überzeugend und authentisch kommunizieren – im Gespräch, in Meetings und im Alltag.</p>
+                    <span class="kurs-tag">Kommunikation</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Grundlagen ── -->
+        <div class="kategorie-block" data-kategorie="gesellschaft">
+            <div class="kategorie-header">
+                <div class="kategorie-icon">📚</div>
+                <h3>Gesellschaft</h3>
+                <span class="kategorie-count">3 Kurse</span>
+            </div>
+            <div class="kurs-grid">
+                
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">🏛️</div>
+                    <h4>Grundgesetz</h4>
+                    <p>Was das Grundgesetz bedeutet, wie es entstand und warum es im Alltag – auch im Beruf – eine Rolle spielt.</p>
+                    <span class="kurs-tag">Gesellschaft</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">🔍</div>
+                    <h4>Extremismus & liberale Gesellschaft</h4>
+                    <p>Wie Extremismus entsteht, wie man ihn erkennt und warum eine liberale Gesellschaft aktive Mitgestaltung braucht.</p>
+                    <span class="kurs-tag">Gesellschaft</span>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- ── Mathe & Kooperationen – kombiniert anzeigen bei filter "extern" ── -->
+        <div class="kategorie-block" data-kategorie="grundlagen mathe">
+            <div class="kategorie-header">
+                <div class="kategorie-icon">🔢</div>
+                <h3>Mathe</h3>
+                <span class="kategorie-count">2 Kurse</span>
+            </div>
+            <div class="kurs-grid">
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">📐</div>
+                    <h4>Mathe-Check: Abschlussprüfung</h4>
+                    <p>Gezielte Vorbereitung auf die wichtigsten Themen der Abschlussprüfung – 6 Module, kompakt und praxisnah.</p>
+                    <span class="kurs-tag mathe">Mathe</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">🔁</div>
+                    <h4>Mathe von vorne: Lücken prüfen</h4>
+                    <p>Von Grundschule bis Klasse 10 – 44 Levels, um Wissenslücken gezielt aufzuspüren und zu schließen.</p>
+                    <span class="kurs-tag mathe">Mathe</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Externe Kooperationen ── -->
+        <div class="kategorie-block" data-kategorie="extern">
+            <div class="kategorie-header">
+                <div class="kategorie-icon">🌐</div>
+                <h3>Externe Kooperationen</h3>
+                <span class="kategorie-count">2 Kurse</span>
+            </div>
+            <div class="kurs-grid">
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">💪</div>
+                    <h4>Gesundheit & Fitness</h4>
+                    <p>Externe Kooperation – Inhalte rund um körperliches Wohlbefinden als Grundlage beruflicher Leistungsfähigkeit.</p>
+                    <span class="kurs-tag extern">Kooperation</span>
+                </div>
+                <div class="kurs-card">
+                    <span class="coming-badge">In Planung</span>
+                    <div class="kurs-icon">💰</div>
+                    <h4>Vermögensaufbau</h4>
+                    <p>Externe Kooperation – Grundlagen des Vermögensaufbaus für Berufseinsteiger:innen und junge Fachkräfte.</p>
+                    <span class="kurs-tag extern">Kooperation</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- NOTIFY -->
+<section class="notify-section">
+    <div class="notify-inner">
+        <h2>Als Erste:r informiert sein</h2>
+        <p>Trag dich ein und erfahre, wenn neue Kurse verfügbar sind – kein Spam, nur relevante Updates.</p>
+        <form class="notify-form" id="notify-form">
+            <input type="email" id="notify-email" placeholder="deine@email.de" required>
+            <button type="submit">Benachrichtigen</button>
+        </form>
+        <p class="notify-note">Kein Newsletter. Nur eine Nachricht, wenn neue Kurse live gehen.</p>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+    <h2>Lieber persönlich starten?</h2>
+    <p>Im Erstgespräch finden wir gemeinsam heraus, welche Themen für dich gerade am relevantesten sind.</p>
+    <a href="../kontakt-einstieg.html" class="btn-primary">Jetzt Erstgespräch vereinbaren →</a>
+</section>
+
+<!-- FOOTER -->
 <footer>
-    <p>
-        © 2026 Jan Koppmann – Karrierebegleitung &nbsp;·&nbsp;
-        <a href="../transparenz/impressum.html">Impressum</a>
-        <a href="../transparenz/datenschutz.html">Datenschutz</a>
-    </p>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="../index.html">Start</a></li>
+                <li><a href="../arbeitnehmende.html">Für Arbeitnehmende</a></li>
+                <li><a href="../karriere-kosmos.html">Karriere-Kosmos</a></li>
+                <li><a href="../unternehmen.html">Für Unternehmen</a></li>
+                <li><a href="../so-arbeite-ich.html">So Arbeite Ich</a></li>
+                <li><a href="../kontakt-einstieg.html">Kontakt & Einstieg</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Kontakt</h4>
+            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br><a href="/cdn-cgi/l/email-protection#650f040b250e0a151508040b0b0e0417170c0017004b0100"><span class="__cf_email__" data-cfemail="e389828da3888c93938e828d8d888291918a869186cd8786">[email&#160;protected]</span></a></p>
+            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br>folgt</p>
+        </div>
+        <div class="footer-section">
+            <h4>Social Media</h4>
+            <div class="footer-social-icons">
+                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="YouTube"><img src="../images/YouTube_Icon.png" alt="YouTube"></a>
+                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon" title="LinkedIn"><img src="../images/Linkedin_Icon.png" alt="LinkedIn"></a>
+                <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="footer-social-icon" title="Instagram"><img src="../images/Instagram_Icon.png" alt="Instagram"></a>
+                <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="TikTok"><img src="../images/Tiktok_Icon.png" alt="TikTok"></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h4>Rechtliches</h4>
+            <ul>
+                <li><a href="../transparenz/impressum.html">Impressum</a></li>
+                <li><a href="../transparenz/datenschutz.html">Datenschutz</a></li>
+            </ul>
+            <h4 style="margin-top:1.8rem;">Tippgeber:in werden</h4>
+            <p><a href="tippgeber.html">Weiterempfehlen & Provision erhalten</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Jan Koppmann – Karrierebegleitung</p>
+        <p>Hosted on Netlify · Made with ♥ in Overath</p>
+    </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Burger
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobile-menu');
     burger.addEventListener('click', () => {
@@ -141,6 +605,30 @@
             document.body.style.overflow = '';
         });
     });
-</script>
+
+    // Kategorie-Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const kategorieBlocks = document.querySelectorAll('.kategorie-block');
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+            kategorieBlocks.forEach(block => {
+                if (filter === 'all') {
+                    block.style.display = 'block';
+                } else {
+                    const cats = block.dataset.kategorie.split(' ');
+                    block.style.display = cats.includes(filter) ? 'block' : 'none';
+                }
+            });
+        });
+    });
+
+    // Notify form
+    const notifyForm = document.getElementById('notify-form');
+    notifyForm.addEventListener('submit', e => {
+        e.preventDefault();
+        c
 </body>
 </html>
