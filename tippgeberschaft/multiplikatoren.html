@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplikatoren – Koppmann Karriere</title>
+    <meta name="description" content="Werden Sie Multiplikator für Koppmann Karriere – und erhalten Sie eine Provision bei erfolgreicher Vermittlung. Für Organisationen, Unternehmen und Creators mit Publikum.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-blue: #0062b1;
+            --dark-blue: #002777;
+            --page-color: #002777;
+            --white: #ffffff;
+            --black: #0a0a0a;
+            --light-gray: #f4f6f9;
+            --medium-gray: #6b7280;
+            --border: #e5e9f0;
+            --green: #16a34a;
+            --green-light: #dcfce7;
+        }
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.7; color: var(--black); overflow-x: hidden; font-size: 17px; background: var(--white); }
+
+        /* ── HEADER ── */
+        header { position: fixed; top: 0; left: 0; right: 0; background: var(--dark-blue); z-index: 1000; }
+        nav { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; height: 72px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { text-decoration: none; display: flex; align-items: center; height: 100%; padding: 8px 0; transition: opacity 0.3s; }
+        .logo:hover { opacity: 0.85; }
+        .logo img { height: 100%; width: auto; max-height: 56px; object-fit: contain; }
+        nav ul { display: flex; list-style: none; gap: 1.8rem; align-items: center; }
+        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.88); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.02em; transition: color 0.3s; position: relative; white-space: nowrap; }
+        nav ul li a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--white); transition: width 0.3s; }
+        nav ul li a:hover { color: var(--white); }
+        nav ul li a:hover::after { width: 100%; }
+        .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.88); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.6); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
+        .header-cta-btn:hover { background: var(--white); color: var(--dark-blue); border-color: var(--white); }
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .burger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+        .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger.open span:nth-child(2) { opacity: 0; }
+        .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: var(--white); z-index: 999; flex-direction: column; padding: 2rem 2.5rem; overflow-y: auto; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { text-decoration: none; color: var(--black); font-weight: 600; font-size: 1.3rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+        .mobile-menu a:hover { color: var(--primary-blue); }
+        .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--dark-blue); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
+
+        /* ── HERO ── */
+        .hero { margin-top: 72px; background: linear-gradient(135deg, #001040 0%, var(--dark-blue) 50%, #003380 100%); padding: 5rem 2.5rem 5rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 480px; height: 480px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.04); pointer-events: none; }
+        .hero::after { content: ''; position: absolute; top: -50px; right: -50px; width: 260px; height: 260px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.06); pointer-events: none; }
+        .hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero-back { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.5); font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-bottom: 2rem; transition: color 0.2s; }
+        .hero-back:hover { color: var(--white); }
+        .hero-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+        .hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 900; color: var(--white); letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 1.2rem; }
+        .hero h1 span { color: rgba(255,255,255,0.5); font-weight: 300; display: block; font-size: 0.72em; margin-top: 0.35rem; letter-spacing: -0.01em; }
+        .hero-rule { width: 44px; height: 3px; background: var(--primary-blue); border-radius: 2px; margin-bottom: 1.5rem; }
+        .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.8; max-width: 580px; margin-bottom: 2.5rem; }
+        .hero-pills { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+        .hero-pill { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); font-size: 0.82rem; font-weight: 600; padding: 0.4rem 1rem; border-radius: 50px; }
+
+        /* ── ANCHOR NAV ── */
+        .anchor-nav { background: var(--white); border-bottom: 2px solid var(--border); position: sticky; top: 72px; z-index: 900; }
+        .anchor-nav-inner { max-width: 900px; margin: 0 auto; padding: 0 2.5rem; display: flex; overflow-x: auto; scrollbar-width: none; }
+        .anchor-nav-inner::-webkit-scrollbar { display: none; }
+        .anchor-btn { padding: 0.85rem 1.1rem; background: none; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--medium-gray); cursor: pointer; white-space: nowrap; transition: all 0.25s; }
+        .anchor-btn:hover, .anchor-btn.active { color: var(--page-color); border-bottom-color: var(--page-color); }
+
+        /* ── SECTIONS ── */
+        .sec { padding: 5rem 2.5rem; }
+        .sec.gray { background: var(--light-gray); }
+        .sec.dark { background: var(--dark-blue); }
+        .sec-inner { max-width: 900px; margin: 0 auto; }
+        .sec-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary-blue); margin-bottom: 0.8rem; }
+        .sec-eyebrow.light { color: rgba(255,255,255,0.5); }
+        .sec-title { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 0.8rem; color: var(--black); }
+        .sec-title.light { color: var(--white); }
+        .sec-sub { font-size: 1rem; color: var(--medium-gray); line-height: 1.8; margin-bottom: 2.5rem; }
+        .sec-sub.light { color: rgba(255,255,255,0.6); }
+
+        /* ── FÜR WEN ── */
+        .zielgruppen-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .zg-card { background: var(--white); border-radius: 16px; padding: 1.8rem 2rem; border: 2px solid var(--border); transition: all 0.3s; }
+        .zg-card:hover { border-color: var(--primary-blue); box-shadow: 0 8px 28px rgba(0,98,177,0.08); }
+        .zg-icon { font-size: 1.8rem; margin-bottom: 0.8rem; display: block; }
+        .zg-card h3 { font-size: 1rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.5rem; }
+        .zg-card p { font-size: 0.88rem; color: var(--medium-gray); line-height: 1.7; }
+        .zg-card.highlight { border-color: var(--dark-blue); background: #f0f4ff; }
+        .influencer-hint { margin-top: 2rem; background: #fff7ed; border: 1.5px solid #fed7aa; border-radius: 14px; padding: 1.4rem 1.8rem; font-size: 0.88rem; color: #9a3412; line-height: 1.75; }
+        .influencer-hint strong { color: #7c2d12; }
+
+        /* ── 3 SCHRITTE ── */
+        .steps { display: flex; flex-direction: column; gap: 0; }
+        .step-row { display: grid; grid-template-columns: 56px 1fr; gap: 1.5rem; align-items: stretch; }
+        .step-left { display: flex; flex-direction: column; align-items: center; }
+        .step-num { width: 48px; height: 48px; background: var(--dark-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 900; color: var(--white); flex-shrink: 0; }
+        .step-line { flex: 1; width: 2px; background: var(--border); margin: 6px 0; }
+        .step-row:last-child .step-line { display: none; }
+        .step-content { background: var(--white); border-radius: 14px; padding: 1.6rem 1.8rem; margin-bottom: 1.2rem; border: 1.5px solid var(--border); }
+        .step-content h3 { font-size: 1rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.5rem; }
+        .step-content p { font-size: 0.9rem; color: var(--medium-gray); line-height: 1.75; }
+        .step-content p strong { color: var(--black); }
+
+        /* ── PROVISION ── */
+        .provision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+        .provision-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 1.8rem 2rem; }
+        .provision-card-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.8rem; }
+        .provision-card-amount { font-size: 2.5rem; font-weight: 900; color: var(--white); letter-spacing: -0.03em; margin-bottom: 0.3rem; }
+        .provision-card-desc { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+        .auszahlung-box { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 1.4rem 1.8rem; font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 1.2rem; }
+        .auszahlung-box strong { color: var(--white); }
+
+        /* ── STATUS ── */
+        .status-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+        .status-steps { display: flex; flex-direction: column; gap: 0; }
+        .status-step { display: flex; gap: 1.2rem; align-items: flex-start; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+        .status-step:last-child { border-bottom: none; }
+        .status-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+        .dot-blue { background: var(--primary-blue); }
+        .dot-green { background: var(--green); }
+        .dot-orange { background: #f59e0b; }
+        .status-step h4 { font-size: 0.92rem; font-weight: 700; color: var(--black); margin-bottom: 0.15rem; }
+        .status-step p { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.6; }
+        .status-query-box { background: var(--light-gray); border-radius: 20px; padding: 2rem; }
+        .status-query-box h3 { font-size: 1rem; font-weight: 800; color: var(--black); margin-bottom: 0.5rem; }
+        .status-query-box p { font-size: 0.88rem; color: var(--medium-gray); margin-bottom: 1.5rem; line-height: 1.7; }
+        .status-input { width: 100%; padding: 0.85rem 1.2rem; background: var(--white); border: 2px solid var(--border); border-radius: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 500; color: var(--black); transition: border-color 0.2s; margin-bottom: 0.8rem; }
+        .status-input:focus { outline: none; border-color: var(--primary-blue); }
+        .status-btn { width: 100%; padding: 0.9rem 1.5rem; background: var(--dark-blue); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; transition: all 0.3s; }
+        .status-btn:hover { background: var(--primary-blue); }
+        .status-result { margin-top: 1rem; padding: 1rem 1.2rem; border-radius: 10px; font-size: 0.88rem; line-height: 1.7; display: none; }
+        .status-result.success { background: var(--green-light); color: #166534; border: 1px solid #86efac; }
+        .status-result.error { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+        .status-result.info { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+        .quartal-hint { margin-top: 1.2rem; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 0.9rem 1.2rem; font-size: 0.8rem; color: #1e40af; line-height: 1.65; }
+
+        /* ── KONTAKTFORMULAR ── */
+        .kontakt-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; }
+        .kontakt-info { position: sticky; top: 140px; }
+        .kontakt-info h3 { font-size: 1.1rem; font-weight: 800; color: var(--black); margin-bottom: 1rem; }
+        .kontakt-info p { font-size: 0.9rem; color: var(--medium-gray); line-height: 1.8; margin-bottom: 1rem; }
+        .kontakt-info p strong { color: var(--black); }
+        .koopvertrag-box { background: var(--light-gray); border-radius: 14px; padding: 1.3rem 1.5rem; margin-top: 1.5rem; border: 2px dashed var(--border); }
+        .koopvertrag-box-label { font-size: 0.72rem; font-weight: 700; color: var(--medium-gray); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+        .koopvertrag-box p { font-size: 0.85rem; color: var(--medium-gray); line-height: 1.65; margin: 0; }
+        .tally-wrap { background: var(--white); border: 1.5px solid var(--border); border-radius: 20px; padding: 2rem; min-height: 380px; }
+
+        /* ── FAQ ── */
+        .faq-list { display: flex; flex-direction: column; gap: 0.8rem; }
+        .faq-item { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+        .faq-q { width: 100%; padding: 1.2rem 1.6rem; background: none; border: none; text-align: left; font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--dark-blue); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; transition: background 0.2s; }
+        .faq-q:hover { background: var(--light-gray); }
+        .faq-icon { font-size: 1.3rem; color: var(--primary-blue); transition: transform 0.3s; font-weight: 300; flex-shrink: 0; }
+        .faq-item.open .faq-icon { transform: rotate(45deg); }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-a-inner { padding: 0 1.6rem 1.4rem; font-size: 0.92rem; color: var(--medium-gray); line-height: 1.85; }
+
+        /* ── CTA ── */
+        .cta-strip { padding: 5rem 2.5rem; background: linear-gradient(135deg, #001040, var(--dark-blue)); text-align: center; }
+        .cta-strip h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 900; color: var(--white); margin-bottom: 0.8rem; letter-spacing: -0.02em; }
+        .cta-strip p { font-size: 1rem; color: rgba(255,255,255,0.65); margin-bottom: 2rem; line-height: 1.8; }
+        .btn-white { display: inline-block; padding: 1rem 2.4rem; background: var(--white); color: var(--dark-blue); font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.2); }
+        .btn-outline-white { display: inline-block; padding: 1rem 2.4rem; background: transparent; color: rgba(255,255,255,0.85); font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.35); border-radius: 50px; text-decoration: none; transition: all 0.3s; margin-left: 1rem; }
+        .btn-outline-white:hover { border-color: rgba(255,255,255,0.7); color: var(--white); }
+
+        /* ── FOOTER ── */
+        footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 4rem 2.5rem 2rem; }
+        .footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem; margin-bottom: 3rem; }
+        .footer-section h4 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1.4rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.7rem; }
+        .footer-section a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--white); }
+        .footer-section p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
+        .footer-social-icons { display: flex; gap: 0.8rem; margin-top: 0.5rem; }
+        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
+        .footer-social-icon img { width: 22px; height: 22px; object-fit: contain; display: block; }
+        .footer-social-icon:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .zielgruppen-grid { grid-template-columns: 1fr; }
+            .provision-grid { grid-template-columns: 1fr; }
+            .status-layout { grid-template-columns: 1fr; }
+            .kontakt-layout { grid-template-columns: 1fr; }
+            .kontakt-info { position: static; }
+        }
+        @media (max-width: 768px) {
+            nav ul, .header-cta-btn { display: none; }
+            .burger { display: flex; }
+            .footer-container { grid-template-columns: 1fr 1fr; }
+            .btn-outline-white { margin-left: 0; margin-top: 0.8rem; }
+        }
+        @media (max-width: 480px) {
+            .footer-container { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <nav>
+        <a href="../index.html" class="logo"><img src="../images/Logo_weiß.png" alt="Koppmann Karriere"></a>
+        <ul>
+            <li><a href="../unternehmen.html">Für Unternehmen</a></li>
+            <li><a href="../arbeitnehmende.html">Für Arbeitnehmende</a></li>
+            <li><a href="../karriere-kosmos.html">Karriere-Kosmos</a></li>
+            <li><a href="../so-arbeite-ich.html">So Arbeite Ich</a></li>
+            <li><a href="../kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
+        </ul>
+        <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="header-cta-btn">Erstgespräch vereinbaren</a>
+        <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+    </nav>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+    <a href="../unternehmen.html">Für Unternehmen</a>
+    <a href="../arbeitnehmende.html">Für Arbeitnehmende</a>
+    <a href="../karriere-kosmos.html">Karriere-Kosmos</a>
+    <a href="../so-arbeite-ich.html">So Arbeite Ich</a>
+    <a href="../kontakt-einstieg.html">Kontakt &amp; Einstieg</a>
+    <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="mobile-cta">Erstgespräch vereinbaren</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <a href="../kontakt-einstieg.html" class="hero-back">← Zurück zu Kontakt &amp; Einstieg</a>
+        <p class="hero-eyebrow">Tippgeberschaft · Multiplikatoren</p>
+        <h1>Sie haben ein Publikum.<span>Wir haben etwas Sinnvolles zu teilen.</span></h1>
+        <div class="hero-rule"></div>
+        <p class="hero-sub">Ob Warteraum, Unterrichtsraum oder Social-Media-Kanal – wer regelmäßig Menschen begegnet die sich beruflich orientieren, kann mit einer einfachen Kooperation echten Mehrwert schaffen und eine Provision erhalten.</p>
+        <div class="hero-pills">
+            <span class="hero-pill">💶 125 € pro Ausbildungsvermittlung</span>
+            <span class="hero-pill">💶 300 € pro Fachkraftvermittlung</span>
+            <span class="hero-pill">✅ Provision bei Erfolg</span>
+        </div>
+    </div>
+</section>
+
+<!-- ANCHOR NAV -->
+<div class="anchor-nav">
+    <div class="anchor-nav-inner">
+        <button class="anchor-btn active" data-target="sec-fuerwen">🏢 Für wen</button>
+        <button class="anchor-btn" data-target="sec-wie">📋 So geht's</button>
+        <button class="anchor-btn" data-target="sec-provision">💶 Provision</button>
+        <button class="anchor-btn" data-target="sec-status">📊 Status</button>
+        <button class="anchor-btn" data-target="sec-kontakt">✍️ Kontakt</button>
+        <button class="anchor-btn" data-target="sec-faq">❓ FAQ</button>
+    </div>
+</div>
+
+<!-- FÜR WEN -->
+<section class="sec gray" id="sec-fuerwen">
+    <div class="sec-inner">
+        <p class="sec-eyebrow">Zielgruppe</p>
+        <h2 class="sec-title">Für wen ist das Multiplikatoren-Modell?</h2>
+        <p class="sec-sub">Das Modell richtet sich an alle die regelmäßig Kontakt zu Menschen in beruflichen Übergangsphasen haben – ob im persönlichen Gespräch, im Unterricht oder über digitale Reichweite.</p>
+
+        <div class="zielgruppen-grid">
+            <div class="zg-card highlight">
+                <span class="zg-icon">🚗📚</span>
+                <h3>Bildung &amp; Ausbildung</h3>
+                <p>Fahrschulen, Sprachschulen, Nachhilfe-Organisationen, Berufsschulen – überall dort wo junge Menschen auf ihrem Weg in den Beruf begleitet werden und täglich neue Gesichter auftauchen.</p>
+            </div>
+            <div class="zg-card">
+                <span class="zg-icon">🏛️</span>
+                <h3>Beratung &amp; soziale Organisationen</h3>
+                <p>Vereine, Jugendeinrichtungen, Beratungsstellen, Kirchen, Wohlfahrtsverbände – Organisationen die Menschen in Lebensphasen begleiten, in denen berufliche Orientierung ein zentrales Thema ist.</p>
+            </div>
+            <div class="zg-card">
+                <span class="zg-icon">🏪</span>
+                <h3>Publikumsstarke Betriebe</h3>
+                <p>Jedes Unternehmen mit regelmäßigem Publikumsverkehr kann Multiplikator werden – Wartebereiche, Empfangstheken, Umkleidebereiche. Ein Aufsteller oder Flyer reicht aus.</p>
+            </div>
+            <div class="zg-card">
+                <span class="zg-icon">📱</span>
+                <h3>Creator &amp; Influencer</h3>
+                <p>Wer eine digitale Community rund um Karriere, Ausbildung, Studium oder Alltagsthemen aufgebaut hat, kann Karrierebegleitung authentisch empfehlen – mit eigenem Code und individueller Absprache.</p>
+            </div>
+        </div>
+
+        <div class="influencer-hint">
+            <strong>Hinweis für Creator &amp; Influencer:</strong> Empfehlungen gegen Provision müssen als Werbung gekennzeichnet werden (§ 5a UWG). Das betrifft den Post, die Story oder das Video – nicht den Link selbst. Für Influencer-Kooperationen nehmen Sie bitte direkt Kontakt auf – wir klären alles Notwendige persönlich.
+        </div>
+    </div>
+</section>
+
+<!-- WIE ES FUNKTIONIERT -->
+<section class="sec" id="sec-wie">
+    <div class="sec-inner">
+        <p class="sec-eyebrow">Prozess</p>
+        <h2 class="sec-title">So entsteht eine Kooperation</h2>
+        <p class="sec-sub">Der Aufwand für Sie ist minimal – alles Wesentliche läuft im Hintergrund.</p>
+
+        <div class="steps">
+            <div class="step-row">
+                <div class="step-left">
+                    <div class="step-num">1</div>
+                    <div class="step-line"></div>
+                </div>
+                <div class="step-content">
+                    <h3>Kontakt &amp; Kennenlernen</h3>
+                    <p>Sie nehmen über das Kontaktformular auf dieser Seite Kontakt auf. Ich melde mich persönlich zurück – für ein kurzes Gespräch in dem wir klären, ob und wie eine Kooperation sinnvoll ist.</p>
+                </div>
+            </div>
+            <div class="step-row">
+                <div class="step-left">
+                    <div class="step-num">2</div>
+                    <div class="step-line"></div>
+                </div>
+                <div class="step-content">
+                    <h3>Code &amp; Materialien</h3>
+                    <p>Sie erhalten einen <strong>persönlichen Organisations-Code</strong> (Format: MP-JJMM-XXXX) sowie auf Wunsch druckfertige Materialien – QR-Code-Aufsteller, Flyer oder digitale Assets zum Teilen. Ein Code für Ihre gesamte Organisation.</p>
+                </div>
+            </div>
+            <div class="step-row">
+                <div class="step-left">
+                    <div class="step-num">3</div>
+                    <div class="step-line"></div>
+                </div>
+                <div class="step-content">
+                    <h3>Weiterempfehlen</h3>
+                    <p>Wer über Ihren Code ein Erstgespräch bucht, wird automatisch Ihrem Code zugeordnet. Sie müssen nichts weiter tun – die Karrierebegleitung läuft vollständig bei mir.</p>
+                </div>
+            </div>
+            <div class="step-row">
+                <div class="step-left">
+                    <div class="step-num">4</div>
+                    <div class="step-line"></div>
+                </div>
+                <div class="step-content">
+                    <h3>Provision erhalten</h3>
+                    <p>Bei erfolgreicher Vermittlung und Zahlungseingang melde ich mich persönlich bei Ihnen – mit der Auszahlungsinfo und einem Überblick über den Stand Ihrer Empfehlungen. Sie erhalten Ihre Provision innerhalb von <strong>10 Werktagen nach Zahlungseingang</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROVISION -->
+<section class="sec dark" id="sec-provision">
+    <div class="sec-inner">
+        <p class="sec-eyebrow light">Vergütung</p>
+        <h2 class="sec-title light">Was Sie verdienen</h2>
+        <p class="sec-sub light">Pro erfolgreicher Vermittlung – bei Zahlungseingang des Unternehmens, bis zu 10 Werktage später ausgezahlt.</p>
+
+        <div class="provision-grid">
+            <div class="provision-card">
+                <div class="provision-card-label">🎓 Ausbildungsvermittlung</div>
+                <div class="provision-card-amount">125 €</div>
+                <div class="provision-card-desc">Pro erfolgreicher Vermittlung eines Ausbildungsplatzes über Ihren Organisations-Code.</div>
+            </div>
+            <div class="provision-card">
+                <div class="provision-card-label">👤 Fachkraftvermittlung</div>
+                <div class="provision-card-amount">300 €</div>
+                <div class="provision-card-desc">Pro erfolgreicher Vermittlung einer Fachkraft in eine Festanstellung über Ihren Code.</div>
+            </div>
+        </div>
+
+        <div class="auszahlung-box">
+            <strong>Zahlungsweg:</strong> Auf Wunsch per PayPal, Banküberweisung oder – bei Organisationen – per Self-Billing-Gutschrift. Den bevorzugten Weg klären wir im persönlichen Gespräch. Bei mehreren Vermittlungen in einem Quartal erfolgt die Abrechnung auf Wunsch gesammelt.
+        </div>
+        <div class="auszahlung-box">
+            <strong>Kein Honorar ohne Erfolg:</strong> Die Provision entfällt, wenn die vermittelte Person das Arbeitsverhältnis in der Probezeit beendet und das Unternehmen nicht zahlt. Sie tragen kein finanzielles Risiko.
+        </div>
+    </div>
+</section>
+
+<!-- STATUS -->
+<section class="sec gray" id="sec-status">
+    <div class="sec-inner">
+        <p class="sec-eyebrow">Transparenz</p>
+        <h2 class="sec-title">Status Ihrer Empfehlungen</h2>
+        <p class="sec-sub">Sie werden automatisch auf dem Laufenden gehalten – und können jederzeit den aktuellen Stand abfragen.</p>
+
+        <div class="status-layout">
+            <div>
+                <h3 style="font-size:1rem; font-weight:800; color:var(--black); margin-bottom:1.2rem;">Was Sie erhalten</h3>
+                <div class="status-steps">
+                    <div class="status-step">
+                        <span class="status-dot dot-blue"></span>
+                        <div>
+                            <h4>Erstgespräch erfolgt</h4>
+                            <p>Eine empfohlene Person hat ihr Erstgespräch wahrgenommen.</p>
+                        </div>
+                    </div>
+                    <div class="status-step">
+                        <span class="status-dot dot-blue"></span>
+                        <div>
+                            <h4>Wird begleitet</h4>
+                            <p>Die Karrierebegleitung ist aktiv gestartet.</p>
+                        </div>
+                    </div>
+                    <div class="status-step">
+                        <span class="status-dot dot-green"></span>
+                        <div>
+                            <h4>Vermittlung erfolgt 🎉</h4>
+                            <p>Eine Person wurde erfolgreich vermittelt. Ihre Provision ist auf dem Weg.</p>
+                        </div>
+                    </div>
+                    <div class="status-step">
+                        <span class="status-dot dot-orange"></span>
+                        <div>
+                            <h4>Zahlung angekündigt</h4>
+                            <p>Die Auszahlung Ihrer Provision wird vorbereitet.</p>
+                        </div>
+                    </div>
+                    <div class="status-step">
+                        <span class="status-dot dot-green"></span>
+                        <div>
+                            <h4>Provision ausgezahlt ✅</h4>
+                            <p>Ausgezahlt – Sie erhalten einen Beleg per Mail.</p>
+                        </div>
+                    </div>
+                </div>
+                <p style="font-size:0.82rem; color:var(--medium-gray); margin-top:1.2rem; line-height:1.7;">Keine personenbezogenen Daten der empfohlenen Personen werden weitergegeben – nur der Statuswechsel.</p>
+            </div>
+
+            <div>
+                <div class="status-query-box">
+                    <h3>Status per Mail abfragen</h3>
+                    <p>Geben Sie Ihre registrierte E-Mail-Adresse ein – Sie erhalten den aktuellen Stand Ihrer Empfehlungen innerhalb weniger Minuten per Mail.</p>
+                    <input type="email" class="status-input" id="status-email" placeholder="ihre@email.de">
+                    <button class="status-btn" onclick="handleStatus()">Status per Mail anfordern →</button>
+                    <div class="status-result" id="status-result"></div>
+                    <p style="font-size:0.78rem; color:var(--medium-gray); margin-top:1rem; line-height:1.6;">
+                        Bei Fragen: <a href="mailto:jan@koppmannkarriere.de" style="color:var(--primary-blue);">jan@koppmannkarriere.de</a>
+                    </p>
+                </div>
+                <div class="quartal-hint" style="margin-top:1.2rem;">
+                    📅 <strong>Automatischer Quartals-Update:</strong> Einmal pro Quartal erhalten Sie unaufgefordert eine Übersicht aller aktiven Empfehlungen und deren aktuellen Status – direkt per Mail.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- KONTAKT / REGISTRIERUNG -->
+<section class="sec" id="sec-kontakt">
+    <div class="sec-inner">
+        <p class="sec-eyebrow">Jetzt starten</p>
+        <h2 class="sec-title">Kontakt aufnehmen</h2>
+        <p class="sec-sub">Eine Kooperation beginnt mit einem kurzen Gespräch. Füllen Sie das Formular aus – ich melde mich innerhalb von zwei Werktagen persönlich bei Ihnen.</p>
+
+        <div class="kontakt-layout">
+            <div class="kontakt-info">
+                <h3>Was danach passiert</h3>
+                <p>Nach Ihrer Anfrage melde ich mich persönlich – für ein kurzes Gespräch in dem wir klären:</p>
+                <p><strong>· Passt das Modell zu Ihrer Organisation?</strong><br>
+                · Welche Materialien brauchen Sie?<br>
+                · Wie möchten Sie die Provision erhalten?<br>
+                · Gibt es besondere Rahmenbedingungen?</p>
+                <p>Es gibt keine Verpflichtung – das Gespräch dient der Einordnung.</p>
+
+                <div class="koopvertrag-box">
+                    <div class="koopvertrag-box-label">📄 Kooperationsvereinbarung</div>
+                    <p>Für Organisationen die eine schriftliche Grundlage bevorzugen, stellen wir eine einfache Kooperationsvereinbarung bereit. Diese wird zeitnah als Download hinterlegt – alternativ klären wir alles im persönlichen Gespräch.</p>
+                </div>
+            </div>
+
+            <div class="tally-wrap">
+                <iframe data-tally-src="https://tally.so/embed/pbVVjZ?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Multiplikator Kontakt"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec gray" id="sec-faq">
+    <div class="sec-inner">
+        <p class="sec-eyebrow">Häufige Fragen</p>
+        <h2 class="sec-title">FAQ</h2>
+        <p class="sec-sub">Die wichtigsten Fragen zum Multiplikatoren-Modell – transparent beantwortet.</p>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-q">Wie viel Aufwand entsteht für uns als Organisation? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Minimal. Sie erhalten einen QR-Code oder Flyer und stellen diesen sichtbar auf – zum Beispiel an der Empfangstheke oder im Wartebereich. Die gesamte Karrierebegleitung und Vermittlung läuft bei mir. Sie müssen nichts weiter koordinieren.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Bekommt jeder Mitarbeiter einen eigenen Code? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Nein – Ihre Organisation erhält einen gemeinsamen Code. Alle Buchungen über diesen Code werden Ihrer Organisation zugeordnet. Falls Sie intern eine feinere Zuordnung wünschen, besprechen wir das im persönlichen Gespräch.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Wir sind ein gemeinnütziger Verein – können wir trotzdem mitmachen? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Ja, absolut. Gemeinnützige Organisationen können die Provision entweder auszahlen lassen oder – auf Wunsch – als Spende widmen. Details regeln wir im persönlichen Gespräch.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Was passiert, wenn eine Vermittlung nicht klappt? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Kein Problem – die Provision entfällt einfach. Sie tragen kein finanzielles Risiko. Die Kooperation bleibt bestehen und Ihr Code ist weiterhin aktiv.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Können wir die Kooperation jederzeit beenden? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Ja, jederzeit und ohne Frist. Eine formlose Mitteilung per Mail genügt. Bereits laufende Begleitungen werden ordentlich abgeschlossen – offene Provisionen aus aktiven Empfehlungen bleiben bestehen.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Wir sind ein Influencer – was gilt für uns? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Empfehlungen gegen Provision müssen als Werbung gekennzeichnet werden (§ 5a UWG) – das betrifft den Post, die Story oder das Video. Wir dokumentieren die Kennzeichnungspflicht schriftlich per Mail-Bestätigung.<br><br>Nehmen Sie gerne direkt Kontakt auf – wir besprechen alles persönlich und klären gemeinsam die sinnvollste Form der Zusammenarbeit.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Gibt es eine Kooperationsvereinbarung? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Für Organisationen die eine schriftliche Grundlage bevorzugen, stellen wir eine einfache Kooperationsvereinbarung bereit. Diese wird zeitnah als Download hinterlegt. Bis dahin klären wir alles im persönlichen Gespräch – eine E-Mail-Bestätigung genügt als Grundlage.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+    <h2>Interesse an einer Kooperation?</h2>
+    <p>Ein kurzes Gespräch genügt – unverbindlich und ohne Verpflichtung.</p>
+    <a href="#sec-kontakt" class="btn-white" onclick="document.getElementById('sec-kontakt').scrollIntoView({behavior:'smooth'}); return false;">Jetzt Kontakt aufnehmen →</a>
+    <a href="mailto:jan@koppmannkarriere.de" class="btn-outline-white">jan@koppmannkarriere.de</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="../index.html">Start</a></li>
+                <li><a href="../unternehmen.html">Für Unternehmen</a></li>
+                <li><a href="../arbeitnehmende.html">Für Arbeitnehmende</a></li>
+                <li><a href="../karriere-kosmos.html">Karriere-Kosmos</a></li>
+                <li><a href="../so-arbeite-ich.html">So Arbeite Ich</a></li>
+                <li><a href="../kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Kontakt</h4>
+            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br><a href="mailto:jan@koppmannkarriere.de">jan@koppmannkarriere.de</a></p>
+            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br><a href="tel:+4916034028920">0160 340 2892</a></p>
+            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Adresse</strong><br>Neuhurden 22,<br>51491 Overath</p>
+        </div>
+        <div class="footer-section">
+            <h4>Social Media</h4>
+            <div class="footer-social-icons">
+                <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="footer-social-icon"><img src="../images/Instagram_Icon.png" alt="Instagram"></a>
+                <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon"><img src="../images/Tiktok_Icon.png" alt="TikTok"></a>
+                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon"><img src="../images/YouTube_Icon.png" alt="YouTube"></a>
+                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon"><img src="../images/Linkedin_Icon.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h4>Rechtliches</h4>
+            <ul>
+                <li><a href="../transparenz/impressum.html">Impressum</a></li>
+                <li><a href="../transparenz/datenschutz.html">Datenschutz</a></li>
+            </ul>
+            <h4 style="margin-top:1.8rem;">Tippgeber:in werden</h4>
+            <p><a href="tippgeber.html">Weiterempfehlen &amp; Provision erhalten</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Jan Koppmann – Karrierebegleitung</p>
+        <p>Made with ♥ in Overath</p>
+    </div>
+</footer>
+
+<script>
+// ── BURGER ──
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobile-menu');
+burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-menu a').forEach(l => l.addEventListener('click', () => {
+    burger.classList.remove('open'); mobileMenu.classList.remove('open'); document.body.style.overflow = '';
+}));
+
+// ── ANCHOR NAV ──
+const anchorBtns = document.querySelectorAll('.anchor-btn');
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 160) current = sec.id; });
+    anchorBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.target === current));
+});
+anchorBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.getElementById(btn.dataset.target)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+
+// ── FAQ ──
+document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => {
+            i.classList.remove('open');
+            i.querySelector('.faq-a').style.maxHeight = null;
+        });
+        if (!isOpen) {
+            item.classList.add('open');
+            const a = item.querySelector('.faq-a');
+            a.style.maxHeight = a.scrollHeight + 'px';
+        }
+    });
+});
+
+// ── STATUS ABFRAGE ──
+function handleStatus() {
+    const email = document.getElementById('status-email').value.trim();
+    const result = document.getElementById('status-result');
+    if (!email || !email.includes('@')) {
+        result.className = 'status-result error';
+        result.style.display = 'block';
+        result.textContent = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+        return;
+    }
+    const N8N_WEBHOOK = 'https://DEINE-N8N-URL/webhook/multiplikator-status';
+    fetch(N8N_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, type: 'multiplikator' })
+    })
+    .then(() => {
+        result.className = 'status-result success';
+        result.style.display = 'block';
+        result.innerHTML = '✅ Status wurde an <strong>' + email + '</strong> geschickt. Bitte prüfen Sie auch Ihren Spam-Ordner.';
+    })
+    .catch(() => {
+        result.className = 'status-result info';
+        result.style.display = 'block';
+        result.innerHTML = 'Die Abfrage konnte nicht gesendet werden. Schreiben Sie direkt an <a href="mailto:jan@koppmannkarriere.de" style="color:inherit;font-weight:700;">jan@koppmannkarriere.de</a>.';
+    });
+}
+document.getElementById('status-email').addEventListener('keydown', e => {
+    if (e.key === 'Enter') handleStatus();
+});
+
+// ── TALLY ──
+var d = document, w = "https://tally.so/widgets/embed.js",
+v = function() {
+    if (typeof Tally !== "undefined") { Tally.loadEmbeds(); return; }
+    d.querySelectorAll("[data-tally-src]:not([src])").forEach(function(e) { e.src = e.dataset.tallySrc; });
+};
+if (d.querySelector('script[src="' + w + '"]') === null) {
+    var s = d.createElement("script"); s.src = w; s.onload = v; s.onerror = v; d.body.appendChild(s);
+} else { v(); }
+</script>
+</body>
+</html>
