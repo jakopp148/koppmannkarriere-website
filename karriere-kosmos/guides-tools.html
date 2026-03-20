@@ -48,6 +48,9 @@
         .mobile-menu a { text-decoration: none; color: var(--black); font-weight: 600; font-size: 1.3rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
         .mobile-menu a:hover { color: var(--page-color); }
         .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--page-color); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
+
+        /* ── BREADCRUMB ── */
+        .breadcrumb { margin-top: 72px; background: var(--page-color); padding: 0.7rem 2.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.75); display: flex; align-items: center; gap: 0.5rem; }
         .breadcrumb a { color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
         .breadcrumb a:hover { color: var(--white); }
         .breadcrumb span { opacity: 0.5; }
@@ -174,32 +177,43 @@
 <!-- HEADER -->
 <header>
     <nav>
-        <a href="../index.html" class="logo"><img src="../images/Logo_weiß.png" alt="Koppmann Karriere"></a>
+        <a href="index.html" class="logo"><img src="images/Logo_weiß.png" alt="Koppmann Karriere"></a>
         <ul>
-            <li><a href="../unternehmen.html">Für Unternehmen</a></li>
-            <li><a href="../arbeitnehmende.html">Für Arbeitnehmende</a></li>
-            <li><a href="../karriere-kosmos.html" class="active">Karriere-Kosmos</a></li>
-            <li><a href="../so-arbeite-ich.html">So Arbeite Ich</a></li>
+            <li><a href="fuer-arbeitnehmende.html">Für Arbeitnehmende</a></li>
+            <li><a href="karriere-kosmos.html" class="active">Karriere-Kosmos</a></li>
+            <li><a href="unternehmen.html">Für Unternehmen</a></li>
+            <li><a href="ueber-mich.html">So Arbeite Ich</a></li>
             <li><a href="../kontakt-einstieg.html">Kontakt & Einstieg</a></li>
         </ul>
-        <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="header-cta-btn">Erstgespräch vereinbaren</a>
+        <a href="../kontakt-einstieg.html" class="header-cta-btn">Erstgespräch vereinbaren</a>
         <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
     </nav>
 </header>
 
 <div class="mobile-menu" id="mobile-menu">
-    <a href="../unternehmen.html">Für Unternehmen</a>
-    <a href="../arbeitnehmende.html">Für Arbeitnehmende</a>
-    <a href="../karriere-kosmos.html">Karriere-Kosmos</a>
-    <a href="../so-arbeite-ich.html">So Arbeite Ich</a>
-    <a href="../kontakt-einstieg.html">Kontakt &amp; Einstieg</a>
-    <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="mobile-cta">Erstgespräch vereinbaren</a>
+    <a href="fuer-arbeitnehmende.html">Für Arbeitnehmende</a>
+    <a href="karriere-kosmos.html">Karriere-Kosmos</a>
+    <a href="unternehmen.html">Für Unternehmen</a>
+    <a href="ueber-mich.html">So Arbeite Ich</a>
+    <a href="../kontakt-einstieg.html">Kontakt & Einstieg</a>
+    <a href="../kontakt-einstieg.html" class="mobile-cta">Erstgespräch vereinbaren</a>
 </div>
 
 <!-- BREADCRUMB -->
+<div class="breadcrumb">
+    <a href="index.html">Start</a><span>›</span>
+    <a href="karriere-kosmos.html">Karriere-Kosmos</a><span>›</span>
+    Guides & Tools
+</div>
+
 <!-- HERO -->
 <section class="hero">
-    
+    <div class="hero-inner">
+        <a href="../karriere-kosmos.html" class="hero-back">← Zurück zum Karriere-Kosmos</a>
+        <p class="hero-eyebrow">Karriere-Kosmos · Guides & Tools</p>
+        <h1>Praktische Werkzeuge<br>für deinen nächsten Schritt</h1>
+        <p class="hero-desc">Vom Jobzufriedenheits-Scan über Bewerbungsguides bis zum KI-Simulator – hier findest du konkrete Unterstützung, nicht nur Theorie.</p>
+    </div>
     <div class="hero-wave">
         <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
             <path d="M0,32 C360,56 1080,8 1440,32 L1440,48 L0,48 Z" fill="#ffffff"/>
@@ -225,20 +239,7 @@
 
         <div class="tool-grid">
 
-            <div class="tool-kachel highlight">
-                <div class="tool-kachel-icon">📊</div>
-                <div class="tool-kachel-type">Interaktiver Scan · Kostenlos</div>
-                <h3>Jobzufriedenheits-Scan</h3>
-                <p>Wie zufrieden bist du eigentlich mit deinem Job – wirklich? Der Scan gibt dir Klarheit in ca. 5 Minuten, direkt hier auf der Seite.</p>
-                <div class="tool-kachel-tags">
-                    <span class="tool-tag">⏱ ca. 5 Min.</span>
-                    <span class="tool-tag">📊 Sofort-Ergebnis</span>
-                    <span class="tool-tag">Kostenlos</span>
-                </div>
-                <a href="#sec-scan" class="btn-tool">Scan starten ↓</a>
-            </div>
-
-            <div class="tool-kachel">
+                        <div class="tool-kachel">
                 <div class="tool-kachel-icon">📄</div>
                 <div class="tool-kachel-type">PDF-Guide · Kostenlos</div>
                 <h3>Bewerbungsunterlagen-Guide</h3>
@@ -319,7 +320,11 @@
                 2. Entkommentiere das iframe darunter und trage deine ID ein
             -->
             <div class="formbricks-placeholder" id="formbricks-placeholder">
-                <div class="placeholder-icon">📋</div>
+                <div class="placeholder-icon">📊</div>
+                <h3>Der Jobzufriedenheits-Scan wird zeitnah freigeschaltet</h3>
+                <p>Schau bald wieder vorbei – oder meld dich direkt bei Jan für ein persönliches Erstgespräch.</p>
+                <a href="../kontakt-einstieg.html" class="fallback-btn">Zum Erstgespräch →</a>
+            </div>
                 <h3>Formbricks-Umfrage</h3>
                 <p>Sobald dein Formbricks-Formular eingerichtet ist, wird es hier direkt eingebettet.</p>
                 <a href="#" class="fallback-btn">Zum Jobzufriedenheits-Scan →</a>
@@ -373,7 +378,7 @@
                 <div class="tool-kachel-type" style="color: rgba(255,255,255,0.6);">Karriere-Kosmos</div>
                 <h3 style="color: white;">Mehr entdecken im Kosmos</h3>
                 <p style="color: rgba(255,255,255,0.78); flex:1;">Im Karriere-Kosmos findest du Kurse, Artikel und weitere Tools, die auf Karriereplanung I aufbauen.</p>
-                <a href="../karriere-kosmos.html" class="btn-tool" style="background: rgba(255,255,255,0.15); color: white; border: 2px solid rgba(255,255,255,0.35);">Zum Karriere-Kosmos →</a>
+                <a href="karriere-kosmos.html" class="btn-tool" style="background: rgba(255,255,255,0.15); color: white; border: 2px solid rgba(255,255,255,0.35);">Zum Karriere-Kosmos →</a>
             </div>
 
         </div>
@@ -440,33 +445,33 @@
         <div class="footer-section">
             <h4>Navigation</h4>
             <ul>
-                <li><a href="../index.html">Start</a></li>
-                <li><a href="../arbeitnehmende.html">Für Arbeitnehmende</a></li>
-                <li><a href="../karriere-kosmos.html">Karriere-Kosmos</a></li>
-                <li><a href="../unternehmen.html">Für Unternehmen</a></li>
-                <li><a href="../so-arbeite-ich.html">So Arbeite Ich</a></li>
+                <li><a href="index.html">Start</a></li>
+                <li><a href="fuer-arbeitnehmende.html">Für Arbeitnehmende</a></li>
+                <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
+                <li><a href="unternehmen.html">Für Unternehmen</a></li>
+                <li><a href="ueber-mich.html">So Arbeite Ich</a></li>
                 <li><a href="../kontakt-einstieg.html">Kontakt & Einstieg</a></li>
             </ul>
         </div>
         <div class="footer-section">
             <h4>Kontakt</h4>
-            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br><a href="/cdn-cgi/l/email-protection#7319121d33181c03031e121d1d181201011a1601165d1716"><span class="__cf_email__" data-cfemail="e8828986a8838798988589868683899a9a818d9a8dc68c8d">[email&#160;protected]</span></a></p>
-            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br>folgt</p>
+            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br><a href="/cdn-cgi/l/email-protection#3d575c537d56524d4d505c5353565c4f4f54584f58135958"><span class="__cf_email__" data-cfemail="cca6ada28ca7a3bcbca1ada2a2a7adbebea5a9bea9e2a8a9">[email&#160;protected]</span></a></p>
+            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br><a href="tel:+4916034028920">0160 340 2892</a></p>
         </div>
         <div class="footer-section">
             <h4>Social Media</h4>
             <div class="footer-social-icons">
-                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="YouTube"><img src="../images/YouTube_Icon.png" alt="YouTube"></a>
-                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon" title="LinkedIn"><img src="../images/Linkedin_Icon.png" alt="LinkedIn"></a>
                 <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="footer-social-icon" title="Instagram"><img src="../images/Instagram_Icon.png" alt="Instagram"></a>
                 <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="TikTok"><img src="../images/Tiktok_Icon.png" alt="TikTok"></a>
+                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="YouTube"><img src="../images/YouTube_Icon.png" alt="YouTube"></a>
+                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon" title="LinkedIn"><img src="../images/Linkedin_Icon.png" alt="LinkedIn"></a>
             </div>
         </div>
         <div class="footer-section">
             <h4>Rechtliches</h4>
             <ul>
-                <li><a href="../transparenz/impressum.html">Impressum</a></li>
-                <li><a href="../transparenz/datenschutz.html">Datenschutz</a></li>
+                <li><a href="transparenz/impressum.html">Impressum</a></li>
+                <li><a href="transparenz/datenschutz.html">Datenschutz</a></li>
             </ul>
             <h4 style="margin-top:1.8rem;">Tippgeber:in werden</h4>
             <p><a href="tippgeber.html">Weiterempfehlen & Provision erhalten</a></p>
@@ -474,7 +479,7 @@
     </div>
     <div class="footer-bottom">
         <p>© 2026 Jan Koppmann – Karrierebegleitung</p>
-        <p>Hosted on Netlify · Made with ♥ in Overath</p>
+        <p>Made with ♥ in Overath</p>
     </div>
 </footer>
 
@@ -504,16 +509,20 @@
         anchorBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.target === current));
     });
     anchorBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const target = document.getElementById(btn.dataset.target);
-            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
+        document.getElementById(btn.dataset.target)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-
-    /*
-    ── FORMBRICKS AKTIVIEREN ──
-    Sobald deine Formbricks-URL vorliegt:
-    1. document.getElementById('formbricks-placeholder').style.display = 'none';
-    2. const iframe = document.createElement('iframe');
+</script>
+<script>
+(function(){
+    var b = document.getElementById("maintenance-banner");
+    if (!b) return;
+    if (sessionStorage.getItem("banner-closed")) { b.style.display = "none"; return; }
+    var btn = document.getElementById("banner-close");
+    if (btn) btn.addEventListener("click", function(){
+        b.style.display = "none";
+        sessionStorage.setItem("banner-closed", "1");
+    });
+})();
+</script>
 </body>
 </html>
