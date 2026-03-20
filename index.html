@@ -45,7 +45,7 @@
         .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--primary-blue); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
 
         /* ── HERO ── */
-        .hero { margin-top: 72px; position: relative; width: 100%; min-height: 88vh; overflow: hidden; }
+        .hero { margin-top: 0; position: relative; width: 100%; min-height: 88vh; overflow: hidden; }
         .hero-image { position: absolute; inset: 0; }
         .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
         .hero-content { position: relative; z-index: 1; padding: 5rem 3rem 4rem 4rem; max-width: 560px; margin-top: 3rem; }
@@ -172,6 +172,14 @@
             .footer-container { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
         }
+
+        /* ── MAINTENANCE BANNER ── */
+        .maintenance-banner { background: #fffbeb; border-bottom: 1px solid #fde68a; padding: 0.65rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; position: relative; z-index: 999; margin-top: 72px; }
+        .maintenance-banner p { font-size: 0.82rem; color: #78350f; line-height: 1.5; font-family: 'Montserrat', sans-serif; }
+        .maintenance-banner p strong { font-weight: 700; }
+        .maintenance-banner-close { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: #92400e; padding: 0.2rem 0.4rem; line-height: 1; flex-shrink: 0; transition: opacity 0.2s; }
+        .maintenance-banner-close:hover { opacity: 0.6; }
+        @media (max-width: 768px) { .maintenance-banner { padding: 0.65rem 1.5rem; } }
     </style>
 </head>
 <body>
@@ -201,10 +209,17 @@
     <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="mobile-cta">Erstgespräch vereinbaren</a>
 </div>
 
+<!-- MAINTENANCE BANNER -->
+<div class="maintenance-banner" id="maintenance-banner">
+    <p>&#128296; <strong>Diese Website wird aktuell bearbeitet und umgebaut.</strong> Bitte um Verst&#228;ndnis, wenn noch nicht alles optimal angezeigt wird und funktioniert. Danke f&#252;r Ihr Verst&#228;ndnis.</p>
+    <button class="maintenance-banner-close" id="banner-close" aria-label="Hinweis schliessen">&#x2715;</button>
+</div>
+
+
 <!-- BLOCK 1: HERO -->
 <section class="hero">
     <div class="hero-image">
-        <img src="images/Hero_Startseite_Hilfe Bergsteigen.png"
+        <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1920/Hero_Startseite_Hilfe_Bergsteigen_i5up0j.png"
              alt="Zwei Bergsteiger – Karrierebegleitung mit Koppmann Karriere">
     </div>
     <div class="hero-content">
@@ -237,7 +252,7 @@
 <!-- BLOCK 3: CAROUSEL -->
 <section class="carousel-section">
     <div class="carousel-heading">
-        <h3>Karrierebegleitung, weil...</h3>
+        <h3>Karrierebegleitung, weil</h3>
     </div>
     <div class="carousel-outer">
         <button class="carousel-arrow prev" id="prev-btn" aria-label="Vorheriges Bild">&#8592;</button>
@@ -424,7 +439,7 @@
         <div class="footer-section">
             <h4>Kontakt</h4>
             <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br>
-            <a href="mailto:jan@koppmannkarriere.de">jan@koppmannkarriere.de</a></p>
+            <a href="/cdn-cgi/l/email-protection#0862696648636778786569666663697a7a616d7a6d266c6d"><span class="__cf_email__" data-cfemail="355f545b755e5a454558545b5b5e5447475c5047501b5150">[email&#160;protected]</span></a></p>
             <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br>
             <a href="tel:+4916034028920">0160 340 2892</a></p>
             <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Adresse</strong><br>
@@ -453,9 +468,7 @@
         <p>© 2026 Jan Koppmann – Karrierebegleitung</p>
         <p>Made with ♥ in Overath</p>
     </div>
-</footer>
-
-<script>
+</footer><script>
     // ── BURGER ──
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -573,14 +586,19 @@
             const isActive = item.classList.contains('active');
             document.querySelectorAll('.accordion-item').forEach(i => {
                 i.classList.remove('active');
-                i.querySelector('.accordion-content').style.maxHeight = null;
-            });
-            if (!isActive) {
-                item.classList.add('active');
-                content.style.maxHeight = content.scrollHeight + 'px';
-            }
-        });
+                i.querySelector('.accordion-conte
+</script>
+<script>
+(function(){
+    var b = document.getElementById("maintenance-banner");
+    if (!b) return;
+    if (sessionStorage.getItem("banner-closed")) { b.style.display = "none"; return; }
+    var btn = document.getElementById("banner-close");
+    if (btn) btn.addEventListener("click", function(){
+        b.style.display = "none";
+        sessionStorage.setItem("banner-closed", "1");
     });
+})();
 </script>
 </body>
 </html>
