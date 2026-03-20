@@ -46,7 +46,7 @@
         .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--page-color); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
 
         /* ── HERO ── */
-        .hero { margin-top: 72px; position: relative; width: 100%; min-height: 72vh; overflow: hidden; display: flex; align-items: center; background: #f0f7ff; }
+        .hero { margin-top: 0; position: relative; width: 100%; min-height: 72vh; overflow: hidden; display: flex; align-items: center; background: #f0f7ff; }
         .hero-bg { position: absolute; inset: 0; }
         .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
         .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(240,247,255,0.97) 0%, rgba(220,238,255,0.88) 30%, rgba(180,215,245,0.4) 60%, rgba(0,39,119,0.0) 100%); }
@@ -167,6 +167,14 @@
             .footer-bottom { flex-direction: column; text-align: center; }
             .zerofee-section, .fuerwen-section, .prozess-section, .faq-section { padding-left: 1.5rem; padding-right: 1.5rem; }
         }
+
+        /* ── MAINTENANCE BANNER ── */
+        .maintenance-banner { background: #fffbeb; border-bottom: 1px solid #fde68a; padding: 0.65rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; position: relative; z-index: 999; margin-top: 72px; }
+        .maintenance-banner p { font-size: 0.82rem; color: #78350f; line-height: 1.5; font-family: 'Montserrat', sans-serif; }
+        .maintenance-banner p strong { font-weight: 700; }
+        .maintenance-banner-close { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: #92400e; padding: 0.2rem 0.4rem; line-height: 1; flex-shrink: 0; transition: opacity 0.2s; }
+        .maintenance-banner-close:hover { opacity: 0.6; }
+        @media (max-width: 768px) { .maintenance-banner { padding: 0.65rem 1.5rem; } }
     </style>
 </head>
 <body>
@@ -195,6 +203,13 @@
     <a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a>
     <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="mobile-cta">Erstgespräch vereinbaren</a>
 </div>
+
+<!-- MAINTENANCE BANNER -->
+<div class="maintenance-banner" id="maintenance-banner">
+    <p>&#128296; <strong>Diese Website wird aktuell bearbeitet und umgebaut.</strong> Bitte um Verst&#228;ndnis, wenn noch nicht alles optimal angezeigt wird und funktioniert. Danke f&#252;r Ihr Verst&#228;ndnis.</p>
+    <button class="maintenance-banner-close" id="banner-close" aria-label="Hinweis schliessen">&#x2715;</button>
+</div>
+
 
 <!-- HERO -->
 <section class="hero">
@@ -454,12 +469,18 @@
                 i.classList.remove('active');
                 i.querySelector('.faq-answer').style.maxHeight = null;
             });
-            if (!isActive) {
-                item.classList.add('active');
-                item.querySelector('.faq-answer').style.maxHeight = item.querySelector('.faq-answer').scrollHeight + 'px';
-            }
-        });
+</script>
+<script>
+(function(){
+    var b = document.getElementById("maintenance-banner");
+    if (!b) return;
+    if (sessionStorage.getItem("banner-closed")) { b.style.display = "none"; return; }
+    var btn = document.getElementById("banner-close");
+    if (btn) btn.addEventListener("click", function(){
+        b.style.display = "none";
+        sessionStorage.setItem("banner-closed", "1");
     });
+})();
 </script>
 </body>
 </html>
