@@ -48,7 +48,7 @@
         /* ── HERO ── */
         .hero { margin-top: 72px; position: relative; width: 100%; min-height: 70vh; overflow: hidden; display: flex; align-items: center; justify-content: center; }
         .hero-image { position: absolute; inset: 0; }
-        .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center bottom; display: block; }
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 33%; display: block; }
         .hero-image::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.48); }
         .hero-content { position: relative; z-index: 1; text-align: center; max-width: 700px; padding: 3rem 2rem; }
         .hero-eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 1rem; }
@@ -192,7 +192,7 @@
     </div>
     <div class="hero-content">
         <h1>Kontakt &amp; Einstieg</h1>
-        <p>Der erste Schritt braucht keine Vorbereitung.<br>Einfach melden – ich höre zu.</p>
+        <p>Der erste Schritt braucht keine Vorbereitung. Meld dich einfach – ich höre zu.</p>
 
     </div>
 </section>
@@ -248,7 +248,7 @@
                 <h2>Termin direkt buchen</h2>
                 <p class="sub" style="margin-bottom:1.5rem;">Erstgespräch kostenlos & unverbindlich – wähle direkt einen Termin.</p>
                 <!-- Zeeg inline embed begins -->
-                <div class="zeeg-inline-widget" id="zeeg-embed-koppmannkarriere" style="width: auto; min-height: auto;"></div>
+                <div class="zeeg-inline-widget" id="zeeg-embed-koppmannkarriere" style="width: auto; min-height: 800px;"></div>
                 <script type="text/javascript" src="https://assets.zeeg.me/embed.min.js" data-user="koppmannkarriere" async></script>
                 <!-- Zeeg inline embed ends -->
             </div>
@@ -296,16 +296,24 @@
                     <span class="who-box">Für: Schüler:innen · Auszubildende · Studierende · Berufstätige · Arbeitssuchende · Quereinsteiger:innen</span>
                 </div>
                 <div class="tally-wrapper">
-                    <iframe data-tally-src="https://tally.so/embed/eqEBZO?alignLeft=1&hideTitle=1&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Kontakt Arbeitnehmer:in"></iframe>
+                <div style="background:var(--light-gray); border:2px dashed var(--border); border-radius:14px; padding:2.5rem; text-align:center; color:var(--medium-gray);">
+                    <div style="font-size:1.8rem; margin-bottom:0.8rem;">📋</div>
+                    <p style="font-size:0.92rem; font-weight:600; color:var(--black); margin-bottom:0.3rem;">Formular wird zeitnah eingefügt</p>
+                    <p style="font-size:0.85rem;">Bei Fragen wende dich direkt an <a href="mailto:jan@koppmannkarriere.de" style="color:var(--primary-blue);">jan@koppmannkarriere.de</a></p>
                 </div>
+            </div>
             </div>
 
             <!-- FORMULAR: UNTERNEHMEN -->
             <div class="form-panel" id="form-unternehmen">
                 <p style="font-size:0.95rem; color:var(--medium-gray); line-height:1.75; margin-bottom:1.5rem;">Schreiben Sie mir – ich melde mich zeitnah.</p>
                 <div class="tally-wrapper">
-                    <iframe data-tally-src="https://tally.so/embed/BzBGQR?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Kontakt Unternehmen"></iframe>
+                <div style="background:var(--light-gray); border:2px dashed var(--border); border-radius:14px; padding:2.5rem; text-align:center; color:var(--medium-gray);">
+                    <div style="font-size:1.8rem; margin-bottom:0.8rem;">📋</div>
+                    <p style="font-size:0.92rem; font-weight:600; color:var(--black); margin-bottom:0.3rem;">Formular wird zeitnah eingefügt</p>
+                    <p style="font-size:0.85rem;">Bei Fragen wende dich direkt an <a href="mailto:jan@koppmannkarriere.de" style="color:var(--primary-blue);">jan@koppmannkarriere.de</a></p>
                 </div>
+            </div>
             </div>
 
             <!-- FORMULAR: JOBPROFIL -->
@@ -316,8 +324,12 @@
                     <span class="who-box">Hinweis: Das Jobprofil wird ausschließlich intern genutzt und nicht veröffentlicht.</span>
                 </div>
                 <div class="tally-wrapper">
-                    <iframe data-tally-src="https://tally.so/embed/A78l4D?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Jobprofil hinterlegen"></iframe>
+                <div style="background:var(--light-gray); border:2px dashed var(--border); border-radius:14px; padding:2.5rem; text-align:center; color:var(--medium-gray);">
+                    <div style="font-size:1.8rem; margin-bottom:0.8rem;">📋</div>
+                    <p style="font-size:0.92rem; font-weight:600; color:var(--black); margin-bottom:0.3rem;">Formular wird zeitnah eingefügt</p>
+                    <p style="font-size:0.85rem;">Bei Fragen wende dich direkt an <a href="mailto:jan@koppmannkarriere.de" style="color:var(--primary-blue);">jan@koppmannkarriere.de</a></p>
                 </div>
+            </div>
             </div>
 
         </div>
@@ -370,7 +382,11 @@
                         <a href="tippgeberschaft/multiplikatoren.html" class="btn-tippgeber">Zum Multiplikatoren-Modell →</a>
                         <button class="multiplikator-form-toggle" id="multiplikator-toggle">✉️ Jetzt als Multiplikator Kontakt aufnehmen</button>
                         <div class="multiplikator-form-wrap" id="multiplikator-form">
-                            <iframe data-tally-src="https://tally.so/embed/pbVVjZ?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Multiplikator Kontakt"></iframe>
+                            <div style="background:var(--light-gray);border:2px dashed var(--border);border-radius:14px;padding:2rem;text-align:center;color:var(--medium-gray);">
+                                <div style="font-size:1.5rem;margin-bottom:0.6rem;">📋</div>
+                                <p style="font-size:0.88rem;font-weight:600;color:var(--black);margin-bottom:0.3rem;">Formular wird zeitnah eingefügt</p>
+                                <p style="font-size:0.82rem;">Kontakt direkt: <a href="mailto:jan@koppmannkarriere.de" style="color:var(--primary-blue);">jan@koppmannkarriere.de</a></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -427,66 +443,43 @@
         <p>Made with ♥ in Overath</p>
     </div>
 </footer>
-
 <script>
-    // ── BURGER ──
-    const burger = document.getElementById('burger');
-    const mobileMenu = document.getElementById('mobile-menu');
-    burger.addEventListener('click', () => {
-        burger.classList.toggle('open');
-        mobileMenu.classList.toggle('open');
-        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-    });
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            burger.classList.remove('open');
-            mobileMenu.classList.remove('open');
-            document.body.style.overflow = '';
-        });
-    });
-
-    // ── MAIN TABS ──
-    document.querySelectorAll('.main-tab-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.main-tab-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-            btn.classList.add('active');
-            document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-            // Load Tally when tab becomes visible
-            if (window.Tally) window.Tally.loadEmbeds();
-        });
-    });
-
     // ── FORM TABS ──
     document.querySelectorAll('.form-tab-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.form-tab-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.form-tab-panel').forEach(p => p.classList.remove('active'));
             btn.classList.add('active');
-            document.getElementById('form-' + btn.dataset.form).classList.add('active');
-            if (window.Tally) window.Tally.loadEmbeds();
+            const target = btn.getAttribute('data-tab');
+            const panel = document.getElementById(target);
+            if (panel) panel.classList.add('active');
         });
     });
-
-    // ── MULTIPLIKATOR FORM TOGGLE ──
-    document.getElementById('multiplikator-toggle').addEventListener('click', () => {
-        const form = document.getElementById('multiplikator-form');
-        form.classList.toggle('open');
-        if (form.classList.contains('open') && window.Tally) window.Tally.loadEmbeds();
-    });
-
-    // ── TALLY EMBED LOADER ──
-    var d = document, w = "https://tally.so/widgets/embed.js",
-    v = function() {
-        if (typeof Tally !== "undefined") { Tally.loadEmbeds(); return; }
-        d.querySelectorAll("[data-tally-src]:not([src])").forEach(function(e) {
-            e.src = e.dataset.tallySrc;
+    // ── BURGER ──
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (burger) {
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
         });
-    };
-    if (d.querySelector('script[src="' + w + '"]') === null) {
-        var s = d.createElement("script");
-        s.src = w; s.onload = v; s.onerror = v; d.body.appendChild(s);
-    } else { v(); }
+        document.querySelectorAll('.mobile-menu a').forEach(l => l.addEventListener('click', () => {
+            burger.classList.remove('open'); mobileMenu.classList.remove('open'); document.body.style.overflow = '';
+        }));
+    }
+</script>
+<script>
+(function(){
+    var b = document.getElementById("maintenance-banner");
+    if (!b) return;
+    if (sessionStorage.getItem("banner-closed")) { b.style.display = "none"; return; }
+    var btn = document.getElementById("banner-close");
+    if (btn) btn.addEventListener("click", function(){
+        b.style.display = "none";
+        sessionStorage.setItem("banner-closed", "1");
+    });
+})();
 </script>
 </body>
 </html>
