@@ -49,7 +49,9 @@
         .mobile-menu a:hover { color: var(--page-color); }
         .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--page-color); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
 
-        
+        /* ── BREADCRUMB ── */
+        .breadcrumb { margin-top: 72px; background: var(--page-color); padding: 0.7rem 2.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.75); display: flex; align-items: center; gap: 0.5rem; }
+        .breadcrumb a { color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
         .breadcrumb a:hover { color: var(--white); }
         .breadcrumb span { opacity: 0.5; }
 
@@ -165,6 +167,14 @@
             .footer-container { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
         }
+
+        /* ── MAINTENANCE BANNER ── */
+        .maintenance-banner { background: #fffbeb; border-bottom: 1px solid #fde68a; padding: 0.65rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; position: relative; z-index: 999; margin-top: 72px; }
+        .maintenance-banner p { font-size: 0.82rem; color: #78350f; line-height: 1.5; font-family: 'Montserrat', sans-serif; }
+        .maintenance-banner p strong { font-weight: 700; }
+        .maintenance-banner-close { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: #92400e; padding: 0.2rem 0.4rem; line-height: 1; flex-shrink: 0; }
+        .maintenance-banner-close:hover { opacity: 0.6; }
+        @media (max-width: 768px) { .maintenance-banner { padding: 0.65rem 1.5rem; } }
     </style>
 </head>
 <body>
@@ -172,33 +182,44 @@
 <!-- HEADER -->
 <header>
     <nav>
-        <a href="../index.html" class="logo"><img src="../images/Logo_weiß.png" alt="Koppmann Karriere"></a>
+        <a href="index.html" class="logo"><img src="images/Logo_weiß.png" alt="Koppmann Karriere"></a>
         <ul>
-            <li><a href="../unternehmen.html">Für Unternehmen</a></li>
-            <li><a href="../arbeitnehmende.html">Für Arbeitnehmende</a></li>
-            <li><a href="../karriere-kosmos.html" class="active">Karriere-Kosmos</a></li>
-            <li><a href="../so-arbeite-ich.html">So Arbeite Ich</a></li>
-            <li><a href="../kontakt-einstieg.html">Kontakt & Einstieg</a></li>
+            <li><a href="fuer-arbeitnehmende.html">Für Arbeitnehmende</a></li>
+            <li><a href="karriere-kosmos.html" class="active">Karriere-Kosmos</a></li>
+            <li><a href="unternehmen.html">Für Unternehmen</a></li>
+            <li><a href="ueber-mich.html">So Arbeite Ich</a></li>
+            <li><a href="kontakt-einstieg.html">Kontakt & Einstieg</a></li>
         </ul>
-        <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="header-cta-btn">Erstgespräch vereinbaren</a>
+        <a href="kontakt-einstieg.html" class="header-cta-btn">Erstgespräch vereinbaren</a>
         <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
     </nav>
 </header>
 
 <div class="mobile-menu" id="mobile-menu">
-    <a href="../unternehmen.html">Für Unternehmen</a>
-    <a href="../arbeitnehmende.html">Für Arbeitnehmende</a>
-    <a href="../karriere-kosmos.html">Karriere-Kosmos</a>
-    <a href="../so-arbeite-ich.html">So Arbeite Ich</a>
-    <a href="../kontakt-einstieg.html">Kontakt &amp; Einstieg</a>
-    <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="mobile-cta">Erstgespräch vereinbaren</a>
+    <a href="fuer-arbeitnehmende.html">Für Arbeitnehmende</a>
+    <a href="karriere-kosmos.html">Karriere-Kosmos</a>
+    <a href="unternehmen.html">Für Unternehmen</a>
+    <a href="ueber-mich.html">So Arbeite Ich</a>
+    <a href="kontakt-einstieg.html">Kontakt & Einstieg</a>
+    <a href="kontakt-einstieg.html" class="mobile-cta">Erstgespräch vereinbaren</a>
+</div>
+<!-- MAINTENANCE BANNER -->
+<div class="maintenance-banner" id="maintenance-banner">
+    <p>&#128296; <strong>Diese Website wird aktuell bearbeitet und umgebaut.</strong> Bitte um Verst&#228;ndnis, wenn noch nicht alles optimal angezeigt wird und funktioniert. Danke f&#252;r Ihr Verst&#228;ndnis.</p>
+    <button class="maintenance-banner-close" id="banner-close" aria-label="Hinweis schliessen">&#x2715;</button>
 </div>
 
 <!-- BREADCRUMB -->
+<div class="breadcrumb">
+    <a href="index.html">Start</a><span>›</span>
+    <a href="karriere-kosmos.html">Karriere-Kosmos</a><span>›</span>
+    Karrierebegleitung & Coop
+</div>
+
 <!-- HERO -->
 <section class="hero">
     <div class="hero-inner">
-        <a href="../karriere-kosmos.html" class="hero-back">← Zurück zum Karriere-Kosmos</a>
+        <a href="karriere-kosmos.html" class="hero-back">← Zurück zum Karriere-Kosmos</a>
         <p class="hero-eyebrow">Karriere-Kosmos · Hotspot</p>
         <h1>Karrierebegleitung<br>& unsere Zusammenarbeit</h1>
         <p class="hero-desc">Tiefergehende Informationen, Materialien und Einblicke rund um das Konzept der Karrierebegleitung – und darum, wie unsere gemeinsame Arbeit konkret aussieht.</p>
@@ -215,7 +236,7 @@
     <div class="anchor-nav-inner">
         <button class="anchor-btn active" data-target="sec-video">🎥 Einführungsvideo</button>
         <button class="anchor-btn" data-target="sec-pdfs">📄 Infomaterialien</button>
-        <button class="anchor-btn" data-target="sec-ablauf">🗺️ Wie wir arbeiten</button>
+        <button class="anchor-btn" data-target="sec-ablauf">🗺️ Wie ich arbeite</button>
         <button class="anchor-btn" data-target="sec-faq">❓ Häufige Fragen</button>
     </div>
 </div>
@@ -227,8 +248,11 @@
         <p class="sec-sub">Ein erster Überblick – was Karrierebegleitung ist und was sie nicht ist.</p>
 
         <div class="video-grid">
-            <div class="video-placeholder">
-                <div class="play-btn">▶</div>
+            <div style="background:#1a1a2e;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;color:rgba(255,255,255,0.6);text-align:center;padding:2rem;">
+                <div style="font-size:3rem;">▶️</div>
+                <p style="font-size:1rem;font-weight:700;color:rgba(255,255,255,0.85);">Einführungsvideo</p>
+                <p style="font-size:0.85rem;">Wird zeitnah veröffentlicht</p>
+            </div>
                 <span class="video-label">Einführungsvideo · ca. 8 Min.</span>
             </div>
             <div class="video-info">
@@ -248,51 +272,25 @@
 <section id="sec-pdfs" style="background: var(--light-gray);">
     <div class="content-wrap">
         <h2 class="sec-title">Infomaterialien</h2>
-        <p class="sec-sub">Alle Dokumente stehen kostenlos und ohne Anmeldung zum Download bereit.</p>
-
-        <div class="pdf-grid">
-            <a href="#" class="pdf-card">
-                <div class="pdf-tag">PDF · Übersicht</div>
-                <div class="pdf-icon">📄</div>
-                <h3>Karrierebegleitung – Was, Wie, Warum</h3>
-                <p>Ein kompakter Überblick über das Konzept der Karrierebegleitung, den Ablauf und den Mehrwert für beide Seiten.</p>
-                <span class="pdf-download">Download ↓</span>
-            </a>
-            <a href="#" class="pdf-card">
-                <div class="pdf-tag">PDF · Ablauf</div>
-                <div class="pdf-icon">🗺️</div>
-                <h3>Unser Prozess – Schritt für Schritt</h3>
-                <p>Von der ersten Kontaktaufnahme bis zur erfolgreichen Vermittlung: eine visuelle Darstellung unseres gemeinsamen Weges.</p>
-                <span class="pdf-download">Download ↓</span>
-            </a>
-            <a href="#" class="pdf-card">
-                <div class="pdf-tag">PDF · Für Arbeitnehmende</div>
-                <div class="pdf-icon">👤</div>
-                <h3>Dein Einstieg in die Karrierebegleitung</h3>
-                <p>Alles, was du wissen musst, bevor wir starten: Erwartungen, Ablauf, typische Fragen und wie ich arbeite.</p>
-                <span class="pdf-download">Download ↓</span>
-            </a>
-            <a href="#" class="pdf-card">
-                <div class="pdf-tag">PDF · Für Unternehmen</div>
-                <div class="pdf-icon">🏢</div>
-                <h3>Karrierebegleitung aus Unternehmensperspektive</h3>
-                <p>Wie Karrierebegleitung als ergänzendes Instrument im Recruiting und in der Personalentwicklung eingesetzt werden kann.</p>
-                <span class="pdf-download">Download ↓</span>
-            </a>
-            <a href="#" class="pdf-card">
-                <div class="pdf-tag">PDF · Hintergrund</div>
-                <div class="pdf-icon">🔬</div>
-                <h3>Persönlichkeit, Rolle & Passung</h3>
-                <p>Warum klassische Auswahlprozesse wichtige Faktoren übersehen – und wie Karrierebegleitung diese Lücke schließt.</p>
-                <span class="pdf-download">Download ↓</span>
-            </a>
-            <a href="#" class="pdf-card">
-                <div class="pdf-tag">PDF · Methodik</div>
-                <div class="pdf-icon">⚙️</div>
-                <h3>Meine Arbeitsweise – Methoden & Haltung</h3>
-                <p>Einblick in die Methoden, die ich einsetze, und die Grundhaltung, die meine Arbeit leitet.</p>
-                <span class="pdf-download">Download ↓</span>
-            </a>
+        <p class="sec-sub">Alle Dokumente stehen kostenlos und ohne Anmeldung zum Download bereit – sie werden zeitnah eingefügt.</p>
+        <div style="position:relative; border-radius:16px; overflow:hidden;">
+            <!-- Greyed-out preview grid -->
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; filter:blur(3px); opacity:0.35; pointer-events:none; user-select:none;">
+                <div style="background:var(--white);border-radius:14px;border:2px solid var(--border);padding:1.6rem;height:160px;"></div>
+                <div style="background:var(--white);border-radius:14px;border:2px solid var(--border);padding:1.6rem;height:160px;"></div>
+                <div style="background:var(--white);border-radius:14px;border:2px solid var(--border);padding:1.6rem;height:160px;"></div>
+                <div style="background:var(--white);border-radius:14px;border:2px solid var(--border);padding:1.6rem;height:160px;"></div>
+                <div style="background:var(--white);border-radius:14px;border:2px solid var(--border);padding:1.6rem;height:160px;"></div>
+                <div style="background:var(--white);border-radius:14px;border:2px solid var(--border);padding:1.6rem;height:160px;"></div>
+            </div>
+            <!-- Overlay -->
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+                <div style="background:var(--white);border-radius:16px;padding:1.8rem 2.5rem;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.12);max-width:360px;">
+                    <div style="font-size:1.8rem;margin-bottom:0.8rem;">🔒</div>
+                    <p style="font-size:0.95rem;font-weight:800;color:var(--black);margin-bottom:0.4rem;">Inhalte werden zeitnah freigegeben</p>
+                    <p style="font-size:0.85rem;color:var(--medium-gray);line-height:1.7;">Die Materialien sind in Vorbereitung und werden hier zum kostenlosen Download bereitgestellt.</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -300,7 +298,7 @@
 <!-- ══ WIE WIR ARBEITEN ══ -->
 <section id="sec-ablauf">
     <div class="content-wrap">
-        <h2 class="sec-title">Wie wir arbeiten</h2>
+        <h2 class="sec-title">Wie ich arbeite</h2>
         <p class="sec-sub">Ein Überblick über den Ablauf unserer Zusammenarbeit – transparent und ohne Überraschungen.</p>
 
         <div class="ablauf-grid">
@@ -346,7 +344,7 @@
                 <h3>Mein Versprechen an dich</h3>
                 <p>Karrierebegleitung bedeutet für mich: Ich nehme mir Zeit für das, was wirklich zählt. Keine Standardlösungen, keine Schubladen, kein Druck.</p>
                 <p>Ich bin unabhängig – das heißt, meine einzige Aufgabe ist es, dir zu helfen, die Entscheidung zu treffen, die langfristig zu dir passt.</p>
-                <a href="../kontakt-einstieg.html" class="btn-white-outline">Jetzt Erstgespräch anfragen →</a>
+                <a href="kontakt-einstieg.html" class="btn-white-outline">Jetzt Erstgespräch anfragen →</a>
             </div>
         </div>
     </div>
@@ -387,7 +385,7 @@
 <section class="cta-strip">
     <h2>Bereit für das erste Gespräch?</h2>
     <p>Kein Lebenslauf, keine Vorbereitung – einfach melden und wir schauen gemeinsam, was passt.</p>
-    <a href="../kontakt-einstieg.html" class="btn-white">Jetzt Erstgespräch anfragen →</a>
+    <a href="kontakt-einstieg.html" class="btn-white">Jetzt Erstgespräch anfragen →</a>
 </section>
 
 <!-- FOOTER -->
@@ -396,33 +394,33 @@
         <div class="footer-section">
             <h4>Navigation</h4>
             <ul>
-                <li><a href="../index.html">Start</a></li>
-                <li><a href="../arbeitnehmende.html">Für Arbeitnehmende</a></li>
-                <li><a href="../karriere-kosmos.html">Karriere-Kosmos</a></li>
-                <li><a href="../unternehmen.html">Für Unternehmen</a></li>
-                <li><a href="../so-arbeite-ich.html">So Arbeite Ich</a></li>
-                <li><a href="../kontakt-einstieg.html">Kontakt & Einstieg</a></li>
+                <li><a href="index.html">Start</a></li>
+                <li><a href="fuer-arbeitnehmende.html">Für Arbeitnehmende</a></li>
+                <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
+                <li><a href="unternehmen.html">Für Unternehmen</a></li>
+                <li><a href="ueber-mich.html">So Arbeite Ich</a></li>
+                <li><a href="kontakt-einstieg.html">Kontakt & Einstieg</a></li>
             </ul>
         </div>
         <div class="footer-section">
             <h4>Kontakt</h4>
-            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br><a href="/cdn-cgi/l/email-protection#1b717a755b70746b6b767a7575707a6969727e697e357f7e"><span class="__cf_email__" data-cfemail="9bf1faf5dbf0f4ebebf6faf5f5f0fae9e9f2fee9feb5fffe">[email&#160;protected]</span></a></p>
-            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br>folgt</p>
+            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br><a href="mailto:jan@koppmannkarriere.de">jan@koppmannkarriere.de</a></p>
+            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br><a href="tel:+4916034028920">0160 340 2892</a></p>
         </div>
         <div class="footer-section">
             <h4>Social Media</h4>
             <div class="footer-social-icons">
-                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="YouTube"><img src="../images/YouTube_Icon.png" alt="YouTube"></a>
-                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon" title="LinkedIn"><img src="../images/Linkedin_Icon.png" alt="LinkedIn"></a>
                 <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="footer-social-icon" title="Instagram"><img src="../images/Instagram_Icon.png" alt="Instagram"></a>
                 <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="TikTok"><img src="../images/Tiktok_Icon.png" alt="TikTok"></a>
+                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="YouTube"><img src="../images/YouTube_Icon.png" alt="YouTube"></a>
+                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon" title="LinkedIn"><img src="../images/Linkedin_Icon.png" alt="LinkedIn"></a>
             </div>
         </div>
         <div class="footer-section">
             <h4>Rechtliches</h4>
             <ul>
-                <li><a href="../transparenz/impressum.html">Impressum</a></li>
-                <li><a href="../transparenz/datenschutz.html">Datenschutz</a></li>
+                <li><a href="transparenz/impressum.html">Impressum</a></li>
+                <li><a href="transparenz/datenschutz.html">Datenschutz</a></li>
             </ul>
             <h4 style="margin-top:1.8rem;">Tippgeber:in werden</h4>
             <p><a href="tippgeber.html">Weiterempfehlen & Provision erhalten</a></p>
@@ -430,346 +428,29 @@
     </div>
     <div class="footer-bottom">
         <p>© 2026 Jan Koppmann – Karrierebegleitung</p>
-        <p>Hosted on Netlify · Made with ♥ in Overath</p>
+        <p>Made with ♥ in Overath</p>
     </div>
 </footer>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Burger
-    const burger = document.getElementById('burger');
-    const mobileMenu = document.getElementById('mobile-menu');
-    burger.addEventListener('click', () => {
-        burger.classList.toggle('open');
-        mobileMenu.classList.toggle('open');
-        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-    });
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            burger.classList.remove('open');
-            mobileMenu.classList.remove('open');
-            document.body.style.overflow = '';
+                i.querySelector('.faq-body').style.maxHeight = null;
+            });
+            if (!isActive) {
+                item.classList.add('active');
+                body.style.maxHeight = body.scrollHeight + 'px';
+            }
         });
     });
-
-    // Anchor nav
-    const sections = document.querySelectorAll('section[id]');
-    const anchorBtns = document.querySelectorAll('.anchor-btn');
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(sec => {
-            if (window.scrollY >= sec.offsetTop - 160) current = sec.id;
-        });
-        anchorBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.target === current));
+</script>
+<script>
+(function(){
+    var b = document.getElementById("maintenance-banner");
+    if (!b) return;
+    if (sessionStorage.getItem("banner-closed")) { b.style.display = "none"; return; }
+    var btn = document.getElementById("banner-close");
+    if (btn) btn.addEventListener("click", function(){
+        b.style.display = "none";
+        sessionStorage.setItem("banner-closed", "1");
     });
-    anchorBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const target = document.getElementById(btn.dataset.target);
-            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    });
-
-    // FAQ Accordion
-    document.querySelectorAll('.faq-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const item = btn.parentElement;
-            const body = item.querySelector('.faq-body');
-            const isActive = item.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(i => {
-                i.classList.remove('active');
-                i.querySelector('.
-</body>
-</html<div class="pdf-card">
-                <div class="pdf-icon">🏢</div>
-                <div class="pdf-info">
-                    <span class="pdf-label">PDF · Für Unternehmen</span>
-                    <h3>Karrierebegleitung aus Unternehmensperspektive</h3>
-                    <p>Alle Informationen zur Zusammenarbeit mit Unternehmen – Prozess, Vergütung und Kooperation – findest du auf der Unternehmensseite.</p>
-                    <a href="../unternehmen.html" class="pdf-download-btn" style="display:inline-block; margin-top:0.6rem;">Zur Unternehmensseite →</a>
-                </div>
-            </div>
-
-<!-- BREADCRUMB -->
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-inner">
-        <a href="../karriere-kosmos.html" class="hero-back">← Zurück zum Karriere-Kosmos</a>
-        <p class="hero-eyebrow">Karriere-Kosmos · Hotspot</p>
-        <h1>Karrierebegleitung<br>& unsere Zusammenarbeit</h1>
-        <p class="hero-desc">Tiefergehende Informationen, Materialien und Einblicke rund um das Konzept der Karrierebegleitung – und darum, wie unsere gemeinsame Arbeit konkret aussieht.</p>
-    </div>
-    <div class="hero-wave">
-        <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <path d="M0,32 C360,56 1080,8 1440,32 L1440,48 L0,48 Z" fill="#ffffff"/>
-        </svg>
-    </div>
-</section>
-
-<!-- ANCHOR NAV -->
-<div class="anchor-nav">
-    <div class="anchor-nav-inner">
-        <button class="anchor-btn active" data-target="sec-video">🎥 Einführungsvideo</button>
-        <button class="anchor-btn" data-target="sec-pdfs">📄 Infomaterialien</button>
-        <button class="anchor-btn" data-target="sec-ablauf">🗺️ Wie wir arbeiten</button>
-        <button class="anchor-btn" data-target="sec-faq">❓ Häufige Fragen</button>
-    </div>
-</div>
-
-<!-- ══ EINFÜHRUNGSVIDEO ══ -->
-<section id="sec-video">
-    <div class="content-wrap">
-        <h2 class="sec-title">Einführungsvideo</h2>
-        <p class="sec-sub">Ein erster Überblick – was Karrierebegleitung ist und was sie nicht ist.</p>
-
-        <div class="video-grid">
-            <div class="video-placeholder">
-                <div class="play-btn">▶</div>
-                <span class="video-label">Einführungsvideo · ca. 8 Min.</span>
-            </div>
-            <div class="video-info">
-                <h3>Was ist Karrierebegleitung – und für wen ist sie gemacht?</h3>
-                <p>In diesem Video erkläre ich, was Karrierebegleitung bedeutet, wie sie sich von klassischer Personalvermittlung unterscheidet – und warum der Ansatz für Arbeitnehmende und Unternehmen gleichermaßen wertvoll ist.</p>
-                <div class="video-meta">
-                    <div class="video-meta-item">🕐 <span><strong>Dauer:</strong> ca. 8 Minuten</span></div>
-                    <div class="video-meta-item">🎯 <span><strong>Für wen:</strong> Alle, die Karrierebegleitung verstehen wollen</span></div>
-                    <div class="video-meta-item">📅 <span><strong>Stand:</strong> 2026 – wird regelmäßig aktualisiert</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ══ INFOMATERIALIEN ══ -->
-<section id="sec-pdfs" style="background: var(--light-gray);">
-    <div class="content-wrap">
-        <h2 class="sec-title">Infomaterialien</h2>
-        <p class="sec-sub">Alle Dokumente stehen kostenlos und ohne Anmeldung zum Download bereit.</p>
-
-        <div class="pdf-grid">
-            <a href="#" class="pdf-card">
-                <div class="pdf-tag">PDF · Übersicht</div>
-                <div class="pdf-icon">📄</div>
-                <h3>Karrierebegleitung – Was, Wie, Warum</h3>
-                <p>Ein kompakter Überblick über das Konzept der Karrierebegleitung, den Ablauf und den Mehrwert für beide Seiten.</p>
-                <span class="pdf-download">Download ↓</span>
-            </a>
-            <a href="#" class="pdf-card">
-                <div class="pdf-tag">PDF · Ablauf</div>
-                <div class="pdf-icon">🗺️</div>
-                <h3>Unser Prozess – Schritt für Schritt</h3>
-                <p>Von der ersten Kontaktaufnahme bis zur erfolgreichen Vermittlung: eine visuelle Darstellung unseres gemeinsamen Weges.</p>
-                <span class="pdf-download">Download ↓</span>
-            </a>
-            <a href="#" class="pdf-card">
-                <div class="pdf-tag">PDF · Für Arbeitnehmende</div>
-                <div class="pdf-icon">👤</div>
-                <h3>Dein Einstieg in die Karrierebegleitung</h3>
-                <p>Alles, was du wissen musst, bevor wir starten: Erwartungen, Ablauf, typische Fragen und wie ich arbeite.</p>
-                <span class="pdf-download">Download ↓</span>
-            </a>
-            <a href="#" class="pdf-card">
-                <div class="pdf-tag">PDF · Für Unternehmen</div>
-                <div class="pdf-icon">🏢</div>
-                <h3>Karrierebegleitung aus Unternehmensperspektive</h3>
-                <p>Wie Karrierebegleitung als ergänzendes Instrument im Recruiting und in der Personalentwicklung eingesetzt werden kann.</p>
-                <span class="pdf-download">Download ↓</span>
-            </a>
-            <a href="#" class="pdf-card">
-                <div class="pdf-tag">PDF · Hintergrund</div>
-                <div class="pdf-icon">🔬</div>
-                <h3>Persönlichkeit, Rolle & Passung</h3>
-                <p>Warum klassische Auswahlprozesse wichtige Faktoren übersehen – und wie Karrierebegleitung diese Lücke schließt.</p>
-                <span class="pdf-download">Download ↓</span>
-            </a>
-            <a href="#" class="pdf-card">
-                <div class="pdf-tag">PDF · Methodik</div>
-                <div class="pdf-icon">⚙️</div>
-                <h3>Meine Arbeitsweise – Methoden & Haltung</h3>
-                <p>Einblick in die Methoden, die ich einsetze, und die Grundhaltung, die meine Arbeit leitet.</p>
-                <span class="pdf-download">Download ↓</span>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- ══ WIE WIR ARBEITEN ══ -->
-<section id="sec-ablauf">
-    <div class="content-wrap">
-        <h2 class="sec-title">Wie wir arbeiten</h2>
-        <p class="sec-sub">Ein Überblick über den Ablauf unserer Zusammenarbeit – transparent und ohne Überraschungen.</p>
-
-        <div class="ablauf-grid">
-            <div class="ablauf-steps">
-                <div class="ablauf-step">
-                    <div class="ablauf-num">1</div>
-                    <div class="ablauf-content">
-                        <h4>Erstgespräch</h4>
-                        <p>Wir lernen uns kennen. Du erzählst mir, was dich beschäftigt – ich höre zu, stelle Fragen und gebe dir ein ehrliches Bild, was Karrierebegleitung für dich bedeuten könnte. Ca. 30 Minuten, kostenlos, unverbindlich.</p>
-                    </div>
-                </div>
-                <div class="ablauf-step">
-                    <div class="ablauf-num">2</div>
-                    <div class="ablauf-content">
-                        <h4>Einordnung & Analyse</h4>
-                        <p>Wir arbeiten heraus, was wirklich hinter deiner beruflichen Situation steckt – Stärken, Antriebe, Haltungen und blinde Flecken. Ohne Schablone, ohne vorgefertigte Ergebnisse.</p>
-                    </div>
-                </div>
-                <div class="ablauf-step">
-                    <div class="ablauf-num">3</div>
-                    <div class="ablauf-content">
-                        <h4>Orientierung & Entscheidung</h4>
-                        <p>Auf Basis der Einordnung entwickeln wir gemeinsam eine klare Richtung – berufliche Optionen werden realistisch eingeschätzt, Entscheidungen werden fundiert vorbereitet.</p>
-                    </div>
-                </div>
-                <div class="ablauf-step">
-                    <div class="ablauf-num">4</div>
-                    <div class="ablauf-content">
-                        <h4>Begleitung & Umsetzung</h4>
-                        <p>Ich begleite dich auf dem Weg – bei Bewerbungen, Gesprächen und Entscheidungen. Bis du angekommen bist.</p>
-                    </div>
-                </div>
-                <div class="ablauf-step">
-                    <div class="ablauf-num">5</div>
-                    <div class="ablauf-content">
-                        <h4>Nachbegleitung</h4>
-                        <p>Nach dem Start in die neue Rolle stehe ich noch kurz zur Seite – für Fragen, die erst im Alltag auftauchen.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ablauf-highlight">
-                <h3>Mein Versprechen an dich</h3>
-                <p>Karrierebegleitung bedeutet für mich: Ich nehme mir Zeit für das, was wirklich zählt. Keine Standardlösungen, keine Schubladen, kein Druck.</p>
-                <p>Ich bin unabhängig – das heißt, meine einzige Aufgabe ist es, dir zu helfen, die Entscheidung zu treffen, die langfristig zu dir passt.</p>
-                <a href="../kontakt-einstieg.html" class="btn-white-outline">Jetzt Erstgespräch anfragen →</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ══ FAQ ══ -->
-<section id="sec-faq" style="background: var(--light-gray);">
-    <div class="content-wrap">
-        <h2 class="sec-title">Häufige Fragen zur Zusammenarbeit</h2>
-        <p class="sec-sub">Was Menschen vor dem ersten Gespräch oft beschäftigt.</p>
-
-        <div class="faq-list">
-            <div class="faq-item">
-                <button class="faq-btn">Was kostet Karrierebegleitung?<span class="faq-icon">+</span></button>
-                <div class="faq-body"><div class="faq-body-inner">Das Erstgespräch ist immer kostenlos und unverbindlich. Die Konditionen für eine weiterführende Zusammenarbeit besprechen wir individuell – abhängig davon, was du brauchst und in welchem Rahmen wir arbeiten.</div></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-btn">Wie lange dauert eine Karrierebegleitung?<span class="faq-icon">+</span></button>
-                <div class="faq-body"><div class="faq-body-inner">Das ist sehr unterschiedlich. Manche Themen klären sich in wenigen Gesprächen. Andere Begleitungen erstrecken sich über mehrere Monate – je nach Komplexität und Tempo. Es gibt kein Minimum und kein Maximum.</div></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-btn">Ist Karrierebegleitung dasselbe wie Coaching?<span class="faq-icon">+</span></button>
-                <div class="faq-body"><div class="faq-body-inner">Nicht ganz. Karrierebegleitung hat Überschneidungen mit Coaching, geht aber weiter: Ich bringe aktiv inhaltliche Einschätzungen ein, vernetze und unterstütze bei konkreten Schritten wie Bewerbungen oder Gesprächsvorbereitung – nicht nur bei der Reflexion.</div></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-btn">Kann ich die Unterlagen hier auch ohne Gespräch nutzen?<span class="faq-icon">+</span></button>
-                <div class="faq-body"><div class="faq-body-inner">Ja – alle Materialien auf dieser Seite stehen öffentlich und kostenlos zur Verfügung. Du brauchst keine Anmeldung und kein Erstgespräch, um sie zu nutzen.</div></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-btn">Was passiert nach dem Erstgespräch?<span class="faq-icon">+</span></button>
-                <div class="faq-body"><div class="faq-body-inner">Nichts automatisch. Wir entscheiden gemeinsam, ob und in welcher Form eine Zusammenarbeit Sinn macht. Es gibt keinen Vertrag, keine Verpflichtung und keinen nächsten Schritt, den du nicht aktiv wählen musst.</div></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-strip">
-    <h2>Bereit für das erste Gespräch?</h2>
-    <p>Kein Lebenslauf, keine Vorbereitung – einfach melden und wir schauen gemeinsam, was passt.</p>
-    <a href="../kontakt-einstieg.html" class="btn-white">Jetzt Erstgespräch anfragen →</a>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    <div class="footer-container">
-        <div class="footer-section">
-            <h4>Navigation</h4>
-            <ul>
-                <li><a href="../index.html">Start</a></li>
-                <li><a href="../arbeitnehmende.html">Für Arbeitnehmende</a></li>
-                <li><a href="../karriere-kosmos.html">Karriere-Kosmos</a></li>
-                <li><a href="../unternehmen.html">Für Unternehmen</a></li>
-                <li><a href="../so-arbeite-ich.html">So Arbeite Ich</a></li>
-                <li><a href="../kontakt-einstieg.html">Kontakt & Einstieg</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Kontakt</h4>
-            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br><a href="/cdn-cgi/l/email-protection#1b717a755b70746b6b767a7575707a6969727e697e357f7e"><span class="__cf_email__" data-cfemail="9bf1faf5dbf0f4ebebf6faf5f5f0fae9e9f2fee9feb5fffe">[email&#160;protected]</span></a></p>
-            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br>folgt</p>
-        </div>
-        <div class="footer-section">
-            <h4>Social Media</h4>
-            <div class="footer-social-icons">
-                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="YouTube"><img src="../images/YouTube_Icon.png" alt="YouTube"></a>
-                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon" title="LinkedIn"><img src="../images/Linkedin_Icon.png" alt="LinkedIn"></a>
-                <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="footer-social-icon" title="Instagram"><img src="../images/Instagram_Icon.png" alt="Instagram"></a>
-                <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="TikTok"><img src="../images/Tiktok_Icon.png" alt="TikTok"></a>
-            </div>
-        </div>
-        <div class="footer-section">
-            <h4>Rechtliches</h4>
-            <ul>
-                <li><a href="../transparenz/impressum.html">Impressum</a></li>
-                <li><a href="../transparenz/datenschutz.html">Datenschutz</a></li>
-            </ul>
-            <h4 style="margin-top:1.8rem;">Tippgeber:in werden</h4>
-            <p><a href="tippgeber.html">Weiterempfehlen & Provision erhalten</a></p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2026 Jan Koppmann – Karrierebegleitung</p>
-        <p>Hosted on Netlify · Made with ♥ in Overath</p>
-    </div>
-</footer>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Burger
-    const burger = document.getElementById('burger');
-    const mobileMenu = document.getElementById('mobile-menu');
-    burger.addEventListener('click', () => {
-        burger.classList.toggle('open');
-        mobileMenu.classList.toggle('open');
-        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-    });
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            burger.classList.remove('open');
-            mobileMenu.classList.remove('open');
-            document.body.style.overflow = '';
-        });
-    });
-
-    // Anchor nav
-    const sections = document.querySelectorAll('section[id]');
-    const anchorBtns = document.querySelectorAll('.anchor-btn');
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(sec => {
-            if (window.scrollY >= sec.offsetTop - 160) current = sec.id;
-        });
-        anchorBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.target === current));
-    });
-    anchorBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const target = document.getElementById(btn.dataset.target);
-            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    });
-
-    // FAQ Accordion
-    document.querySelectorAll('.faq-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const item = btn.parentElement;
-            const body = item.querySelector('.faq-body');
-            const isActive = item.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(i => {
-                i.classList.remove('active');
-                i.querySelector('.
+})();
+</script>
 </body>
 </html>
