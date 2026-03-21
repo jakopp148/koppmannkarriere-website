@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: hidden; }
         :root {
             --primary-blue: #0062b1;
             --dark-blue: #002777;
@@ -71,7 +72,7 @@
         .carousel-track { display: flex; will-change: transform; }
         .carousel-slide { flex: 0 0 calc(100% / 3); padding: 0 0.5rem; box-sizing: border-box; }
         .carousel-slide img { width: 100%; height: auto; display: block; border-radius: 10px; }
-        .carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.92); border: none; border-radius: 50%; width: 46px; height: 46px; font-size: 1.1rem; cursor: pointer; transition: all 0.25s; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
+        .carousel-arrow { display: none; position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.92); border: none; border-radius: 50%; width: 46px; height: 46px; font-size: 1.1rem; cursor: pointer; transition: all 0.25s; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
         .carousel-arrow:hover { background: var(--white); box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
         .carousel-arrow.prev { left: 0; }
         .carousel-arrow.next { right: 0; }
@@ -255,7 +256,6 @@
         <h3>Karrierebegleitung, weil</h3>
     </div>
     <div class="carousel-outer">
-        <button class="carousel-arrow prev" id="prev-btn" aria-label="Vorheriges Bild">&#8592;</button>
         <div class="carousel-viewport">
             <div class="carousel-track" id="carousel-track">
                 <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664944/Startseite_Karussell_1_st5lpf.png" alt="Karrierebegleitung, weil 1"></div>
@@ -267,7 +267,6 @@
                 <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664846/Startseite_Karussell_7_rul4op.png" alt="Karrierebegleitung, weil 7"></div>
             </div>
         </div>
-        <button class="carousel-arrow next" id="next-btn" aria-label="Nächstes Bild">&#8594;</button>
     </div>
     <div class="carousel-controls">
         <button class="carousel-dot active" data-index="0"></button>
@@ -439,7 +438,7 @@
         <div class="footer-section">
             <h4>Kontakt</h4>
             <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br>
-            <a href="/cdn-cgi/l/email-protection#0862696648636778786569666663697a7a616d7a6d266c6d"><span class="__cf_email__" data-cfemail="355f545b755e5a454558545b5b5e5447475c5047501b5150">[email&#160;protected]</span></a></p>
+            <a href="mailto:jan@koppmannkarriere.de">jan@koppmannkarriere.de</a></p>
             <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br>
             <a href="tel:+4916034028920">0160 340 2892</a></p>
             <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Adresse</strong><br>
@@ -578,15 +577,24 @@
         });
     })();
 
+    </script>
+<script>
     // ── ACCORDION ──
     document.querySelectorAll('.accordion-button').forEach(button => {
         button.addEventListener('click', () => {
             const item = button.parentElement;
-            const content = item.querySelector('.accordion-content');
+            const acc = item.querySelector('.accordion-content');
             const isActive = item.classList.contains('active');
             document.querySelectorAll('.accordion-item').forEach(i => {
                 i.classList.remove('active');
-                i.querySelector('.accordion-conte
+                i.querySelector('.accordion-content').style.maxHeight = null;
+            });
+            if (!isActive) {
+                item.classList.add('active');
+                acc.style.maxHeight = acc.scrollHeight + 'px';
+            }
+        });
+    });
 </script>
 <script>
 (function(){
