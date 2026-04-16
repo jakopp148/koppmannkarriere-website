@@ -46,7 +46,7 @@
         .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--primary-blue); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
 
         /* ── HERO ── */
-        .hero { margin-top: 0; position: relative; width: 100%; min-height: 88vh; overflow: hidden; }
+        .hero { margin-top: 72px; position: relative; width: 100%; min-height: 88vh; overflow: hidden; }
         .hero-image { position: absolute; inset: 0; }
         .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
         .hero-content { position: relative; z-index: 1; padding: 5rem 3rem 4rem 4rem; max-width: 560px; margin-top: 3rem; }
@@ -62,7 +62,6 @@
         .reason-section .highlight { font-family: 'Georgia', serif; color: var(--primary-blue); text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 3px; margin-left: 0.8rem; font-size: clamp(1.6rem, 4vw, 2.8rem); font-style: italic; }
         .reason-text { max-width: 900px; margin: 3rem auto 0; font-size: 1.1rem; color: var(--medium-gray); line-height: 1.85; }
 
-
         /* ── CAROUSEL ── */
         .carousel-section { padding: 3rem 2rem 4rem; background: var(--light-gray); }
         .carousel-heading { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem 1.8rem; }
@@ -70,17 +69,51 @@
         .carousel-outer { max-width: 1400px; margin: 0 auto; position: relative; padding: 0 2.5rem; }
         .carousel-viewport { overflow: hidden; border-radius: 16px; }
         .carousel-track { display: flex; will-change: transform; }
+
+        /* Slide wrapper with optional text below on mobile */
         .carousel-slide { flex: 0 0 calc(100% / 3); padding: 0 0.5rem; box-sizing: border-box; }
-        .carousel-slide img { width: 100%; height: auto; display: block; border-radius: 10px; }
-        .carousel-arrow { display: none; position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.92); border: none; border-radius: 50%; width: 46px; height: 46px; font-size: 1.1rem; cursor: pointer; transition: all 0.25s; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
+
+        /* Image + text container */
+        .slide-inner { position: relative; border-radius: 10px; overflow: hidden; }
+        .slide-inner img { width: 100%; height: auto; display: block; border-radius: 10px; }
+
+        /* Desktop: text overlay at bottom center */
+        .slide-caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 2.2rem 1.6rem 1.4rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0) 100%);
+            border-radius: 0 0 10px 10px;
+        }
+        .slide-caption p {
+            color: var(--white);
+            font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+            font-weight: 700;
+            line-height: 1.4;
+            text-align: center;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+            font-style: italic;
+            letter-spacing: 0.01em;
+        }
+
+        /* Mobile: text below image */
+        .slide-caption-mobile { display: none; padding: 0.7rem 0.4rem 0.5rem; text-align: center; }
+        .slide-caption-mobile p { font-size: 0.9rem; font-weight: 700; color: var(--black); font-style: italic; line-height: 1.4; }
+
+        .carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.92); border: none; border-radius: 50%; width: 46px; height: 46px; font-size: 1.1rem; cursor: pointer; transition: all 0.25s; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
         .carousel-arrow:hover { background: var(--white); box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
         .carousel-arrow.prev { left: 0; }
         .carousel-arrow.next { right: 0; }
         .carousel-controls { display: flex; justify-content: center; gap: 0.6rem; margin-top: 1.4rem; }
         .carousel-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--medium-gray); border: none; cursor: pointer; transition: all 0.3s; opacity: 0.45; }
         .carousel-dot.active { background: var(--primary-blue); width: 32px; border-radius: 5px; opacity: 1; }
+
         @media (max-width: 900px) { .carousel-slide { flex: 0 0 50%; } }
-        @media (max-width: 600px) { .carousel-slide { flex: 0 0 100%; } }
+        @media (max-width: 600px) {
+            .carousel-slide { flex: 0 0 100%; }
+            .slide-caption { display: none; }
+            .slide-caption-mobile { display: block; }
+        }
 
         /* ── ABOUT / ACCORDION ── */
         .about-section { padding: 6rem 2rem; background: var(--white); }
@@ -118,11 +151,11 @@
         /* ── TARGET GROUPS ── */
         .target-groups { padding: 6rem 2rem; background: var(--white); }
         .target-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-        .target-card { padding: 3rem; background: var(--light-gray); border-radius: 20px; transition: all 0.3s; border: 2px solid transparent; }
+        .target-card { padding: 2rem 2rem 2.5rem; background: var(--light-gray); border-radius: 20px; transition: all 0.3s; border: 2px solid transparent; }
         .target-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: var(--primary-blue); }
-        .target-card h1 { font-size: 2.2rem; font-weight: 900; color: var(--primary-blue); margin-bottom: 1.5rem; letter-spacing: -0.03em; }
-        .target-list { background: var(--white); padding: 1rem 1.2rem; border-radius: 12px; margin: 1.5rem 0; font-size: 0.92rem; color: var(--medium-gray); line-height: 1.7; }
-        .target-card p { color: var(--medium-gray); line-height: 1.85; margin-bottom: 2rem; font-size: 0.97rem; }
+        .target-card h2 { font-size: 1.9rem; font-weight: 900; color: var(--primary-blue); margin-bottom: 1.2rem; letter-spacing: -0.03em; }
+        .target-list { background: var(--white); padding: 0.85rem 1.1rem; border-radius: 12px; margin: 0 0 1.5rem; font-size: 0.88rem; color: var(--medium-gray); line-height: 1.7; }
+        .target-card-img { width: 100%; border-radius: 12px; display: block; margin-bottom: 1.5rem; }
         .btn-card { display: inline-block; padding: 0.85rem 1.8rem; background: var(--primary-blue); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
         .btn-card:hover { background: var(--dark-blue); transform: translateY(-2px); }
 
@@ -173,14 +206,6 @@
             .footer-container { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
         }
-
-        /* ── MAINTENANCE BANNER ── */
-        .maintenance-banner { background: #fffbeb; border-bottom: 1px solid #fde68a; padding: 0.65rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; position: relative; z-index: 999; margin-top: 72px; }
-        .maintenance-banner p { font-size: 0.82rem; color: #78350f; line-height: 1.5; font-family: 'Montserrat', sans-serif; }
-        .maintenance-banner p strong { font-weight: 700; }
-        .maintenance-banner-close { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: #92400e; padding: 0.2rem 0.4rem; line-height: 1; flex-shrink: 0; transition: opacity 0.2s; }
-        .maintenance-banner-close:hover { opacity: 0.6; }
-        @media (max-width: 768px) { .maintenance-banner { padding: 0.65rem 1.5rem; } }
     </style>
 </head>
 <body>
@@ -191,7 +216,7 @@
         <a href="index.html" class="logo"><img src="images/Logo_weiß.png" alt="Koppmann Karriere"></a>
         <ul>
             <li><a href="unternehmen.html">Für Unternehmen</a></li>
-            <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
+            <li><a href="arbeitnehmende.html">Für Mitarbeitende</a></li>
             <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
             <li><a href="so-arbeite-ich.html">So Arbeite Ich</a></li>
             <li><a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
@@ -203,17 +228,11 @@
 
 <div class="mobile-menu" id="mobile-menu">
     <a href="unternehmen.html">Für Unternehmen</a>
-    <a href="arbeitnehmende.html">Für Arbeitnehmende</a>
+    <a href="arbeitnehmende.html">Für Mitarbeitende</a>
     <a href="karriere-kosmos.html">Karriere-Kosmos</a>
     <a href="so-arbeite-ich.html">So Arbeite Ich</a>
     <a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a>
     <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="mobile-cta">Erstgespräch vereinbaren</a>
-</div>
-
-<!-- MAINTENANCE BANNER -->
-<div class="maintenance-banner" id="maintenance-banner">
-    <p>&#128296; <strong>Diese Website wird aktuell bearbeitet und umgebaut.</strong> Bitte um Verst&#228;ndnis, wenn noch nicht alles optimal angezeigt wird und funktioniert. Danke f&#252;r Ihr Verst&#228;ndnis.</p>
-    <button class="maintenance-banner-close" id="banner-close" aria-label="Hinweis schliessen">&#x2715;</button>
 </div>
 
 
@@ -256,17 +275,65 @@
         <h3>Karrierebegleitung, weil</h3>
     </div>
     <div class="carousel-outer">
+        <!-- Prev arrow -->
+        <button class="carousel-arrow prev" id="prev-btn" aria-label="Vorheriges Bild">&#8249;</button>
+
         <div class="carousel-viewport">
             <div class="carousel-track" id="carousel-track">
-                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664944/Startseite_Karussell_1_st5lpf.png" alt="Karrierebegleitung, weil 1"></div>
-                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664930/Startseite_Karussell_2_ygfxgt.png" alt="Karrierebegleitung, weil 2"></div>
-                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664917/Startseite_Karussell_3_tfxleb.png" alt="Karrierebegleitung, weil 3"></div>
-                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664904/Startseite_Karussell_4_ycsnj3.png" alt="Karrierebegleitung, weil 4"></div>
-                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664883/Startseite_Karussell_5_zcmij7.png" alt="Karrierebegleitung, weil 5"></div>
-                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664865/Startseite_Karussell_6_liiinz.png" alt="Karrierebegleitung, weil 6"></div>
-                <div class="carousel-slide"><img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664846/Startseite_Karussell_7_rul4op.png" alt="Karrierebegleitung, weil 7"></div>
+                <div class="carousel-slide">
+                    <div class="slide-inner">
+                        <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664944/Startseite_Karussell_1_st5lpf.png" alt="Karrierebegleitung, weil 1">
+                        <div class="slide-caption"><p>… der Job zu mir passen muss – nicht umgekehrt.</p></div>
+                    </div>
+                    <div class="slide-caption-mobile"><p>… der Job zu mir passen muss – nicht umgekehrt.</p></div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="slide-inner">
+                        <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664930/Startseite_Karussell_2_ygfxgt.png" alt="Karrierebegleitung, weil 2">
+                        <div class="slide-caption"><p>… gute Arbeit gesehen werden sollte.</p></div>
+                    </div>
+                    <div class="slide-caption-mobile"><p>… gute Arbeit gesehen werden sollte.</p></div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="slide-inner">
+                        <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664917/Startseite_Karussell_3_tfxleb.png" alt="Karrierebegleitung, weil 3">
+                        <div class="slide-caption"><p>… ich zeigen will, was in mir steckt.</p></div>
+                    </div>
+                    <div class="slide-caption-mobile"><p>… ich zeigen will, was in mir steckt.</p></div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="slide-inner">
+                        <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664904/Startseite_Karussell_4_ycsnj3.png" alt="Karrierebegleitung, weil 4">
+                        <div class="slide-caption"><p>… ich den nächsten Schritt gehen will.</p></div>
+                    </div>
+                    <div class="slide-caption-mobile"><p>… ich den nächsten Schritt gehen will.</p></div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="slide-inner">
+                        <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664883/Startseite_Karussell_5_zcmij7.png" alt="Karrierebegleitung, weil 5">
+                        <div class="slide-caption"><p>… ich mehr will als nur irgendeinen Job.</p></div>
+                    </div>
+                    <div class="slide-caption-mobile"><p>… ich mehr will als nur irgendeinen Job.</p></div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="slide-inner">
+                        <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664865/Startseite_Karussell_6_liiinz.png" alt="Karrierebegleitung, weil 6">
+                        <div class="slide-caption"><p>… gute Arbeit etwas bewirkt.</p></div>
+                    </div>
+                    <div class="slide-caption-mobile"><p>… gute Arbeit etwas bewirkt.</p></div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="slide-inner">
+                        <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_600/v1773664846/Startseite_Karussell_7_rul4op.png" alt="Karrierebegleitung, weil 7">
+                        <div class="slide-caption"><p>… Arbeit Teil meines Lebens ist – aber nicht alles.</p></div>
+                    </div>
+                    <div class="slide-caption-mobile"><p>… Arbeit Teil meines Lebens ist – aber nicht alles.</p></div>
+                </div>
             </div>
         </div>
+
+        <!-- Next arrow -->
+        <button class="carousel-arrow next" id="next-btn" aria-label="Nächstes Bild">&#8250;</button>
     </div>
     <div class="carousel-controls">
         <button class="carousel-dot active" data-index="0"></button>
@@ -370,26 +437,30 @@
 <!-- BLOCK 7: TARGET GROUPS -->
 <section class="target-groups">
     <div class="target-container">
+        <!-- Für Mitarbeitende -->
         <div class="target-card">
-            <h1>Für Arbeitnehmende</h1>
+            <h2>Für Mitarbeitende</h2>
             <div class="target-list">
                 <strong>Wer ist gemeint?</strong><br>
-                Fachkräfte · Führungskräfte · Studierende · Quereinsteigende · Schülerinnen &amp; Schüler
+                Fachkräfte · Führungskräfte · Studierende · Quereinsteigende · Schülerinnen &amp; Schüler · Arbeitssuchende · Auszubildende &amp; Ausbildungsinteressierte
             </div>
-            <p>
-                Berufliche Entscheidungen fallen selten leicht. Oft fehlt nicht Motivation oder Können, sondern Klarheit über die
-                eigenen Stärken, Bedürfnisse und Möglichkeiten. In der Karrierebegleitung unterstütze ich dich dabei, Orientierung
-                zu gewinnen, Entscheidungen einzuordnen und deinen nächsten Schritt bewusst zu gehen – unabhängig, fair und ohne Druck.
-            </p>
+            <img
+                src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_800/v1776369528/Startseite_MAs_xnaqci.png"
+                alt="Karrierebegleitung für Mitarbeitende"
+                class="target-card-img">
             <a href="arbeitnehmende.html" class="btn-card">Mehr zur Karrierebegleitung</a>
         </div>
+        <!-- Für Unternehmen -->
         <div class="target-card">
-            <h1>Für Unternehmen</h1>
-            <p style="margin-top: 1rem;">
-                Gute personelle Entscheidungen entstehen oft unter Zeitdruck und mit begrenzten Informationen. Gleichzeitig haben sie
-                langfristige Auswirkungen auf Teams, Kultur und Zusammenarbeit. Ich unterstütze Unternehmen dabei, ihre Entscheidungsgrundlage
-                zu erweitern – um Arbeitsweise, Motivation und Passung realistisch einzuschätzen und Fehlbesetzungen gezielt zu vermeiden.
-            </p>
+            <h2>Für Unternehmen</h2>
+            <div class="target-list">
+                <strong>Wer ist gemeint?</strong><br>
+                Unternehmen · Organisationen · HR-Verantwortliche · Führungskräfte · Inhaber:innen
+            </div>
+            <img
+                src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_800/v1776369527/Startseite_Betrieb_sodcms.png"
+                alt="Karrierebegleitung für Unternehmen"
+                class="target-card-img">
             <a href="unternehmen.html" class="btn-card">Zum Unternehmensbereich</a>
         </div>
     </div>
@@ -429,7 +500,7 @@
             <ul>
                 <li><a href="index.html">Start</a></li>
                 <li><a href="unternehmen.html">Für Unternehmen</a></li>
-                <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
+                <li><a href="arbeitnehmende.html">Für Mitarbeitende</a></li>
                 <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
                 <li><a href="so-arbeite-ich.html">So Arbeite Ich</a></li>
                 <li><a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
@@ -467,146 +538,140 @@
         <p>© 2026 Jan Koppmann – Karrierebegleitung</p>
         <p>Made with ♥ in Overath</p>
     </div>
-</footer><script>
-    // ── BURGER ──
-    const burger = document.getElementById('burger');
-    const mobileMenu = document.getElementById('mobile-menu');
-    burger.addEventListener('click', () => {
-        burger.classList.toggle('open');
-        mobileMenu.classList.toggle('open');
-        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-    });
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            burger.classList.remove('open');
-            mobileMenu.classList.remove('open');
-            document.body.style.overflow = '';
-        });
-    });
+</footer>
 
-    // ── CAROUSEL – infinite loop, 3/2/1 visible ──
-    (function() {
-        const track = document.getElementById('carousel-track');
-        const dots = document.querySelectorAll('.carousel-dot');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const TOTAL = 7;
-
-        // Clone slides for infinite loop
-        const origSlides = Array.from(track.children);
-        origSlides.forEach(s => track.appendChild(s.cloneNode(true)));
-        [...origSlides].reverse().forEach(s => track.insertBefore(s.cloneNode(true), track.firstChild));
-
-        let current = TOTAL;
-        let isTransitioning = false;
-        let autoplay;
-
-        function getSlideWidth() {
-            return track.parentElement.offsetWidth / getVisible();
-        }
-
-        function getVisible() {
-            if (window.innerWidth <= 600) return 1;
-            if (window.innerWidth <= 900) return 2;
-            return 3;
-        }
-
-        function goTo(index, animate) {
-            track.style.transition = animate === false ? 'none' : 'transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94)';
-            track.style.transform = 'translateX(-' + (index * getSlideWidth()) + 'px)';
-            current = index;
-            const realIdx = ((current - TOTAL) % TOTAL + TOTAL) % TOTAL;
-            dots.forEach((d, i) => d.classList.toggle('active', i === realIdx));
-        }
-
-        track.addEventListener('transitionend', () => {
-            isTransitioning = false;
-            if (current < TOTAL) {
-                track.style.transition = 'none';
-                current += TOTAL;
-                track.style.transform = 'translateX(-' + (current * getSlideWidth()) + 'px)';
-                void track.offsetWidth;
-            } else if (current >= TOTAL * 2) {
-                track.style.transition = 'none';
-                current -= TOTAL;
-                track.style.transform = 'translateX(-' + (current * getSlideWidth()) + 'px)';
-                void track.offsetWidth;
-            }
-        });
-
-        function next() {
-            if (isTransitioning) return;
-            isTransitioning = true;
-            goTo(current + 1, true);
-        }
-        function prev() {
-            if (isTransitioning) return;
-            isTransitioning = true;
-            goTo(current - 1, true);
-        }
-
-        // Init after layout is ready
-        window.addEventListener('load', () => { goTo(TOTAL, false); });
-        goTo(TOTAL, false);
-
-        prevBtn.addEventListener('click', () => { prev(); resetAutoplay(); });
-        nextBtn.addEventListener('click', () => { next(); resetAutoplay(); });
-        dots.forEach((dot, i) => {
-            dot.addEventListener('click', () => {
-                if (isTransitioning) return;
-                isTransitioning = true;
-                goTo(TOTAL + i, true);
-                resetAutoplay();
-            });
-        });
-
-        let touchStartX = 0;
-        track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
-        track.addEventListener('touchend', e => {
-            const diff = touchStartX - e.changedTouches[0].screenX;
-            if (Math.abs(diff) > 50) { diff > 0 ? next() : prev(); resetAutoplay(); }
-        });
-
-        function startAutoplay() { autoplay = setInterval(next, 6000); }
-        function resetAutoplay() { clearInterval(autoplay); startAutoplay(); }
-        startAutoplay();
-
-        window.addEventListener('resize', () => {
-            track.style.transition = 'none';
-            track.style.transform = 'translateX(-' + (current * getSlideWidth()) + 'px)';
-        });
-    })();
-
-    </script>
 <script>
-    // ── ACCORDION ──
-    document.querySelectorAll('.accordion-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const item = button.parentElement;
-            const acc = item.querySelector('.accordion-content');
-            const isActive = item.classList.contains('active');
-            document.querySelectorAll('.accordion-item').forEach(i => {
-                i.classList.remove('active');
-                i.querySelector('.accordion-content').style.maxHeight = null;
-            });
-            if (!isActive) {
-                item.classList.add('active');
-                acc.style.maxHeight = acc.scrollHeight + 'px';
-            }
-        });
+// ── BURGER ──
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobile-menu');
+burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        burger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
     });
+});
 </script>
+
 <script>
-(function(){
-    var b = document.getElementById("maintenance-banner");
-    if (!b) return;
-    if (sessionStorage.getItem("banner-closed")) { b.style.display = "none"; return; }
-    var btn = document.getElementById("banner-close");
-    if (btn) btn.addEventListener("click", function(){
-        b.style.display = "none";
-        sessionStorage.setItem("banner-closed", "1");
+// ── CAROUSEL – infinite loop, 3/2/1 visible ──
+(function() {
+    const track = document.getElementById('carousel-track');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const TOTAL = 7;
+
+    // Clone slides for infinite loop
+    const origSlides = Array.from(track.children);
+    origSlides.forEach(s => track.appendChild(s.cloneNode(true)));
+    [...origSlides].reverse().forEach(s => track.insertBefore(s.cloneNode(true), track.firstChild));
+
+    let current = TOTAL;
+    let isTransitioning = false;
+    let autoplay;
+
+    function getSlideWidth() {
+        return track.parentElement.offsetWidth / getVisible();
+    }
+
+    function getVisible() {
+        if (window.innerWidth <= 600) return 1;
+        if (window.innerWidth <= 900) return 2;
+        return 3;
+    }
+
+    function goTo(index, animate) {
+        track.style.transition = animate === false ? 'none' : 'transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94)';
+        track.style.transform = 'translateX(-' + (index * getSlideWidth()) + 'px)';
+        current = index;
+        const realIdx = ((current - TOTAL) % TOTAL + TOTAL) % TOTAL;
+        dots.forEach((d, i) => d.classList.toggle('active', i === realIdx));
+    }
+
+    track.addEventListener('transitionend', () => {
+        isTransitioning = false;
+        if (current < TOTAL) {
+            track.style.transition = 'none';
+            current += TOTAL;
+            track.style.transform = 'translateX(-' + (current * getSlideWidth()) + 'px)';
+            void track.offsetWidth;
+        } else if (current >= TOTAL * 2) {
+            track.style.transition = 'none';
+            current -= TOTAL;
+            track.style.transform = 'translateX(-' + (current * getSlideWidth()) + 'px)';
+            void track.offsetWidth;
+        }
+    });
+
+    function next() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        goTo(current + 1, true);
+    }
+    function prev() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        goTo(current - 1, true);
+    }
+
+    // Init after layout is ready
+    window.addEventListener('load', () => { goTo(TOTAL, false); });
+    goTo(TOTAL, false);
+
+    prevBtn.addEventListener('click', () => { prev(); resetAutoplay(); });
+    nextBtn.addEventListener('click', () => { next(); resetAutoplay(); });
+
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            goTo(TOTAL + i, true);
+            resetAutoplay();
+        });
+    });
+
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 50) { diff > 0 ? next() : prev(); resetAutoplay(); }
+    });
+
+    function startAutoplay() { autoplay = setInterval(next, 6000); }
+    function resetAutoplay() { clearInterval(autoplay); startAutoplay(); }
+    startAutoplay();
+
+    window.addEventListener('resize', () => {
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(-' + (current * getSlideWidth()) + 'px)';
     });
 })();
 </script>
+
+<script>
+// ── ACCORDION ──
+document.querySelectorAll('.accordion-button').forEach(button => {
+    button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const acc = item.querySelector('.accordion-content');
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.accordion-item').forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.accordion-content').style.maxHeight = null;
+        });
+        if (!isActive) {
+            item.classList.add('active');
+            acc.style.maxHeight = acc.scrollHeight + 'px';
+        }
+    });
+});
+</script>
+
 </body>
 </html>
