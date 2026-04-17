@@ -18,37 +18,28 @@
             --white: #ffffff;
             --black: #0a0a0a;
             --light-gray: #f4f6f9;
-            --medium-gray: #6b7280;
+            --medium-gray: #374151;
             --border: #e5e9f0;
-
-            /* Kachel-Verlauf: von dunkel nach hell */
-            --k1: #002777;
-            --k2: #003fa3;
-            --k3: #0062b1;
-            --k4: #008bba;
         }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.8;
-            color: var(--black);
-            overflow-x: hidden;
-            font-size: 17px;
-            background: var(--white);
-        }
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.8; color: var(--black); overflow-x: hidden; font-size: 17px; background: var(--white); }
 
-        /* ── HEADER (Standard) ── */
+        /* ── SKIP LINK ── */
+        .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--primary-blue); color: var(--white); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-decoration: none; z-index: 9999; transition: top 0.2s; }
+        .skip-link:focus { top: 1rem; }
+
+        /* ── HEADER ── */
         header { position: fixed; top: 0; left: 0; right: 0; background: var(--dark-blue); z-index: 1000; }
         nav { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; height: 72px; display: flex; justify-content: space-between; align-items: center; }
         .logo { text-decoration: none; display: flex; align-items: center; height: 100%; padding: 8px 0; transition: opacity 0.3s; }
         .logo:hover { opacity: 0.85; }
         .logo img { height: 100%; width: auto; max-height: 56px; object-fit: contain; }
         nav ul { display: flex; list-style: none; gap: 1.8rem; align-items: center; }
-        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.88); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.02em; transition: color 0.3s; position: relative; white-space: nowrap; }
+        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.95); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.02em; transition: color 0.3s; position: relative; white-space: nowrap; }
         nav ul li a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--white); transition: width 0.3s; }
         nav ul li a:hover, nav ul li a.active { color: var(--white); }
         nav ul li a:hover::after, nav ul li a.active::after { width: 100%; }
-        .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.88); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.6); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
+        .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.95); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.8); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
         .header-cta-btn:hover { background: var(--white); color: var(--dark-blue); border-color: var(--white); }
         .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
         .burger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
@@ -62,248 +53,99 @@
         .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--page-color); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
 
         /* ── HERO ── */
-        .hero {
-            margin-top: 72px;
-            background: var(--dark-blue);
-            padding: 4rem 2.5rem 3rem;
-            position: relative; overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute; inset: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-        }
-        .hero-inner {
-            max-width: 1200px; margin: 0 auto;
-            position: relative; z-index: 2;
-            display: grid; grid-template-columns: 1fr 1.4fr;
-            gap: 4rem; align-items: center;
-        }
-        .hero-eyebrow {
-            font-size: 0.72rem; font-weight: 700;
-            letter-spacing: 0.18em; text-transform: uppercase;
-            color: rgba(255,255,255,0.45); margin-bottom: 1.5rem;
-            display: flex; align-items: center; gap: 0.8rem;
-        }
+        .hero { margin-top: 72px; background: var(--dark-blue); padding: 4rem 2.5rem 3rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+        .hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: center; }
+        .hero-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
         .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: rgba(255,255,255,0.3); }
-        .hero h1 {
-            font-size: clamp(2.2rem, 4vw, 3.4rem);
-            font-weight: 900; color: var(--white);
-            line-height: 1.1; letter-spacing: -0.03em;
-            margin-bottom: 0.8rem;
-        }
+        .hero h1 { font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 900; color: var(--white); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 0.8rem; }
         .hero h1 span { color: var(--page-color); }
-        .hero-sub { font-size: 0.97rem; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 1.8rem; max-width: 420px; }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            background: #fef3c7; color: #92400e;
-            font-size: 0.78rem; font-weight: 700;
-            padding: 0.4rem 1rem; border-radius: 50px;
-            border: 1.5px solid #fde68a;
-        }
-        .hero-badge::before { content: '🚧'; }
+        .hero-sub { font-size: 0.97rem; color: rgba(255,255,255,0.82); line-height: 1.8; margin-bottom: 1.8rem; max-width: 420px; }
 
         /* Video */
-        .hero-video-wrap {
-            border-radius: 16px;
-            overflow: hidden;
-            background: rgba(255,255,255,0.06);
-            aspect-ratio: 16/9;
-            display: flex; align-items: center; justify-content: center;
-            border: 1.5px solid rgba(255,255,255,0.1);
-            position: relative;
-        }
-        .hero-video-wrap video,
-        .hero-video-wrap iframe {
-            width: 100%; height: 100%;
-            display: block; border: none;
-            object-fit: cover;
-        }
-        .hero-video-placeholder {
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            gap: 1rem; padding: 2rem; text-align: center;
-            width: 100%;
-        }
-        .hero-video-placeholder .play-icon {
-            width: 64px; height: 64px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.8rem;
-        }
-        .hero-video-placeholder p {
-            font-size: 0.85rem; color: rgba(255,255,255,0.5);
-            font-style: italic;
-        }
+        .hero-video-wrap { border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.06); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; border: 1.5px solid rgba(255,255,255,0.12); position: relative; }
+        .hero-video-wrap video, .hero-video-wrap iframe { width: 100%; height: 100%; display: block; border: none; object-fit: cover; }
+        .hero-video-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 2rem; text-align: center; width: 100%; }
+        .hero-video-placeholder .play-icon { width: 64px; height: 64px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; }
+        .hero-video-placeholder p { font-size: 0.85rem; color: rgba(255,255,255,0.65); font-style: italic; }
 
         /* Wave */
         .hero-wave { background: var(--dark-blue); line-height: 0; }
         .hero-wave svg { display: block; width: 100%; }
 
-        /* ── KOMPAKTER INTRO+NUTZUNG BLOCK ── */
-        .intro-block {
-            padding: 4.5rem 2.5rem;
-            background: var(--light-gray);
-        }
-        .intro-inner {
-            max-width: 1100px; margin: 0 auto;
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 4rem; align-items: start;
-        }
-        .intro-text {}
+        /* ── UMBAU-HINWEIS ── */
+        .umbau-section { background: var(--dark-blue); padding: 0 2.5rem 4rem; }
+        .umbau-inner { max-width: 900px; margin: 0 auto; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 20px; padding: 2.5rem 3rem; text-align: center; }
+        .umbau-icon { font-size: 2.4rem; margin-bottom: 1.2rem; }
+        .umbau-inner h2 { font-size: clamp(1.3rem, 2.5vw, 1.7rem); font-weight: 800; color: var(--white); letter-spacing: -0.02em; margin-bottom: 1rem; line-height: 1.25; }
+        .umbau-inner p { font-size: 0.97rem; color: rgba(255,255,255,0.82); line-height: 1.85; margin-bottom: 0.8rem; max-width: 680px; margin-left: auto; margin-right: auto; }
+        .umbau-inner p:last-of-type { margin-bottom: 1.5rem; }
+        .umbau-highlight { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(0,139,186,0.2); border: 1px solid rgba(0,139,186,0.4); color: var(--page-color); font-size: 0.85rem; font-weight: 700; padding: 0.45rem 1.1rem; border-radius: 50px; margin-bottom: 1.5rem; }
+        .umbau-contact { display: inline-block; color: rgba(255,255,255,0.7); font-size: 0.88rem; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
+        .umbau-contact:hover { color: var(--white); border-color: rgba(255,255,255,0.7); }
+
+        /* ── INTRO + NUTZUNG ── */
+        .intro-block { padding: 4.5rem 2.5rem; background: var(--light-gray); }
+        .intro-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
         .intro-text p { font-size: 1rem; color: var(--medium-gray); line-height: 1.9; margin-bottom: 1rem; }
         .intro-text p:last-child { margin-bottom: 0; }
         .intro-text strong { color: var(--black); }
         .intro-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--page-color); margin-bottom: 0.8rem; }
         .intro-title { font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 800; color: var(--black); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.4rem; }
-
         .nutzung-cards { display: flex; flex-direction: column; gap: 1rem; }
-        .nutzung-card {
-            background: var(--white);
-            border-radius: 14px;
-            padding: 1.4rem 1.6rem;
-            display: flex; gap: 1.2rem; align-items: flex-start;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-        }
+        .nutzung-card { background: var(--white); border-radius: 14px; padding: 1.4rem 1.6rem; display: flex; gap: 1.2rem; align-items: flex-start; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
         .nutzung-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 1px; }
         .nutzung-card h4 { font-size: 0.92rem; font-weight: 800; color: var(--black); margin-bottom: 0.3rem; }
         .nutzung-card p { font-size: 0.85rem; color: var(--medium-gray); line-height: 1.65; margin: 0; }
 
         /* ── KACHELN ── */
-        .kacheln-section {
-            padding: 4.5rem 2.5rem 5rem;
-            background: var(--white);
-        }
+        .kacheln-section { padding: 4.5rem 2.5rem 5rem; background: var(--white); }
         .kacheln-inner { max-width: 1100px; margin: 0 auto; }
         .kacheln-header { margin-bottom: 2.5rem; }
         .kacheln-header h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: var(--black); letter-spacing: -0.02em; }
         .kacheln-header p { font-size: 0.97rem; color: var(--medium-gray); margin-top: 0.4rem; }
+        .kosmos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; }
 
-        .kosmos-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.4rem;
-        }
-
-        /* Kachel-Basis */
-        .kachel {
-            border-radius: 18px;
-            padding: 2rem;
-            text-decoration: none;
-            display: flex; flex-direction: column;
-            justify-content: space-between;
-            min-height: 240px;
-            position: relative; overflow: hidden;
-            transition: transform 0.28s ease, box-shadow 0.28s ease;
-            cursor: pointer;
-            color: var(--white);
-        }
-        .kachel:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 24px 56px rgba(0,0,0,0.18);
-        }
-        /* Deko-Kreis */
-        .kachel::before {
-            content: '';
-            position: absolute;
-            bottom: -50px; right: -50px;
-            width: 180px; height: 180px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.08);
-            transition: transform 0.4s;
-        }
-        .kachel:hover::before { transform: scale(1.3); }
-        /* Pfeil */
-        .kachel::after {
-            content: '→';
-            position: absolute;
-            bottom: 1.6rem; right: 1.8rem;
-            font-size: 1.3rem; font-weight: 700;
-            color: rgba(255,255,255,0.5);
-            opacity: 0; transition: opacity 0.25s, right 0.25s;
-        }
-        .kachel:hover::after { opacity: 1; right: 1.4rem; }
-
-        /* Verlauf von dunkel (#002777) nach hell (#008bba) */
+        /* Kachel-Basis – kein Link mehr, daher div statt a */
+        .kachel { border-radius: 18px; padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 240px; position: relative; overflow: hidden; color: var(--white); opacity: 0.72; }
+        .kachel::before { content: ''; position: absolute; bottom: -50px; right: -50px; width: 180px; height: 180px; border-radius: 50%; background: rgba(255,255,255,0.08); }
         .kachel-1 { background: #002777; }
         .kachel-2 { background: #003fa3; }
         .kachel-3 { background: #0062b1; }
         .kachel-4 { background: #008bba; }
-
-        /* Wide-Kachel */
         .kachel-wide { grid-column: span 2; }
-
-        .kachel-icon-wrap {
-            width: 52px; height: 52px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 13px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.2rem;
-        }
-        .kachel-tag {
-            font-size: 0.68rem; font-weight: 700;
-            letter-spacing: 0.1em; text-transform: uppercase;
-            color: rgba(255,255,255,0.55); margin-bottom: 0.4rem;
-        }
+        .kachel-icon-wrap { width: 52px; height: 52px; background: rgba(255,255,255,0.15); border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.2rem; }
+        .kachel-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 0.4rem; }
         .kachel h3 { font-size: 1.08rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.6rem; }
         .kachel p { font-size: 0.88rem; line-height: 1.65; color: rgba(255,255,255,0.8); }
-        .kachel-tags {
-            margin-top: 1rem;
-            display: flex; flex-wrap: wrap; gap: 0.4rem;
-        }
-        .kachel-pill {
-            font-size: 0.73rem; font-weight: 600;
-            padding: 0.2rem 0.65rem; border-radius: 50px;
-            background: rgba(255,255,255,0.15);
-            color: rgba(255,255,255,0.9);
-        }
+        .kachel-tags { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .kachel-pill { font-size: 0.73rem; font-weight: 600; padding: 0.2rem 0.65rem; border-radius: 50px; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
 
-        /* ── AUFBAU-BANNER ── */
-        .aufbau-banner {
-            max-width: 1100px; margin: 0 auto 4rem;
-            padding: 0 2.5rem;
-        }
-        .aufbau-banner-inner {
-            background: #fef9ec; border: 1.5px solid #fde68a;
-            border-radius: 14px; padding: 1.4rem 2rem;
-            display: flex; align-items: center; gap: 1.2rem;
-        }
-        .aufbau-icon { font-size: 1.6rem; flex-shrink: 0; }
-        .aufbau-banner-inner p { font-size: 0.93rem; color: #78350f; line-height: 1.65; }
-        .aufbau-banner-inner strong { font-weight: 700; }
+        /* bald-verfügbar Label */
+        .kachel-soon { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); padding: 0.2rem 0.7rem; border-radius: 50px; margin-bottom: 0.8rem; }
 
         /* ── CTA STRIP ── */
-        .cta-strip {
-            padding: 4.5rem 2.5rem;
-            background: var(--page-color);
-            text-align: center;
-        }
+        .cta-strip { padding: 4.5rem 2.5rem; background: var(--page-color); text-align: center; }
         .cta-strip h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; color: var(--white); margin-bottom: 0.8rem; letter-spacing: -0.02em; }
-        .cta-strip p { font-size: 1rem; color: rgba(255,255,255,0.82); margin-bottom: 2rem; }
+        .cta-strip p { font-size: 1rem; color: rgba(255,255,255,0.88); margin-bottom: 2rem; }
         .btn-white { display: inline-block; padding: 0.9rem 2.4rem; background: var(--white); color: var(--dark-blue); font-family: 'Montserrat', sans-serif; font-size: 0.92rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
         .btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.2); }
 
         /* ── FOOTER ── */
-        footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 4rem 2.5rem 2rem; }
+        footer { background: var(--black); color: rgba(255,255,255,0.85); padding: 4rem 2.5rem 2rem; }
         .footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem; margin-bottom: 3rem; }
         .footer-section h4 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1.4rem; }
         .footer-section ul { list-style: none; }
         .footer-section ul li { margin-bottom: 0.7rem; }
-        .footer-section a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .footer-section a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
         .footer-section a:hover { color: var(--white); }
-        .footer-section p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
+        .footer-section p { color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
         .footer-social-icons { display: flex; gap: 0.8rem; margin-top: 0.5rem; }
-        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
+        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
         .footer-social-icon img { width: 22px; height: 22px; object-fit: contain; display: block; }
-        .footer-social-icon:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
-        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+        .footer-social-icon:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: rgba(255,255,255,0.6); font-size: 0.82rem; }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
@@ -315,12 +157,12 @@
             .footer-container { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 768px) {
-            nav ul { display: none; }
-            .header-cta-btn { display: none; }
+            nav ul, .header-cta-btn { display: none; }
             .burger { display: flex; }
             .hero { padding: 3rem 1.5rem 2.5rem; }
+            .umbau-section { padding: 0 1.5rem 3rem; }
+            .umbau-inner { padding: 2rem 1.5rem; }
             .intro-block, .kacheln-section, .cta-strip { padding-left: 1.5rem; padding-right: 1.5rem; }
-            .aufbau-banner { padding: 0 1.5rem; }
             .kosmos-grid { grid-template-columns: 1fr; }
             .kachel-wide { grid-column: span 1; }
             .footer-container { grid-template-columns: 1fr; }
@@ -330,67 +172,72 @@
 </head>
 <body>
 
+<!-- SKIP LINK -->
+<a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+
 <!-- HEADER -->
 <header>
     <nav>
         <a href="index.html" class="logo"><img src="images/Logo_weiß.png" alt="Koppmann Karriere"></a>
         <ul>
-            <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
-            <li><a href="karriere-kosmos.html" class="active">Karriere-Kosmos</a></li>
             <li><a href="unternehmen.html">Für Unternehmen</a></li>
+            <li><a href="arbeitnehmende.html">Für Mitarbeitende</a></li>
+            <li><a href="karriere-kosmos.html" class="active">Karriere-Kosmos</a></li>
             <li><a href="so-arbeite-ich.html">So Arbeite Ich</a></li>
-            <li><a href="kontakt-einstieg.html">Kontakt & Einstieg</a></li>
+            <li><a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
         </ul>
         <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="header-cta-btn">Erstgespräch vereinbaren</a>
         <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
     </nav>
 </header>
 
-<div class="mobile-menu" id="mobile-menu">
-    <a href="arbeitnehmende.html">Für Arbeitnehmende</a>
-    <a href="karriere-kosmos.html">Karriere-Kosmos</a>
+<div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile Navigation">
     <a href="unternehmen.html">Für Unternehmen</a>
+    <a href="arbeitnehmende.html">Für Mitarbeitende</a>
+    <a href="karriere-kosmos.html">Karriere-Kosmos</a>
     <a href="so-arbeite-ich.html">So Arbeite Ich</a>
-    <a href="kontakt-einstieg.html">Kontakt & Einstieg</a>
+    <a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a>
     <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="mobile-cta">Erstgespräch vereinbaren</a>
 </div>
 
+<main id="main-content">
+
 <!-- HERO -->
-<section class="hero">
+<section class="hero" aria-label="Karriere-Kosmos Einleitung">
     <div class="hero-inner">
         <div class="hero-content">
             <p class="hero-eyebrow">Karriere-Kosmos</p>
-            <h1>Ein Ort für<br><span>Orientierung,</span><br>Lernen & Einordnung.</h1>
+            <h1>Ein Ort für<br><span>Orientierung,</span><br>Lernen &amp; Einordnung.</h1>
             <p class="hero-sub">Rund um berufliche Entwicklung – ohne feste Reihenfolge, ohne Zeitdruck. Kostenlos zugänglich.</p>
-            <div class="hero-badge">Diese Seite befindet sich im Aufbau</div>
         </div>
-        <div class="hero-video-wrap">
-            <!--
-                VIDEO EINBINDEN:
-                Option A – lokale Videodatei:
-                <video autoplay muted loop playsinline poster="images/karriere-kosmos-poster.jpg">
-                    <source src="videos/karriere-kosmos-trailer.mp4" type="video/mp4">
-                </video>
-
-                Option B – YouTube Embed:
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=0&rel=0"
-                    allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
-                </iframe>
-            -->
+        <div class="hero-video-wrap" aria-label="Karriere-Kosmos Trailer – folgt in Kürze">
             <div class="hero-video-placeholder">
-                <div class="play-icon">▶</div>
+                <div class="play-icon" aria-hidden="true">▶</div>
                 <p>Karriere-Kosmos Trailer<br>wird hier eingebettet</p>
             </div>
         </div>
     </div>
 </section>
-<div class="hero-wave">
+<div class="hero-wave" aria-hidden="true">
     <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <path d="M0,32 C360,56 1080,8 1440,32 L1440,48 L0,48 Z" fill="#f4f6f9"/>
+        <path d="M0,32 C360,56 1080,8 1440,32 L1440,48 L0,48 Z" fill="#002777"/>
     </svg>
 </div>
 
-<!-- INTRO + NUTZUNG (kompakter Kombi-Block) -->
+<!-- UMBAU-HINWEIS -->
+<section class="umbau-section" aria-label="Hinweis zum aktuellen Stand">
+    <div class="umbau-inner">
+        <div class="umbau-icon" aria-hidden="true">🔧</div>
+        <div class="umbau-highlight">Aktuell in Überarbeitung</div>
+        <h2>Der Karriere-Kosmos wird gerade neu gedacht.</h2>
+        <p>Der Karriere-Kosmos befindet sich derzeit in einer umfassenden Überarbeitung. Die Unterseiten sind vorübergehend nicht zugänglich – dahinter entstehen neue Inhalte, Tools und Funktionen, die den Kosmos deutlich weiterentwickeln.</p>
+        <p>Alles bleibt selbstverständlich <strong style="color:var(--white);">kostenlos und frei zugänglich</strong>. Für August ist außerdem die Einführung einer App geplant, die den Zugang und die Nutzbarkeit weiter verbessern wird.</p>
+        <p>Bei Fragen oder Interesse schreib mir gerne direkt:</p>
+        <a href="mailto:jan@koppmannkarriere.de" class="umbau-contact">jan@koppmannkarriere.de</a>
+    </div>
+</section>
+
+<!-- INTRO + NUTZUNG -->
 <section class="intro-block">
     <div class="intro-inner">
         <div class="intro-text">
@@ -405,21 +252,21 @@
             <h2 class="intro-title" style="font-size:1.25rem;">Kein vorgeschriebener Weg.</h2>
             <div class="nutzung-cards">
                 <div class="nutzung-card">
-                    <div class="nutzung-icon">🎯</div>
+                    <div class="nutzung-icon" aria-hidden="true">🎯</div>
                     <div>
                         <h4>Als Kursangebot</h4>
                         <p>Strukturierte Module in deinem Tempo – von Karriereplanung bis Selbstmanagement, ohne Prüfungsdruck.</p>
                     </div>
                 </div>
                 <div class="nutzung-card">
-                    <div class="nutzung-icon">🔍</div>
+                    <div class="nutzung-icon" aria-hidden="true">🔍</div>
                     <div>
                         <h4>Als Wissenssammlung</h4>
                         <p>Du hast eine konkrete Frage? Artikel, Guides und Tools sind unabhängig voneinander nutzbar.</p>
                     </div>
                 </div>
                 <div class="nutzung-card">
-                    <div class="nutzung-icon">🤝</div>
+                    <div class="nutzung-icon" aria-hidden="true">🤝</div>
                     <div>
                         <h4>Als Begleitung zur Karrierebegleitung</h4>
                         <p>Ergänzendes Material, das unsere gemeinsamen Themen vertieft und festigt.</p>
@@ -430,22 +277,21 @@
     </div>
 </section>
 
-<!-- KACHELN -->
+<!-- KACHELN (keine Links, da Unterseiten deaktiviert) -->
 <section class="kacheln-section">
     <div class="kacheln-inner">
         <div class="kacheln-header">
             <h2>Bereiche im Karriere-Kosmos</h2>
-            <p>Wähle den Bereich, der gerade zu dir passt – jeder Einstieg ist richtig.</p>
+            <p>Diese Bereiche werden mit der Neuveröffentlichung zugänglich – hier ein erster Überblick.</p>
         </div>
-
         <div class="kosmos-grid">
 
-            <!-- Kachel 1: Karrierebegleitung & Coop (dunkelblau, breit) -->
-            <a href="karriere-kosmos/karrierebegleitung-coop.html" class="kachel kachel-1 kachel-wide">
+            <div class="kachel kachel-1 kachel-wide" aria-label="Karrierebegleitung & unsere Zusammenarbeit – bald verfügbar">
                 <div>
-                    <div class="kachel-icon-wrap">📄</div>
+                    <div class="kachel-icon-wrap" aria-hidden="true">📄</div>
+                    <span class="kachel-soon">Bald verfügbar</span>
                     <div class="kachel-tag">Hotspot</div>
-                    <h3>Karrierebegleitung & unsere Zusammenarbeit</h3>
+                    <h3>Karrierebegleitung &amp; unsere Zusammenarbeit</h3>
                     <p>Tiefergehende Informationen rund um unsere Zusammenarbeit – PDFs, Videos und alles, was du brauchst, bevor wir starten.</p>
                     <div class="kachel-tags">
                         <span class="kachel-pill">📄 Info-PDFs</span>
@@ -453,13 +299,13 @@
                         <span class="kachel-pill">Öffentlicher Zugriff</span>
                     </div>
                 </div>
-            </a>
+            </div>
 
-            <!-- Kachel 2: Kurse (mittelblau) -->
-            <a href="karriere-kosmos/kursuebersicht.html" class="kachel kachel-2">
+            <div class="kachel kachel-2" aria-label="Strukturierte Module – bald verfügbar">
                 <div>
-                    <div class="kachel-icon-wrap">🎓</div>
-                    <div class="kachel-tag">Kurse & Lernpfade</div>
+                    <div class="kachel-icon-wrap" aria-hidden="true">🎓</div>
+                    <span class="kachel-soon">Bald verfügbar</span>
+                    <div class="kachel-tag">Kurse &amp; Lernpfade</div>
                     <h3>Strukturierte Module</h3>
                     <p>Berufliche Orientierung in klar aufgebauten Einheiten – von Karriereplanung bis Zukunftsoptimismus.</p>
                     <div class="kachel-tags">
@@ -468,28 +314,28 @@
                         <span class="kachel-pill">+ mehr</span>
                     </div>
                 </div>
-            </a>
+            </div>
 
-            <!-- Kachel 3: Wissen (primärblau) -->
-            <a href="karriere-kosmos/wissen-entwicklung.html" class="kachel kachel-3">
+            <div class="kachel kachel-3" aria-label="Artikel & Beiträge – bald verfügbar">
                 <div>
-                    <div class="kachel-icon-wrap">📖</div>
-                    <div class="kachel-tag">Wissen & Einordnungen</div>
-                    <h3>Artikel & Beiträge</h3>
+                    <div class="kachel-icon-wrap" aria-hidden="true">📖</div>
+                    <span class="kachel-soon">Bald verfügbar</span>
+                    <div class="kachel-tag">Wissen &amp; Einordnungen</div>
+                    <h3>Artikel &amp; Beiträge</h3>
                     <p>Fachliche Orientierung, Berufs-Steckbriefe und Beiträge zu Fragen des beruflichen Alltags.</p>
                     <div class="kachel-tags">
                         <span class="kachel-pill">Artikel</span>
                         <span class="kachel-pill">YouTube-Playlist</span>
                     </div>
                 </div>
-            </a>
+            </div>
 
-            <!-- Kachel 4: Guides & Tools inkl. Bewerbungshilfe (hellblau, breit) -->
-            <a href="karriere-kosmos/guides-tools.html" class="kachel kachel-4 kachel-wide">
+            <div class="kachel kachel-4 kachel-wide" aria-label="Praktische Unterstützung & Bewerbungshilfe – bald verfügbar">
                 <div>
-                    <div class="kachel-icon-wrap">🛠️</div>
-                    <div class="kachel-tag">Guides & Tools · inkl. Bewerbungshilfe</div>
-                    <h3>Praktische Unterstützung & Bewerbungshilfe</h3>
+                    <div class="kachel-icon-wrap" aria-hidden="true">🛠️</div>
+                    <span class="kachel-soon">Bald verfügbar</span>
+                    <div class="kachel-tag">Guides &amp; Tools · inkl. Bewerbungshilfe</div>
+                    <h3>Praktische Unterstützung &amp; Bewerbungshilfe</h3>
                     <p>Vom Bewerbungsunterlagen-Guide über den Lebenslauf-Generator bis zum KI-gestützten Anschreiben-Helfer und Gesprächs-Simulator – alles an einem Ort.</p>
                     <div class="kachel-tags">
                         <span class="kachel-pill">📄 Bewerbungsguide</span>
@@ -498,26 +344,20 @@
                         <span class="kachel-pill">Lebenslauf-Generator</span>
                     </div>
                 </div>
-            </a>
+            </div>
 
         </div>
     </div>
 </section>
 
-<!-- AUFBAU-BANNER -->
-<div class="aufbau-banner">
-    <div class="aufbau-banner-inner">
-        <div class="aufbau-icon">🚧</div>
-        <p><strong>Der Karriere-Kosmos befindet sich derzeit im Aufbau.</strong> Inhalte werden laufend ergänzt – manche Bereiche sind bereits zugänglich, andere folgen schrittweise. Schau gerne regelmäßig vorbei.</p>
-    </div>
-</div>
-
 <!-- CTA -->
 <section class="cta-strip">
     <h2>Noch nicht sicher, wo du anfangen sollst?</h2>
     <p>In einem kostenlosen Erstgespräch finden wir gemeinsam heraus, was gerade für dich passt.</p>
-    <a href="kontakt-einstieg.html" class="btn-white">Zum Erstgespräch →</a>
+    <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="btn-white">Erstgespräch vereinbaren →</a>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -526,44 +366,45 @@
             <h4>Navigation</h4>
             <ul>
                 <li><a href="index.html">Start</a></li>
-                <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
-                <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
                 <li><a href="unternehmen.html">Für Unternehmen</a></li>
+                <li><a href="arbeitnehmende.html">Für Mitarbeitende</a></li>
+                <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
                 <li><a href="so-arbeite-ich.html">So Arbeite Ich</a></li>
-                <li><a href="kontakt-einstieg.html">Kontakt & Einstieg</a></li>
+                <li><a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
             </ul>
         </div>
         <div class="footer-section">
             <h4>Kontakt</h4>
-            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br><a href="/cdn-cgi/l/email-protection#3f555e517f54504f4f525e5151545e4d4d565a4d5a115b5a"><span class="__cf_email__" data-cfemail="f59f949bb59e9a858598949b9b9e9487879c908790db9190">[email&#160;protected]</span></a></p>
-            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br>folgt</p>
+            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br><a href="mailto:jan@koppmannkarriere.de">jan@koppmannkarriere.de</a></p>
+            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br><a href="tel:+4916034028920">0160 340 2892</a></p>
+            <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Adresse</strong><br>Neuhurden 22,<br>51491 Overath</p>
         </div>
         <div class="footer-section">
             <h4>Social Media</h4>
             <div class="footer-social-icons">
-                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="YouTube"><img src="images/YouTube_Icon.png" alt="YouTube"></a>
-                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon" title="LinkedIn"><img src="images/Linkedin_Icon.png" alt="LinkedIn"></a>
                 <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="footer-social-icon" title="Instagram"><img src="images/Instagram_Icon.png" alt="Instagram"></a>
                 <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="TikTok"><img src="images/Tiktok_Icon.png" alt="TikTok"></a>
+                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="YouTube"><img src="images/YouTube_Icon.png" alt="YouTube"></a>
+                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon" title="LinkedIn"><img src="images/Linkedin_Icon.png" alt="LinkedIn"></a>
             </div>
         </div>
         <div class="footer-section">
             <h4>Rechtliches</h4>
             <ul>
-                <li><a href="transparenz/impressum.html">Impressum</a></li>
+                <li><a href="/impressum">Impressum</a></li>
                 <li><a href="transparenz/datenschutz.html">Datenschutz</a></li>
             </ul>
             <h4 style="margin-top:1.8rem;">Tippgeber:in werden</h4>
-            <p><a href="tippgeberschaft/tippgeber.html">Weiterempfehlen & Provision erhalten</a></p>
+            <p><a href="tippgeberschaft/tippgebende.html">Weiterempfehlen &amp; Provision erhalten</a></p>
         </div>
     </div>
     <div class="footer-bottom">
         <p>© 2026 Jan Koppmann – Karrierebegleitung</p>
-        <p>Hosted on Netlify · Made with ♥ in Overath</p>
+        <p>Made with ♥ in Overath</p>
     </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
     // Burger
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -582,11 +423,23 @@
 
     // Kacheln fade-in beim Scrollen
     const kacheln = document.querySelectorAll('.kachel');
-    kacheln.forEach(k => { k.style.opacity = '0'; k.style.transform = 'translateY(20px)'; k.style.transition = 'opacity 0.4s ease, transform 0.4s ease, box-shadow 0.28s ease'; });
+    kacheln.forEach(k => {
+        k.style.opacity = '0';
+        k.style.transform = 'translateY(20px)';
+        k.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    });
     const obs = new IntersectionObserver((entries) => {
         entries.forEach((entry, i) => {
             if (entry.isIntersecting) {
                 setTimeout(() => {
-                    entry.target.style.opacity = '1';
+                    entry.target.style.opacity = '0.72';
+                    entry.target.style.transform = 'translateY(0)';
+                }, i * 80);
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    kacheln.forEach(k => obs.observe(k));
+</script>
 </body>
 </html>
