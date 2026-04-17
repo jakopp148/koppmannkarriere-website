@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -10,18 +9,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --primary-blue: #0062b1; --dark-blue: #002777; --page-color: #002777; --page-color-light: #e8eef8; --white: #ffffff; --black: #0a0a0a; --light-gray: #f4f6f9; --medium-gray: #6b7280; --border: #e5e9f0; }
+        :root { --primary-blue: #0062b1; --dark-blue: #002777; --page-color: #002777; --page-color-light: #e8eef8; --white: #ffffff; --black: #0a0a0a; --light-gray: #f4f6f9; --medium-gray: #374151; --border: #e5e9f0; }
         body { font-family: "Montserrat", sans-serif; line-height: 1.7; color: var(--black); font-size: 17px; overflow-x: hidden; }
+
+        /* ── SKIP LINK ── */
+        .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--primary-blue); color: var(--white); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-decoration: none; z-index: 9999; transition: top 0.2s; }
+        .skip-link:focus { top: 1rem; }
+
         header { position: fixed; top: 0; left: 0; right: 0; background: var(--dark-blue); z-index: 1000; }
         nav { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; height: 72px; display: flex; justify-content: space-between; align-items: center; }
         .logo { text-decoration: none; display: flex; align-items: center; height: 100%; padding: 8px 0; }
         .logo img { height: 100%; width: auto; max-height: 56px; object-fit: contain; }
         nav ul { display: flex; list-style: none; gap: 1.8rem; align-items: center; }
-        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.88); font-weight: 500; font-size: 0.85rem; transition: color 0.3s; position: relative; white-space: nowrap; }
+        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.95); font-weight: 500; font-size: 0.85rem; transition: color 0.3s; position: relative; white-space: nowrap; }
         nav ul li a::after { content: ""; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--white); transition: width 0.3s; }
         nav ul li a:hover { color: var(--white); }
         nav ul li a:hover::after { width: 100%; }
-        .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.88); font-family: "Montserrat", sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.6); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
+        .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.95); font-family: "Montserrat", sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.8); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
         .header-cta-btn:hover { background: var(--white); color: var(--dark-blue); }
         .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
         .burger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
@@ -33,19 +37,20 @@
         .mobile-menu a { text-decoration: none; color: var(--black); font-weight: 600; font-size: 1.3rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); }
         .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--dark-blue); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
         .hero { margin-top: 72px; background: linear-gradient(135deg, #001a55 0%, #002777 45%, #003d99 100%); padding: 5rem 2rem 6rem; position: relative; overflow: hidden; }
-        .hero::before { content: ""; position: absolute; top: -120px; right: -120px; width: 500px; height: 500px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+        .hero::before { content: ""; position: absolute; top: -120px; right: -120px; width: 500px; height: 500px; border-radius: 50%; background: rgba(255,255,255,0.04); pointer-events: none; }
         .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
-        .hero-back { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.55); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-bottom: 2rem; }
+        .hero-back { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.78); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-bottom: 2rem; transition: color 0.2s; }
         .hero-back:hover { color: var(--white); }
-        .hero-eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 1rem; }
+        .hero-eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 1rem; }
         .hero-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: var(--white); letter-spacing: -0.02em; line-height: 1.08; margin-bottom: 0.8rem; }
-        .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.8; max-width: 620px; }
+        .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.88); line-height: 1.8; max-width: 620px; }
         .hero-wave { position: absolute; bottom: -1px; left: 0; right: 0; }
         .hero-wave svg { display: block; width: 100%; }
         .main-tabs-bar { background: var(--white); border-bottom: 2px solid var(--border); position: sticky; top: 72px; z-index: 900; }
         .main-tabs-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; display: flex; }
         .main-tab-btn { padding: 1.1rem 2rem; background: none; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; font-family: "Montserrat", sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--medium-gray); cursor: pointer; white-space: nowrap; transition: all 0.25s; }
         .main-tab-btn.active { color: var(--page-color); border-bottom-color: var(--page-color); }
+        .main-tab-btn:focus { outline: 2px solid var(--primary-blue); outline-offset: 2px; }
         .tab-panel { display: none; }
         .tab-panel.active { display: block; }
         .sec-wrap { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
@@ -66,6 +71,7 @@
         .duration-btns { display: flex; gap: 0.5rem; }
         .duration-btn { flex: 1; padding: 0.6rem 0.3rem; background: var(--white); border: 2px solid var(--border); border-radius: 10px; font-family: "Montserrat", sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--medium-gray); cursor: pointer; transition: all 0.2s; text-align: center; }
         .duration-btn.active { background: var(--dark-blue); border-color: var(--dark-blue); color: var(--white); }
+        .duration-btn:focus { outline: 2px solid var(--primary-blue); outline-offset: 2px; }
         .verguetung-input-wrap { position: relative; }
         .verguetung-input { width: 100%; padding: 0.85rem 3.5rem 0.85rem 1rem; background: var(--white); border: 2px solid var(--border); border-radius: 10px; font-family: "Montserrat", sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--black); transition: border-color 0.2s; }
         .verguetung-input:focus { outline: none; border-color: var(--primary-blue); }
@@ -99,48 +105,48 @@
         .sonderfaelle-box { margin-top: 1rem; background: var(--light-gray); border-radius: 12px; padding: 1.2rem 1.5rem; font-size: 0.88rem; color: var(--medium-gray); line-height: 1.75; }
         .vergleich-section { background: var(--dark-blue); }
         .vergleich-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
-        .vergleich-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2rem; }
+        .vergleich-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 2rem; }
         .vergleich-card-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; }
-        .v-costs { color: rgba(255,255,255,0.5); }
+        .v-costs { color: rgba(255,255,255,0.6); }
         .v-provision { color: #86efac; }
         .kosten-input-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem; flex-wrap: wrap; }
-        .kosten-input-row label { font-size: 0.78rem; color: rgba(255,255,255,0.65); font-weight: 600; flex: 1; display: flex; align-items: center; gap: 0.3rem; min-width: 160px; }
-        .kosten-input { width: 80px; padding: 0.45rem 0.7rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; font-family: "Montserrat", sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--white); }
+        .kosten-input-row label { font-size: 0.78rem; color: rgba(255,255,255,0.78); font-weight: 600; flex: 1; display: flex; align-items: center; gap: 0.3rem; min-width: 160px; }
+        .kosten-input { width: 80px; padding: 0.45rem 0.7rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); border-radius: 8px; font-family: "Montserrat", sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--white); }
         .kosten-input:focus { outline: none; border-color: rgba(255,255,255,0.5); }
-        .k-unit { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+        .k-unit { font-size: 0.75rem; color: rgba(255,255,255,0.55); }
         .kosten-line { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.88rem; }
-        .k-label { color: rgba(255,255,255,0.65); display: flex; align-items: center; gap: 0.4rem; }
+        .k-label { color: rgba(255,255,255,0.78); display: flex; align-items: center; gap: 0.4rem; }
         .k-val { font-weight: 700; color: var(--white); }
         .k-green { color: #86efac; }
         .k-total-line { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; margin-top: 0.5rem; border-top: 2px solid rgba(255,255,255,0.2); }
         .provision-line { background: rgba(255,255,255,0.06); border-radius: 12px; padding: 1rem 1.2rem; display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; }
         .provision-line.recommended { background: rgba(134,239,172,0.12); border: 1px solid rgba(134,239,172,0.25); }
-        .p-name { font-size: 0.85rem; font-weight: 700; color: rgba(255,255,255,0.85); }
+        .p-name { font-size: 0.85rem; font-weight: 700; color: rgba(255,255,255,0.92); }
         .p-pct { font-size: 0.72rem; color: #86efac; font-weight: 600; margin-top: 0.2rem; }
         .p-total { font-size: 1rem; font-weight: 800; color: var(--white); }
-        .fazit-box { margin-top: 2rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.8rem 2rem; text-align: center; }
-        .fazit-box p { color: rgba(255,255,255,0.75); font-size: 0.95rem; line-height: 1.8; }
+        .fazit-box { margin-top: 2rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 1.8rem 2rem; text-align: center; }
+        .fazit-box p { color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; }
         .fazit-box strong { color: var(--white); }
         .fazit-zahl { font-size: 2rem; font-weight: 900; color: #86efac; display: block; margin: 0.5rem 0; }
         .cta-strip { padding: 5rem 2rem; background: linear-gradient(135deg, #001a55, #002777); text-align: center; }
         .cta-strip h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 900; color: var(--white); margin-bottom: 0.8rem; }
-        .cta-strip p { font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 2rem; }
+        .cta-strip p { font-size: 1rem; color: rgba(255,255,255,0.88); margin-bottom: 2rem; }
         .btn-white { display: inline-block; padding: 1.1rem 2.5rem; background: var(--white); color: var(--page-color); font-family: "Montserrat", sans-serif; font-size: 1rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
         .btn-white:hover { transform: translateY(-3px); }
-        footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 4rem 2.5rem 2rem; }
+        footer { background: var(--black); color: rgba(255,255,255,0.85); padding: 4rem 2.5rem 2rem; }
         .footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem; margin-bottom: 3rem; }
         .footer-section h4 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1.4rem; }
         .footer-section ul { list-style: none; }
         .footer-section ul li { margin-bottom: 0.7rem; }
-        .footer-section a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .footer-section a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
         .footer-section a:hover { color: var(--white); }
-        .footer-section p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
+        .footer-section p { color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
         .footer-social-icons { display: flex; gap: 0.8rem; margin-top: 0.5rem; }
-        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
+        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
         .footer-social-icon img { width: 22px; height: 22px; object-fit: contain; display: block; }
-        .footer-social-icon:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
-        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+        .footer-social-icon:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: rgba(255,255,255,0.6); font-size: 0.82rem; }
         @media (max-width: 1024px) { .rechner-layout { grid-template-columns: 1fr; } .rechner-inputs { position: static; } .vergleich-layout { grid-template-columns: 1fr; } }
         @media (max-width: 768px) { nav ul, .header-cta-btn { display: none; } .burger { display: flex; } .footer-container { grid-template-columns: 1fr 1fr; } }
         @media (max-width: 480px) { .footer-container { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; text-align: center; } }
@@ -148,87 +154,92 @@
 </head>
 <body>
 
+<!-- SKIP LINK -->
+<a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+
 <header>
     <nav>
-        <a href="../index.html" class="logo"><img src="../images/Logo_wei%C3%9F.png" alt="Koppmann Karriere"></a>
+        <a href="../index.html" class="logo"><img src="../images/Logo_weiß.png" alt="Koppmann Karriere"></a>
         <ul>
-            <li><a href="../unternehmen.html" class="active">F&uuml;r Unternehmen</a></li>
-            <li><a href="../arbeitnehmende.html">F&uuml;r Arbeitnehmende</a></li>
+            <li><a href="../unternehmen.html" class="active">Für Unternehmen</a></li>
+            <li><a href="../arbeitnehmende.html">Für Mitarbeitende</a></li>
             <li><a href="../karriere-kosmos.html">Karriere-Kosmos</a></li>
             <li><a href="../so-arbeite-ich.html">So Arbeite Ich</a></li>
             <li><a href="../kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
         </ul>
-        <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="header-cta-btn">Erstgespr&auml;ch vereinbaren</a>
-        <button class="burger" id="burger" aria-label="Men&uuml; &ouml;ffnen"><span></span><span></span><span></span></button>
+        <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="header-cta-btn">Erstgespräch vereinbaren</a>
+        <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
     </nav>
 </header>
 
-<div class="mobile-menu" id="mobile-menu">
-    <a href="../unternehmen.html">F&uuml;r Unternehmen</a>
-    <a href="../arbeitnehmende.html">F&uuml;r Arbeitnehmende</a>
+<div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile Navigation">
+    <a href="../unternehmen.html">Für Unternehmen</a>
+    <a href="../arbeitnehmende.html">Für Mitarbeitende</a>
     <a href="../karriere-kosmos.html">Karriere-Kosmos</a>
     <a href="../so-arbeite-ich.html">So Arbeite Ich</a>
     <a href="../kontakt-einstieg.html">Kontakt &amp; Einstieg</a>
-    <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="mobile-cta">Erstgespr&auml;ch vereinbaren</a>
+    <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="mobile-cta">Erstgespräch vereinbaren</a>
 </div>
 
-<section class="hero">
+<main id="main-content">
+
+<section class="hero" aria-label="Vergütung & Preise Einleitung">
     <div class="hero-inner">
-        <a href="../unternehmen.html" class="hero-back">&larr; Zur&uuml;ck zu &bdquo;F&uuml;r Unternehmen&ldquo;</a>
-        <p class="hero-eyebrow">F&uuml;r Unternehmen &middot; Transparente Verg&uuml;tung</p>
-        <h1 class="hero-title">Verg&uuml;tung &amp; Preise</h1>
-        <p class="hero-sub">F&uuml;nf flexible Zahlungsmodelle f&uuml;r Ausbildungs- und Fachkraftvermittlung &ndash; kein Honorar ohne erfolgreiche Vermittlung.</p>
+        <a href="../unternehmen.html" class="hero-back">← Zurück zu „Für Unternehmen"</a>
+        <p class="hero-eyebrow">Für Unternehmen · Transparente Vergütung</p>
+        <h1 class="hero-title">Vergütung &amp; Preise</h1>
+        <p class="hero-sub">Fünf flexible Zahlungsmodelle für Ausbildungs- und Fachkraftvermittlung – kein Honorar ohne erfolgreiche Vermittlung.</p>
     </div>
-    <div class="hero-wave">
+    <div class="hero-wave" aria-hidden="true">
         <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
             <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="#ffffff"/>
         </svg>
     </div>
 </section>
 
-<div class="main-tabs-bar">
+<div class="main-tabs-bar" role="tablist" aria-label="Vermittlungsart wählen">
     <div class="main-tabs-inner">
-        <button class="main-tab-btn active" data-tab="fachkraft">&#128100; Fachkraftvermittlung</button>
-        <button class="main-tab-btn" data-tab="ausbildung">&#127891; Ausbildungsvermittlung</button>
+        <button class="main-tab-btn active" data-tab="fachkraft" role="tab" aria-selected="true" aria-controls="tab-fachkraft">Fachkraftvermittlung</button>
+        <button class="main-tab-btn" data-tab="ausbildung" role="tab" aria-selected="false" aria-controls="tab-ausbildung">Ausbildungsvermittlung</button>
     </div>
 </div>
 
 <!-- TAB FACHKRAFT -->
-<div class="tab-panel active" id="tab-fachkraft">
+<div class="tab-panel active" id="tab-fachkraft" role="tabpanel">
 <section style="background:var(--white);">
 <div class="sec-wrap">
     <p class="sec-eyebrow">Fachkraftvermittlung</p>
     <h2 class="sec-title">Honorar berechnen</h2>
-    <p class="sec-sub">Basis ist das vereinbarte Jahresbruttogehalt. Geben Sie das Gehalt ein &ndash; alle vier Modelle werden live berechnet.</p>
+    <p class="sec-sub">Basis ist das vereinbarte Jahresbruttogehalt. Geben Sie das Gehalt ein – alle vier Modelle werden live berechnet.</p>
     <div class="rechner-layout">
         <div class="rechner-inputs">
             <h3>Ihre Angaben</h3>
             <div class="input-group">
-                <label class="input-label">Jahresbruttogehalt</label>
+                <label class="input-label" for="fk-gehalt">Jahresbruttogehalt</label>
                 <div class="verguetung-input-wrap">
-                    <input type="number" class="verguetung-input" id="fk-gehalt" value="45000" min="20000" max="150000" step="1000">
-                    <span class="verguetung-unit">&euro; / Jahr</span>
+                    <input type="number" class="verguetung-input" id="fk-gehalt" value="45000" min="20000" max="150000" step="1000" aria-label="Jahresbruttogehalt in Euro">
+                    <span class="verguetung-unit" aria-hidden="true">€ / Jahr</span>
                 </div>
                 <p class="rechner-hint">Vereinbartes Jahresbruttogehalt der zu besetzenden Stelle.</p>
             </div>
             <div class="logik-box">
                 <div class="logik-box-title">Berechnungslogik</div>
-                <p><strong>Ratenbetrag</strong> = Jahresgehalt &times; Prozentsatz</p>
+                <p><strong>Ratenbetrag</strong> = Jahresgehalt × Prozentsatz</p>
             </div>
         </div>
         <div>
             <div class="fachkraft-table-wrap">
-                <table class="fachkraft-table">
-                    <thead><tr><th>Modell</th><th>Raten</th><th>Zahlungszeitpunkte &amp; Betr&auml;ge</th><th>Gesamt</th></tr></thead>
+                <table class="fachkraft-table" aria-label="Fachkraft-Vergütungsmodelle">
+                    <thead><tr><th>Modell</th><th>Raten</th><th>Zahlungszeitpunkte &amp; Beträge</th><th>Gesamt</th></tr></thead>
                     <tbody id="fk-tbody"></tbody>
                 </table>
             </div>
-            <div class="hinweis-box" style="margin-top:1.5rem;"><strong>Hinweis zu &bdquo;Start now&ldquo;:</strong> Die Rechnung wird zum ersten Arbeitstag gestellt. Bis zum Ende des ersten Monats besteht ein R&uuml;cktrittsrecht &ndash; in diesem Fall werden 50&nbsp;% des Honorarbetrags f&auml;llig.</div>
-            <div class="hinweis-box hinweis-gruen" style="margin-top:1rem;"><strong>Balance &amp; Flex:</strong> Ein Teil des Honorars wird erst nach Abschluss der Probezeit f&auml;llig &ndash; das reduziert Ihr Risiko bei fr&uuml;hzeitiger Beendigung des Arbeitsverh&auml;ltnisses.</div>
-            <div class="sonderfaelle-box">F&uuml;r individuelle Konditionen oder Sonderf&auml;lle sprechen Sie mich gerne direkt an.</div>
+            <div class="hinweis-box" style="margin-top:1.5rem;"><strong>Hinweis zu „Start now":</strong> Die Rechnung wird zum ersten Arbeitstag gestellt. Bis zum Ende des ersten Monats besteht ein Rücktrittsrecht – in diesem Fall werden 50&nbsp;% des Honorarbetrags fällig.</div>
+            <div class="hinweis-box hinweis-gruen" style="margin-top:1rem;"><strong>Balance &amp; Flex:</strong> Ein Teil des Honorars wird erst nach Abschluss der Probezeit fällig – das reduziert Ihr Risiko bei frühzeitiger Beendigung des Arbeitsverhältnisses.</div>
+            <div class="sonderfaelle-box">Für individuelle Konditionen oder Sonderfälle sprechen Sie mich gerne direkt an.</div>
             <div style="margin-top:1rem;background:#f0f4ff;border:1.5px solid var(--border);border-left:3px solid var(--primary-blue);border-radius:0 12px 12px 0;padding:1.2rem 1.5rem;font-size:0.85rem;color:var(--medium-gray);line-height:1.75;">
                 <strong style="color:var(--black);display:block;margin-bottom:0.4rem;">Transparenzhinweis</strong>
-                Bereits get&auml;tigte Ratenzahlungen werden nicht erstattet (Ausnahme: &bdquo;Start now&ldquo; &ndash; hier gilt das R&uuml;cktrittsrecht im ersten Monat). Bei vorzeitiger Beendigung des Arbeitsverh&auml;ltnisses entfallen die verbleibenden Ratenzahlungen automatisch.
+                Bereits getätigte Ratenzahlungen werden nicht erstattet (Ausnahme: „Start now" – hier gilt das Rücktrittsrecht im ersten Monat). Bei vorzeitiger Beendigung des Arbeitsverhältnisses entfallen die verbleibenden Ratenzahlungen automatisch.
             </div>
         </div>
     </div>
@@ -237,48 +248,48 @@
 </div>
 
 <!-- TAB AUSBILDUNG -->
-<div class="tab-panel" id="tab-ausbildung">
+<div class="tab-panel" id="tab-ausbildung" role="tabpanel">
 <section style="background:var(--white);">
 <div class="sec-wrap">
     <p class="sec-eyebrow">Ausbildungsvermittlung</p>
     <h2 class="sec-title">Honorar berechnen</h2>
-    <p class="sec-sub">Basis ist die monatliche Ausbildungsverg&uuml;tung im 1. Lehrjahr. W&auml;hlen Sie die geplante Ausbildungsdauer und geben Sie die Verg&uuml;tung ein.</p>
+    <p class="sec-sub">Basis ist die monatliche Ausbildungsvergütung im 1. Lehrjahr. Wählen Sie die geplante Ausbildungsdauer und geben Sie die Vergütung ein.</p>
     <div class="rechner-layout">
         <div class="rechner-inputs">
             <h3>Geplante Ausbildungsdauer</h3>
             <div class="input-group">
-                <label class="input-label">Ausbildungsdauer</label>
-                <div class="duration-btns">
-                    <button class="duration-btn" data-years="2">2 Jahre</button>
-                    <button class="duration-btn active" data-years="3">3 Jahre</button>
-                    <button class="duration-btn" data-years="3.5">3,5 Jahre</button>
+                <label class="input-label" id="duration-label">Ausbildungsdauer</label>
+                <div class="duration-btns" role="group" aria-labelledby="duration-label">
+                    <button class="duration-btn" data-years="2" aria-pressed="false">2 Jahre</button>
+                    <button class="duration-btn active" data-years="3" aria-pressed="true">3 Jahre</button>
+                    <button class="duration-btn" data-years="3.5" aria-pressed="false">3,5 Jahre</button>
                 </div>
             </div>
             <div class="input-group">
-                <label class="input-label">Ausbildungsverg&uuml;tung (1. Lehrjahr)</label>
+                <label class="input-label" for="az-verguetung">Ausbildungsvergütung (1. Lehrjahr)</label>
                 <div class="verguetung-input-wrap">
-                    <input type="number" class="verguetung-input" id="az-verguetung" value="1000" min="200" max="3000" step="50">
-                    <span class="verguetung-unit">&euro; / Monat</span>
+                    <input type="number" class="verguetung-input" id="az-verguetung" value="1000" min="200" max="3000" step="50" aria-label="Ausbildungsvergütung im 1. Lehrjahr in Euro pro Monat">
+                    <span class="verguetung-unit" aria-hidden="true">€ / Monat</span>
                 </div>
-                <p class="rechner-hint">Brutto-Verg&uuml;tung im 1. Lehrjahr &ndash; Basis f&uuml;r alle Honorarberechnungen.</p>
+                <p class="rechner-hint">Brutto-Vergütung im 1. Lehrjahr – Basis für alle Honorarberechnungen.</p>
             </div>
             <div class="logik-box">
                 <div class="logik-box-title">Berechnungslogik</div>
-                <p><strong>Ratenbetrag</strong> = Gesamthonorar &divide; Anzahl Raten<br>Das Gesamthonorar wird anhand der Referenzgr&ouml;&szlig;e 1.000&nbsp;&euro; skaliert.</p>
+                <p><strong>Ratenbetrag</strong> = Gesamthonorar ÷ Anzahl Raten<br>Das Gesamthonorar wird anhand der Referenzgröße 1.000&nbsp;€ skaliert.</p>
             </div>
         </div>
         <div>
             <div class="modell-table-wrap">
-                <table class="modell-table">
+                <table class="modell-table" aria-label="Ausbildungs-Vergütungsmodelle">
                     <thead><tr><th>Modell</th><th>Raten</th><th>Rhythmus</th><th>Ratenbetrag</th><th>Gesamt</th></tr></thead>
                     <tbody id="az-tbody"></tbody>
                 </table>
             </div>
-            <div class="hinweis-box" style="margin-top:1.5rem;"><strong>Hinweis zu &bdquo;Start now&ldquo;:</strong> Die Rechnung wird zum ersten Arbeitstag gestellt. Bis zum Ende des ersten Monats besteht ein R&uuml;cktrittsrecht &ndash; 50&nbsp;% des Honorarbetrags werden f&auml;llig.</div>
-            <div class="sonderfaelle-box">F&uuml;r Sonderf&auml;lle (Verl&auml;ngerung, Verk&uuml;rzung, Pause der Ausbildung) gelten individuelle Regelungen. Sprechen Sie mich gerne direkt an.</div>
+            <div class="hinweis-box" style="margin-top:1.5rem;"><strong>Hinweis zu „Start now":</strong> Die Rechnung wird zum ersten Arbeitstag gestellt. Bis zum Ende des ersten Monats besteht ein Rücktrittsrecht – 50&nbsp;% des Honorarbetrags werden fällig.</div>
+            <div class="sonderfaelle-box">Für Sonderfälle (Verlängerung, Verkürzung, Pause der Ausbildung) gelten individuelle Regelungen. Sprechen Sie mich gerne direkt an.</div>
             <div style="margin-top:1rem;background:#f0f4ff;border:1.5px solid var(--border);border-left:3px solid var(--primary-blue);border-radius:0 12px 12px 0;padding:1.2rem 1.5rem;font-size:0.85rem;color:var(--medium-gray);line-height:1.75;">
                 <strong style="color:var(--black);display:block;margin-bottom:0.4rem;">Transparenzhinweis</strong>
-                Bereits get&auml;tigte Ratenzahlungen werden nicht erstattet (Ausnahme: &bdquo;Start now&ldquo; &ndash; hier gilt das R&uuml;cktrittsrecht im ersten Monat). Bei vorzeitiger Beendigung des Ausbildungsverh&auml;ltnisses entfallen die verbleibenden Ratenzahlungen automatisch.
+                Bereits getätigte Ratenzahlungen werden nicht erstattet (Ausnahme: „Start now" – hier gilt das Rücktrittsrecht im ersten Monat). Bei vorzeitiger Beendigung des Ausbildungsverhältnisses entfallen die verbleibenden Ratenzahlungen automatisch.
             </div>
         </div>
     </div>
@@ -286,61 +297,61 @@
 </section>
 
 <!-- VERGLEICHSRECHNER -->
-<section class="vergleich-section">
+<section class="vergleich-section" aria-label="Kostenvergleich Ausbildung">
 <div class="sec-wrap">
-    <p class="sec-eyebrow" style="color:rgba(255,255,255,0.5);">Einordnung</p>
+    <p class="sec-eyebrow" style="color:rgba(255,255,255,0.65);">Einordnung</p>
     <h2 class="sec-title" style="color:var(--white);">Was kostet eine Ausbildung wirklich?</h2>
-    <p class="sec-sub" style="color:rgba(255,255,255,0.6);">Gegen&uuml;berstellung der tats&auml;chlichen Ausbildungskosten mit dem Vermittlungshonorar &ndash; zur Einordnung, nicht als Werbebotschaft.</p>
+    <p class="sec-sub" style="color:rgba(255,255,255,0.82);">Gegenüberstellung der tatsächlichen Ausbildungskosten mit dem Vermittlungshonorar – zur Einordnung, nicht als Werbebotschaft.</p>
     <div class="vergleich-layout">
         <div class="vergleich-card">
             <div class="vergleich-card-title v-costs">Kosten einer eigenen Ausbildung</div>
             <div style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.1);">
-                <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:1rem;">Anpassbare Werte</div>
+                <div style="font-size:0.72rem;color:rgba(255,255,255,0.6);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:1rem;">Anpassbare Werte</div>
                 <div class="kosten-input-row">
-                    <label>Ausbilderzeit (Std./Tag) <span class="has-tooltip"><span class="tooltip-icon">i</span><span class="tooltip-box">BIBB-Basis: 1 Std./Tag &asymp; 220 Std./Jahr &times; 45 &euro;/h &asymp; 10.000 &euro;/Jahr. <a href="https://www.bibb.de" target="_blank">Quelle: BIBB</a></span></span></label>
-                    <input type="number" class="kosten-input" id="k-ausbilder" value="1" min="0.5" max="4" step="0.5">
-                    <span class="k-unit">Std.</span>
+                    <label for="k-ausbilder">Ausbilderzeit (Std./Tag) <span class="has-tooltip"><span class="tooltip-icon" aria-hidden="true">i</span><span class="tooltip-box" role="tooltip">BIBB-Basis: 1 Std./Tag ≈ 220 Std./Jahr × 45 €/h ≈ 10.000 €/Jahr. <a href="https://www.bibb.de" target="_blank" rel="noopener">Quelle: BIBB</a></span></span></label>
+                    <input type="number" class="kosten-input" id="k-ausbilder" value="1" min="0.5" max="4" step="0.5" aria-label="Ausbilderzeit in Stunden pro Tag">
+                    <span class="k-unit" aria-hidden="true">Std.</span>
                 </div>
                 <div class="kosten-input-row">
-                    <label>Produktivnutzen / Jahr <span class="has-tooltip"><span class="tooltip-icon">i</span><span class="tooltip-box">Wert der produktiven Mitarbeit. BIBB-Durchschnitt: ~12.000 &euro;/Jahr. Variiert je nach Branche. <a href="https://www.bibb.de" target="_blank">Quelle: BIBB</a></span></span></label>
-                    <input type="number" class="kosten-input" id="k-nutzen" value="12000" min="0" max="30000" step="1000">
-                    <span class="k-unit">&euro;</span>
+                    <label for="k-nutzen">Produktivnutzen / Jahr <span class="has-tooltip"><span class="tooltip-icon" aria-hidden="true">i</span><span class="tooltip-box" role="tooltip">Wert der produktiven Mitarbeit. BIBB-Durchschnitt: ~12.000 €/Jahr. Variiert je nach Branche. <a href="https://www.bibb.de" target="_blank" rel="noopener">Quelle: BIBB</a></span></span></label>
+                    <input type="number" class="kosten-input" id="k-nutzen" value="12000" min="0" max="30000" step="1000" aria-label="Produktivnutzen in Euro pro Jahr">
+                    <span class="k-unit" aria-hidden="true">€</span>
                 </div>
                 <div class="kosten-input-row">
-                    <label>Schulung &amp; Pr&uuml;fungen / Jahr</label>
-                    <input type="number" class="kosten-input" id="k-schulung" value="1500" min="500" max="5000" step="100">
-                    <span class="k-unit">&euro;</span>
+                    <label for="k-schulung">Schulung &amp; Prüfungen / Jahr</label>
+                    <input type="number" class="kosten-input" id="k-schulung" value="1500" min="500" max="5000" step="100" aria-label="Schulung und Prüfungen in Euro pro Jahr">
+                    <span class="k-unit" aria-hidden="true">€</span>
                 </div>
                 <div class="kosten-input-row">
-                    <label>Ausstattung / Jahr</label>
-                    <input type="number" class="kosten-input" id="k-ausstattung" value="330" min="0" max="2000" step="50">
-                    <span class="k-unit">&euro;</span>
+                    <label for="k-ausstattung">Ausstattung / Jahr</label>
+                    <input type="number" class="kosten-input" id="k-ausstattung" value="330" min="0" max="2000" step="50" aria-label="Ausstattung in Euro pro Jahr">
+                    <span class="k-unit" aria-hidden="true">€</span>
                 </div>
                 <div class="kosten-input-row">
-                    <label>Weitere Betreuung / Jahr <span class="has-tooltip"><span class="tooltip-icon">i</span><span class="tooltip-box">Zeitaufwand durch Kollegen &amp; F&uuml;hrungskr&auml;fte. BIBB-Sch&auml;tzung: ~4.400 &euro;/Jahr.</span></span></label>
-                    <input type="number" class="kosten-input" id="k-betreuung" value="4400" min="0" max="10000" step="200">
-                    <span class="k-unit">&euro;</span>
+                    <label for="k-betreuung">Weitere Betreuung / Jahr <span class="has-tooltip"><span class="tooltip-icon" aria-hidden="true">i</span><span class="tooltip-box" role="tooltip">Zeitaufwand durch Kollegen &amp; Führungskräfte. BIBB-Schätzung: ~4.400 €/Jahr.</span></span></label>
+                    <input type="number" class="kosten-input" id="k-betreuung" value="4400" min="0" max="10000" step="200" aria-label="Weitere Betreuung in Euro pro Jahr">
+                    <span class="k-unit" aria-hidden="true">€</span>
                 </div>
                 <div class="kosten-input-row">
-                    <label>Verwaltung &amp; Overhead / Jahr</label>
-                    <input type="number" class="kosten-input" id="k-overhead" value="1500" min="0" max="5000" step="100">
-                    <span class="k-unit">&euro;</span>
+                    <label for="k-overhead">Verwaltung &amp; Overhead / Jahr</label>
+                    <input type="number" class="kosten-input" id="k-overhead" value="1500" min="0" max="5000" step="100" aria-label="Verwaltung und Overhead in Euro pro Jahr">
+                    <span class="k-unit" aria-hidden="true">€</span>
                 </div>
             </div>
-            <div id="kosten-lines"></div>
+            <div id="kosten-lines" aria-live="polite"></div>
             <div class="k-total-line">
                 <span style="color:var(--white);font-weight:700;font-size:0.95rem;">Nettokosten gesamt</span>
-                <span id="k-nettogesamt" style="font-size:1.3rem;font-weight:900;color:#fca5a5;">&#8211;</span>
+                <span id="k-nettogesamt" style="font-size:1.3rem;font-weight:900;color:#fca5a5;" aria-live="polite">–</span>
             </div>
         </div>
         <div class="vergleich-card">
             <div class="vergleich-card-title v-provision">Vermittlungshonorar im Vergleich</div>
-            <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:1.5rem;line-height:1.7;">Alle f&uuml;nf Modelle als Anteil an den Nettokosten der Ausbildung.</p>
-            <div id="provision-lines"></div>
+            <p style="font-size:0.85rem;color:rgba(255,255,255,0.75);margin-bottom:1.5rem;line-height:1.7;">Alle fünf Modelle als Anteil an den Nettokosten der Ausbildung.</p>
+            <div id="provision-lines" aria-live="polite"></div>
             <div class="fazit-box">
                 <p>Das empfohlene Modell <strong>(Balance)</strong> entspricht</p>
-                <span class="fazit-zahl" id="fazit-pct">&#8211;</span>
-                <p>der Nettokosten einer eigenen Ausbildung &uuml;ber <span id="fazit-jahre">3</span> Jahre &ndash; bei vollst&auml;ndiger Risiko&uuml;bernahme im Vermittlungsprozess.</p>
+                <span class="fazit-zahl" id="fazit-pct" aria-live="polite">–</span>
+                <p>der Nettokosten einer eigenen Ausbildung über <span id="fazit-jahre">3</span> Jahre – bei vollständiger Risikoübernahme im Vermittlungsprozess.</p>
             </div>
         </div>
     </div>
@@ -349,62 +360,75 @@
 </div><!-- end tab-ausbildung -->
 
 <section class="cta-strip">
-    <h2>Fragen zur Verg&uuml;tung?</h2>
-    <p>Das Erstgespr&auml;ch ist kostenlos &ndash; wir kl&auml;ren Modell, Konditionen und Passung gemeinsam.</p>
-    <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="btn-white">Jetzt Erstgespr&auml;ch vereinbaren &rarr;</a>
+    <h2>Fragen zur Vergütung?</h2>
+    <p>Das Erstgespräch ist kostenlos – wir klären Modell, Konditionen und Passung gemeinsam.</p>
+    <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="btn-white">Jetzt Erstgespräch vereinbaren →</a>
 </section>
+
+</main>
 
 <footer>
     <div class="footer-container">
         <div class="footer-section"><h4>Navigation</h4><ul>
             <li><a href="../index.html">Start</a></li>
-            <li><a href="../unternehmen.html">F&uuml;r Unternehmen</a></li>
-            <li><a href="../arbeitnehmende.html">F&uuml;r Arbeitnehmende</a></li>
+            <li><a href="../unternehmen.html">Für Unternehmen</a></li>
+            <li><a href="../arbeitnehmende.html">Für Mitarbeitende</a></li>
             <li><a href="../karriere-kosmos.html">Karriere-Kosmos</a></li>
             <li><a href="../so-arbeite-ich.html">So Arbeite Ich</a></li>
             <li><a href="../kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
         </ul></div>
         <div class="footer-section"><h4>Kontakt</h4>
-            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br><a href="/cdn-cgi/l/email-protection#5933383719323629293438373732382b2b303c2b3c773d3c"><span class="__cf_email__" data-cfemail="b3d9d2ddf3d8dcc3c3ded2ddddd8d2c1c1dad6c1d69dd7d6">[email&#160;protected]</span></a></p>
+            <p><strong style="color:rgba(255,255,255,0.9)">E-Mail</strong><br><a href="mailto:jan@koppmannkarriere.de">jan@koppmannkarriere.de</a></p>
             <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Telefon</strong><br><a href="tel:+4916034028920">0160 340 2892</a></p>
             <p style="margin-top:0.8rem;"><strong style="color:rgba(255,255,255,0.9)">Adresse</strong><br>Neuhurden 22,<br>51491 Overath</p>
         </div>
         <div class="footer-section"><h4>Social Media</h4><div class="footer-social-icons">
-            <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="footer-social-icon"><img src="../images/Instagram_Icon.png" alt="Instagram"></a>
-            <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon"><img src="../images/Tiktok_Icon.png" alt="TikTok"></a>
-            <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon"><img src="../images/YouTube_Icon.png" alt="YouTube"></a>
-            <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon"><img src="../images/Linkedin_Icon.png" alt="LinkedIn"></a>
+            <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="footer-social-icon" title="Instagram"><img src="../images/Instagram_Icon.png" alt="Instagram"></a>
+            <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="TikTok"><img src="../images/Tiktok_Icon.png" alt="TikTok"></a>
+            <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="YouTube"><img src="../images/YouTube_Icon.png" alt="YouTube"></a>
+            <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon" title="LinkedIn"><img src="../images/Linkedin_Icon.png" alt="LinkedIn"></a>
         </div></div>
         <div class="footer-section"><h4>Rechtliches</h4><ul>
-            <li><a href="../transparenz/impressum.html">Impressum</a></li>
+            <li><a href="/impressum">Impressum</a></li>
             <li><a href="../transparenz/datenschutz.html">Datenschutz</a></li>
         </ul>
         <h4 style="margin-top:1.8rem;">Tippgeber:in werden</h4>
-        <p><a href="../tippgeberschaft/tippgeber.html">Weiterempfehlen &amp; Provision erhalten</a></p>
+        <p><a href="../tippgeberschaft/tippgebende.html">Weiterempfehlen &amp; Provision erhalten</a></p>
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2026 Jan Koppmann &ndash; Karrierebegleitung</p>
-        <p>Made with &hearts; in Overath</p>
+        <p>© 2026 Jan Koppmann – Karrierebegleitung</p>
+        <p>Made with ♥ in Overath</p>
     </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const burger=document.getElementById('burger'),mobileMenu=document.getElementById('mobile-menu');
 burger.addEventListener('click',()=>{burger.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
 document.querySelectorAll('.mobile-menu a').forEach(l=>l.addEventListener('click',()=>{burger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';}));
-document.querySelectorAll('.main-tab-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.main-tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById('tab-'+btn.dataset.tab).classList.add('active');});});
+
+// Tabs with aria-selected
+document.querySelectorAll('.main-tab-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+        document.querySelectorAll('.main-tab-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+        document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected','true');
+        document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+    });
+});
+
 document.querySelectorAll('.has-tooltip').forEach(el=>{el.addEventListener('click',e=>{e.stopPropagation();el.classList.toggle('open');});});
 document.addEventListener('click',()=>{document.querySelectorAll('.has-tooltip.open').forEach(el=>el.classList.remove('open'));});
-function fmt(v){return Math.round(v).toLocaleString('de-DE')+' €';}
-function fmtPct(v){return v.toFixed(1)+' %';}
+function fmt(v){return Math.round(v).toLocaleString('de-DE')+' €';}
+function fmtPct(v){return v.toFixed(1)+' %';}
 
 // FACHKRAFT
 const FK=[
-    {name:'Start now',badge:'badge-guenstig',badgeText:'Günstigstes Honorar',raten:1,pcts:[0.13],labels:['Arbeitsbeginn (13 %)']},
-    {name:'Balance',badge:'badge-empfehlung',badgeText:'Empfehlung',raten:2,pcts:[0.075,0.075],labels:['Arbeitsbeginn (7,5 %)','Nach Probezeit (7,5 %)'],rec:true},
-    {name:'Flex',badge:'',badgeText:'',raten:3,pcts:[0.075,0.05,0.05],labels:['Arbeitsbeginn (7,5 %)','Nach Probezeit (5 %)','Nach 1. Jahr (5 %)']},
-    {name:'Max Flex',badge:'badge-flex',badgeText:'Max. Liquidität',raten:12,pcts:Array(12).fill(0.0175),labels:['12× monatlich (1,75 % / Rate)'],monatlich:true}
+    {name:'Start now',badge:'badge-guenstig',badgeText:'Günstigstes Honorar',raten:1,pcts:[0.13],labels:['Arbeitsbeginn (13 %)']},
+    {name:'Balance',badge:'badge-empfehlung',badgeText:'Empfehlung',raten:2,pcts:[0.075,0.075],labels:['Arbeitsbeginn (7,5 %)','Nach Probezeit (7,5 %)'],rec:true},
+    {name:'Flex',badge:'',badgeText:'',raten:3,pcts:[0.075,0.05,0.05],labels:['Arbeitsbeginn (7,5 %)','Nach Probezeit (5 %)','Nach 1. Jahr (5 %)']},
+    {name:'Max Flex',badge:'badge-flex',badgeText:'Max. Liquidität',raten:12,pcts:Array(12).fill(0.0175),labels:['12× monatlich (1,75 % / Rate)'],monatlich:true}
 ];
 function renderFK(){
     const g=parseFloat(document.getElementById('fk-gehalt').value)||45000;
@@ -412,7 +436,7 @@ function renderFK(){
     FK.forEach(m=>{
         const gesamt=m.pcts.reduce((s,p)=>s+p*g,0);
         const tr=document.createElement('tr');if(m.rec)tr.classList.add('recommended');
-        const det=m.monatlich?`<div class="rate-detail">${fmt(g*m.pcts[0])} / Rate &middot; 12 Monate</div>`:m.labels.map((l,i)=>`<div class="rate-detail">${l}: <strong>${fmt(g*m.pcts[i])}</strong></div>`).join('');
+        const det=m.monatlich?`<div class="rate-detail">${fmt(g*m.pcts[0])} / Rate · 12 Monate</div>`:m.labels.map((l,i)=>`<div class="rate-detail">${l}: <strong>${fmt(g*m.pcts[i])}</strong></div>`).join('');
         tr.innerHTML=`<td><span class="modell-name">${m.name}</span>${m.badge?`<span class="modell-badge ${m.badge}">${m.badgeText}</span>`:''}</td><td>${m.raten}</td><td>${det}</td><td><span class="gesamt-val${m.rec?' highlight':''}">${fmt(gesamt)}</span></td>`;
         tb.appendChild(tr);
     });
@@ -439,7 +463,16 @@ function renderAZ(){
     });
     renderVergleich();
 }
-document.querySelectorAll('.duration-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.duration-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');azY=parseFloat(btn.dataset.years);document.getElementById('fazit-jahre').textContent=azY===3.5?'3,5':azY;renderAZ();});});
+document.querySelectorAll('.duration-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+        document.querySelectorAll('.duration-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false');});
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed','true');
+        azY=parseFloat(btn.dataset.years);
+        document.getElementById('fazit-jahre').textContent=azY===3.5?'3,5':azY;
+        renderAZ();
+    });
+});
 document.getElementById('az-verguetung').addEventListener('input',e=>{const v=parseFloat(e.target.value);if(v>=100&&v<=5000){azV=v;renderAZ();}});
 
 function gv(id){return parseFloat(document.getElementById(id).value)||0;}
@@ -449,7 +482,7 @@ function renderVergleich(){
     const sv=vS*0.2,sch=gv('k-schulung')*j,aus=gv('k-ausstattung')*j,aZ=gv('k-ausbilder')*220*45*j,bet=gv('k-betreuung')*j,oh=gv('k-overhead')*j,nut=gv('k-nutzen')*j;
     const br=vS+sv+sch+aus+aZ+bet+oh,net=br-nut;
     const lines=[
-        {l:'Bruttovergütung gesamt',v:vS},{l:'Sozialabgaben AG (~20 %)',v:sv},
+        {l:'Bruttovergütung gesamt',v:vS},{l:'Sozialabgaben AG (~20 %)',v:sv},
         {l:`Schulung &amp; Prüfungen (${j} Jahre)`,v:sch},{l:`Ausstattung (${j} Jahre)`,v:aus},
         {l:'Ausbilderzeit',v:aZ},{l:'Weitere Betreuung',v:bet},{l:'Verwaltung &amp; Overhead',v:oh},
         {l:'Bruttokosten gesamt',v:br,bold:true},{l:'abzgl. Produktivnutzen',v:-nut,green:true}
