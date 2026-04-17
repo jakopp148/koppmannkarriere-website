@@ -17,7 +17,7 @@
             --white: #ffffff;
             --black: #0a0a0a;
             --light-gray: #f4f6f9;
-            --medium-gray: #6b7280;
+            --medium-gray: #374151;
             --border: #e5e9f0;
         }
 
@@ -30,6 +30,10 @@
             background: var(--white);
         }
 
+        /* ── SKIP LINK ── */
+        .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--primary-blue); color: var(--white); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-decoration: none; z-index: 9999; transition: top 0.2s; }
+        .skip-link:focus { top: 1rem; }
+
         /* ── HEADER ── */
         header { position: fixed; top: 0; left: 0; right: 0; background: var(--dark-blue); z-index: 1000; }
         nav { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; height: 72px; display: flex; justify-content: space-between; align-items: center; }
@@ -37,11 +41,11 @@
         .logo:hover { opacity: 0.85; }
         .logo img { height: 100%; width: auto; max-height: 56px; object-fit: contain; }
         nav ul { display: flex; list-style: none; gap: 1.8rem; align-items: center; }
-        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.88); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.02em; transition: color 0.3s; position: relative; white-space: nowrap; }
+        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.95); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.02em; transition: color 0.3s; position: relative; white-space: nowrap; }
         nav ul li a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--white); transition: width 0.3s; }
         nav ul li a:hover, nav ul li a.active { color: var(--white); }
         nav ul li a:hover::after, nav ul li a.active::after { width: 100%; }
-        .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.88); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.6); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
+        .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.95); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.8); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
         .header-cta-btn:hover { background: var(--white); color: var(--dark-blue); border-color: var(--white); }
         .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
         .burger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
@@ -54,9 +58,9 @@
         .mobile-menu a:hover { color: var(--primary-blue); }
         .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--primary-blue); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
 
-        /* ── HERO: TYPOGRAFIE ── */
+        /* ── HERO ── */
         .hero {
-            margin-top: 0;
+            margin-top: 72px;
             background: var(--dark-blue);
             min-height: 68vh;
             display: flex; align-items: center;
@@ -90,7 +94,7 @@
         .hero-eyebrow {
             font-size: 0.72rem; font-weight: 700;
             letter-spacing: 0.18em; text-transform: uppercase;
-            color: rgba(255,255,255,0.4); margin-bottom: 1.8rem;
+            color: rgba(255,255,255,0.5); margin-bottom: 1.8rem;
             display: flex; align-items: center; gap: 0.8rem;
         }
         .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: rgba(255,255,255,0.3); }
@@ -100,19 +104,19 @@
             line-height: 1.05; letter-spacing: -0.03em;
         }
         .hero h1 .thin {
-            font-weight: 300; color: rgba(255,255,255,0.6);
+            font-weight: 300; color: rgba(255,255,255,0.7);
             display: block; font-size: 0.8em;
             letter-spacing: -0.01em; margin-top: 0.25rem;
         }
         .hero-rule { width: 48px; height: 3px; background: var(--primary-blue); border-radius: 2px; margin: 2rem 0; }
-        .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.8; max-width: 520px; }
+        .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.75); line-height: 1.8; max-width: 520px; }
         .hero-ctas { display: flex; gap: 1rem; margin-top: 2.8rem; align-items: center; flex-wrap: wrap; }
         .btn-hero-primary { display: inline-block; padding: 0.85rem 2rem; background: var(--white); color: var(--dark-blue); font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
         .btn-hero-primary:hover { background: rgba(255,255,255,0.9); transform: translateY(-2px); }
-        .btn-hero-outline { display: inline-block; padding: 0.85rem 2rem; border: 1.5px solid rgba(255,255,255,0.28); color: rgba(255,255,255,0.85); font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 600; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
-        .btn-hero-outline:hover { border-color: rgba(255,255,255,0.6); color: var(--white); }
-        .btn-hero-text { color: rgba(255,255,255,0.45); font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: color 0.3s; }
-        .btn-hero-text:hover { color: rgba(255,255,255,0.75); }
+        .btn-hero-outline { display: inline-block; padding: 0.85rem 2rem; border: 1.5px solid rgba(255,255,255,0.4); color: rgba(255,255,255,0.92); font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 600; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
+        .btn-hero-outline:hover { border-color: rgba(255,255,255,0.7); color: var(--white); }
+        .btn-hero-text { color: rgba(255,255,255,0.55); font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .btn-hero-text:hover { color: rgba(255,255,255,0.85); }
         .hero-side { display: flex; flex-direction: column; align-items: center; gap: 2rem; padding-right: 1rem; }
         .hero-vertical { writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(180deg); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.15); }
 
@@ -129,7 +133,7 @@
         .container-wide { max-width: 1200px; margin: 0 auto; }
 
         .section-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary-blue); margin-bottom: 0.8rem; }
-        .section-eyebrow.light { color: rgba(255,255,255,0.5); }
+        .section-eyebrow.light { color: rgba(255,255,255,0.6); }
         h2.section-title { font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 800; color: var(--black); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.8rem; }
         h2.section-title.light { color: var(--white); }
         h2.section-title.center { text-align: center; }
@@ -163,7 +167,6 @@
         .coop-card p:last-child { margin-bottom: 0; }
         .coop-card p strong { color: var(--black); font-weight: 600; }
 
-
         /* ── USP CHECK BLOCK ── */
         .usp-block { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
         .usp-check-box { background: var(--white); border-radius: 16px; padding: 2.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
@@ -175,7 +178,7 @@
         .usp-check { flex-shrink: 0; width: 22px; height: 22px; background: var(--dark-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
         .usp-check svg { width: 12px; height: 12px; stroke: var(--white); stroke-width: 2.5; fill: none; }
         .usp-conclusion { margin-top: 1.8rem; padding: 1.2rem 1.5rem; background: var(--dark-blue); border-radius: 10px; font-size: 0.92rem; font-weight: 700; color: var(--white); line-height: 1.5; }
-        .usp-conclusion span { color: rgba(255,255,255,0.65); font-weight: 500; }
+        .usp-conclusion span { color: rgba(255,255,255,0.75); font-weight: 500; }
         .dossier-box { background: var(--white); border-radius: 16px; padding: 2.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.07); display: flex; flex-direction: column; gap: 1.5rem; }
         .dossier-box h3 { font-size: 1.1rem; font-weight: 800; color: var(--dark-blue); letter-spacing: -0.01em; margin-bottom: 0.3rem; }
         .dossier-box p { font-size: 0.92rem; color: var(--medium-gray); line-height: 1.7; }
@@ -184,6 +187,7 @@
         .dossier-preview-label { font-size: 0.82rem; font-weight: 700; color: var(--medium-gray); letter-spacing: 0.06em; text-transform: uppercase; }
         .dossier-preview-name { font-size: 0.95rem; font-weight: 600; color: var(--black); }
         @media (max-width: 1024px) { .usp-block { grid-template-columns: 1fr; } }
+
         /* ── AOC HIGHLIGHT ── */
         .aoc-box {
             background: var(--light-gray);
@@ -214,6 +218,7 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 1rem; font-weight: 900; color: var(--white);
             flex-shrink: 0; margin-top: 2px;
+            aria-hidden: true;
         }
         .step-content h3 { font-size: 1.05rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.7rem; letter-spacing: -0.01em; }
         .step-content p { font-size: 0.95rem; color: var(--medium-gray); line-height: 1.8; margin-bottom: 0.6rem; }
@@ -232,14 +237,14 @@
         .pricing-item h4 { font-size: 0.9rem; font-weight: 700; color: var(--dark-blue); margin-bottom: 0.6rem; }
         .pricing-item p { font-size: 0.9rem; color: var(--medium-gray); line-height: 1.7; }
 
-        /* ── JOB PROFILE SECTION (dark) ── */
+        /* ── JOB PROFILE SECTION ── */
         .job-profile-section {
             padding: 5rem 2.5rem;
             background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
             text-align: center;
         }
         .job-profile-section h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; color: var(--white); letter-spacing: -0.02em; margin-bottom: 1rem; }
-        .job-profile-section p { font-size: 1rem; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .job-profile-section p { font-size: 1rem; color: rgba(255,255,255,0.85); line-height: 1.8; margin-bottom: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
         .job-profile-section p strong { color: rgba(255,255,255,0.95); font-weight: 600; }
 
         /* ── FAQ ── */
@@ -253,15 +258,8 @@
         .faq-answer-inner { padding: 0 1.8rem 1.6rem; font-size: 0.95rem; color: var(--medium-gray); line-height: 1.85; }
 
         /* ── CONTACT SECTION ── */
-        .contact-section {
-            padding: 5.5rem 2.5rem;
-            background: var(--white);
-        }
-        .contact-inner {
-            max-width: 900px; margin: 0 auto;
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 4rem; align-items: center;
-        }
+        .contact-section { padding: 5.5rem 2.5rem; background: var(--white); }
+        .contact-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
         .contact-text h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; color: var(--black); letter-spacing: -0.02em; margin-bottom: 1rem; }
         .contact-text p { font-size: 1rem; color: var(--medium-gray); line-height: 1.8; margin-bottom: 0.8rem; }
         .contact-text p:last-child { margin-bottom: 0; }
@@ -278,25 +276,24 @@
         .btn-secondary:hover { background: var(--primary-blue); color: var(--white); }
         .btn-white-outline { display: inline-block; padding: 0.9rem 2.2rem; background: var(--white); color: var(--dark-blue); font-family: 'Montserrat', sans-serif; font-size: 0.92rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
         .btn-white-outline:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
-
         .cta-row { margin-top: 2.2rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
         .cta-row.center { justify-content: center; }
 
         /* ── FOOTER ── */
-        footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 4rem 2.5rem 2rem; }
+        footer { background: var(--black); color: rgba(255,255,255,0.85); padding: 4rem 2.5rem 2rem; }
         .footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem; margin-bottom: 3rem; }
         .footer-section h4 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1.4rem; }
         .footer-section ul { list-style: none; }
         .footer-section ul li { margin-bottom: 0.7rem; }
-        .footer-section a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .footer-section a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
         .footer-section a:hover { color: var(--white); }
-        .footer-section p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
+        .footer-section p { color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
         .footer-social-icons { display: flex; gap: 0.8rem; margin-top: 0.5rem; }
-        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
+        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
         .footer-social-icon img { width: 22px; height: 22px; object-fit: contain; display: block; }
-        .footer-social-icon:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
-        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+        .footer-social-icon:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: rgba(255,255,255,0.6); font-size: 0.82rem; }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
@@ -321,17 +318,12 @@
         @media (max-width: 480px) {
             .hero-ctas { flex-direction: column; align-items: flex-start; }
         }
-
-        /* ── MAINTENANCE BANNER ── */
-        .maintenance-banner { background: #fffbeb; border-bottom: 1px solid #fde68a; padding: 0.65rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; position: relative; z-index: 999; margin-top: 72px; }
-        .maintenance-banner p { font-size: 0.82rem; color: #78350f; line-height: 1.5; font-family: 'Montserrat', sans-serif; }
-        .maintenance-banner p strong { font-weight: 700; }
-        .maintenance-banner-close { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: #92400e; padding: 0.2rem 0.4rem; line-height: 1; flex-shrink: 0; transition: opacity 0.2s; }
-        .maintenance-banner-close:hover { opacity: 0.6; }
-        @media (max-width: 768px) { .maintenance-banner { padding: 0.65rem 1.5rem; } }
     </style>
 </head>
 <body>
+
+<!-- SKIP LINK -->
+<a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
 <!-- HEADER -->
 <header>
@@ -339,59 +331,54 @@
         <a href="index.html" class="logo"><img src="images/Logo_weiß.png" alt="Koppmann Karriere"></a>
         <ul>
             <li><a href="unternehmen.html" class="active">Für Unternehmen</a></li>
-            <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
+            <li><a href="arbeitnehmende.html">Für Mitarbeitende</a></li>
             <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
             <li><a href="so-arbeite-ich.html">So Arbeite Ich</a></li>
-            <li><a href="kontakt-einstieg.html">Kontakt & Einstieg</a></li>
+            <li><a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
         </ul>
         <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="header-cta-btn">Erstgespräch vereinbaren</a>
         <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
     </nav>
 </header>
 
-<div class="mobile-menu" id="mobile-menu">
+<div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile Navigation">
     <a href="unternehmen.html">Für Unternehmen</a>
-    <a href="arbeitnehmende.html">Für Arbeitnehmende</a>
+    <a href="arbeitnehmende.html">Für Mitarbeitende</a>
     <a href="karriere-kosmos.html">Karriere-Kosmos</a>
     <a href="so-arbeite-ich.html">So Arbeite Ich</a>
-    <a href="kontakt-einstieg.html">Kontakt & Einstieg</a>
+    <a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a>
     <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="mobile-cta">Erstgespräch vereinbaren</a>
 </div>
 
-<!-- MAINTENANCE BANNER -->
-<div class="maintenance-banner" id="maintenance-banner">
-    <p>&#128296; <strong>Diese Website wird aktuell bearbeitet und umgebaut.</strong> Bitte um Verst&#228;ndnis, wenn noch nicht alles optimal angezeigt wird und funktioniert. Danke f&#252;r Ihr Verst&#228;ndnis.</p>
-    <button class="maintenance-banner-close" id="banner-close" aria-label="Hinweis schliessen">&#x2715;</button>
-</div>
-
+<main id="main-content">
 
 <!-- HERO -->
-<section class="hero">
-    <div class="hero-ring-outer"></div>
-    <div class="hero-ring-inner"></div>
+<section class="hero" aria-label="Einleitung Für Unternehmen">
+    <div class="hero-ring-outer" aria-hidden="true"></div>
+    <div class="hero-ring-inner" aria-hidden="true"></div>
     <div class="hero-inner">
         <div class="hero-text">
-            <p class="hero-eyebrow">Für Unternehmen</p>
+            <p class="hero-eyebrow" aria-hidden="true">Für Unternehmen</p>
             <h1>
                 Personalentscheidungen,
                 <span class="thin">die langfristig tragen.</span>
             </h1>
-            <div class="hero-rule"></div>
+            <div class="hero-rule" aria-hidden="true"></div>
             <p class="hero-sub">
                 Ich erweitere die Entscheidungsgrundlage von Unternehmen durch strukturierte Einordnung, persönliche Begleitung und zusätzliche Einblicke jenseits klassischer Auswahlprozesse.
             </p>
             <div class="hero-ctas">
                 <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="btn-hero-primary">Erstgespräch vereinbaren</a>
-                <a href="#job-profile" class="btn-hero-outline">Jobprofil hinterlegen</a>
+                <a href="kontakt-einstieg.html#jobprofil" class="btn-hero-outline">Jobprofil hinterlegen</a>
                 <a href="so-arbeite-ich.html" class="btn-hero-text">→ So arbeite ich</a>
             </div>
         </div>
-        <div class="hero-side">
+        <div class="hero-side" aria-hidden="true">
             <div class="hero-vertical">Koppmann Karriere · Für Unternehmen</div>
         </div>
     </div>
 </section>
-<div class="hero-wave">
+<div class="hero-wave" aria-hidden="true">
     <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
         <path d="M0,32 C360,56 1080,8 1440,32 L1440,48 L0,48 Z" fill="#f4f6f9"/>
     </svg>
@@ -435,7 +422,7 @@
                 <p class="coop-card-label">Variante A</p>
                 <h3>Kooperation</h3>
                 <p>Langfristige Zusammenarbeit auf Basis gegenseitiger Einordnung.</p>
-                <p>Wir starten mit einem <strong>Arbeitgeber:innen-Ziel-Gespräch (AZG)</strong>, in dem wir Rahmenbedingungen, Erwartungen und Entscheidungslogik klären.</p>
+                <p>Wir führen ein <strong>Arbeitgeber:innen-Ziel-Gespräch (AZG)</strong> durch, in dem wir Rahmenbedingungen, Erwartungen und Entscheidungslogik klären.</p>
                 <p>Ich nehme mir Zeit, Ihr Unternehmen zu verstehen – fachlich, strukturell und kulturell.</p>
                 <p>Auf dieser Grundlage entsteht eine kontinuierliche Zusammenarbeit. Wenn sich aus der Begleitung geeigneter Personen eine tragfähige Verbindung abzeichnet, melde ich mich aktiv.</p>
                 <p><strong>Nicht mit einer Auswahl – sondern mit einer klar eingeordneten Empfehlung.</strong></p>
@@ -461,11 +448,11 @@
             <div class="usp-check-box">
                 <p class="usp-intro">Fünf Fragen zur Einordnung – ohne Marketingversprechen.</p>
                 <ul class="usp-list">
-                    <li><span class="usp-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Wenn eine Stelle langfristig besetzt sein soll – nicht nur irgendwie</li>
-                    <li><span class="usp-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Wenn die Unternehmenskultur erhalten bleiben soll</li>
-                    <li><span class="usp-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Wenn Sie Fehlbesetzungen aktiv reduzieren wollen</li>
-                    <li><span class="usp-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Wenn Sie Zugang zu einem wachsenden, jungen Talentepool suchen</li>
-                    <li><span class="usp-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Wenn Ihnen auch nach der Besetzung wichtig ist, dass es wirklich passt</li>
+                    <li><span class="usp-check" aria-hidden="true"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Wenn eine Stelle langfristig besetzt sein soll – nicht nur irgendwie</li>
+                    <li><span class="usp-check" aria-hidden="true"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Wenn die Unternehmenskultur erhalten bleiben soll</li>
+                    <li><span class="usp-check" aria-hidden="true"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Wenn Sie Fehlbesetzungen aktiv reduzieren wollen</li>
+                    <li><span class="usp-check" aria-hidden="true"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Wenn Sie Zugang zu einem wachsenden, jungen Talentepool suchen</li>
+                    <li><span class="usp-check" aria-hidden="true"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Wenn Ihnen auch nach der Besetzung wichtig ist, dass es wirklich passt</li>
                 </ul>
                 <div class="usp-conclusion">
                     → Dann arbeiten wir zusammen.
@@ -478,8 +465,8 @@
                     <p>Statt einer Bewerbungsmappe erhalten Sie von mir ein strukturiertes <strong>Bewerbungsdossier</strong> – mit Einordnung, Hintergrund und meiner persönlichen Einschätzung zur Passung.</p>
                     <p>Hier können Sie sich ein Muster ansehen, sobald es hinterlegt ist.</p>
                 </div>
-                <div class="dossier-preview">
-                    <div class="dossier-icon">📄</div>
+                <div class="dossier-preview" aria-label="Musterdossier – wird zeitnah hinterlegt">
+                    <div class="dossier-icon" aria-hidden="true">📄</div>
                     <div class="dossier-preview-label">Musterdossier</div>
                     <div class="dossier-preview-name">Bewerbungsdossier – Koppmann Karriere</div>
                     <span style="margin-top:0.8rem; display:inline-block; padding:0.85rem 2rem; border:2px solid var(--border); border-radius:50px; font-size:0.88rem; font-weight:600; color:var(--medium-gray); font-family:'Montserrat',sans-serif;">Muster wird zeitnah hinterlegt</span>
@@ -497,7 +484,7 @@
         <p class="section-text">Neben der Vermittlung biete ich mit dem <strong>ArbeitsOrt-Check</strong> eine strukturierte Analyse der Arbeitsrealität in Ihrem Unternehmen.</p>
         <p class="section-text">Der AOC macht sichtbar, wie Zusammenarbeit tatsächlich erlebt wird – in Bezug auf Kommunikation, Erwartungen, Verantwortungsverständnis und Rahmenbedingungen.</p>
         <div class="aoc-box">
-            <p><strong>Ziel ist es nicht, Prozesse zu bewerten, sondern Transparenz zu schaffen.</strong></p>
+            <p><strong>Ziel ist es, Transparenz zu schaffen.</strong></p>
             <p>Denn tragfähige Personalentscheidungen beginnen nicht nur bei der Auswahl, sondern auch bei einem realistischen Verständnis des Arbeitsumfelds.</p>
         </div>
         <p class="section-text">Der ArbeitsOrt-Check ist unabhängig von einer Vermittlung nutzbar.</p>
@@ -512,39 +499,39 @@
     <div class="container">
         <p class="section-eyebrow">Prozess</p>
         <h2 class="section-title">So entsteht Zusammenarbeit</h2>
-        <div class="process-steps">
-            <div class="process-step">
-                <div class="step-num">1</div>
+        <ol class="process-steps" aria-label="Prozessschritte der Zusammenarbeit">
+            <li class="process-step">
+                <div class="step-num" aria-hidden="true">1</div>
                 <div class="step-content">
-                    <h3>Einstieg & Kennenlernen</h3>
+                    <h3>Einstieg &amp; Kennenlernen</h3>
                     <p>Ein unverbindliches Kennenlerngespräch bildet den Ausgangspunkt einer möglichen Kooperation.</p>
                     <p>Alternativ können Sie ein konkretes Jobprofil hinterlegen. Bei realistischer Passung komme ich aktiv auf Sie zu – auch ohne vorherige Kooperation.</p>
                 </div>
-            </div>
-            <div class="process-step">
-                <div class="step-num">2</div>
+            </li>
+            <li class="process-step">
+                <div class="step-num" aria-hidden="true">2</div>
                 <div class="step-content">
-                    <h3>Kooperations-Check-In & Unternehmenssuchprofil</h3>
+                    <h3>Kooperations-Check-In &amp; Unternehmenssuchprofil</h3>
                     <p>Nach dem Erstgespräch erhalten Sie einen strukturierten <strong>Kooperations-Check-In</strong>. Er dient dazu, Erwartungen, Rahmenbedingungen und Entscheidungslogik frühzeitig sichtbar zu machen.</p>
                     <p>Auf dieser Basis entwickle ich ein klares <strong>Unternehmenssuchprofil</strong> – das nicht nur Anforderungen beschreibt, sondern auch Arbeitsrealität, Kontext und Bedingungen gelingender Zusammenarbeit.</p>
                 </div>
-            </div>
-            <div class="process-step">
-                <div class="step-num">3</div>
+            </li>
+            <li class="process-step">
+                <div class="step-num" aria-hidden="true">3</div>
                 <div class="step-content">
                     <h3>Empfehlung oder Fast-Track</h3>
                     <p>Wenn sich aus der kontinuierlichen Begleitung geeigneter Personen eine tragfähige Verbindung abzeichnet, melde ich mich aktiv – gegebenenfalls auch mit einer konkreten Bewerbung.</p>
                     <p>Im Fast-Track-Fall erfolgt die Abstimmung fokussierter und zeitnah – die Einordnung bleibt jedoch zentral.</p>
                 </div>
-            </div>
-            <div class="process-step">
-                <div class="step-num">4</div>
+            </li>
+            <li class="process-step">
+                <div class="step-num" aria-hidden="true">4</div>
                 <div class="step-content">
                     <h3>Kontinuität</h3>
                     <p>Kooperation bedeutet regelmäßiger Austausch. Suchprofile werden bei Bedarf aktualisiert, Veränderungen eingeordnet und neue Bedarfe realistisch bewertet.</p>
                 </div>
-            </div>
-        </div>
+            </li>
+        </ol>
     </div>
 </section>
 
@@ -568,7 +555,7 @@
     <p>Ich prüfe realistisch, ob und wo sich aus der begleiteten Personengruppe eine tragfähige Verbindung abzeichnet.</p>
     <p><strong>Bei Passung melde ich mich aktiv. Eine Garantie auf sofortige Vermittlung besteht bewusst nicht.</strong></p>
     <div style="margin-top: 2.2rem;">
-        <a href="kontakt-einstieg.html" class="btn-white-outline">Jobprofil hinterlegen</a>
+        <a href="kontakt-einstieg.html#jobprofil" class="btn-white-outline">Jobprofil hinterlegen</a>
     </div>
 </section>
 
@@ -577,25 +564,25 @@
     <div class="container">
         <p class="section-eyebrow">FAQ</p>
         <h2 class="section-title">Häufige Fragen</h2>
-        <div class="faq-list">
-            <div class="faq-item">
-                <button class="faq-question">Wie unterscheidet sich Ihr Ansatz von klassischem Recruiting? <span class="faq-icon">+</span></button>
+        <div class="faq-list" role="list">
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false">Wie unterscheidet sich Ihr Ansatz von klassischem Recruiting? <span class="faq-icon" aria-hidden="true">+</span></button>
                 <div class="faq-answer"><div class="faq-answer-inner">Ich arbeite nicht suchgetrieben auf Zuruf, sondern begleitungsbasiert.<br><br>Empfehlungen entstehen aus kontinuierlicher Einordnung – nicht aus kurzfristiger Vorauswahl.<br><br>Der Maßstab meiner Arbeit ist nicht die schnelle Besetzung, sondern eine langfristig tragfähige Entscheidung.</div></div>
             </div>
-            <div class="faq-item">
-                <button class="faq-question">Können wir auch bei akutem Bedarf zusammenarbeiten? <span class="faq-icon">+</span></button>
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false">Können wir auch bei akutem Bedarf zusammenarbeiten? <span class="faq-icon" aria-hidden="true">+</span></button>
                 <div class="faq-answer"><div class="faq-answer-inner">Ja. Im Rahmen eines Fast-Track-Prozesses prüfen wir zeitnah, ob eine realistische Passung vorliegt.<br><br>Gleichzeitig arbeite ich transparent: Eine Vorstellung ist nur möglich, wenn sich aus meinem begleiteten Personenkreis eine echte Passung ergibt.<br><br>Ich werbe keine Personen aktiv aus bestehenden Arbeitsverhältnissen ab. Nach einer erfolgreichen Vermittlung gilt zudem eine selbst auferlegte und vertraglich fixierte Sperrfrist.</div></div>
             </div>
-            <div class="faq-item">
-                <button class="faq-question">Wie lange dauert es bis zur ersten Vermittlung? <span class="faq-icon">+</span></button>
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false">Wie lange dauert es bis zur ersten Vermittlung? <span class="faq-icon" aria-hidden="true">+</span></button>
                 <div class="faq-answer"><div class="faq-answer-inner">Das hängt von Bedarf, Markt und Passung ab.<br><br>Mein Ansatz ist nicht auf Geschwindigkeit optimiert, sondern auf Tragfähigkeit und realistische Einordnung.</div></div>
             </div>
-            <div class="faq-item">
-                <button class="faq-question">Für welche Unternehmensgrößen ist das geeignet? <span class="faq-icon">+</span></button>
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false">Für welche Unternehmensgrößen ist das geeignet? <span class="faq-icon" aria-hidden="true">+</span></button>
                 <div class="faq-answer"><div class="faq-answer-inner">Für kleine und mittelständische Unternehmen ebenso wie für wachsende Organisationen, die Wert auf langfristige Zusammenarbeit legen.<br><br>Auch größere Unternehmen können von einer zusätzlichen, unabhängigen Quelle qualifiziert eingeordneter Talente profitieren.</div></div>
             </div>
-            <div class="faq-item">
-                <button class="faq-question">Was passiert bei einer Beendigung in der Probezeit? <span class="faq-icon">+</span></button>
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false">Was passiert bei einer Beendigung in der Probezeit? <span class="faq-icon" aria-hidden="true">+</span></button>
                 <div class="faq-answer"><div class="faq-answer-inner">Im Rahmen flexibler Ratenmodelle können finanzielle Risiken reduziert werden.<br><br>Offene Raten entfallen bei einer vorzeitigen Beendigung des Arbeitsverhältnisses automatisch.<br><br>Details regeln wir transparent im Vorfeld und sind unter „So Arbeite Ich" nachzulesen.</div></div>
             </div>
         </div>
@@ -620,10 +607,12 @@
             </div>
         </div>
         <div class="contact-image">
-            <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_900,h_640,c_fill,g_center/offener_Gespr%C3%A4chsraum_pkohvh.jpg" alt="Unverbindlich ins Gespräch kommen">
+            <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_900,h_640,c_fill,g_center/offener_Gespr%C3%A4chsraum_pkohvh.jpg" alt="Unverbindlich ins Gespräch kommen – Koppmann Karriere">
         </div>
     </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -633,7 +622,7 @@
             <ul>
                 <li><a href="index.html">Start</a></li>
                 <li><a href="unternehmen.html">Für Unternehmen</a></li>
-                <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
+                <li><a href="arbeitnehmende.html">Für Mitarbeitende</a></li>
                 <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
                 <li><a href="so-arbeite-ich.html">So Arbeite Ich</a></li>
                 <li><a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
@@ -657,11 +646,11 @@
         <div class="footer-section">
             <h4>Rechtliches</h4>
             <ul>
-                <li><a href="transparenz/impressum.html">Impressum</a></li>
+                <li><a href="/impressum">Impressum</a></li>
                 <li><a href="transparenz/datenschutz.html">Datenschutz</a></li>
             </ul>
             <h4 style="margin-top:1.8rem;">Tippgeber:in werden</h4>
-            <p><a href="tippgeberschaft/tippgeber.html">Weiterempfehlen &amp; Provision erhalten</a></p>
+            <p><a href="tippgeberschaft/tippgebende.html">Weiterempfehlen &amp; Provision erhalten</a></p>
         </div>
     </div>
     <div class="footer-bottom">
@@ -687,21 +676,22 @@
     });
 
     document.querySelectorAll('.faq-item').forEach(item => {
-        item.querySelector('.faq-question').addEventListener('click', () => {
+        const btn = item.querySelector('.faq-question');
+        btn.addEventListener('click', () => {
             const isActive = item.classList.contains('active');
             document.querySelectorAll('.faq-item').forEach(i => {
-</script>
-<script>
-(function(){
-    var b = document.getElementById("maintenance-banner");
-    if (!b) return;
-    if (sessionStorage.getItem("banner-closed")) { b.style.display = "none"; return; }
-    var btn = document.getElementById("banner-close");
-    if (btn) btn.addEventListener("click", function(){
-        b.style.display = "none";
-        sessionStorage.setItem("banner-closed", "1");
+                i.classList.remove('active');
+                i.querySelector('.faq-answer').style.maxHeight = null;
+                i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            });
+            if (!isActive) {
+                item.classList.add('active');
+                item.querySelector('.faq-answer').style.maxHeight = item.querySelector('.faq-answer').scrollHeight + 'px';
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        });
     });
-})();
 </script>
+
 </body>
 </html>
