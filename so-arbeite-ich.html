@@ -9,33 +9,37 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; list-style: none; }
         :root {
             --primary-blue: #0062b1;
             --dark-blue: #002777;
             --an-color: #008bba;
             --un-color: #002777;
-            --active-color: #008bba;
             --white: #ffffff;
             --black: #0a0a0a;
             --light-gray: #f4f6f9;
-            --medium-gray: #6b7280;
+            --medium-gray: #374151;
             --border: #e5e9f0;
             --sidebar-w: 260px;
         }
         body { font-family: 'Montserrat', sans-serif; line-height: 1.7; color: var(--black); overflow-x: hidden; font-size: 17px; }
 
+        /* ── SKIP LINK ── */
+        .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--primary-blue); color: var(--white); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-decoration: none; z-index: 9999; transition: top 0.2s; }
+        .skip-link:focus { top: 1rem; }
+
         /* ── HEADER ── */
         header { position: fixed; top: 0; left: 0; right: 0; background: var(--dark-blue); z-index: 1000; }
         nav { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; height: 72px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { text-decoration: none; display: flex; align-items: center; height: 100%; padding: 8px 0; }
+        .logo { text-decoration: none; display: flex; align-items: center; height: 100%; padding: 8px 0; transition: opacity 0.3s; }
+        .logo:hover { opacity: 0.85; }
         .logo img { height: 100%; width: auto; max-height: 56px; object-fit: contain; }
         nav ul { display: flex; list-style: none; gap: 1.8rem; align-items: center; }
-        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.88); font-weight: 500; font-size: 0.85rem; transition: color 0.3s; position: relative; white-space: nowrap; }
+        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.95); font-weight: 500; font-size: 0.85rem; transition: color 0.3s; position: relative; white-space: nowrap; }
         nav ul li a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--white); transition: width 0.3s; }
-        nav ul li a:hover { color: var(--white); }
-        nav ul li a:hover::after { width: 100%; }
-        .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.88); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.6); border-radius: 50px; text-decoration: none; transition: all 0.3s; white-space: nowrap; }
+        nav ul li a:hover, nav ul li a.active { color: var(--white); }
+        nav ul li a:hover::after, nav ul li a.active::after { width: 100%; }
+        .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.95); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.8); border-radius: 50px; text-decoration: none; transition: all 0.3s; white-space: nowrap; }
         .header-cta-btn:hover { background: var(--white); color: var(--dark-blue); }
         .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
         .burger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
@@ -44,24 +48,26 @@
         .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
         .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: var(--white); z-index: 999; flex-direction: column; padding: 2rem 2.5rem; overflow-y: auto; }
         .mobile-menu.open { display: flex; }
-        .mobile-menu a { text-decoration: none; color: var(--black); font-weight: 600; font-size: 1.3rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); }
+        .mobile-menu a { text-decoration: none; color: var(--black); font-weight: 600; font-size: 1.3rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+        .mobile-menu a:hover { color: var(--primary-blue); }
         .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--dark-blue); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
 
         /* ── HERO ── */
-        .hero { margin-top: 0; background: linear-gradient(135deg, #001a55 0%, var(--dark-blue) 50%, #003d99 100%); padding: 4.5rem 2.5rem 5rem; position: relative; overflow: hidden; }
+        .hero { margin-top: 72px; background: linear-gradient(135deg, #001a55 0%, var(--dark-blue) 50%, #003d99 100%); padding: 4.5rem 2.5rem 5rem; position: relative; overflow: hidden; }
         .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 450px; height: 450px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.05); pointer-events: none; }
         .hero-inner { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
-        .hero-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+        .hero-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 1rem; }
         .hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 900; color: var(--white); letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 1.2rem; }
         .hero-rule { width: 44px; height: 3px; background: var(--primary-blue); border-radius: 2px; margin-bottom: 1.5rem; }
-        .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.8; max-width: 580px; margin-bottom: 2.5rem; }
+        .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.85); line-height: 1.8; max-width: 580px; margin-bottom: 2.5rem; }
 
         /* ── PERSPEKTIV-SWITCHER ── */
         .perspektiv-bar { background: rgba(0,0,0,0.25); border-top: 1px solid rgba(255,255,255,0.1); }
         .perspektiv-bar-inner { max-width: 800px; margin: 0 auto; padding: 1.2rem 2.5rem; display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; }
-        .perspektiv-label { font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 0.06em; text-transform: uppercase; margin-right: 0.4rem; flex-shrink: 0; }
+        .perspektiv-label { font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.55); letter-spacing: 0.06em; text-transform: uppercase; margin-right: 0.4rem; flex-shrink: 0; }
         .perspektiv-btn { padding: 0.65rem 1.6rem; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 700; cursor: pointer; transition: all 0.3s; border: 2px solid rgba(255,255,255,0.3); background: transparent; color: rgba(255,255,255,0.65); }
         .perspektiv-btn:hover { border-color: rgba(255,255,255,0.6); color: var(--white); }
+        .perspektiv-btn:focus { outline: 2px solid rgba(255,255,255,0.5); outline-offset: 2px; }
         .perspektiv-btn.active-an { background: var(--an-color); border-color: var(--an-color); color: var(--white); }
         .perspektiv-btn.active-un { background: var(--un-color); border-color: rgba(255,255,255,0.5); color: var(--white); box-shadow: inset 0 0 0 2px rgba(255,255,255,0.4); }
 
@@ -72,7 +78,6 @@
         body.view-un .p-un { display: block; }
         body.view-an .p-an { display: block; }
         body.view-an .p-un { display: none; }
-        /* For flex containers */
         .p-an-flex { display: flex; }
         .p-un-flex { display: none; }
         body.view-un .p-an-flex { display: none; }
@@ -113,7 +118,7 @@
         .sec-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary-blue); margin-bottom: 0.8rem; }
         .sec-title { font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 900; color: var(--black); letter-spacing: -0.02em; margin-bottom: 0.8rem; }
         .sec-sub { font-size: 1rem; color: var(--medium-gray); line-height: 1.85; margin-bottom: 2rem; }
-        .body-text { font-size: 0.97rem; color: #374151; line-height: 1.9; margin-bottom: 1.2rem; }
+        .body-text { font-size: 0.97rem; color: var(--medium-gray); line-height: 1.9; margin-bottom: 1.2rem; }
         .body-text strong { color: var(--black); font-weight: 700; }
 
         /* ── VALUES ── */
@@ -125,7 +130,7 @@
         /* ── ÜBER MICH TEASER ── */
         .ueber-mich-teaser { background: linear-gradient(135deg, #001a55, var(--dark-blue)); border-radius: 20px; padding: 2.5rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; margin: 2rem 0; }
         .ueber-mich-teaser h3 { font-size: 1.1rem; font-weight: 900; color: var(--white); margin-bottom: 0.5rem; }
-        .ueber-mich-teaser p { font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.7; }
+        .ueber-mich-teaser p { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.7; }
         .ueber-mich-teaser a { display: inline-block; padding: 0.8rem 1.6rem; background: var(--white); color: var(--dark-blue); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border-radius: 50px; text-decoration: none; white-space: nowrap; transition: all 0.3s; }
         .ueber-mich-teaser a:hover { transform: translateY(-2px); }
 
@@ -147,14 +152,12 @@
 
         /* ── KB IST/NICHT ── */
         .kb-card { border-radius: 16px; padding: 2rem; border: 1.5px solid var(--border); margin-bottom: 1.5rem; }
-        .kb-card-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary-blue); margin-bottom: 0.8rem; }
         .kb-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
         .kb-col h4 { font-size: 0.88rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 1rem; }
-        .kb-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-        .kb-list li { font-size: 0.88rem; color: var(--medium-gray); line-height: 1.65; display: flex; align-items: flex-start; gap: 0.6rem; }
+        .kb-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; padding: 0; }
+        .kb-list li { list-style: none; font-size: 0.88rem; color: var(--medium-gray); line-height: 1.65; display: flex; align-items: flex-start; gap: 0.6rem; }
         .kb-list li.yes::before { content: '✓'; color: #16a34a; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
-        .kb-list li.no::before { content: '×'; color: #dc2626; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
-        .placeholder-hint { margin-top: 1rem; background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 10px; padding: 0.9rem 1.2rem; font-size: 0.8rem; color: #78350f; }
+        .kb-list li.no::before { content: '◆'; color: var(--primary-blue); font-size: 0.6rem; flex-shrink: 0; margin-top: 5px; }
 
         /* ── PROZESS ── */
         .prozess-steps { display: flex; flex-direction: column; gap: 1.2rem; margin: 2rem 0; }
@@ -173,10 +176,21 @@
         .kfa-module p { font-size: 0.85rem; color: var(--medium-gray); line-height: 1.7; }
         .kfa-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
         .kfa-tag { background: var(--light-gray); color: var(--medium-gray); font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 50px; }
+
+        /* KFA Flow – FIXED: weiße Zahl auf dunklem Kreis */
         .kfa-flow { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; }
         .kfa-step { display: grid; grid-template-columns: 44px 1fr; gap: 1.2rem; align-items: stretch; }
         .kfa-step-left { display: flex; flex-direction: column; align-items: center; }
-        .kfa-step-dot { width: 44px; height: 44px; background: var(--dark-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 900; color: var(--white); flex-shrink: 0; }
+        .kfa-step-dot {
+            width: 44px; height: 44px;
+            background: var(--dark-blue);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem; font-weight: 900;
+            color: var(--white);      /* weiße Zahl */
+            flex-shrink: 0;
+            border: none;             /* kein weißer Rand */
+        }
         .kfa-step-line { flex: 1; width: 2px; background: var(--border); margin: 6px 0; }
         .kfa-step:last-child .kfa-step-line { display: none; }
         .kfa-step-body { background: var(--light-gray); border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 1rem; }
@@ -197,7 +211,6 @@
         .vereinbarung-icon { font-size: 2.5rem; flex-shrink: 0; }
         .vereinbarung-text h4 { font-size: 1rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.4rem; }
         .vereinbarung-text p { font-size: 0.88rem; color: var(--medium-gray); line-height: 1.7; }
-        .vereinbarung-text a { display: inline-block; margin-top: 0.8rem; padding: 0.6rem 1.4rem; background: var(--medium-gray); color: var(--white); border-radius: 50px; font-size: 0.82rem; font-weight: 700; text-decoration: none; opacity: 0.6; }
 
         /* ── INFO BOX ── */
         .info-box { background: #eff6ff; border-left: 4px solid var(--primary-blue); border-radius: 0 12px 12px 0; padding: 1.3rem 1.6rem; margin: 1.5rem 0; font-size: 0.9rem; color: #1e40af; line-height: 1.75; }
@@ -206,25 +219,25 @@
         /* ── CTA ── */
         .cta-strip { padding: 5rem 2.5rem; background: linear-gradient(135deg, #001a55, var(--dark-blue)); text-align: center; }
         .cta-strip h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 900; color: var(--white); margin-bottom: 0.8rem; }
-        .cta-strip p { font-size: 1rem; color: rgba(255,255,255,0.65); margin-bottom: 2rem; }
+        .cta-strip p { font-size: 1rem; color: rgba(255,255,255,0.85); margin-bottom: 2rem; }
         .btn-white { display: inline-block; padding: 1rem 2.4rem; background: var(--white); color: var(--dark-blue); font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
         .btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.2); }
 
         /* ── FOOTER ── */
-        footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 4rem 2.5rem 2rem; }
+        footer { background: var(--black); color: rgba(255,255,255,0.85); padding: 4rem 2.5rem 2rem; }
         .footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem; margin-bottom: 3rem; }
         .footer-section h4 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1.4rem; }
         .footer-section ul { list-style: none; }
         .footer-section ul li { margin-bottom: 0.7rem; }
-        .footer-section a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .footer-section a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
         .footer-section a:hover { color: var(--white); }
-        .footer-section p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
+        .footer-section p { color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
         .footer-social-icons { display: flex; gap: 0.8rem; margin-top: 0.5rem; }
-        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
+        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
         .footer-social-icon img { width: 22px; height: 22px; object-fit: contain; display: block; }
-        .footer-social-icon:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
-        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+        .footer-social-icon:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: rgba(255,255,255,0.6); font-size: 0.82rem; }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
@@ -247,24 +260,19 @@
             .footer-container { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
         }
-
-        /* ── MAINTENANCE BANNER ── */
-        .maintenance-banner { background: #fffbeb; border-bottom: 1px solid #fde68a; padding: 0.65rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; position: relative; z-index: 999; margin-top: 72px; }
-        .maintenance-banner p { font-size: 0.82rem; color: #78350f; line-height: 1.5; font-family: 'Montserrat', sans-serif; }
-        .maintenance-banner p strong { font-weight: 700; }
-        .maintenance-banner-close { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: #92400e; padding: 0.2rem 0.4rem; line-height: 1; flex-shrink: 0; transition: opacity 0.2s; }
-        .maintenance-banner-close:hover { opacity: 0.6; }
-        @media (max-width: 768px) { .maintenance-banner { padding: 0.65rem 1.5rem; } }
     </style>
 </head>
 <body class="view-an">
+
+<!-- SKIP LINK -->
+<a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
 <header>
     <nav>
         <a href="index.html" class="logo"><img src="images/Logo_weiß.png" alt="Koppmann Karriere"></a>
         <ul>
             <li><a href="unternehmen.html">Für Unternehmen</a></li>
-            <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
+            <li><a href="arbeitnehmende.html">Für Mitarbeitende</a></li>
             <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
             <li><a href="so-arbeite-ich.html" class="active">So Arbeite Ich</a></li>
             <li><a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
@@ -274,73 +282,66 @@
     </nav>
 </header>
 
-<div class="mobile-menu" id="mobile-menu">
+<div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile Navigation">
     <a href="unternehmen.html">Für Unternehmen</a>
-    <a href="arbeitnehmende.html">Für Arbeitnehmende</a>
+    <a href="arbeitnehmende.html">Für Mitarbeitende</a>
     <a href="karriere-kosmos.html">Karriere-Kosmos</a>
     <a href="so-arbeite-ich.html">So Arbeite Ich</a>
     <a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a>
     <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="mobile-cta">Erstgespräch vereinbaren</a>
 </div>
 
-<!-- MAINTENANCE BANNER -->
-<div class="maintenance-banner" id="maintenance-banner">
-    <p>🔧 <strong>Diese Website wird aktuell bearbeitet und umgebaut.</strong> Bitte um Verständnis, wenn noch nicht alles optimal angezeigt wird und funktioniert. Danke für Ihr Verständnis.</p>
-    <button class="maintenance-banner-close" onclick="document.getElementById('maintenance-banner').style.display='none'" aria-label="Hinweis schließen">✕</button>
-</div>
-
-
 <!-- HERO -->
-<section class="hero">
+<section class="hero" aria-label="So arbeite ich – Einleitung">
     <div class="hero-inner">
         <p class="hero-eyebrow">Methodik · Haltung · Prozess</p>
         <h1>So arbeite ich.</h1>
-        <div class="hero-rule"></div>
+        <div class="hero-rule" aria-hidden="true"></div>
         <p class="hero-sub">Transparenz ist kein Versprechen – sie ist die Grundlage. Hier erkläre ich, wie Karrierebegleitung funktioniert, was du – oder Sie – erwarten kannst und was nicht.</p>
     </div>
 
     <!-- PERSPEKTIV-SWITCHER -->
-    <div class="perspektiv-bar">
+    <div class="perspektiv-bar" role="group" aria-label="Perspektive wählen">
         <div class="perspektiv-bar-inner">
-            <span class="perspektiv-label">Perspektive:</span>
-            <button class="perspektiv-btn active-an" id="btn-an" onclick="setPerspektiv('an')">👤 Ich bin Arbeitnehmend/e</button>
-            <button class="perspektiv-btn" id="btn-un" onclick="setPerspektiv('un')">🏢 Ich bin Unternehmen</button>
+            <span class="perspektiv-label" id="perspektiv-label">Perspektive:</span>
+            <button class="perspektiv-btn active-an" id="btn-an" onclick="setPerspektiv('an')" aria-pressed="true" aria-describedby="perspektiv-label">👤 Mitarbeiter/in</button>
+            <button class="perspektiv-btn" id="btn-un" onclick="setPerspektiv('un')" aria-pressed="false" aria-describedby="perspektiv-label">🏢 Unternehmen</button>
         </div>
     </div>
 </section>
 
-<!-- MOBILE TOC (Dropdown) -->
+<!-- MOBILE TOC -->
 <div class="mobile-toc">
-    <button class="mobile-toc-toggle" id="toc-toggle">
+    <button class="mobile-toc-toggle" id="toc-toggle" aria-expanded="false" aria-controls="toc-dropdown">
         <span class="toc-current" id="toc-current">🧭 Haltung &amp; Werte</span>
-        <span class="toc-arrow">▼</span>
+        <span class="toc-arrow" aria-hidden="true">▼</span>
     </button>
-    <div class="mobile-toc-dropdown" id="toc-dropdown">
-        <a href="#sec-haltung" class="active" data-label="🧭 Haltung &amp; Werte">🧭 Haltung &amp; Werte</a>
-        <a href="#sec-was-nicht" data-label="🔍 Was Karrierebegleitung ist">🔍 Was Karrierebegleitung ist</a>
-        <a href="#sec-erwartung" data-label="⚖️ Erwartungsmanagement">⚖️ Erwartungsmanagement</a>
-        <a href="#sec-prozess" data-label="📋 Ablauf der Zusammenarbeit">📋 Ablauf der Zusammenarbeit</a>
-        <a href="#sec-kfa" class="p-an" data-label="🧩 Die KFA">🧩 Die KFA</a>
-        <a href="#sec-transparenz" data-label="🔒 Transparenz &amp; Datenschutz">🔒 Transparenz &amp; Datenschutz</a>
-        <a href="#sec-vereinbarung" class="p-an" data-label="📄 Klientenvereinbarung">📄 Klientenvereinbarung</a>
-        <a href="#sec-vereinbarung" class="p-un" data-label="📄 Vertragsbedingungen">📄 Vertragsbedingungen</a>
+    <div class="mobile-toc-dropdown" id="toc-dropdown" role="list">
+        <a href="#sec-haltung" class="active" data-label="🧭 Haltung &amp; Werte" role="listitem">🧭 Haltung &amp; Werte</a>
+        <a href="#sec-was-nicht" data-label="🔍 Was Karrierebegleitung ist" role="listitem">🔍 Was Karrierebegleitung ist</a>
+        <a href="#sec-erwartung" data-label="⚖️ Erwartungsmanagement" role="listitem">⚖️ Erwartungsmanagement</a>
+        <a href="#sec-prozess" data-label="📋 Ablauf der Zusammenarbeit" role="listitem">📋 Ablauf der Zusammenarbeit</a>
+        <a href="#sec-kfa" class="p-an" data-label="🧩 Die KFA" role="listitem">🧩 Die KFA</a>
+        <a href="#sec-transparenz" data-label="🔒 Transparenz &amp; Datenschutz" role="listitem">🔒 Transparenz &amp; Datenschutz</a>
+        <a href="#sec-vereinbarung" class="p-an" data-label="📄 Klientenvereinbarung" role="listitem">📄 Klientenvereinbarung</a>
+        <a href="#sec-vereinbarung" class="p-un" data-label="📄 Vertragsbedingungen" role="listitem">📄 Vertragsbedingungen</a>
     </div>
 </div>
 
 <div class="page-layout">
     <!-- SIDEBAR -->
-    <aside class="sidebar">
+    <aside class="sidebar" aria-label="Seitennavigation">
         <div class="sidebar-label">Inhalt</div>
         <ul class="sidebar-nav" id="sidebar-nav">
-            <li><a href="#sec-haltung" class="active"><span class="nav-icon">🧭</span> Haltung &amp; Werte</a></li>
-            <li><a href="#sec-was-nicht"><span class="nav-icon">🔍</span> Was Karrierebegleitung ist</a></li>
-            <li><a href="#sec-erwartung"><span class="nav-icon">⚖️</span> Erwartungsmanagement</a></li>
-            <li><a href="#sec-prozess"><span class="nav-icon">📋</span> Ablauf</a></li>
-            <div class="sidebar-divider"></div>
-            <li class="p-an"><a href="#sec-kfa"><span class="nav-icon">🧩</span> Die KFA</a></li>
-            <li><a href="#sec-transparenz"><span class="nav-icon">🔒</span> Transparenz &amp; Datenschutz</a></li>
-            <li class="p-an"><a href="#sec-vereinbarung"><span class="nav-icon">📄</span> Klientenvereinbarung</a></li>
-            <li class="p-un"><a href="#sec-vereinbarung"><span class="nav-icon">📄</span> Vertragsbedingungen</a></li>
+            <li><a href="#sec-haltung" class="active"><span class="nav-icon" aria-hidden="true">🧭</span> Haltung &amp; Werte</a></li>
+            <li><a href="#sec-was-nicht"><span class="nav-icon" aria-hidden="true">🔍</span> Was Karrierebegleitung ist</a></li>
+            <li><a href="#sec-erwartung"><span class="nav-icon" aria-hidden="true">⚖️</span> Erwartungsmanagement</a></li>
+            <li><a href="#sec-prozess"><span class="nav-icon" aria-hidden="true">📋</span> Ablauf</a></li>
+            <div class="sidebar-divider" role="separator"></div>
+            <li class="p-an"><a href="#sec-kfa"><span class="nav-icon" aria-hidden="true">🧩</span> Die KFA</a></li>
+            <li><a href="#sec-transparenz"><span class="nav-icon" aria-hidden="true">🔒</span> Transparenz &amp; Datenschutz</a></li>
+            <li class="p-an"><a href="#sec-vereinbarung"><span class="nav-icon" aria-hidden="true">📄</span> Klientenvereinbarung</a></li>
+            <li class="p-un"><a href="#sec-vereinbarung"><span class="nav-icon" aria-hidden="true">📄</span> Vertragsbedingungen</a></li>
         </ul>
         <div class="sidebar-cta">
             <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="p-an">Erstgespräch vereinbaren →</a>
@@ -349,21 +350,19 @@
     </aside>
 
     <!-- CONTENT -->
-    <main class="content">
+    <main class="content" id="main-content">
 
         <!-- ══ HALTUNG & WERTE ══ -->
         <section class="content-section" id="sec-haltung">
             <p class="sec-eyebrow">Warum ich das mache</p>
             <h2 class="sec-title">Haltung &amp; Werte</h2>
 
-            <!-- AN -->
             <div class="p-an">
                 <p class="sec-sub">Karrierebegleitung ist keine Dienstleistung im klassischen Sinne. Es ist eine Haltung.</p>
                 <p class="body-text">Ich glaube, dass berufliche Entscheidungen dann gut werden, wenn sie zum Menschen passen – nicht zur Erwartung anderer, nicht zum nächstbesten Angebot, nicht zum Lebenslauf. Das klingt selbstverständlich. Ist es aber nicht.</p>
                 <p class="body-text">Ich habe selbst erlebt, wie es sich anfühlt, wenn Beruf und Mensch nicht zusammenpassen. Und ich habe erlebt, wie es sich anfühlt wenn sie es tun. Dieser Unterschied ist der Grund, warum ich das tue was ich tue.</p>
             </div>
 
-            <!-- UN -->
             <div class="p-un">
                 <p class="sec-sub">Personalentscheidungen sind komplex. Mein Ansatz ist es, diese Komplexität besser einzuordnen – nicht zu vereinfachen.</p>
                 <p class="body-text">Ich glaube, dass gute Personalentscheidungen entstehen, wenn beide Seiten wirklich verstanden werden – nicht nur auf dem Papier. Ein Lebenslauf zeigt Stationen. Er zeigt nicht, wie jemand arbeitet, was ihn antreibt oder ob er wirklich zu Ihrem Unternehmen passt.</p>
@@ -373,30 +372,22 @@
             <div class="values-grid">
                 <div class="value-card">
                     <h4>🤝 Ehrlichkeit vor Komfort</h4>
-                    <!-- AN -->
                     <p class="p-an">Ich sage dir was ich denke – auch wenn es nicht das ist, was du hören möchtest. Karrierebegleitung funktioniert nur, wenn beide Seiten ehrlich sind.</p>
-                    <!-- UN -->
                     <p class="p-un">Ich sage Ihnen, was ich denke – auch wenn das bedeutet, eine Empfehlung zurückzuhalten. Lieber eine ehrliche Einschätzung als eine vorschnelle Besetzung.</p>
                 </div>
                 <div class="value-card">
                     <h4>⏳ Langfristigkeit vor Schnelligkeit</h4>
-                    <!-- AN -->
                     <p class="p-an">Ich bin nicht darauf aus, dich schnell zu vermitteln. Ich bin darauf aus, dich richtig zu vermitteln. Das ist ein Unterschied der zählt.</p>
-                    <!-- UN -->
                     <p class="p-un">Ich bin nicht darauf aus, schnell zu besetzen. Ich bin darauf aus, richtig zu besetzen. Tragfähige Personalentscheidungen brauchen manchmal mehr Zeit – das ist es wert.</p>
                 </div>
                 <div class="value-card">
                     <h4>👤 Mensch vor Lebenslauf</h4>
-                    <!-- AN -->
                     <p class="p-an">Ein Lebenslauf ist eine Zusammenfassung. Ich interessiere mich für das, was dahintersteckt – Motivation, Kontext, Lebensrealität.</p>
-                    <!-- UN -->
                     <p class="p-un">Ich vermittle keine Profile – ich empfehle Menschen. Der Unterschied: Ich kenne die Person hinter dem Lebenslauf und kann einschätzen ob die Passung real ist.</p>
                 </div>
                 <div class="value-card">
                     <h4>🔑 Eigenverantwortung als Grundlage</h4>
-                    <!-- AN -->
                     <p class="p-an">Ich begleite – ich entscheide nicht für dich. Wer aktiv mitmacht, eigene Schritte geht und sich einbringt, kommt weiter.</p>
-                    <!-- UN -->
                     <p class="p-un">Ich begleite den Prozess – die Entscheidung liegt bei Ihnen. Meine Aufgabe ist es, die Grundlage für eine fundierte Entscheidung zu schaffen.</p>
                 </div>
             </div>
@@ -404,9 +395,7 @@
             <div class="ueber-mich-teaser">
                 <div>
                     <h3>Wer steckt dahinter?</h3>
-                    <!-- AN -->
                     <p class="p-an">Mein Weg, meine Erfahrungen, warum ich Karrierebegleiter geworden bin – und was mich antreibt.</p>
-                    <!-- UN -->
                     <p class="p-un">Mein beruflicher Hintergrund, meine Erfahrungen und warum ich diesen Ansatz gewählt habe.</p>
                 </div>
                 <a href="ueber-mich.html">Über mich →</a>
@@ -416,9 +405,10 @@
         <!-- ══ WAS KB IST / NICHT IST ══ -->
         <section class="content-section" id="sec-was-nicht">
             <p class="sec-eyebrow">Einordnung</p>
+
             <!-- AN -->
             <div class="p-an">
-                <h2 class="sec-title">Was Karrierebegleitung für dich ist – und was nicht</h2>
+                <h2 class="sec-title">Was Karrierebegleitung für dich ist – und was du mitbringen solltest</h2>
                 <p class="sec-sub">Der Begriff ist neu. Das Konzept dahinter auch. Hier ist eine ehrliche Einordnung.</p>
                 <div class="kb-card">
                     <div class="kb-cols">
@@ -433,13 +423,13 @@
                             </ul>
                         </div>
                         <div class="kb-col">
-                            <h4>× Was es nicht ist</h4>
+                            <h4>Was du mitbringen solltest</h4>
                             <ul class="kb-list">
-                                <li class="no">[Platzhalter – wird konkretisiert]</li>
-                                <li class="no">[Platzhalter – wird konkretisiert]</li>
-                                <li class="no">[Platzhalter – wird konkretisiert]</li>
+                                <li class="no">Eigenverantwortung – du bleibst aktiver Teil des Prozesses, ich begleite, du gehst</li>
+                                <li class="no">Offenheit – auch für unbequeme Einordnungen und ehrliches Feedback</li>
+                                <li class="no">Geduld – gute Karriereentscheidungen entstehen nicht unter Druck</li>
+                                <li class="no">Realistische Erwartungen – Karrierebegleitung ersetzt keine Therapie oder psychologische Beratung</li>
                             </ul>
-                            <div class="placeholder-hint">⚠️ Wird noch konkretisiert.</div>
                         </div>
                     </div>
                 </div>
@@ -447,7 +437,7 @@
 
             <!-- UN -->
             <div class="p-un">
-                <h2 class="sec-title">Was Karrierebegleitung für Ihr Unternehmen ist – und was nicht</h2>
+                <h2 class="sec-title">Was Karrierebegleitung für Ihr Unternehmen ist – und was Sie mitbringen sollten</h2>
                 <p class="sec-sub">Kein klassisches Recruiting, keine Zeitarbeit, kein Headhunting. Hier ist eine ehrliche Einordnung.</p>
                 <div class="kb-card">
                     <div class="kb-cols">
@@ -462,13 +452,13 @@
                             </ul>
                         </div>
                         <div class="kb-col">
-                            <h4>× Was es nicht ist</h4>
+                            <h4>Was Sie mitbringen sollten</h4>
                             <ul class="kb-list">
-                                <li class="no">[Platzhalter – wird konkretisiert]</li>
-                                <li class="no">[Platzhalter – wird konkretisiert]</li>
-                                <li class="no">[Platzhalter – wird konkretisiert]</li>
+                                <li class="no">Offenheit für eine andere Art der Zusammenarbeit – kein klassisches Headhunting auf Abruf</li>
+                                <li class="no">Bereitschaft, Informationen über Ihr Unternehmen zu teilen – Passung braucht Kontext</li>
+                                <li class="no">Geduld – tragfähige Personalentscheidungen brauchen manchmal mehr Zeit als erhofft</li>
+                                <li class="no">Realistische Erwartungen – ich empfehle nur, wenn ich Passung einschätzen kann, nicht auf Zuruf</li>
                             </ul>
-                            <div class="placeholder-hint">⚠️ Wird noch konkretisiert.</div>
                         </div>
                     </div>
                 </div>
@@ -479,7 +469,6 @@
         <section class="content-section" id="sec-erwartung">
             <p class="sec-eyebrow">Ehrlichkeit zuerst</p>
 
-            <!-- AN -->
             <div class="p-an">
                 <h2 class="sec-title">Was du erwarten kannst – und was nicht</h2>
                 <p class="sec-sub">Ich glaube an klare Ansagen. Deshalb sage ich dir jetzt, worauf du dich verlassen kannst und wo meine Grenzen liegen.</p>
@@ -511,7 +500,6 @@
                 </div>
             </div>
 
-            <!-- UN -->
             <div class="p-un">
                 <h2 class="sec-title">Was Sie erwarten können – und was nicht</h2>
                 <p class="sec-sub">Transparenz ist der Kern meiner Arbeit. Deshalb sage ich Ihnen klar, worauf Sie sich verlassen können und wo meine Grenzen liegen.</p>
@@ -546,41 +534,40 @@
         <section class="content-section" id="sec-prozess">
             <p class="sec-eyebrow">Schritt für Schritt</p>
 
-            <!-- AN -->
             <div class="p-an">
                 <h2 class="sec-title">Wie wir zusammenarbeiten</h2>
                 <p class="sec-sub">Von der ersten Kontaktaufnahme bis zur langfristigen Begleitung – transparent erklärt.</p>
                 <div class="prozess-steps">
                     <div class="prozess-step">
-                        <div class="prozess-num">1</div>
+                        <div class="prozess-num" aria-hidden="true">1</div>
                         <div>
                             <h4>Erstgespräch – kostenlos &amp; unverbindlich</h4>
                             <p>Wir lernen uns kennen. Ich höre zu, du erzählst. Keine Vorbereitung nötig – kein Lebenslauf, kein Motivationsschreiben. Einfach du. <strong>Dauer: ca. 30 Minuten, per Video oder Telefon.</strong></p>
                         </div>
                     </div>
                     <div class="prozess-step">
-                        <div class="prozess-num">2</div>
+                        <div class="prozess-num" aria-hidden="true">2</div>
                         <div>
                             <h4>Karriere-Framework-Analyse (KFA)</h4>
                             <p>Du bekommst mehrere strukturierte Fragebögen die du in Ruhe und in deinem eigenen Tempo ausfüllst. Im anschließenden Vertiefungsgespräch gehen wir gemeinsam in die Tiefe. <strong>Die KFA ist in erster Linie für dich – sie gibt dir Klarheit über dich selbst.</strong></p>
                         </div>
                     </div>
                     <div class="prozess-step">
-                        <div class="prozess-num">3</div>
+                        <div class="prozess-num" aria-hidden="true">3</div>
                         <div>
                             <h4>Einordnung &amp; Strategie</h4>
                             <p>Auf Basis der KFA und unserer Gespräche entwickle ich eine klare Einordnung: Welche Stellen, Branchen und Unternehmen passen wirklich zu dir? Welche Schritte sind realistisch?</p>
                         </div>
                     </div>
                     <div class="prozess-step">
-                        <div class="prozess-num">4</div>
+                        <div class="prozess-num" aria-hidden="true">4</div>
                         <div>
                             <h4>Bewerbungsvorbereitung &amp; Empfehlung</h4>
                             <p>Ich unterstütze bei Unterlagen und Vorbereitung. Wenn sich eine echte Passung abzeichnet, mache ich eine aktive Empfehlung – mit einem strukturierten <strong>Bewerbungsdossier</strong> statt einer nackten Bewerbungsmappe.</p>
                         </div>
                     </div>
                     <div class="prozess-step">
-                        <div class="prozess-num">5</div>
+                        <div class="prozess-num" aria-hidden="true">5</div>
                         <div>
                             <h4>Langfristige Begleitung</h4>
                             <p>Eine Vermittlung ist kein Abschluss. Ich bleibe ansprechbar – jetzt und in Zukunft. Wenn sich deine Situation ändert oder der nächste Schritt ansteht: <strong>Ich bin da.</strong></p>
@@ -589,34 +576,33 @@
                 </div>
             </div>
 
-            <!-- UN -->
             <div class="p-un">
                 <h2 class="sec-title">Wie eine Kooperation entsteht</h2>
                 <p class="sec-sub">Von der ersten Kontaktaufnahme bis zur langfristigen Partnerschaft – transparent erklärt.</p>
                 <div class="prozess-steps">
                     <div class="prozess-step">
-                        <div class="prozess-num">1</div>
+                        <div class="prozess-num" aria-hidden="true">1</div>
                         <div>
                             <h4>Erstgespräch – kostenlos &amp; unverbindlich</h4>
                             <p>Wir lernen uns kennen. Ich höre zu, Sie erzählen. Wie arbeitet Ihr Unternehmen, was suchen Sie, was hat bisher nicht funktioniert? <strong>Dauer: ca. 30 Minuten, per Video oder Telefon.</strong></p>
                         </div>
                     </div>
                     <div class="prozess-step">
-                        <div class="prozess-num">2</div>
+                        <div class="prozess-num" aria-hidden="true">2</div>
                         <div>
                             <h4>Kooperations-Check-In &amp; Suchprofil</h4>
                             <p>Sie erhalten einen strukturierten Check-In um Anforderungen, Kultur und Kontext zu erfassen. Daraus entsteht ein Suchprofil das nicht nur Qualifikationen beschreibt – sondern reale Passung ermöglicht.</p>
                         </div>
                     </div>
                     <div class="prozess-step">
-                        <div class="prozess-num">3</div>
+                        <div class="prozess-num" aria-hidden="true">3</div>
                         <div>
                             <h4>Matching &amp; Empfehlung</h4>
-                            <p>Wenn sich aus meiner Begleitung von Arbeitnehmenden eine tragfähige Verbindung abzeichnet, melde ich mich aktiv – mit einer klar eingeordneten Empfehlung und einem <strong>Bewerbungsdossier</strong> statt einer nackten Bewerbungsmappe.</p>
+                            <p>Wenn sich aus meiner Begleitung von Mitarbeitenden eine tragfähige Verbindung abzeichnet, melde ich mich aktiv – mit einer klar eingeordneten Empfehlung und einem <strong>Bewerbungsdossier</strong> statt einer nackten Bewerbungsmappe.</p>
                         </div>
                     </div>
                     <div class="prozess-step">
-                        <div class="prozess-num">4</div>
+                        <div class="prozess-num" aria-hidden="true">4</div>
                         <div>
                             <h4>Langfristige Kooperation</h4>
                             <p>Suchprofile werden aktualisiert, Veränderungen eingeordnet, neue Bedarfe bewertet. Ich bleibe Ihr Ansprechpartner – nicht nur für die nächste Stelle, sondern dauerhaft.</p>
@@ -636,7 +622,7 @@
 
             <div class="kfa-vertrauen-box">
                 <h4>🔒 Deine Antworten gehören dir</h4>
-                <p>Viele Menschen haben Bedenken, im Rahmen einer Bewerbung Dinge preiszugeben, die eigentlich privat sind. Das verstehe ich – und deshalb ist die KFA so aufgebaut, dass du selbst entscheidest, was du teilst und was nicht. Es geht nicht darum, dich "gläsern" zu machen oder dir etwas herauszulocken. Die KFA hilft dir, Klarheit über dich selbst zu bekommen. Was daraus ins Bewerbungsdossier einfließt, besprechen wir gemeinsam – nichts passiert ohne dein Wissen.</p>
+                <p>Viele Menschen haben Bedenken, im Rahmen einer Bewerbung Dinge preiszugeben, die eigentlich privat sind. Das verstehe ich – und deshalb ist die KFA so aufgebaut, dass du selbst entscheidest, was du teilst und was nicht. Es geht nicht darum, dich „gläsern" zu machen oder dir etwas herauszulocken. Die KFA hilft dir, Klarheit über dich selbst zu bekommen. Was daraus ins Bewerbungsdossier einfließt, besprechen wir gemeinsam – nichts passiert ohne dein Wissen.</p>
             </div>
 
             <div class="kfa-module-grid">
@@ -666,31 +652,42 @@
                 </div>
             </div>
 
-            <h3 style="font-size:1rem; font-weight:800; color:var(--dark-blue); margin-bottom:1.2rem;">So läuft die KFA ab</h3>
-            <div class="kfa-flow">
-                <div class="kfa-step">
-                    <div class="kfa-step-left"><div class="kfa-step-dot">①</div><div class="kfa-step-line"></div></div>
+            <h3 style="font-size:1rem; font-weight:800; color:var(--dark-blue); margin:2rem 0 1.2rem;">So läuft die KFA ab</h3>
+            <div class="kfa-flow" role="list">
+                <div class="kfa-step" role="listitem">
+                    <div class="kfa-step-left">
+                        <div class="kfa-step-dot">1</div>
+                        <div class="kfa-step-line" aria-hidden="true"></div>
+                    </div>
                     <div class="kfa-step-body">
                         <h4>Mehrere Fragebögen – in deinem Tempo</h4>
                         <p>Du bekommst die KFA-Bögen nach dem Erstgespräch und füllst sie in Ruhe aus – ohne Zeitdruck, ohne Erwartungsdruck. Manche Fragen regen zum Nachdenken an. Das ist gewollt.</p>
                     </div>
                 </div>
-                <div class="kfa-step">
-                    <div class="kfa-step-left"><div class="kfa-step-dot">②</div><div class="kfa-step-line"></div></div>
+                <div class="kfa-step" role="listitem">
+                    <div class="kfa-step-left">
+                        <div class="kfa-step-dot">2</div>
+                        <div class="kfa-step-line" aria-hidden="true"></div>
+                    </div>
                     <div class="kfa-step-body">
                         <h4>Strukturierte Auswertung</h4>
                         <p>Deine Antworten werden – ausschließlich anonymisiert mit deiner persönlichen Klientennummer – strukturiert ausgewertet. Kein Klarname, keine persönlichen Daten verlassen das System.</p>
                     </div>
                 </div>
-                <div class="kfa-step">
-                    <div class="kfa-step-left"><div class="kfa-step-dot">③</div><div class="kfa-step-line"></div></div>
+                <div class="kfa-step" role="listitem">
+                    <div class="kfa-step-left">
+                        <div class="kfa-step-dot">3</div>
+                        <div class="kfa-step-line" aria-hidden="true"></div>
+                    </div>
                     <div class="kfa-step-body">
                         <h4>Vertiefungsgespräch</h4>
                         <p>Wir sprechen gemeinsam über die Ergebnisse – was sie bedeuten, was überrascht hat, was du anders siehst. Hier entsteht das eigentliche Bild.</p>
                     </div>
                 </div>
-                <div class="kfa-step">
-                    <div class="kfa-step-left"><div class="kfa-step-dot">④</div></div>
+                <div class="kfa-step" role="listitem">
+                    <div class="kfa-step-left">
+                        <div class="kfa-step-dot">4</div>
+                    </div>
                     <div class="kfa-step-body">
                         <h4>Dein Profil – und was daraus wird</h4>
                         <p>Das Ergebnis ist zunächst eine Selbstanalyse für dich. Was davon ins Bewerbungsdossier einfließt, entscheiden wir gemeinsam. Du behältst die Kontrolle.</p>
@@ -708,9 +705,7 @@
             <p class="sec-eyebrow">Datenschutz &amp; KI</p>
             <h2 class="sec-title">Transparenz &amp; Datenschutz</h2>
 
-            <!-- AN -->
             <p class="sec-sub p-an">Ich nutze KI-Werkzeuge – und ich sage dir genau wie, womit und unter welchen Bedingungen.</p>
-            <!-- UN -->
             <p class="sec-sub p-un">Ich nutze KI-Werkzeuge – und ich sage Ihnen genau wie, womit und unter welchen Bedingungen.</p>
 
             <p class="body-text">Technologie ist ein Werkzeug. Verantwortung bleibt beim Menschen. Das ist mein Grundsatz beim Einsatz von KI in der Karrierebegleitung.</p>
@@ -722,9 +717,7 @@
                 </div>
                 <div class="transparenz-card">
                     <h4>🔢 Anonymisierung</h4>
-                    <!-- AN -->
                     <p class="p-an">An KI-Systeme wird ausschließlich deine anonyme Klientennummer (Format: KK-YYYY-NNN) weitergegeben – niemals dein Name, deine E-Mail oder persönliche Daten.</p>
-                    <!-- UN -->
                     <p class="p-un">An KI-Systeme werden ausschließlich anonyme Klientennummern weitergegeben – niemals Namen, E-Mail-Adressen oder persönliche Daten. Die Zuordnung bleibt bei mir.</p>
                 </div>
                 <div class="transparenz-card">
@@ -733,9 +726,7 @@
                 </div>
                 <div class="transparenz-card">
                     <h4>🗑️ Datenlöschung</h4>
-                    <!-- AN -->
                     <p class="p-an">Aktive Klientendaten werden für die Dauer der Begleitung plus sechs Monate gespeichert. Löschanträge werden innerhalb von 30 Tagen bearbeitet.</p>
-                    <!-- UN -->
                     <p class="p-un">Unternehmensdaten und Jobprofile werden für die Dauer der aktiven Kooperation plus sechs Monate gespeichert. Details in der Datenschutzerklärung.</p>
                 </div>
             </div>
@@ -750,27 +741,21 @@
             <h2 class="sec-title p-an">Klientenvereinbarung</h2>
             <h2 class="sec-title p-un">Vertragsbedingungen</h2>
 
-            <!-- AN -->
             <p class="sec-sub p-an">Keine versteckten Bedingungen – alles was du wissen musst, liegt offen.</p>
-            <!-- UN -->
             <p class="sec-sub p-un">Keine versteckten Bedingungen – alles was Sie wissen müssen, liegt offen.</p>
 
-            <!-- AN -->
             <p class="body-text p-an">Die Klientenvereinbarung ist keine Pflicht und kein Vertrag im rechtlichen Sinne. Sie ist ein Transparenzdokument das erklärt, wie die Zusammenarbeit funktioniert, welche Daten erhoben werden und was du erwarten kannst.</p>
-            <!-- UN -->
             <p class="body-text p-un">Kooperationsgrundlagen kläre ich bewusst im persönlichen Gespräch – kein Mustervertrag, kein Kleingedrucktes. Was gilt, wie abgerechnet wird und wie wir miteinander umgehen, regeln wir gemeinsam und transparent.</p>
 
             <div class="p-un" style="background:var(--light-gray); border-radius:16px; padding:2rem; margin:2rem 0; border:1.5px solid var(--border);">
-                <div style="font-size:1.5rem; margin-bottom:0.8rem;">🤝</div>
+                <div style="font-size:1.5rem; margin-bottom:0.8rem;" aria-hidden="true">🤝</div>
                 <h4 style="font-size:1rem; font-weight:800; color:var(--dark-blue); margin-bottom:0.5rem;">Vermittlungskooperationsvertrag</h4>
                 <p style="font-size:0.88rem; color:var(--medium-gray); line-height:1.75; margin-bottom:1.2rem;">Der Vermittlungskooperationsvertrag regelt die Grundlagen unserer Zusammenarbeit – Vergütung, Prozess, Datenschutz und gegenseitige Erwartungen. Kein Mustervertrag zum Download: Ich kläre die Konditionen bewusst im persönlichen Gespräch, damit beide Seiten wissen woran sie sind.</p>
                 <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" style="display:inline-block; padding:0.7rem 1.6rem; background:var(--dark-blue); color:var(--white); border-radius:50px; font-size:0.85rem; font-weight:700; text-decoration:none; transition:all 0.3s;">Gespräch vereinbaren →</a>
             </div>
 
             <div class="info-box">
-                <!-- AN -->
                 <span class="p-an"><strong>Fragen?</strong> Schreib mir – <a href="mailto:jan@koppmannkarriere.de" style="color:#1e40af;">jan@koppmannkarriere.de</a>. Ich beantworte jede Frage persönlich.</span>
-                <!-- UN -->
                 <span class="p-un"><strong>Fragen?</strong> Schreiben Sie mir – <a href="mailto:jan@koppmannkarriere.de" style="color:#1e40af;">jan@koppmannkarriere.de</a>. Ich beantworte jede Frage persönlich.</span>
             </div>
         </section>
@@ -780,12 +765,10 @@
 
 <!-- CTA -->
 <section class="cta-strip">
-    <!-- AN -->
     <div class="p-an">
         <h2>Genug gelesen – bereit für den ersten Schritt?</h2>
         <p>Das Erstgespräch ist kostenlos, unverbindlich und braucht keine Vorbereitung.</p>
     </div>
-    <!-- UN -->
     <div class="p-un">
         <h2>Interesse an einer Kooperation?</h2>
         <p>Das Erstgespräch ist kostenlos und unverbindlich – für ein erstes gegenseitiges Kennenlernen.</p>
@@ -801,7 +784,7 @@
             <ul>
                 <li><a href="index.html">Start</a></li>
                 <li><a href="unternehmen.html">Für Unternehmen</a></li>
-                <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
+                <li><a href="arbeitnehmende.html">Für Mitarbeitende</a></li>
                 <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
                 <li><a href="so-arbeite-ich.html">So Arbeite Ich</a></li>
                 <li><a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
@@ -816,20 +799,20 @@
         <div class="footer-section">
             <h4>Social Media</h4>
             <div class="footer-social-icons">
-                <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="footer-social-icon"><img src="images/Instagram_Icon.png" alt="Instagram"></a>
-                <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon"><img src="images/Tiktok_Icon.png" alt="TikTok"></a>
-                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon"><img src="images/YouTube_Icon.png" alt="YouTube"></a>
-                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon"><img src="images/Linkedin_Icon.png" alt="LinkedIn"></a>
+                <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="footer-social-icon" title="Instagram"><img src="images/Instagram_Icon.png" alt="Instagram"></a>
+                <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="TikTok"><img src="images/Tiktok_Icon.png" alt="TikTok"></a>
+                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="YouTube"><img src="images/YouTube_Icon.png" alt="YouTube"></a>
+                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon" title="LinkedIn"><img src="images/Linkedin_Icon.png" alt="LinkedIn"></a>
             </div>
         </div>
         <div class="footer-section">
             <h4>Rechtliches</h4>
             <ul>
-                <li><a href="transparenz/impressum.html">Impressum</a></li>
+                <li><a href="/impressum">Impressum</a></li>
                 <li><a href="transparenz/datenschutz.html">Datenschutz</a></li>
             </ul>
             <h4 style="margin-top:1.8rem;">Tippgeber:in werden</h4>
-            <p><a href="tippgeberschaft/tippgeber.html">Weiterempfehlen &amp; Provision erhalten</a></p>
+            <p><a href="tippgeberschaft/tippgebende.html">Weiterempfehlen &amp; Provision erhalten</a></p>
         </div>
     </div>
     <div class="footer-bottom">
@@ -855,9 +838,12 @@ document.querySelectorAll('.mobile-menu a').forEach(l => l.addEventListener('cli
 function setPerspektiv(p) {
     document.body.classList.remove('view-an', 'view-un');
     document.body.classList.add('view-' + p);
-    document.getElementById('btn-an').className = 'perspektiv-btn' + (p === 'an' ? ' active-an' : '');
-    document.getElementById('btn-un').className = 'perspektiv-btn' + (p === 'un' ? ' active-un' : '');
-    // Scroll to top of content
+    const btnAn = document.getElementById('btn-an');
+    const btnUn = document.getElementById('btn-un');
+    btnAn.className = 'perspektiv-btn' + (p === 'an' ? ' active-an' : '');
+    btnUn.className = 'perspektiv-btn' + (p === 'un' ? ' active-un' : '');
+    btnAn.setAttribute('aria-pressed', p === 'an' ? 'true' : 'false');
+    btnUn.setAttribute('aria-pressed', p === 'un' ? 'true' : 'false');
     window.scrollTo({ top: document.querySelector('.page-layout').offsetTop - 140, behavior: 'smooth' });
 }
 
@@ -866,8 +852,9 @@ const tocToggle = document.getElementById('toc-toggle');
 const tocDropdown = document.getElementById('toc-dropdown');
 const tocCurrent = document.getElementById('toc-current');
 tocToggle.addEventListener('click', () => {
-    tocToggle.classList.toggle('open');
+    const isOpen = tocToggle.classList.toggle('open');
     tocDropdown.classList.toggle('open');
+    tocToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 });
 tocDropdown.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', e => {
@@ -877,15 +864,16 @@ tocDropdown.querySelectorAll('a').forEach(a => {
         tocCurrent.innerHTML = a.getAttribute('data-label');
         tocToggle.classList.remove('open');
         tocDropdown.classList.remove('open');
+        tocToggle.setAttribute('aria-expanded', 'false');
         tocDropdown.querySelectorAll('a').forEach(x => x.classList.remove('active'));
         a.classList.add('active');
     });
 });
-// Close on outside click
 document.addEventListener('click', e => {
     if (!tocToggle.contains(e.target) && !tocDropdown.contains(e.target)) {
         tocToggle.classList.remove('open');
         tocDropdown.classList.remove('open');
+        tocToggle.setAttribute('aria-expanded', 'false');
     }
 });
 
@@ -900,7 +888,7 @@ function updateNav() {
         if (window.scrollY >= sec.offsetTop - 180) current = sec.id;
     });
     sidebarLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
-     dropdownLinks.forEach(a => {
+    dropdownLinks.forEach(a => {
         const isActive = a.getAttribute('href') === '#' + current;
         a.classList.toggle('active', isActive);
         if (isActive) tocCurrent.innerHTML = a.getAttribute('data-label');
@@ -915,11 +903,6 @@ sidebarLinks.forEach(a => {
         document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 });
-
-    // Maintenance banner
-    const banner = document.getElementById('maintenance-banner');
-    if (banner && sessionStorage.getItem('banner-closed')) banner.style.display = 'none';
-    if (banner) banner.querySelector('button').addEventListener('click', () => sessionStorage.setItem('banner-closed', '1'));
 </script>
 </body>
 </html>
