@@ -16,7 +16,7 @@
             --white: #ffffff;
             --black: #0a0a0a;
             --light-gray: #f4f6f9;
-            --medium-gray: #6b7280;
+            --medium-gray: #374151;
             --border: #e5e9f0;
         }
         body { font-family: 'Montserrat', sans-serif; line-height: 1.7; color: var(--black); overflow-x: hidden; font-size: 17px; }
@@ -28,11 +28,11 @@
         .logo:hover { opacity: 0.85; }
         .logo img { height: 100%; width: auto; max-height: 56px; object-fit: contain; }
         nav ul { display: flex; list-style: none; gap: 1.8rem; align-items: center; }
-        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.88); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.02em; transition: color 0.3s; position: relative; white-space: nowrap; }
+        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.95); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.02em; transition: color 0.3s; position: relative; white-space: nowrap; }
         nav ul li a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--white); transition: width 0.3s; }
         nav ul li a:hover { color: var(--white); }
         nav ul li a:hover::after { width: 100%; }
-        .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.88); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.6); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
+        .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.95); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.8); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
         .header-cta-btn:hover { background: var(--white); color: var(--dark-blue); border-color: var(--white); }
         .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
         .burger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
@@ -151,13 +151,18 @@
         /* ── TARGET GROUPS ── */
         .target-groups { padding: 6rem 2rem; background: var(--white); }
         .target-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-        .target-card { padding: 2rem 2rem 2.5rem; background: var(--light-gray); border-radius: 20px; transition: all 0.3s; border: 2px solid transparent; }
+        .target-card { padding: 2rem 2rem 2.5rem; background: var(--light-gray); border-radius: 20px; transition: all 0.3s; border: 2px solid transparent; display: block; text-decoration: none; color: inherit; cursor: pointer; }
         .target-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: var(--primary-blue); }
+        .target-card:focus { outline: 3px solid var(--primary-blue); outline-offset: 4px; }
         .target-card h2 { font-size: 1.9rem; font-weight: 900; color: var(--primary-blue); margin-bottom: 1.2rem; letter-spacing: -0.03em; }
         .target-list { background: var(--white); padding: 0.85rem 1.1rem; border-radius: 12px; margin: 0 0 1.5rem; font-size: 0.88rem; color: var(--medium-gray); line-height: 1.7; }
         .target-card-img { width: 100%; border-radius: 12px; display: block; margin-bottom: 1.5rem; }
         .btn-card { display: inline-block; padding: 0.85rem 1.8rem; background: var(--primary-blue); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
-        .btn-card:hover { background: var(--dark-blue); transform: translateY(-2px); }
+        .target-card:hover .btn-card { background: var(--dark-blue); }
+
+        /* ── SKIP LINK (Barrierefreiheit) ── */
+        .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--primary-blue); color: var(--white); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-decoration: none; z-index: 9999; transition: top 0.2s; }
+        .skip-link:focus { top: 1rem; }
 
         /* ── CLOSING ── */
         .closing-section { padding: 6rem 2rem; background: var(--light-gray); }
@@ -173,20 +178,20 @@
         .social-link img { width: 18px; height: 18px; object-fit: contain; }
 
         /* ── FOOTER ── */
-        footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 4rem 2.5rem 2rem; }
+        footer { background: var(--black); color: rgba(255,255,255,0.85); padding: 4rem 2.5rem 2rem; }
         .footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem; margin-bottom: 3rem; }
         .footer-section h4 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1.4rem; }
         .footer-section ul { list-style: none; }
         .footer-section ul li { margin-bottom: 0.7rem; }
-        .footer-section a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .footer-section a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
         .footer-section a:hover { color: var(--white); }
-        .footer-section p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
+        .footer-section p { color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
         .footer-social-icons { display: flex; gap: 0.8rem; margin-top: 0.5rem; }
-        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
+        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
         .footer-social-icon img { width: 22px; height: 22px; object-fit: contain; display: block; }
-        .footer-social-icon:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
-        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+        .footer-social-icon:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: rgba(255,255,255,0.6); font-size: 0.82rem; }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
@@ -209,6 +214,9 @@
     </style>
 </head>
 <body>
+
+<!-- SKIP LINK -->
+<a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
 <!-- HEADER -->
 <header>
@@ -237,6 +245,7 @@
 
 
 <!-- BLOCK 1: HERO -->
+<main id="main-content">
 <section class="hero">
     <div class="hero-image">
         <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1920/Hero_Startseite_Hilfe_Bergsteigen_i5up0j.png"
@@ -270,7 +279,7 @@
 </section>
 
 <!-- BLOCK 3: CAROUSEL -->
-<section class="carousel-section">
+<section class="carousel-section" aria-label="Karrierebegleitung – Gründe im Überblick">
     <div class="carousel-heading">
         <h3>Karrierebegleitung, weil</h3>
     </div>
@@ -438,7 +447,7 @@
 <section class="target-groups">
     <div class="target-container">
         <!-- Für Mitarbeitende -->
-        <div class="target-card">
+        <a href="arbeitnehmende.html" class="target-card" aria-label="Mehr zur Karrierebegleitung für Mitarbeitende">
             <h2>Für Mitarbeitende</h2>
             <div class="target-list">
                 <strong>Wer ist gemeint?</strong><br>
@@ -448,21 +457,21 @@
                 src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_800/v1776369528/Startseite_MAs_xnaqci.png"
                 alt="Karrierebegleitung für Mitarbeitende"
                 class="target-card-img">
-            <a href="arbeitnehmende.html" class="btn-card">Mehr zur Karrierebegleitung</a>
-        </div>
+            <span class="btn-card">Mehr zur Karrierebegleitung</span>
+        </a>
         <!-- Für Unternehmen -->
-        <div class="target-card">
+        <a href="unternehmen.html" class="target-card" aria-label="Zum Unternehmensbereich">
             <h2>Für Unternehmen</h2>
             <div class="target-list">
                 <strong>Wer ist gemeint?</strong><br>
-                Unternehmen · Organisationen · HR-Verantwortliche · Führungskräfte · Inhaber:innen
+                Unternehmen · Organisationen · HR-Verantwortliche · Führungskräfte · Inhaber:innen · Ausbildungsbetriebe · Selbstständige
             </div>
             <img
                 src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_800/v1776369527/Startseite_Betrieb_sodcms.png"
                 alt="Karrierebegleitung für Unternehmen"
                 class="target-card-img">
-            <a href="unternehmen.html" class="btn-card">Zum Unternehmensbereich</a>
-        </div>
+            <span class="btn-card">Zum Unternehmensbereich</span>
+        </a>
     </div>
 </section>
 
@@ -492,6 +501,7 @@
     </div>
 </section>
 
+</main>
 <!-- FOOTER -->
 <footer>
     <div class="footer-container">
@@ -527,7 +537,7 @@
         <div class="footer-section">
             <h4>Rechtliches</h4>
             <ul>
-                <li><a href="transparenz/impressum.html">Impressum</a></li>
+                <li><a href="/impressum">Impressum</a></li>
                 <li><a href="transparenz/datenschutz.html">Datenschutz</a></li>
             </ul>
             <h4 style="margin-top:1.8rem;">Tippgeber:in werden</h4>
@@ -657,6 +667,7 @@ document.querySelectorAll('.mobile-menu a').forEach(link => {
 <script>
 // ── ACCORDION ──
 document.querySelectorAll('.accordion-button').forEach(button => {
+    button.setAttribute('aria-expanded', 'false');
     button.addEventListener('click', () => {
         const item = button.parentElement;
         const acc = item.querySelector('.accordion-content');
@@ -664,10 +675,12 @@ document.querySelectorAll('.accordion-button').forEach(button => {
         document.querySelectorAll('.accordion-item').forEach(i => {
             i.classList.remove('active');
             i.querySelector('.accordion-content').style.maxHeight = null;
+            i.querySelector('.accordion-button').setAttribute('aria-expanded', 'false');
         });
         if (!isActive) {
             item.classList.add('active');
             acc.style.maxHeight = acc.scrollHeight + 'px';
+            button.setAttribute('aria-expanded', 'true');
         }
     });
 });
