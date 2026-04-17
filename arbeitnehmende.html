@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Für Arbeitnehmende – Koppmann Karriere</title>
+    <title>Für Mitarbeitende – Koppmann Karriere</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -16,10 +16,14 @@
             --white: #ffffff;
             --black: #0a0a0a;
             --light-gray: #f4f6f9;
-            --medium-gray: #6b7280;
+            --medium-gray: #374151;
             --border: #e5e9f0;
         }
         body { font-family: 'Montserrat', sans-serif; line-height: 1.7; color: var(--black); overflow-x: hidden; font-size: 17px; }
+
+        /* ── SKIP LINK ── */
+        .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--primary-blue); color: var(--white); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-decoration: none; z-index: 9999; transition: top 0.2s; }
+        .skip-link:focus { top: 1rem; }
 
         /* ── HEADER ── */
         header { position: fixed; top: 0; left: 0; right: 0; background: var(--dark-blue); z-index: 1000; }
@@ -28,11 +32,11 @@
         .logo:hover { opacity: 0.85; }
         .logo img { height: 100%; width: auto; max-height: 56px; object-fit: contain; }
         nav ul { display: flex; list-style: none; gap: 1.8rem; align-items: center; }
-        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.88); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.02em; transition: color 0.3s; position: relative; white-space: nowrap; }
+        nav ul li a { text-decoration: none; color: rgba(255,255,255,0.95); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.02em; transition: color 0.3s; position: relative; white-space: nowrap; }
         nav ul li a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--white); transition: width 0.3s; }
         nav ul li a:hover, nav ul li a.active { color: var(--white); }
         nav ul li a:hover::after, nav ul li a.active::after { width: 100%; }
-        .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.88); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.6); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
+        .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.95); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.8); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
         .header-cta-btn:hover { background: var(--white); color: var(--dark-blue); border-color: var(--white); }
         .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
         .burger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
@@ -46,7 +50,7 @@
         .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--page-color); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
 
         /* ── HERO ── */
-        .hero { margin-top: 0; position: relative; width: 100%; min-height: 72vh; overflow: hidden; display: flex; align-items: center; background: #f0f7ff; }
+        .hero { margin-top: 72px; position: relative; width: 100%; min-height: 72vh; overflow: hidden; display: flex; align-items: center; background: #f0f7ff; }
         .hero-bg { position: absolute; inset: 0; }
         .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
         .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(240,247,255,0.97) 0%, rgba(220,238,255,0.88) 30%, rgba(180,215,245,0.4) 60%, rgba(0,39,119,0.0) 100%); }
@@ -60,23 +64,26 @@
         .btn-hero:hover { background: var(--dark-blue); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,39,119,0.3); }
         .hero-note { margin-top: 1rem; font-size: 0.8rem; color: var(--medium-gray); }
         .hero-bottom-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to bottom, transparent, #002777); pointer-events: none; }
-        
+
+        /* ── VIDEO PLACEHOLDER ── */
+        .video-section { background: var(--dark-blue); padding: 4rem 2.5rem 3rem; }
+        .video-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+        .video-placeholder { background: rgba(255,255,255,0.06); border: 2px dashed rgba(255,255,255,0.18); border-radius: 20px; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; color: rgba(255,255,255,0.55); font-size: 0.95rem; }
+        .video-placeholder .play-icon { font-size: 3rem; opacity: 0.5; }
+        .video-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; }
 
         /* ── ZERO FEE ── */
-        .zerofee-section {
-            background: var(--dark-blue);
-            padding: 4rem 2.5rem;
-        }
+        .zerofee-section { background: var(--dark-blue); padding: 4rem 2.5rem; }
         .zerofee-inner { max-width: 900px; margin: 0 auto; text-align: center; }
         .zerofee-badge { display: inline-block; background: #E8600A; color: #ffffff; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1.5rem; border: none; box-shadow: 0 4px 16px rgba(232,96,10,0.4); }
         .zerofee-inner h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--white); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.2rem; }
-        .zerofee-inner h2 span { color: rgba(255,255,255,0.4); font-weight: 400; }
-        .zerofee-inner p { font-size: 1.05rem; color: rgba(255,255,255,0.7); line-height: 1.85; max-width: 680px; margin: 0 auto; }
+        .zerofee-inner h2 span { color: rgba(255,255,255,0.45); font-weight: 400; }
+        .zerofee-inner p { font-size: 1.05rem; color: rgba(255,255,255,0.82); line-height: 1.85; max-width: 680px; margin: 0 auto; }
         .zerofee-details { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
         .zerofee-item { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 1.8rem 1.5rem; text-align: left; }
         .zerofee-item .icon { font-size: 1.4rem; margin-bottom: 0.8rem; }
         .zerofee-item strong { display: block; font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
-        .zerofee-item p { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin: 0; }
+        .zerofee-item p { font-size: 0.85rem; color: rgba(255,255,255,0.72); line-height: 1.7; margin: 0; }
 
         /* ── FÜR WEN ── */
         .fuerwen-section { background: var(--white); padding: 5rem 2.5rem; }
@@ -96,14 +103,14 @@
         .carousel-btn { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--border); background: var(--white); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: all 0.2s; color: var(--black); }
         .carousel-btn:hover { border-color: var(--page-color); color: var(--page-color); }
         .carousel-dots { display: flex; gap: 0.4rem; align-items: center; }
-        .carousel-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); cursor: pointer; transition: all 0.3s; }
+        .carousel-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); border: none; cursor: pointer; transition: all 0.3s; }
         .carousel-dot.active { background: var(--page-color); width: 20px; border-radius: 4px; }
         @media (max-width: 900px) { .painpoint-card { flex: 0 0 calc(50% - 0.6rem); } }
         @media (max-width: 600px) { .painpoint-card { flex: 0 0 85%; } }
 
         /* ── PROZESS ── */
         .prozess-section { background: var(--light-gray); padding: 5rem 2.5rem; }
-        .prozess-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin-top: 3rem; position: relative; }
+        .prozess-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin-top: 3rem; position: relative; list-style: none; padding: 0; }
         .prozess-steps::before { content: ''; position: absolute; top: 28px; left: calc(12.5% + 1rem); right: calc(12.5% + 1rem); height: 2px; background: transparent; border-top: 2.5px dashed var(--page-color); z-index: 0; opacity: 0.5; }
         .prozess-step { text-align: center; padding: 0 1.5rem; position: relative; z-index: 1; }
         .step-number { width: 56px; height: 56px; border-radius: 50%; background: var(--page-color); color: var(--white); font-size: 1.1rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 4px 16px rgba(0,139,186,0.35); }
@@ -119,6 +126,7 @@
         .faq-item { border-bottom: 1px solid var(--border); }
         .faq-question { width: 100%; background: none; border: none; padding: 1.4rem 0; display: flex; justify-content: space-between; align-items: center; gap: 1rem; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 0.97rem; font-weight: 700; color: var(--black); text-align: left; transition: color 0.2s; }
         .faq-question:hover { color: var(--page-color); }
+        .faq-question:focus { outline: 2px solid var(--page-color); outline-offset: 2px; }
         .faq-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--light-gray); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 400; flex-shrink: 0; transition: all 0.3s; color: var(--page-color); }
         .faq-item.active .faq-icon { background: var(--page-color); color: var(--white); transform: rotate(45deg); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
@@ -129,65 +137,56 @@
         .closing-section { background: linear-gradient(135deg, var(--page-color), var(--primary-blue)); padding: 6rem 2.5rem; text-align: center; }
         .closing-inner { max-width: 640px; margin: 0 auto; }
         .closing-inner h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--white); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.2rem; }
-        .closing-inner p { font-size: 1.05rem; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 2.5rem; }
+        .closing-inner p { font-size: 1.05rem; color: rgba(255,255,255,0.88); line-height: 1.8; margin-bottom: 2.5rem; }
         .btn-closing { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1.1rem 2.6rem; background: var(--white); color: var(--dark-blue); font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
         .btn-closing:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,0.25); }
         .closing-alts { margin-top: 2rem; display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
-        .closing-alts a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.88rem; font-weight: 600; transition: color 0.2s; }
+        .closing-alts a { color: rgba(255,255,255,0.78); text-decoration: none; font-size: 0.88rem; font-weight: 600; transition: color 0.2s; }
         .closing-alts a:hover { color: var(--white); }
 
         /* ── FOOTER ── */
-        footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 4rem 2.5rem 2rem; }
+        footer { background: var(--black); color: rgba(255,255,255,0.85); padding: 4rem 2.5rem 2rem; }
         .footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem; margin-bottom: 3rem; }
         .footer-section h4 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1.4rem; }
         .footer-section ul { list-style: none; }
         .footer-section ul li { margin-bottom: 0.7rem; }
-        .footer-section a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .footer-section a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
         .footer-section a:hover { color: var(--white); }
-        .footer-section p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
+        .footer-section p { color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.6; }
         .footer-social-icons { display: flex; gap: 0.8rem; margin-top: 0.5rem; }
-        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
+        .footer-social-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; transition: all 0.3s; }
         .footer-social-icon img { width: 22px; height: 22px; object-fit: contain; display: block; }
-        .footer-social-icon:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
-        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+        .footer-social-icon:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: rgba(255,255,255,0.6); font-size: 0.82rem; }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 900px) {
-            .hero-inner { grid-template-columns: 1fr; }
             .zerofee-details { grid-template-columns: 1fr; }
-            .fuerwen-grid { grid-template-columns: 1fr; }
             .prozess-steps { grid-template-columns: repeat(2,1fr); gap: 2.5rem; }
             .prozess-steps::before { display: none; }
         }
         @media (max-width: 768px) {
             nav ul, .header-cta-btn { display: none; }
             .burger { display: flex; }
-            /* Hero mobile: stack image on top, text below */
             .hero { min-height: auto; flex-direction: column; align-items: stretch; }
             .hero-bg { position: relative; inset: auto; width: 100%; height: 56vw; min-height: 220px; }
-            .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center center; }
+            .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
             .hero-inner { position: relative; padding: 2rem 1.5rem 2.5rem; background: var(--white); }
             .hero-text { max-width: 100%; }
-            .hero h1 { font-size: clamp(1.8rem, 7vw, 2.4rem); color: var(--dark-blue); text-shadow: none; }
-            .hero h1 span { color: var(--an-color, #008bba); }
-            .hero-eyebrow { color: var(--an-color, #008bba); }
-            .hero-sub { color: var(--medium-gray); text-shadow: none; }
+            .hero h1 { font-size: clamp(1.8rem, 7vw, 2.4rem); color: var(--dark-blue); }
+            .hero-sub { color: var(--medium-gray); }
             .footer-container { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
             .zerofee-section, .fuerwen-section, .prozess-section, .faq-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .video-section { padding-left: 1.5rem; padding-right: 1.5rem; }
         }
-
-        /* ── MAINTENANCE BANNER ── */
-        .maintenance-banner { background: #fffbeb; border-bottom: 1px solid #fde68a; padding: 0.65rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; position: relative; z-index: 999; margin-top: 72px; }
-        .maintenance-banner p { font-size: 0.82rem; color: #78350f; line-height: 1.5; font-family: 'Montserrat', sans-serif; }
-        .maintenance-banner p strong { font-weight: 700; }
-        .maintenance-banner-close { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: #92400e; padding: 0.2rem 0.4rem; line-height: 1; flex-shrink: 0; transition: opacity 0.2s; }
-        .maintenance-banner-close:hover { opacity: 0.6; }
-        @media (max-width: 768px) { .maintenance-banner { padding: 0.65rem 1.5rem; } }
     </style>
 </head>
 <body>
+
+<!-- SKIP LINK -->
+<a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
 <!-- HEADER -->
 <header>
@@ -195,7 +194,7 @@
         <a href="index.html" class="logo"><img src="images/Logo_weiß.png" alt="Koppmann Karriere"></a>
         <ul>
             <li><a href="unternehmen.html">Für Unternehmen</a></li>
-            <li><a href="arbeitnehmende.html" class="active">Für Arbeitnehmende</a></li>
+            <li><a href="arbeitnehmende.html" class="active">Für Mitarbeitende</a></li>
             <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
             <li><a href="so-arbeite-ich.html">So Arbeite Ich</a></li>
             <li><a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
@@ -205,25 +204,20 @@
     </nav>
 </header>
 
-<div class="mobile-menu" id="mobile-menu">
+<div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile Navigation">
     <a href="unternehmen.html">Für Unternehmen</a>
-    <a href="arbeitnehmende.html">Für Arbeitnehmende</a>
+    <a href="arbeitnehmende.html">Für Mitarbeitende</a>
     <a href="karriere-kosmos.html">Karriere-Kosmos</a>
     <a href="so-arbeite-ich.html">So Arbeite Ich</a>
     <a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a>
     <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="mobile-cta">Erstgespräch vereinbaren</a>
 </div>
 
-<!-- MAINTENANCE BANNER -->
-<div class="maintenance-banner" id="maintenance-banner">
-    <p>&#128296; <strong>Diese Website wird aktuell bearbeitet und umgebaut.</strong> Bitte um Verst&#228;ndnis, wenn noch nicht alles optimal angezeigt wird und funktioniert. Danke f&#252;r Ihr Verst&#228;ndnis.</p>
-    <button class="maintenance-banner-close" id="banner-close" aria-label="Hinweis schliessen">&#x2715;</button>
-</div>
-
+<main id="main-content">
 
 <!-- HERO -->
-<section class="hero">
-    <div class="hero-bg">
+<section class="hero" aria-label="Karrierebegleitung für Mitarbeitende">
+    <div class="hero-bg" aria-hidden="true">
         <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1920/v1773767326/Hero_Arbeitnehmende_Knaeul_cds6dx.png"
              alt="Vom Knäuel zum Ziel – Karrierebegleitung Koppmann Karriere">
     </div>
@@ -236,28 +230,39 @@
             <p class="hero-note">Kostenlos &amp; unverbindlich · ca. 30 Minuten</p>
         </div>
     </div>
-    <div class="hero-bottom-fade"></div>
+    <div class="hero-bottom-fade" aria-hidden="true"></div>
+</section>
+
+<!-- VIDEO PLATZHALTER -->
+<section class="video-section" aria-label="Ansprache-Video">
+    <div class="video-inner">
+        <p class="video-label">Ansprache-Video</p>
+        <div class="video-placeholder" role="img" aria-label="Video folgt in Kürze">
+            <div class="play-icon" aria-hidden="true">▶</div>
+            <span>Video folgt in Kürze</span>
+        </div>
+    </div>
 </section>
 
 <!-- ZERO FEE PROMISE -->
-<section class="zerofee-section">
+<section class="zerofee-section" aria-label="ZeroFeePromise – kostenlose Karrierebegleitung">
     <div class="zerofee-inner">
         <span class="zerofee-badge">ZeroFeePromise</span>
         <h2>Karrierebegleitung.<br><span>Für dich. Kostenlos.</span></h2>
         <p>Du zahlst nichts – nicht jetzt, nicht später, nicht indirekt. Mein Honorar kommt ausschließlich vom Unternehmen, wenn eine Vermittlung erfolgreich ist. Das bedeutet: Meine Interessen sind komplett auf deine ausgerichtet.</p>
         <div class="zerofee-details">
             <div class="zerofee-item">
-                <div class="icon">🚫</div>
+                <div class="icon" aria-hidden="true">🚫</div>
                 <strong>Keine versteckten Kosten</strong>
                 <p>Keine Bearbeitungsgebühren, keine Mitgliedschaft, kein Abo – zu keinem Zeitpunkt.</p>
             </div>
             <div class="zerofee-item">
-                <div class="icon">🤝</div>
+                <div class="icon" aria-hidden="true">🤝</div>
                 <strong>Keine Verpflichtungen</strong>
                 <p>Du gehst keine vertragliche Bindung ein. Alle erarbeiteten Unterlagen und Erkenntnisse gehören dir.</p>
             </div>
             <div class="zerofee-item">
-                <div class="icon">🎯</div>
+                <div class="icon" aria-hidden="true">🎯</div>
                 <strong>Echte Interessensgleichheit</strong>
                 <p>Ich verdiene nur, wenn du erfolgreich vermittelt wirst. Das hält mich ehrlich.</p>
             </div>
@@ -271,23 +276,23 @@
         <p class="section-eyebrow">Für wen?</p>
         <h2 class="section-title">Karrierebegleitung ist für dich, wenn…</h2>
         <p class="section-sub">Es gibt keinen „perfekten Moment" um anzufangen. Erkennst du dich wieder?</p>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="painpointTrack">
-                <div class="painpoint-card"><div class="card-icon">😶‍🌫️</div><h3>Du weißt, dass etwas nicht stimmt – aber nicht genau was</h3><p>Dieses diffuse Gefühl, dass irgendetwas nicht passt, ist oft der erste Hinweis. Du musst es noch nicht benennen können.</p></div>
-                <div class="painpoint-card"><div class="card-icon">⏳</div><h3>Du wartest schon zu lange auf „den richtigen Moment"</h3><p>Den gibt es nicht. Was es gibt: einen ersten Schritt, der alles andere in Bewegung bringt.</p></div>
-                <div class="painpoint-card"><div class="card-icon">😮‍💨</div><h3>Du gehst montags mit schwerem Herzen zur Arbeit</h3><p>Nicht jede Woche muss sich großartig anfühlen. Aber wenn der Gedanke daran dich regelmäßig runterzieht – dann lohnt es sich, genauer hinzuschauen.</p></div>
-                <div class="painpoint-card"><div class="card-icon">🔁</div><h3>Du bewirbst dich, aber nichts passt wirklich</h3><p>Viele Bewerbungen, wenig Resonanz – oder Zusagen, bei denen du selbst nicht sicher bist, ob du die Stelle wirklich willst.</p></div>
-                <div class="painpoint-card"><div class="card-icon">🎓</div><h3>Du stehst kurz vor dem Abschluss und weißt nicht wie es weitergeht</h3><p>Schule, Ausbildung oder Studium enden bald – und die Frage „was jetzt?" fühlt sich riesig an. Das ist normal. Und lösbar.</p></div>
-                <div class="painpoint-card"><div class="card-icon">💼</div><h3>Dein Job ist okay – aber du fragst dich, ob das alles ist</h3><p>Nicht jeder braucht einen Traumjob. Aber das Gefühl, dass da noch mehr sein könnte, verdient eine ehrliche Antwort.</p></div>
-                <div class="painpoint-card"><div class="card-icon">🌀</div><h3>Du hast zu viele Optionen und kannst dich nicht entscheiden</h3><p>Zu viel Auswahl kann lähmen. Struktur hilft – nicht welche Option richtig ist, sondern welche zu dir passt.</p></div>
-                <div class="painpoint-card"><div class="card-icon">💬</div><h3>Du hast niemanden, mit dem du das wirklich besprechen kannst</h3><p>Familie und Freunde meinen es gut – aber manchmal braucht es jemanden, der keine eigenen Interessen hat und trotzdem ehrlich ist.</p></div>
-                <div class="painpoint-card"><div class="card-icon">🔋</div><h3>Du bist gut in deinem Job – aber er gibt dir keine Energie mehr</h3><p>Kompetenz und Motivation sind zwei verschiedene Dinge. Wenn das auseinanderläuft, ist das ein Signal.</p></div>
+        <div class="carousel-wrap" aria-label="Situationen, in denen Karrierebegleitung passt">
+            <div class="carousel-track" id="painpointTrack" role="list">
+                <div class="painpoint-card" role="listitem"><div class="card-icon" aria-hidden="true">😶‍🌫️</div><h3>Du weißt, dass etwas nicht stimmt – aber nicht genau was</h3><p>Dieses diffuse Gefühl, dass irgendetwas nicht passt, ist oft der erste Hinweis. Du musst es noch nicht benennen können.</p></div>
+                <div class="painpoint-card" role="listitem"><div class="card-icon" aria-hidden="true">⏳</div><h3>Du wartest schon zu lange auf „den richtigen Moment"</h3><p>Den gibt es nicht. Was es gibt: einen ersten Schritt, der alles andere in Bewegung bringt.</p></div>
+                <div class="painpoint-card" role="listitem"><div class="card-icon" aria-hidden="true">😮‍💨</div><h3>Du gehst montags mit schwerem Herzen zur Arbeit</h3><p>Nicht jede Woche muss sich großartig anfühlen. Aber wenn der Gedanke daran dich regelmäßig runterzieht – dann lohnt es sich, genauer hinzuschauen.</p></div>
+                <div class="painpoint-card" role="listitem"><div class="card-icon" aria-hidden="true">🔁</div><h3>Du bewirbst dich, aber nichts passt wirklich</h3><p>Viele Bewerbungen, wenig Resonanz – oder Zusagen, bei denen du selbst nicht sicher bist, ob du die Stelle wirklich willst.</p></div>
+                <div class="painpoint-card" role="listitem"><div class="card-icon" aria-hidden="true">🎓</div><h3>Du stehst kurz vor dem Abschluss und weißt nicht wie es weitergeht</h3><p>Schule, Ausbildung oder Studium enden bald – und die Frage „was jetzt?" fühlt sich riesig an. Das ist normal. Und lösbar.</p></div>
+                <div class="painpoint-card" role="listitem"><div class="card-icon" aria-hidden="true">💼</div><h3>Dein Job ist okay – aber du fragst dich, ob das alles ist</h3><p>Nicht jeder braucht einen Traumjob. Aber das Gefühl, dass da noch mehr sein könnte, verdient eine ehrliche Antwort.</p></div>
+                <div class="painpoint-card" role="listitem"><div class="card-icon" aria-hidden="true">🌀</div><h3>Du hast zu viele Optionen und kannst dich nicht entscheiden</h3><p>Zu viel Auswahl kann lähmen. Struktur hilft – nicht welche Option richtig ist, sondern welche zu dir passt.</p></div>
+                <div class="painpoint-card" role="listitem"><div class="card-icon" aria-hidden="true">💬</div><h3>Du hast niemanden, mit dem du das wirklich besprechen kannst</h3><p>Familie und Freunde meinen es gut – aber manchmal braucht es jemanden, der keine eigenen Interessen hat und trotzdem ehrlich ist.</p></div>
+                <div class="painpoint-card" role="listitem"><div class="card-icon" aria-hidden="true">🔋</div><h3>Du bist gut in deinem Job – aber er gibt dir keine Energie mehr</h3><p>Kompetenz und Motivation sind zwei verschiedene Dinge. Wenn das auseinanderläuft, ist das ein Signal.</p></div>
             </div>
         </div>
         <div class="carousel-controls">
-            <button class="carousel-btn" id="ppPrev">←</button>
-            <div class="carousel-dots" id="ppDots"></div>
-            <button class="carousel-btn" id="ppNext">→</button>
+            <button class="carousel-btn" id="ppPrev" aria-label="Vorherige Karten">←</button>
+            <div class="carousel-dots" id="ppDots" role="tablist" aria-label="Karussell-Navigation"></div>
+            <button class="carousel-btn" id="ppNext" aria-label="Nächste Karten">→</button>
         </div>
     </div>
 </section>
@@ -298,28 +303,28 @@
         <p class="section-eyebrow">So läuft es ab</p>
         <h2 class="section-title">Einfach. Klar. In deinem Tempo.</h2>
         <p class="section-sub">Kein komplizierter Onboarding-Prozess. Du nimmst Kontakt auf – alles weitere ergibt sich.</p>
-        <div class="prozess-steps">
-            <div class="prozess-step">
-                <div class="step-number">1</div>
+        <ol class="prozess-steps" aria-label="Ablauf der Karrierebegleitung">
+            <li class="prozess-step">
+                <div class="step-number" aria-hidden="true">1</div>
                 <h3>Erstgespräch</h3>
                 <p>Wir lernen uns kennen und sprechen über deine Situation. Unverbindlich, kostenlos, ohne Vorbereitung. Ca. 30 Minuten.</p>
-            </div>
-            <div class="prozess-step">
-                <div class="step-number">2</div>
+            </li>
+            <li class="prozess-step">
+                <div class="step-number" aria-hidden="true">2</div>
                 <h3>Analyse</h3>
                 <p>Wir analysieren zusammen deine Ist-Situation, Ziele und Werte – und entwickeln einen konkreten Fahrplan für deinen nächsten Schritt.</p>
-            </div>
-            <div class="prozess-step">
-                <div class="step-number">3</div>
+            </li>
+            <li class="prozess-step">
+                <div class="step-number" aria-hidden="true">3</div>
                 <h3>Vermittlung</h3>
                 <p>Wenn ein Jobwechsel dein nächster Schritt ist, begleite ich dich aktiv – Bewerbung, Positionierung, Vermittlung. Ein Wechsel ist das Ziel, aber nicht zwingend der einzige Ausgang.</p>
-            </div>
-            <div class="prozess-step">
-                <div class="step-number">4</div>
+            </li>
+            <li class="prozess-step">
+                <div class="step-number" aria-hidden="true">4</div>
                 <h3>Begleitung</h3>
                 <p>Unabhängig von einem Jobwechsel begleite ich dich langfristig in deiner Karriere – damit du deine Ziele erreichst.</p>
-            </div>
-        </div>
+            </li>
+        </ol>
         <div class="prozess-note">
             <p>Mehr zu Methodik und Ablauf im <a href="karriere-kosmos.html">Karriere-Kosmos</a> oder unter <a href="so-arbeite-ich.html">So Arbeite Ich →</a></p>
         </div>
@@ -331,29 +336,29 @@
     <div class="section-inner">
         <p class="section-eyebrow">Häufige Fragen</p>
         <h2 class="section-title">Häufige Fragen</h2>
-        <div class="faq-list">
-            <div class="faq-item">
-                <button class="faq-question">Muss ich mich bewerben, bevor wir sprechen? <span class="faq-icon">+</span></button>
+        <div class="faq-list" role="list">
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false">Muss ich mich bewerben, bevor wir sprechen? <span class="faq-icon" aria-hidden="true">+</span></button>
                 <div class="faq-answer"><div class="faq-answer-inner">Nein. Das Erstgespräch dient genau dazu, deine Situation einzuordnen – ganz unabhängig davon, ob du dich bereits beworben hast oder nicht.</div></div>
             </div>
-            <div class="faq-item">
-                <button class="faq-question">Für wen lohnt sich Karrierebegleitung am meisten? <span class="faq-icon">+</span></button>
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false">Für wen lohnt sich Karrierebegleitung am meisten? <span class="faq-icon" aria-hidden="true">+</span></button>
                 <div class="faq-answer"><div class="faq-answer-inner">Für Menschen, die unsicher sind oder strukturiert wechseln möchten. Wenn du das Gefühl hast, dass „irgendetwas nicht ganz passt", ist das oft schon ein guter Moment.</div></div>
             </div>
-            <div class="faq-item">
-                <button class="faq-question">Wie lange dauert das? <span class="faq-icon">+</span></button>
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false">Wie lange dauert das? <span class="faq-icon" aria-hidden="true">+</span></button>
                 <div class="faq-answer"><div class="faq-answer-inner">Das ist unterschiedlich. Oft reichen schon wenige Wochen, bis Klarheit besteht und erste Schritte konkret werden. Tempo und Tiefe bestimmst du.</div></div>
             </div>
-            <div class="faq-item">
-                <button class="faq-question">Was, wenn ich noch gar nicht wechseln will? <span class="faq-icon">+</span></button>
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false">Was, wenn ich noch gar nicht wechseln will? <span class="faq-icon" aria-hidden="true">+</span></button>
                 <div class="faq-answer"><div class="faq-answer-inner">Dann bist du trotzdem richtig. Karrierebegleitung kann auch Standortbestimmung oder strukturierte Selbstreflexion sein – ohne unmittelbaren Wechsel.</div></div>
             </div>
-            <div class="faq-item">
-                <button class="faq-question">Ist eine Vermittlung garantiert? <span class="faq-icon">+</span></button>
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false">Ist eine Vermittlung garantiert? <span class="faq-icon" aria-hidden="true">+</span></button>
                 <div class="faq-answer"><div class="faq-answer-inner">Nein. Eine Jobvermittlung hängt immer von mehreren Faktoren ab – von dir, vom Unternehmen und vom Zeitpunkt. Mein Anspruch ist es, passende Optionen zu identifizieren, dich strukturiert vorzubereiten und aktiv auf die Suche zu gehen. Kommt es zu keiner Einstellung, erhalte ich kein Honorar.<br><br><strong>Garantiert sind Klarheit, eine saubere Positionierung und echte Chancen.</strong></div></div>
             </div>
-            <div class="faq-item">
-                <button class="faq-question">Gehe ich irgendwelche Verpflichtungen ein? <span class="faq-icon">+</span></button>
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false">Gehe ich irgendwelche Verpflichtungen ein? <span class="faq-icon" aria-hidden="true">+</span></button>
                 <div class="faq-answer"><div class="faq-answer-inner">Nein. Du gehst keine vertraglichen Verpflichtungen oder Kostenrisiken ein. Alle erarbeiteten Erkenntnisse, Strategien und Bewerbungsunterlagen kannst du selbstverständlich auch eigenständig nutzen. Grundlage unserer Zusammenarbeit ist lediglich deine Einwilligung zur datenschutzkonformen Verarbeitung deiner Daten – und ein respektvoller Umgang auf Augenhöhe.</div></div>
             </div>
         </div>
@@ -373,6 +378,8 @@
     </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
     <div class="footer-container">
@@ -381,7 +388,7 @@
             <ul>
                 <li><a href="index.html">Start</a></li>
                 <li><a href="unternehmen.html">Für Unternehmen</a></li>
-                <li><a href="arbeitnehmende.html">Für Arbeitnehmende</a></li>
+                <li><a href="arbeitnehmende.html">Für Mitarbeitende</a></li>
                 <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
                 <li><a href="so-arbeite-ich.html">So Arbeite Ich</a></li>
                 <li><a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
@@ -405,7 +412,7 @@
         <div class="footer-section">
             <h4>Rechtliches</h4>
             <ul>
-                <li><a href="transparenz/impressum.html">Impressum</a></li>
+                <li><a href="/impressum">Impressum</a></li>
                 <li><a href="transparenz/datenschutz.html">Datenschutz</a></li>
             </ul>
             <h4 style="margin-top:1.8rem;">Tippgeber:in werden</h4>
@@ -419,101 +426,179 @@
 </footer>
 
 <script>
-    const burger = document.getElementById('burger');
-    const mobileMenu = document.getElementById('mobile-menu');
-    burger.addEventListener('click', () => {
-        burger.classList.toggle('open');
-        mobileMenu.classList.toggle('open');
-        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+// ── BURGER ──
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobile-menu');
+burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        burger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
     });
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            burger.classList.remove('open');
-            mobileMenu.classList.remove('open');
-            document.body.style.overflow = '';
+});
+
+// ── PAINPOINT CAROUSEL – infinite loop ──
+(function() {
+    const track = document.getElementById('painpointTrack');
+    const dotsWrap = document.getElementById('ppDots');
+    const prevBtn = document.getElementById('ppPrev');
+    const nextBtn = document.getElementById('ppNext');
+    if (!track) return;
+
+    const TOTAL = track.querySelectorAll('.painpoint-card').length;
+    let perView, current, isTransitioning = false, autoplay;
+
+    function getPerView() {
+        return window.innerWidth < 600 ? 1 : window.innerWidth < 900 ? 2 : 3;
+    }
+
+    function getSlideWidth() {
+        const card = track.querySelector('.painpoint-card');
+        const gap = parseFloat(getComputedStyle(track).gap) || 16;
+        return card.offsetWidth + gap;
+    }
+
+    function buildClones() {
+        // Remove existing clones
+        track.querySelectorAll('.pp-clone').forEach(c => c.remove());
+        const origCards = Array.from(track.querySelectorAll('.painpoint-card:not(.pp-clone)'));
+        // Append clones at end
+        origCards.forEach(c => {
+            const cl = c.cloneNode(true);
+            cl.classList.add('pp-clone');
+            track.appendChild(cl);
         });
-    });
+        // Prepend clones at start
+        [...origCards].reverse().forEach(c => {
+            const cl = c.cloneNode(true);
+            cl.classList.add('pp-clone');
+            track.insertBefore(cl, track.firstChild);
+        });
+    }
 
-    // Painpoint Carousel
-    (function() {
-        const track = document.getElementById('painpointTrack');
-        const dotsWrap = document.getElementById('ppDots');
-        if (!track) return;
-        const cards = Array.from(track.querySelectorAll('.painpoint-card'));
-        const total = cards.length;
-        let current = 0;
-        let perView, pages;
-
-        function getPerView() {
-            return window.innerWidth < 600 ? 1 : window.innerWidth < 900 ? 2 : 3;
-        }
-
-        function buildDots() {
-            dotsWrap.innerHTML = '';
-            for (let i = 0; i < pages; i++) {
-                const d = document.createElement('button');
-                d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-                d.addEventListener('click', () => goTo(i));
-                dotsWrap.appendChild(d);
-            }
-        }
-
-        function goTo(page) {
-            current = Math.max(0, Math.min(page, pages - 1));
-            const cardW = cards[0].offsetWidth;
-            const gap = parseFloat(getComputedStyle(track).gap) || 16;
-            track.style.transform = 'translateX(-' + (current * perView * (cardW + gap)) + 'px)';
-            dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
-                d.classList.toggle('active', i === current);
+    function buildDots() {
+        dotsWrap.innerHTML = '';
+        const pages = Math.ceil(TOTAL / perView);
+        for (let i = 0; i < pages; i++) {
+            const d = document.createElement('button');
+            d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+            d.setAttribute('aria-label', 'Seite ' + (i + 1));
+            d.addEventListener('click', () => {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                goTo(TOTAL + i * perView, true);
+                resetAutoplay();
             });
+            dotsWrap.appendChild(d);
         }
+    }
 
-        function init() {
-            perView = getPerView();
-            pages = Math.ceil(total / perView);
-            current = 0;
+    function updateDots() {
+        const pages = Math.ceil(TOTAL / perView);
+        const realIdx = Math.floor(((current - TOTAL) % TOTAL + TOTAL) % TOTAL / perView);
+        dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
+            d.classList.toggle('active', i === realIdx);
+        });
+    }
+
+    function goTo(index, animate) {
+        track.style.transition = animate === false ? 'none' : 'transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)';
+        track.style.transform = 'translateX(-' + (index * getSlideWidth()) + 'px)';
+        current = index;
+        updateDots();
+    }
+
+    track.addEventListener('transitionend', () => {
+        isTransitioning = false;
+        if (current < TOTAL) {
             track.style.transition = 'none';
-            track.style.transform = 'translateX(0)';
-            buildDots();
+            current += TOTAL;
+            track.style.transform = 'translateX(-' + (current * getSlideWidth()) + 'px)';
+            void track.offsetWidth;
+        } else if (current >= TOTAL * 2) {
+            track.style.transition = 'none';
+            current -= TOTAL;
+            track.style.transform = 'translateX(-' + (current * getSlideWidth()) + 'px)';
+            void track.offsetWidth;
         }
+    });
 
-        window.addEventListener('load', init);
-        window.addEventListener('resize', () => { init(); });
+    function next() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        goTo(current + perView, true);
+    }
+    function prev() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        goTo(current - perView, true);
+    }
 
-        // Touch/drag support
-        let startX = 0;
-        track.addEventListener('mousedown', e => { startX = e.clientX; });
-        track.addEventListener('mouseup', e => {
-            const diff = startX - e.clientX;
-            if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
-        });
-        track.addEventListener('touchstart', e => { startX = e.changedTouches[0].clientX; }, { passive: true });
-        track.addEventListener('touchend', e => {
-            const diff = startX - e.changedTouches[0].clientX;
-            if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
-        });
-    })()
+    function init() {
+        perView = getPerView();
+        buildClones();
+        buildDots();
+        current = TOTAL;
+        goTo(TOTAL, false);
+    }
 
-    // FAQ Accordion
-    document.querySelectorAll('.faq-item').forEach(item => {
-        item.querySelector('.faq-question').addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(i => {
-                i.classList.remove('active');
-                i.querySelector('.faq-answer').style.maxHeight = null;
-            });
-</script>
-<script>
-(function(){
-    var b = document.getElementById("maintenance-banner");
-    if (!b) return;
-    if (sessionStorage.getItem("banner-closed")) { b.style.display = "none"; return; }
-    var btn = document.getElementById("banner-close");
-    if (btn) btn.addEventListener("click", function(){
-        b.style.display = "none";
-        sessionStorage.setItem("banner-closed", "1");
+    function startAutoplay() { autoplay = setInterval(next, 5000); }
+    function resetAutoplay() { clearInterval(autoplay); startAutoplay(); }
+
+    window.addEventListener('load', () => { init(); startAutoplay(); });
+    window.addEventListener('resize', () => {
+        perView = getPerView();
+        buildClones();
+        buildDots();
+        current = TOTAL;
+        goTo(TOTAL, false);
+    });
+
+    prevBtn.addEventListener('click', () => { prev(); resetAutoplay(); });
+    nextBtn.addEventListener('click', () => { next(); resetAutoplay(); });
+
+    // Touch / drag
+    let startX = 0;
+    track.addEventListener('touchstart', e => { startX = e.changedTouches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) { diff > 0 ? next() : prev(); resetAutoplay(); }
+    });
+    track.addEventListener('mousedown', e => { startX = e.clientX; });
+    track.addEventListener('mouseup', e => {
+        const diff = startX - e.clientX;
+        if (Math.abs(diff) > 50) { diff > 0 ? next() : prev(); resetAutoplay(); }
     });
 })();
+
+// ── FAQ ACCORDION ──
+document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+
+    btn.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.faq-answer').style.maxHeight = null;
+            i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        // Open clicked if it was closed
+        if (!isActive) {
+            item.classList.add('active');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            btn.setAttribute('aria-expanded', 'true');
+        }
+    });
+});
 </script>
 </body>
 </html>
