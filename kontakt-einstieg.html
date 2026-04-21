@@ -90,8 +90,10 @@
         /* ── TAB 2: TERMIN ── */
         .termin-section { padding: 4rem 2.5rem 5rem; background: var(--light-gray); }
         .termin-inner { max-width: 1000px; margin: 0 auto; }
-        .zeeg-wrap { background: var(--white); border-radius: 20px; padding: 2rem; border: 1.5px solid var(--border); margin-top: 2rem; }
-        .zeeg-wrap .zeeg-inline-widget { width: 100% !important; min-height: 750px !important; }
+        .zeeg-wrap { background: var(--white); border-radius: 20px; padding: 1.5rem; border: 1.5px solid var(--border); margin-top: 2rem; height: 620px; display: flex; flex-direction: column; }
+        .zeeg-embed-inner { flex: 1; position: relative; min-height: 0; }
+        .zeeg-embed-inner .zeeg-inline-widget { position: absolute; inset: 0; width: 100% !important; height: 100% !important; min-height: unset !important; }
+        .zeeg-embed-inner iframe { width: 100% !important; height: 100% !important; border: none; }
 
         /* ── TAB 3: KONTAKTFORMULAR ── */
         .formular-section { padding: 5rem 2.5rem; background: var(--white); }
@@ -286,8 +288,10 @@
             <h2 class="section-title">Termin direkt buchen</h2>
             <p class="section-sub">Erstgespräch kostenlos &amp; unverbindlich – wähle direkt einen Termin.</p>
             <div class="zeeg-wrap">
-                <div class="zeeg-inline-widget" id="zeeg-embed-koppmannkarriere" style="width:100%; min-height:750px;"></div>
-                <script type="text/javascript" src="https://assets.zeeg.me/embed.min.js" data-user="koppmannkarriere" async></script>
+                <div class="zeeg-embed-inner">
+                    <div class="zeeg-inline-widget" id="zeeg-embed-koppmannkarriere"></div>
+                    <script type="text/javascript" src="https://assets.zeeg.me/embed.min.js" data-user="koppmannkarriere" async></script>
+                </div>
             </div>
         </div>
     </section>
@@ -320,6 +324,7 @@
                         <option value="Berufstätige:r">Berufstätig</option>
                         <option value="Arbeitssuchend">Arbeitssuchend</option>
                         <option value="Quereinsteiger:in">Quereinsteiger:in</option>
+                        <option value="Unternehmen / Betrieb">Unternehmen / Betrieb</option>
                         <option value="Sonstiges">Sonstiges</option>
                     </select>
                 </div>
