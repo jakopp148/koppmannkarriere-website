@@ -21,7 +21,6 @@
         }
         body { font-family: 'Montserrat', sans-serif; line-height: 1.7; color: var(--black); overflow-x: hidden; font-size: 17px; }
 
-        /* ── SKIP LINK ── */
         .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--primary-blue); color: var(--white); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-decoration: none; z-index: 9999; transition: top 0.2s; }
         .skip-link:focus { top: 1rem; }
 
@@ -37,7 +36,7 @@
         nav ul li a:hover, nav ul li a.active { color: var(--white); }
         nav ul li a:hover::after, nav ul li a.active::after { width: 100%; }
         .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.95); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.8); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
-        .header-cta-btn:hover { background: var(--white); color: var(--dark-blue); border-color: var(--white); }
+        .header-cta-btn:hover { background: var(--white); color: var(--dark-blue); }
         .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
         .burger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
         .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -52,96 +51,101 @@
         /* ── HERO ── */
         .hero { margin-top: 72px; position: relative; width: 100%; min-height: 70vh; overflow: hidden; display: flex; align-items: center; justify-content: center; }
         .hero-image { position: absolute; inset: 0; }
-        /* object-position: center bottom → Fokus untere Mitte */
         .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center bottom; display: block; }
         .hero-image::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.48); }
         .hero-content { position: relative; z-index: 1; text-align: center; max-width: 700px; padding: 3rem 2rem; }
-        .hero-eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 1rem; }
-        .hero h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 900; color: var(--white); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.2rem; }
-        .hero p { font-size: 1.05rem; color: rgba(255,255,255,0.88); line-height: 1.8; margin-bottom: 2.5rem; }
+        .hero h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 900; color: var(--white); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.4rem; }
+        .hero-sub { font-size: clamp(1.05rem, 2vw, 1.25rem); font-weight: 500; color: rgba(255,255,255,0.92); line-height: 1.7; }
 
-        /* ── MAIN TABS ── */
+        /* ── TABS ── */
         .main-tabs-bar { position: sticky; top: 72px; z-index: 100; background: var(--white); border-bottom: 2px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-        .main-tabs-inner { max-width: 1000px; margin: 0 auto; padding: 0 2.5rem; display: flex; }
-        .main-tab-btn { padding: 1.1rem 1.8rem; background: none; border: none; border-bottom: 3px solid transparent; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--medium-gray); cursor: pointer; transition: all 0.2s; white-space: nowrap; margin-bottom: -2px; }
+        .main-tabs-inner { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; display: flex; }
+        .main-tab-btn { padding: 1.1rem 1.5rem; background: none; border: none; border-bottom: 3px solid transparent; font-family: 'Montserrat', sans-serif; font-size: 0.87rem; font-weight: 600; color: var(--medium-gray); cursor: pointer; transition: all 0.2s; white-space: nowrap; margin-bottom: -2px; }
         .main-tab-btn:hover { color: var(--page-color); }
         .main-tab-btn.active { color: var(--page-color); border-bottom-color: var(--page-color); }
         .main-tab-btn:focus { outline: 2px solid var(--primary-blue); outline-offset: 2px; }
-
-        /* ── TAB PANELS ── */
         .tab-panel { display: none; }
         .tab-panel.active { display: block; }
 
-        /* ── KONTAKTDATEN ── */
+        /* ── TAB 1: KONTAKTDATEN ── */
         .kontakt-section { padding: 5rem 2.5rem; background: var(--white); }
-        .kontakt-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-        .kontakt-block h2 { font-size: 1.6rem; font-weight: 900; color: var(--black); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-        .kontakt-block .sub { font-size: 0.95rem; color: var(--medium-gray); margin-bottom: 2rem; }
-        .kontakt-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.6rem; }
-        .kontakt-icon { width: 42px; height: 42px; background: var(--light-gray); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
-        .kontakt-item-text strong { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--medium-gray); margin-bottom: 0.2rem; }
-        .kontakt-item-text a { color: var(--black); text-decoration: none; font-size: 0.97rem; font-weight: 600; transition: color 0.2s; }
+        .kontakt-inner { max-width: 900px; margin: 0 auto; }
+        .section-title { font-size: 1.6rem; font-weight: 900; color: var(--black); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+        .section-sub { font-size: 0.95rem; color: var(--medium-gray); margin-bottom: 2.5rem; }
+        .kontakt-items { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 3rem; }
+        .kontakt-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.4rem 1.6rem; background: var(--light-gray); border-radius: 14px; border: 1.5px solid transparent; transition: border-color 0.2s; }
+        .kontakt-item:hover { border-color: var(--border); }
+        .kontakt-icon { width: 42px; height: 42px; background: var(--white); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .kontakt-item-text strong { display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--medium-gray); margin-bottom: 0.25rem; }
+        .kontakt-item-text a { color: var(--black); text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: color 0.2s; }
         .kontakt-item-text a:hover { color: var(--page-color); }
-        .kontakt-item-text p { color: var(--black); font-size: 0.97rem; font-weight: 600; }
-
-        /* Zeeg embed – größer */
-        .zeeg-block { grid-column: 2; }
-        .zeeg-embed-wrap { width: 100%; min-height: 700px; }
-        .zeeg-embed-wrap .zeeg-inline-widget { width: 100% !important; min-height: 700px !important; }
-
-        .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 0.5rem; }
+        .kontakt-item-text p { color: var(--black); font-size: 0.95rem; font-weight: 600; }
+        .social-block h3 { font-size: 1.1rem; font-weight: 800; color: var(--black); margin-bottom: 0.4rem; }
+        .social-block .sub-sm { font-size: 0.88rem; color: var(--medium-gray); margin-bottom: 1.2rem; }
+        .social-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; max-width: 580px; }
         .social-card { display: flex; align-items: center; gap: 0.8rem; padding: 0.9rem 1.1rem; background: var(--light-gray); border-radius: 12px; text-decoration: none; color: var(--black); font-weight: 600; font-size: 0.88rem; transition: all 0.25s; border: 2px solid transparent; }
         .social-card:hover { border-color: var(--page-color); background: var(--white); }
         .social-card img { width: 24px; height: 24px; object-fit: contain; }
 
-        /* Social block – full width, directly after the two columns */
-        .social-full { grid-column: 1 / -1; margin-top: 1rem; }
+        /* ── TAB 2: TERMIN ── */
+        .termin-section { padding: 4rem 2.5rem 5rem; background: var(--light-gray); }
+        .termin-inner { max-width: 1000px; margin: 0 auto; }
+        .zeeg-wrap { background: var(--white); border-radius: 20px; padding: 2rem; border: 1.5px solid var(--border); margin-top: 2rem; }
+        .zeeg-wrap .zeeg-inline-widget { width: 100% !important; min-height: 750px !important; }
 
-        /* ── FORMULARE ── */
-        .formulare-section { padding: 4rem 2.5rem 5rem; background: var(--light-gray); }
-        .formulare-inner { max-width: 1000px; margin: 0 auto; }
-        .formulare-inner h2 { font-size: 1.6rem; font-weight: 900; color: var(--black); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-        .formulare-inner .sub { font-size: 0.95rem; color: var(--medium-gray); margin-bottom: 2rem; }
-        .form-tabs-bar { display: flex; gap: 0; border-bottom: 2px solid var(--border); margin-bottom: 2.5rem; }
-        .form-tab-btn { padding: 0.9rem 1.5rem; background: none; border: none; border-bottom: 3px solid transparent; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--medium-gray); cursor: pointer; transition: all 0.2s; white-space: nowrap; margin-bottom: -2px; }
-        .form-tab-btn:hover { color: var(--page-color); }
-        .form-tab-btn.active { color: var(--page-color); border-bottom-color: var(--page-color); }
-        .form-tab-btn:focus { outline: 2px solid var(--primary-blue); outline-offset: 2px; }
-        .form-panel { display: none; }
-        .form-panel.active { display: block; }
-        .form-intro { background: var(--white); border-radius: 16px; padding: 2rem 2.5rem; margin-bottom: 1.5rem; border: 1.5px solid var(--border); }
-        .form-intro h3 { font-size: 1.1rem; font-weight: 800; color: var(--black); margin-bottom: 0.5rem; }
-        .form-intro p { font-size: 0.92rem; color: var(--medium-gray); line-height: 1.75; }
-        .who-box { display: inline-block; margin-top: 0.8rem; background: var(--light-gray); border-radius: 8px; padding: 0.5rem 1rem; font-size: 0.82rem; color: var(--medium-gray); font-weight: 600; }
-        .tally-wrapper { background: var(--white); border-radius: 16px; padding: 2rem 2.5rem; border: 1.5px solid var(--border); }
+        /* ── TAB 3: KONTAKTFORMULAR ── */
+        .formular-section { padding: 5rem 2.5rem; background: var(--white); }
+        .formular-inner { max-width: 660px; margin: 0 auto; }
+        .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+        .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+        .form-group label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--medium-gray); }
+        .form-group input,
+        .form-group select,
+        .form-group textarea { font-family: 'Montserrat', sans-serif; font-size: 0.95rem; color: var(--black); background: var(--light-gray); border: 1.5px solid var(--border); border-radius: 10px; padding: 0.85rem 1.1rem; width: 100%; transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus { border-color: var(--primary-blue); box-shadow: 0 0 0 3px rgba(0,98,177,0.1); background: var(--white); }
+        .form-group textarea { resize: vertical; min-height: 140px; line-height: 1.65; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+        .form-note { font-size: 0.8rem; color: var(--medium-gray); line-height: 1.6; margin-top: 0.2rem; }
+        .btn-submit { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem 2.4rem; background: var(--primary-blue); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s; width: 100%; margin-top: 0.5rem; }
+        .btn-submit:hover { background: var(--dark-blue); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,39,119,0.2); }
+        .btn-submit:focus { outline: 2px solid var(--primary-blue); outline-offset: 3px; }
+        .form-success { display: none; background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 14px; padding: 2rem; text-align: center; margin-top: 1rem; }
+        .form-success.visible { display: block; }
+        .form-success p { font-size: 0.95rem; color: #166534; font-weight: 600; line-height: 1.75; }
 
-        /* ── TIPPGEBER ── */
-        .tippgeber-section { padding: 5rem 2.5rem; background: var(--white); }
-        .tippgeber-inner { max-width: 1000px; margin: 0 auto; }
-        .tippgeber-inner h2 { font-size: 1.6rem; font-weight: 900; color: var(--black); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-        .tippgeber-inner .sub { font-size: 0.95rem; color: var(--medium-gray); margin-bottom: 1.5rem; }
-
-        /* Hinweis-Banner Tippgeber */
+        /* ── TAB 4: TIPPGEBER ── */
+        .tippgeber-section { padding: 5rem 2.5rem; background: var(--light-gray); }
+        .tippgeber-inner { max-width: 900px; margin: 0 auto; }
         .tippgeber-hinweis { background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 14px; padding: 1.3rem 1.8rem; margin-bottom: 2.5rem; display: flex; align-items: flex-start; gap: 1rem; }
         .tippgeber-hinweis-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
         .tippgeber-hinweis p { font-size: 0.88rem; color: #78350f; line-height: 1.75; }
         .tippgeber-hinweis strong { color: #92400e; }
 
-        .tippgeber-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; opacity: 0.6; pointer-events: none; filter: grayscale(30%); }
-        .tippgeber-card { border-radius: 20px; overflow: hidden; border: 2px solid var(--border); }
-        .tippgeber-card-header { padding: 2rem 2rem 1.5rem; }
-        .tippgeber-card-header.privat { background: linear-gradient(135deg, var(--primary-blue), #0077cc); }
-        .tippgeber-card-header.multiplikator { background: linear-gradient(135deg, var(--dark-blue), #003fa3); }
+        /* Privat – prominent */
+        .card-privat { border-radius: 20px; overflow: hidden; border: 2px solid var(--border); margin-bottom: 1.5rem; }
+        .card-privat .card-header { padding: 2.5rem 2.5rem 2rem; background: linear-gradient(135deg, var(--primary-blue), #0077cc); }
         .tippgeber-badge { display: inline-block; background: rgba(255,255,255,0.2); color: var(--white); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 50px; margin-bottom: 1rem; }
-        .tippgeber-card-header h3 { font-size: 1.3rem; font-weight: 900; color: var(--white); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
-        .tippgeber-card-header p { font-size: 0.88rem; color: rgba(255,255,255,0.82); line-height: 1.7; }
-        .provision-pill { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1rem; background: rgba(255,255,255,0.15); color: var(--white); font-size: 0.82rem; font-weight: 700; padding: 0.35rem 0.9rem; border-radius: 50px; border: 1px solid rgba(255,255,255,0.3); }
-        .tippgeber-card-body { padding: 1.8rem 2rem; background: var(--white); }
-        .tippgeber-card-body ul { list-style: none; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
-        .tippgeber-card-body ul li { font-size: 0.88rem; color: var(--medium-gray); display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.6; }
-        .tippgeber-card-body ul li::before { content: '✓'; color: var(--page-color); font-weight: 700; flex-shrink: 0; margin-top: 0.1rem; }
-        .btn-tippgeber { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.8rem; background: var(--page-color); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
+        .card-privat .card-header h3 { font-size: 1.45rem; font-weight: 900; color: var(--white); letter-spacing: -0.02em; margin-bottom: 0.6rem; }
+        .card-privat .card-header p { font-size: 0.95rem; color: rgba(255,255,255,0.88); line-height: 1.75; max-width: 600px; }
+        .provision-pill { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.2rem; background: rgba(255,255,255,0.15); color: var(--white); font-size: 0.85rem; font-weight: 700; padding: 0.4rem 1rem; border-radius: 50px; border: 1px solid rgba(255,255,255,0.3); }
+        .card-privat .card-body { padding: 2rem 2.5rem; background: var(--white); display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
+        .card-privat .card-body ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+        .card-privat .card-body ul li { font-size: 0.9rem; color: var(--medium-gray); display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.6; }
+        .card-privat .card-body ul li::before { content: '✓'; color: var(--page-color); font-weight: 700; flex-shrink: 0; margin-top: 0.1rem; }
+        .btn-tippgeber { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2rem; background: var(--page-color); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; white-space: nowrap; }
         .btn-tippgeber:hover { background: var(--dark-blue); transform: translateY(-2px); }
+        .btn-tippgeber.disabled { opacity: 0.5; pointer-events: none; cursor: default; }
+
+        /* Multiplikator – kompakter Hinweis */
+        .multiplikator-hint { background: var(--white); border: 1.5px solid var(--border); border-radius: 16px; padding: 1.8rem 2rem; display: flex; align-items: flex-start; gap: 1.5rem; }
+        .multiplikator-hint-icon { font-size: 2rem; flex-shrink: 0; margin-top: 2px; }
+        .multiplikator-hint-text h4 { font-size: 0.97rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.4rem; }
+        .multiplikator-hint-text p { font-size: 0.86rem; color: var(--medium-gray); line-height: 1.7; }
+        .btn-hint { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.9rem; padding: 0.55rem 1.2rem; background: var(--light-gray); color: var(--dark-blue); font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 700; border-radius: 50px; text-decoration: none; border: 1.5px solid var(--border); transition: all 0.2s; }
+        .btn-hint:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
+        .btn-hint.disabled { opacity: 0.5; pointer-events: none; }
 
         /* ── FOOTER ── */
         footer { background: var(--black); color: rgba(255,255,255,0.85); padding: 4rem 2.5rem 2rem; }
@@ -164,12 +168,13 @@
             nav ul, .header-cta-btn { display: none; }
             .burger { display: flex; }
             .hero { min-height: 55vh; }
-            .kontakt-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-            .zeeg-block { grid-column: 1; }
-            .tippgeber-grid { grid-template-columns: 1fr; }
+            .kontakt-items { grid-template-columns: 1fr; }
+            .social-grid { grid-template-columns: 1fr 1fr; }
+            .card-privat .card-body { grid-template-columns: 1fr; }
+            .multiplikator-hint { flex-direction: column; gap: 1rem; }
             .main-tabs-inner { padding: 0 1rem; overflow-x: auto; }
-            .formulare-section, .kontakt-section, .tippgeber-section { padding-left: 1.5rem; padding-right: 1.5rem; }
-            .tally-wrapper { padding: 1rem; }
+            .kontakt-section, .termin-section, .formular-section, .tippgeber-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .form-row { grid-template-columns: 1fr; }
             .footer-container { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
         }
@@ -177,10 +182,8 @@
 </head>
 <body>
 
-<!-- SKIP LINK -->
 <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
-<!-- HEADER -->
 <header>
     <nav>
         <a href="index.html" class="logo"><img src="images/Logo_weiß.png" alt="Koppmann Karriere"></a>
@@ -207,37 +210,32 @@
 
 <main id="main-content">
 
-<!-- HERO -->
 <section class="hero" aria-label="Kontakt & Einstieg">
     <div class="hero-image" aria-hidden="true">
-        <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1920,h_1080,c_fill,g_south/offener_Gespr%C3%A4chsraum_pkohvh.jpg"
-             alt="Offener Gesprächsraum – Koppmann Karriere">
+        <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_1920,h_1080,c_fill,g_south/offener_Gespr%C3%A4chsraum_pkohvh.jpg" alt="Offener Gesprächsraum – Koppmann Karriere">
     </div>
     <div class="hero-content">
         <h1>Kontakt &amp; Einstieg</h1>
-        <p>Der erste Schritt braucht keine Vorbereitung. Meld dich einfach – ich höre zu.</p>
+        <p class="hero-sub">Der erste Schritt braucht keine Vorbereitung.<br>Melde dich einfach – ich höre zu.</p>
     </div>
 </section>
 
-<!-- MAIN TAB BAR -->
 <div class="main-tabs-bar" role="tablist" aria-label="Bereiche">
     <div class="main-tabs-inner">
         <button class="main-tab-btn active" data-tab="kontaktdaten" role="tab" aria-selected="true" aria-controls="tab-kontaktdaten">Kontaktdaten &amp; Socials</button>
-        <button class="main-tab-btn" data-tab="formulare" role="tab" aria-selected="false" aria-controls="tab-formulare">Formulare</button>
+        <button class="main-tab-btn" data-tab="termin" role="tab" aria-selected="false" aria-controls="tab-termin">Termin buchen</button>
+        <button class="main-tab-btn" data-tab="formular" role="tab" aria-selected="false" aria-controls="tab-formular">Kontaktformular</button>
         <button class="main-tab-btn" data-tab="tippgeber" role="tab" aria-selected="false" aria-controls="tab-tippgeber">Tippgeber:in werden</button>
     </div>
 </div>
 
-<!-- TAB 1: KONTAKTDATEN -->
+<!-- TAB 1: KONTAKTDATEN & SOCIALS -->
 <div class="tab-panel active" id="tab-kontaktdaten" role="tabpanel">
     <section class="kontakt-section">
         <div class="kontakt-inner">
-
-            <!-- Linke Spalte: Kontaktdaten -->
-            <div class="kontakt-block">
-                <h2>Direkt in Kontakt</h2>
-                <p class="sub">Alle Wege die du nutzen kannst, um Jan zu erreichen.</p>
-
+            <h2 class="section-title">Direkt in Kontakt</h2>
+            <p class="section-sub">Alle Wege die du nutzen kannst, um Jan zu erreichen.</p>
+            <div class="kontakt-items">
                 <div class="kontakt-item">
                     <div class="kontakt-icon" aria-hidden="true">✉️</div>
                     <div class="kontakt-item-text">
@@ -267,153 +265,117 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Rechte Spalte: Zeeg Embed – größer -->
-            <div class="kontakt-block zeeg-block">
-                <h2>Termin direkt buchen</h2>
-                <p class="sub" style="margin-bottom:1.5rem;">Erstgespräch kostenlos &amp; unverbindlich – wähle direkt einen Termin.</p>
-                <div class="zeeg-embed-wrap">
-                    <div class="zeeg-inline-widget" id="zeeg-embed-koppmannkarriere" style="width:100%; min-height:700px;"></div>
-                    <script type="text/javascript" src="https://assets.zeeg.me/embed.min.js" data-user="koppmannkarriere" async></script>
+            <div class="social-block">
+                <h3>Social Media</h3>
+                <p class="sub-sm">Einblicke in meine Arbeit, Haltung und berufliche Themen.</p>
+                <div class="social-grid">
+                    <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="social-card"><img src="images/Instagram_Icon.png" alt="Instagram"> Instagram</a>
+                    <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="social-card"><img src="images/Tiktok_Icon.png" alt="TikTok"> TikTok</a>
+                    <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="social-card"><img src="images/YouTube_Icon.png" alt="YouTube"> YouTube</a>
+                    <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="social-card"><img src="images/Linkedin_Icon.png" alt="LinkedIn"> LinkedIn</a>
                 </div>
             </div>
-
-            <!-- Social Media – volle Breite, direkt darunter -->
-            <div class="kontakt-block social-full">
-                <h2>Social Media</h2>
-                <p class="sub">Einblicke in meine Arbeit, Haltung und berufliche Themen.</p>
-                <div class="social-grid" style="max-width:480px;">
-                    <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="social-card">
-                        <img src="images/Instagram_Icon.png" alt="Instagram"> Instagram
-                    </a>
-                    <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="social-card">
-                        <img src="images/Tiktok_Icon.png" alt="TikTok"> TikTok
-                    </a>
-                    <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="social-card">
-                        <img src="images/YouTube_Icon.png" alt="YouTube"> YouTube
-                    </a>
-                    <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="social-card">
-                        <img src="images/Linkedin_Icon.png" alt="LinkedIn"> LinkedIn
-                    </a>
-                </div>
-            </div>
-
         </div>
     </section>
 </div>
 
-<!-- TAB 2: FORMULARE -->
-<div class="tab-panel" id="tab-formulare" role="tabpanel">
-    <section class="formulare-section">
-        <div class="formulare-inner">
-            <h2>Formulare</h2>
-            <p class="sub">Wähle den Bereich der zu dir passt und schreib uns direkt.</p>
-
-            <div class="form-tabs-bar" role="tablist" aria-label="Formular wählen">
-                <button class="form-tab-btn active" data-form="mitarbeitende" role="tab" aria-selected="true">Für Mitarbeitende</button>
-                <button class="form-tab-btn" data-form="unternehmen" role="tab" aria-selected="false">Für Unternehmen</button>
-                <button class="form-tab-btn" data-form="jobprofil" role="tab" aria-selected="false">Jobprofil hinterlegen</button>
+<!-- TAB 2: TERMIN BUCHEN -->
+<div class="tab-panel" id="tab-termin" role="tabpanel">
+    <section class="termin-section">
+        <div class="termin-inner">
+            <h2 class="section-title">Termin direkt buchen</h2>
+            <p class="section-sub">Erstgespräch kostenlos &amp; unverbindlich – wähle direkt einen Termin.</p>
+            <div class="zeeg-wrap">
+                <div class="zeeg-inline-widget" id="zeeg-embed-koppmannkarriere" style="width:100%; min-height:750px;"></div>
+                <script type="text/javascript" src="https://assets.zeeg.me/embed.min.js" data-user="koppmannkarriere" async></script>
             </div>
-
-            <!-- FORMULAR: MITARBEITENDE -->
-            <div class="form-panel active" id="form-mitarbeitende" role="tabpanel">
-                <div class="form-intro">
-                    <h3>Kontakt aufnehmen als Mitarbeiter:in</h3>
-                    <p>Du suchst Orientierung, möchtest berufliche Entscheidungen besprechen oder weißt noch nicht genau wo du stehst? Meld dich – das Erstgespräch ist kostenlos und unverbindlich.</p>
-                    <span class="who-box">Für: Schüler:innen · Auszubildende · Studierende · Berufstätige · Arbeitssuchende · Quereinsteiger:innen</span>
-                </div>
-                <div class="tally-wrapper">
-                    <div style="background:var(--light-gray); border:2px dashed var(--border); border-radius:14px; padding:2.5rem; text-align:center; color:var(--medium-gray);">
-                        <div style="font-size:1.8rem; margin-bottom:0.8rem;" aria-hidden="true">📋</div>
-                        <p style="font-size:0.92rem; font-weight:600; color:var(--black); margin-bottom:0.3rem;">Formular wird zeitnah eingefügt</p>
-                        <p style="font-size:0.85rem;">Bei Fragen wende dich direkt an <a href="mailto:jan@koppmannkarriere.de" style="color:var(--primary-blue);">jan@koppmannkarriere.de</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FORMULAR: UNTERNEHMEN -->
-            <div class="form-panel" id="form-unternehmen" role="tabpanel">
-                <p style="font-size:0.95rem; color:var(--medium-gray); line-height:1.75; margin-bottom:1.5rem;">Schreiben Sie mir – ich melde mich zeitnah.</p>
-                <div class="tally-wrapper">
-                    <div style="background:var(--light-gray); border:2px dashed var(--border); border-radius:14px; padding:2.5rem; text-align:center; color:var(--medium-gray);">
-                        <div style="font-size:1.8rem; margin-bottom:0.8rem;" aria-hidden="true">📋</div>
-                        <p style="font-size:0.92rem; font-weight:600; color:var(--black); margin-bottom:0.3rem;">Formular wird zeitnah eingefügt</p>
-                        <p style="font-size:0.85rem;">Bei Fragen direkt an <a href="mailto:jan@koppmannkarriere.de" style="color:var(--primary-blue);">jan@koppmannkarriere.de</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FORMULAR: JOBPROFIL -->
-            <div class="form-panel" id="form-jobprofil" role="tabpanel">
-                <div class="form-intro">
-                    <h3>Jobprofil hinterlegen</h3>
-                    <p>Sie haben eine offene Stelle und möchten passende Kandidaten finden? Hinterlegen Sie hier Ihr vollständiges Jobprofil – je detaillierter, desto besser die Passung.</p>
-                    <span class="who-box">Hinweis: Das Jobprofil wird ausschließlich intern genutzt und nicht veröffentlicht.</span>
-                </div>
-                <div class="tally-wrapper">
-                    <div style="background:var(--light-gray); border:2px dashed var(--border); border-radius:14px; padding:2.5rem; text-align:center; color:var(--medium-gray);">
-                        <div style="font-size:1.8rem; margin-bottom:0.8rem;" aria-hidden="true">📋</div>
-                        <p style="font-size:0.92rem; font-weight:600; color:var(--black); margin-bottom:0.3rem;">Formular wird zeitnah eingefügt</p>
-                        <p style="font-size:0.85rem;">Bei Fragen direkt an <a href="mailto:jan@koppmannkarriere.de" style="color:var(--primary-blue);">jan@koppmannkarriere.de</a></p>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 </div>
 
-<!-- TAB 3: TIPPGEBER -->
+<!-- TAB 3: KONTAKTFORMULAR -->
+<div class="tab-panel" id="tab-formular" role="tabpanel">
+    <section class="formular-section">
+        <div class="formular-inner">
+            <h2 class="section-title">Kontaktformular</h2>
+            <p class="section-sub">Schreib mir direkt – ich melde mich persönlich und zeitnah bei dir.</p>
+
+            <form class="contact-form" id="contact-form" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cf-name">Name</label>
+                        <input type="text" id="cf-name" name="name" placeholder="Dein Name" required autocomplete="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="cf-email">E-Mail</label>
+                        <input type="email" id="cf-email" name="email" placeholder="deine@email.de" required autocomplete="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cf-bereich">Ich bin …</label>
+                    <select id="cf-bereich" name="bereich" required>
+                        <option value="" disabled selected>Bitte wählen</option>
+                        <option value="Schüler:in / Azubi">Schüler:in oder Auszubildende:r</option>
+                        <option value="Studierende:r">Studierende:r</option>
+                        <option value="Berufstätige:r">Berufstätig</option>
+                        <option value="Arbeitssuchend">Arbeitssuchend</option>
+                        <option value="Quereinsteiger:in">Quereinsteiger:in</option>
+                        <option value="Sonstiges">Sonstiges</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cf-nachricht">Nachricht</label>
+                    <textarea id="cf-nachricht" name="nachricht" placeholder="Was beschäftigt dich gerade? Wo stehst du? Kein Anschreiben nötig – schreib einfach." required></textarea>
+                    <p class="form-note">Kein perfekter Text nötig. Ein paar Sätze reichen vollkommen.</p>
+                </div>
+                <button type="submit" class="btn-submit">Nachricht senden →</button>
+            </form>
+            <div class="form-success" id="form-success" role="status" aria-live="polite">
+                <p>✓ Deine Nachricht ist angekommen – ich melde mich persönlich bei dir.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- TAB 4: TIPPGEBER -->
 <div class="tab-panel" id="tab-tippgeber" role="tabpanel">
     <section class="tippgeber-section">
         <div class="tippgeber-inner">
-            <h2>Tippgeber:in werden</h2>
-            <p class="sub">Empfehle Koppmann Karriere weiter und erhalte eine Provision bei erfolgreicher Vermittlung.</p>
+            <h2 class="section-title">Tippgeber:in werden</h2>
+            <p class="section-sub">Du kennst jemanden der Karrierebegleitung braucht? Empfehle weiter – und erhalte eine Provision bei erfolgreicher Vermittlung.</p>
 
-            <!-- Hinweis-Banner -->
-            <div class="tippgeber-hinweis" role="status" aria-live="polite">
+            <div class="tippgeber-hinweis" role="status">
                 <div class="tippgeber-hinweis-icon" aria-hidden="true">🔧</div>
-                <p><strong>Das Tippgeber-Modell wird aktuell überarbeitet</strong> – und ist grundsätzlich weiterhin verfügbar. Du kannst jetzt schon weiterempfehlen: Sag einfach jemandem weiter, der Karrierebegleitung sucht – und wenn diese Person erfolgreich vermittelt wird, bekommst du deine Prämie. Keine komplizierte Registrierung nötig. Bei Fragen meld dich direkt: <a href="mailto:jan@koppmannkarriere.de" style="color:#92400e; font-weight:700;">jan@koppmannkarriere.de</a></p>
+                <p><strong>Das Tippgeber-Modell wird aktuell überarbeitet</strong> – und ist grundsätzlich weiterhin verfügbar. Sag einfach jemandem weiter – wenn diese Person erfolgreich vermittelt wird, bekommst du deine Prämie. Bei Fragen meld dich direkt: <a href="mailto:jan@koppmannkarriere.de" style="color:#92400e; font-weight:700;">jan@koppmannkarriere.de</a></p>
             </div>
 
-            <!-- Karten ausgegraut -->
-            <div class="tippgeber-grid" aria-label="Tippgeber-Modelle – derzeit in Überarbeitung">
-
-                <div class="tippgeber-card">
-                    <div class="tippgeber-card-header privat">
-                        <span class="tippgeber-badge">👤 Privater Tipp</span>
-                        <h3>Ich kenne jemanden –<br>und empfehle weiter</h3>
-                        <p>Du kennst jemanden der einen neuen Job sucht, sich beruflich neu orientieren möchte oder Unterstützung braucht? Teile deinen persönlichen Code – und erhalte eine Provision wenn die Begleitung erfolgreich ist.</p>
-                        <div class="provision-pill">💶 100 € (Ausbildung) · 200 € (Fachkraft)</div>
-                    </div>
-                    <div class="tippgeber-card-body">
-                        <ul>
-                            <li>Persönlicher QR-Code &amp; Promo-Link</li>
-                            <li>Nur bei Erfolg – kein Risiko</li>
-                            <li>Provision steuerfrei bis 256 € / Jahr</li>
-                            <li>Statusverfolgung jederzeit möglich</li>
-                        </ul>
-                        <a href="tippgeberschaft/tippgebende.html" class="btn-tippgeber" tabindex="-1" aria-disabled="true">Zum Tippgeber-Modell →</a>
-                    </div>
+            <!-- Privat – prominent, volle Breite -->
+            <div class="card-privat">
+                <div class="card-header">
+                    <span class="tippgeber-badge">👤 Privater Tipp</span>
+                    <h3>Ich kenne jemanden – und empfehle weiter</h3>
+                    <p>Du kennst jemanden der einen neuen Job sucht, sich beruflich neu orientieren möchte oder einfach nicht weiterkommt? Sag es weiter. Wenn die Begleitung erfolgreich ist, bekommst du deine Provision – ohne Aufwand, ohne Verpflichtung.</p>
+                    <div class="provision-pill">💶 100 € bei Ausbildung · 200 € bei Fachkraft</div>
                 </div>
-
-                <div class="tippgeber-card">
-                    <div class="tippgeber-card-header multiplikator">
-                        <span class="tippgeber-badge">🏢 Multiplikator</span>
-                        <h3>Wir erreichen viele –<br>und kooperieren</h3>
-                        <p>Du bist Teil einer Organisation, eines Vereins oder einer Beratungsstelle die Menschen in beruflichen Übergängen begleitet? Werde Multiplikator und empfehle Karrierebegleitung strukturiert weiter.</p>
-                    </div>
-                    <div class="tippgeber-card-body">
-                        <ul>
-                            <li>Eigener QR-Code für deine Organisation</li>
-                            <li>Kooperationsvereinbarung möglich</li>
-                            <li>Höhere Pauschale als privater Tipp</li>
-                            <li>Persönliche Absprache &amp; Begleitung</li>
-                        </ul>
-                        <a href="tippgeberschaft/multiplikatoren.html" class="btn-tippgeber" tabindex="-1" aria-disabled="true">Zum Multiplikatoren-Modell →</a>
-                    </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Persönlicher Empfehlungslink auf Anfrage</li>
+                        <li>Provision nur bei Erfolg – kein Risiko</li>
+                        <li>Steuerfrei bis 256 € pro Jahr</li>
+                        <li>Keine Registrierung, keine Verpflichtung</li>
+                    </ul>
+                    <a href="tippgeberschaft/tippgebende.html" class="btn-tippgeber disabled" tabindex="-1" aria-disabled="true">Mehr erfahren →</a>
                 </div>
+            </div>
 
+            <!-- Multiplikator – kompakter Hinweis -->
+            <div class="multiplikator-hint">
+                <div class="multiplikator-hint-icon" aria-hidden="true">🏢</div>
+                <div class="multiplikator-hint-text">
+                    <h4>Auch für Organisationen: Das Multiplikatoren-Modell</h4>
+                    <p>Für Vereine, Beratungsstellen oder Organisationen die regelmäßig Menschen in beruflichen Übergängen begleiten, gibt es ein eigenes Kooperationsmodell mit strukturierter Vereinbarung und höherer Pauschale.</p>
+                    <a href="tippgeberschaft/multiplikatoren.html" class="btn-hint disabled" tabindex="-1" aria-disabled="true">Mehr zum Multiplikatoren-Modell →</a>
+                </div>
             </div>
         </div>
     </section>
@@ -467,34 +429,30 @@
 </footer>
 
 <script>
-    // ── MAIN TABS ──
+    // ── TABS ──
     document.querySelectorAll('.main-tab-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-            document.querySelectorAll('.main-tab-btn').forEach(b => {
-                b.classList.remove('active');
-                b.setAttribute('aria-selected', 'false');
-            });
+            document.querySelectorAll('.main-tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
             document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
             btn.classList.add('active');
             btn.setAttribute('aria-selected', 'true');
-            const panel = document.getElementById('tab-' + btn.dataset.tab);
-            if (panel) panel.classList.add('active');
+            document.getElementById('tab-' + btn.dataset.tab)?.classList.add('active');
         });
     });
 
-    // ── FORM TABS ──
-    document.querySelectorAll('.form-tab-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.form-tab-btn').forEach(b => {
-                b.classList.remove('active');
-                b.setAttribute('aria-selected', 'false');
-            });
-            document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
-            btn.classList.add('active');
-            btn.setAttribute('aria-selected', 'true');
-            const panel = document.getElementById('form-' + btn.dataset.form);
-            if (panel) panel.classList.add('active');
-        });
+    // ── KONTAKTFORMULAR (mailto fallback) ──
+    document.getElementById('contact-form')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name      = document.getElementById('cf-name').value.trim();
+        const email     = document.getElementById('cf-email').value.trim();
+        const bereich   = document.getElementById('cf-bereich').value;
+        const nachricht = document.getElementById('cf-nachricht').value.trim();
+        if (!name || !email || !bereich || !nachricht) return;
+        const subject = encodeURIComponent('Kontaktanfrage – ' + bereich);
+        const body    = encodeURIComponent('Name: ' + name + '\nE-Mail: ' + email + '\nIch bin: ' + bereich + '\n\nNachricht:\n' + nachricht);
+        window.location.href = 'mailto:jan@koppmannkarriere.de?subject=' + subject + '&body=' + body;
+        document.getElementById('contact-form').style.display = 'none';
+        document.getElementById('form-success').classList.add('visible');
     });
 
     // ── BURGER ──
@@ -507,11 +465,13 @@
             document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
         });
         document.querySelectorAll('.mobile-menu a').forEach(l => l.addEventListener('click', () => {
-            burger.classList.remove('open');
-            mobileMenu.classList.remove('open');
-            document.body.style.overflow = '';
+            burger.classList.remove('open'); mobileMenu.classList.remove('open'); document.body.style.overflow = '';
         }));
     }
+
+    // ── URL-HASH Tab öffnen (z.B. #termin) ──
+    const hash = window.location.hash.replace('#', '');
+    if (hash) { document.querySelector('[data-tab="' + hash + '"]')?.click(); }
 </script>
 </body>
 </html>
