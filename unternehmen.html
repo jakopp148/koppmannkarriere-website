@@ -3,23 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jobprofil hinterlegen – Koppmann Karriere</title>
-    <meta name="description" content="Hinterlegen Sie Ihr Jobprofil bei Koppmann Karriere – per Formular oder als PDF-Dokument.">
+    <title>Für Unternehmen – Koppmann Karriere</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         :root {
             --primary-blue: #0062b1;
             --dark-blue: #002777;
+            --light-blue: #008bba;
             --white: #ffffff;
             --black: #0a0a0a;
             --light-gray: #f4f6f9;
             --medium-gray: #374151;
             --border: #e5e9f0;
         }
-        body { font-family: 'Montserrat', sans-serif; line-height: 1.7; color: var(--black); overflow-x: hidden; font-size: 17px; background: var(--white); }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.8;
+            color: var(--black);
+            overflow-x: hidden;
+            font-size: 17px;
+            background: var(--white);
+        }
 
         /* ── SKIP LINK ── */
         .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--primary-blue); color: var(--white); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-decoration: none; z-index: 9999; transition: top 0.2s; }
@@ -37,7 +46,7 @@
         nav ul li a:hover, nav ul li a.active { color: var(--white); }
         nav ul li a:hover::after, nav ul li a.active::after { width: 100%; }
         .header-cta-btn { padding: 0.6rem 1.4rem; background: transparent; color: rgba(255,255,255,0.95); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.8); border-radius: 50px; cursor: pointer; transition: all 0.3s; text-decoration: none; white-space: nowrap; }
-        .header-cta-btn:hover { background: var(--white); color: var(--dark-blue); }
+        .header-cta-btn:hover { background: var(--white); color: var(--dark-blue); border-color: var(--white); }
         .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
         .burger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
         .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -50,87 +59,227 @@
         .mobile-menu .mobile-cta { margin-top: 2rem; padding: 1rem 2rem; background: var(--primary-blue); color: var(--white); border-radius: 50px; text-align: center; font-size: 1rem; border-bottom: none; }
 
         /* ── HERO ── */
-        .hero { margin-top: 72px; background: linear-gradient(135deg, var(--dark-blue) 0%, #003fa3 100%); padding: 4rem 2.5rem 5rem; position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
-        .hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 2; }
-        .hero-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.8rem; }
+        .hero {
+            margin-top: 72px;
+            background: var(--dark-blue);
+            min-height: 68vh;
+            display: flex; align-items: center;
+            padding: 5rem 2.5rem;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .hero-ring-outer {
+            position: absolute; right: -140px; top: 50%; transform: translateY(-50%);
+            width: 560px; height: 560px; border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.05);
+            pointer-events: none;
+        }
+        .hero-ring-inner {
+            position: absolute; right: 60px; top: 50%; transform: translateY(-50%);
+            width: 340px; height: 340px; border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.07);
+            pointer-events: none;
+        }
+        .hero-inner {
+            max-width: 1200px; margin: 0 auto; width: 100%;
+            position: relative; z-index: 2;
+            display: grid; grid-template-columns: 1fr auto;
+            gap: 4rem; align-items: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            color: rgba(255,255,255,0.5); margin-bottom: 1.8rem;
+            display: flex; align-items: center; gap: 0.8rem;
+        }
         .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: rgba(255,255,255,0.3); }
-        .hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--white); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.2rem; }
-        .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.82); line-height: 1.85; max-width: 600px; }
-        .hero-note { margin-top: 1.5rem; display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 50px; padding: 0.5rem 1.2rem; font-size: 0.8rem; color: rgba(255,255,255,0.7); font-weight: 600; }
-        .hero-wave { background: linear-gradient(135deg, var(--dark-blue) 0%, #003fa3 100%); line-height: 0; }
+        .hero h1 {
+            font-size: clamp(2.6rem, 4.5vw, 4rem);
+            font-weight: 900; color: var(--white);
+            line-height: 1.05; letter-spacing: -0.03em;
+        }
+        .hero h1 .thin {
+            font-weight: 300; color: rgba(255,255,255,0.7);
+            display: block; font-size: 0.8em;
+            letter-spacing: -0.01em; margin-top: 0.25rem;
+        }
+        .hero-rule { width: 48px; height: 3px; background: var(--primary-blue); border-radius: 2px; margin: 2rem 0; }
+        .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.75); line-height: 1.8; max-width: 520px; }
+        .hero-ctas { display: flex; gap: 1rem; margin-top: 2.8rem; align-items: center; flex-wrap: wrap; }
+        .btn-hero-primary { display: inline-block; padding: 0.85rem 2rem; background: var(--white); color: var(--dark-blue); font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
+        .btn-hero-primary:hover { background: rgba(255,255,255,0.9); transform: translateY(-2px); }
+        .btn-hero-outline { display: inline-block; padding: 0.85rem 2rem; border: 1.5px solid rgba(255,255,255,0.4); color: rgba(255,255,255,0.92); font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 600; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
+        .btn-hero-outline:hover { border-color: rgba(255,255,255,0.7); color: var(--white); }
+        .btn-hero-text { color: rgba(255,255,255,0.55); font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .btn-hero-text:hover { color: rgba(255,255,255,0.85); }
+        .hero-side { display: flex; flex-direction: column; align-items: center; gap: 2rem; padding-right: 1rem; }
+        .hero-vertical { writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(180deg); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.15); }
+
+        /* Wave */
+        .hero-wave { background: var(--dark-blue); line-height: 0; }
         .hero-wave svg { display: block; width: 100%; }
 
-        /* ── OPTION CHOOSER ── */
-        .chooser-section { padding: 4rem 2.5rem 0; background: var(--white); }
-        .chooser-inner { max-width: 860px; margin: 0 auto; }
-        .chooser-inner h2 { font-size: clamp(1.3rem, 2.5vw, 1.7rem); font-weight: 900; color: var(--black); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-        .chooser-inner .sub { font-size: 0.95rem; color: var(--medium-gray); margin-bottom: 2rem; }
-        .chooser-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 3rem; }
-        .chooser-card { border-radius: 16px; padding: 1.8rem 2rem; border: 2px solid var(--border); cursor: pointer; transition: all 0.25s; background: var(--white); text-align: left; font-family: 'Montserrat', sans-serif; display: flex; align-items: flex-start; gap: 1.2rem; }
-        .chooser-card:hover { border-color: var(--primary-blue); box-shadow: 0 6px 24px rgba(0,98,177,0.08); }
-        .chooser-card.active { border-color: var(--primary-blue); background: #eff6ff; box-shadow: 0 6px 24px rgba(0,98,177,0.1); }
-        .chooser-card:focus { outline: 2px solid var(--primary-blue); outline-offset: 2px; }
-        .chooser-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 2px; }
-        .chooser-card-text h3 { font-size: 1rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.3rem; }
-        .chooser-card-text p { font-size: 0.85rem; color: var(--medium-gray); line-height: 1.6; }
-        .chooser-indicator { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border); margin-left: auto; flex-shrink: 0; margin-top: 3px; transition: all 0.2s; }
-        .chooser-card.active .chooser-indicator { background: var(--primary-blue); border-color: var(--primary-blue); box-shadow: inset 0 0 0 3px var(--white); }
+        /* ── GEMEINSAME SECTION-STYLES ── */
+        .section { padding: 5.5rem 2.5rem; }
+        .section.gray { background: var(--light-gray); }
+        .section.white { background: var(--white); }
+        .section.dark { background: var(--dark-blue); }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .container-wide { max-width: 1200px; margin: 0 auto; }
 
-        /* ── PANELS ── */
-        .panel { display: none; }
-        .panel.active { display: block; }
+        .section-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary-blue); margin-bottom: 0.8rem; }
+        .section-eyebrow.light { color: rgba(255,255,255,0.6); }
+        h2.section-title { font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 800; color: var(--black); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.8rem; }
+        h2.section-title.light { color: var(--white); }
+        h2.section-title.center { text-align: center; }
+        .section-text { font-size: 1rem; color: var(--medium-gray); line-height: 1.9; margin-bottom: 1.2rem; }
+        .section-text:last-child { margin-bottom: 0; }
+        .section-text strong { color: var(--black); font-weight: 600; }
 
-        /* ── FORMULAR PANEL ── */
-        .form-panel-section { padding: 0 2.5rem 5rem; background: var(--white); }
-        .form-panel-inner { max-width: 860px; margin: 0 auto; }
-        .formbricks-wrap { background: var(--light-gray); border-radius: 20px; overflow: hidden; border: 1.5px solid var(--border); min-height: 600px; }
-        .formbricks-wrap iframe { width: 100%; min-height: 700px; border: none; display: block; }
+        /* ── HIGHLIGHT BOX ── */
+        .highlight-box {
+            background: rgba(0,98,177,0.06);
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 0 12px 12px 0;
+            padding: 1.5rem 1.8rem;
+            margin: 1.8rem 0;
+        }
+        .highlight-box p { font-size: 1rem; color: var(--black); line-height: 1.8; margin-bottom: 0.6rem; }
+        .highlight-box p:last-child { margin-bottom: 0; }
 
-        /* ── PDF PANEL ── */
-        .pdf-panel-section { padding: 0 2.5rem 5rem; background: var(--white); }
-        .pdf-panel-inner { max-width: 860px; margin: 0 auto; }
+        /* ── COOPERATION CARDS ── */
+        .coop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; }
+        .coop-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border-top: 4px solid var(--dark-blue);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        }
+        .coop-card-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary-blue); margin-bottom: 0.8rem; }
+        .coop-card h3 { font-size: 1.25rem; font-weight: 800; color: var(--dark-blue); letter-spacing: -0.02em; margin-bottom: 1.2rem; }
+        .coop-card p { font-size: 0.95rem; color: var(--medium-gray); line-height: 1.8; margin-bottom: 0.9rem; }
+        .coop-card p:last-child { margin-bottom: 0; }
+        .coop-card p strong { color: var(--black); font-weight: 600; }
 
-        .pdf-info-box { background: var(--light-gray); border-radius: 16px; padding: 1.8rem 2rem; margin-bottom: 2rem; display: flex; gap: 1.2rem; align-items: flex-start; }
-        .pdf-info-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
-        .pdf-info-box p { font-size: 0.9rem; color: var(--medium-gray); line-height: 1.75; }
-        .pdf-info-box p strong { color: var(--black); }
+        /* ── USP CHECK BLOCK ── */
+        .usp-block { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+        .usp-check-box { background: var(--white); border-radius: 16px; padding: 2.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+        .usp-check-box h3 { font-size: 1.1rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+        .usp-check-box .usp-intro { font-size: 0.92rem; color: var(--medium-gray); margin-bottom: 1.8rem; line-height: 1.7; }
+        .usp-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0; }
+        .usp-list li { display: flex; align-items: flex-start; gap: 0.9rem; padding: 1rem 0; border-bottom: 1px solid var(--border); font-size: 0.93rem; color: var(--black); line-height: 1.55; }
+        .usp-list li:last-child { border-bottom: none; }
+        .usp-check { flex-shrink: 0; width: 22px; height: 22px; background: var(--dark-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+        .usp-check svg { width: 12px; height: 12px; stroke: var(--white); stroke-width: 2.5; fill: none; }
+        .usp-conclusion { margin-top: 1.8rem; padding: 1.2rem 1.5rem; background: var(--dark-blue); border-radius: 10px; font-size: 0.92rem; font-weight: 700; color: var(--white); line-height: 1.5; }
+        .usp-conclusion span { color: rgba(255,255,255,0.75); font-weight: 500; }
+        .dossier-box { background: var(--white); border-radius: 16px; padding: 2.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.07); display: flex; flex-direction: column; gap: 1.5rem; }
+        .dossier-box h3 { font-size: 1.1rem; font-weight: 800; color: var(--dark-blue); letter-spacing: -0.01em; margin-bottom: 0.3rem; }
+        .dossier-box p { font-size: 0.92rem; color: var(--medium-gray); line-height: 1.7; }
+        .dossier-preview { background: var(--light-gray); border-radius: 12px; border: 2px dashed var(--border); padding: 2.5rem 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; text-align: center; }
+        .dossier-icon { font-size: 2.8rem; }
+        .dossier-preview-label { font-size: 0.82rem; font-weight: 700; color: var(--medium-gray); letter-spacing: 0.06em; text-transform: uppercase; }
+        .dossier-preview-name { font-size: 0.95rem; font-weight: 600; color: var(--black); }
+        @media (max-width: 1024px) { .usp-block { grid-template-columns: 1fr; } }
 
-        .pdf-form { display: flex; flex-direction: column; gap: 1.2rem; }
-        .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-        .form-group label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--medium-gray); }
-        .form-group input, .form-group textarea { font-family: 'Montserrat', sans-serif; font-size: 0.95rem; color: var(--black); background: var(--light-gray); border: 1.5px solid var(--border); border-radius: 10px; padding: 0.85rem 1.1rem; width: 100%; transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
-        .form-group input:focus, .form-group textarea:focus { border-color: var(--primary-blue); box-shadow: 0 0 0 3px rgba(0,98,177,0.1); background: var(--white); }
-        .form-group textarea { resize: vertical; min-height: 100px; line-height: 1.65; }
-        .form-note { font-size: 0.8rem; color: var(--medium-gray); line-height: 1.6; margin-top: 0.2rem; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+        /* ── AOC HIGHLIGHT ── */
+        .aoc-box {
+            background: var(--light-gray);
+            border-radius: 16px;
+            padding: 2rem 2.2rem;
+            margin: 1.8rem 0;
+        }
+        .aoc-box p { font-size: 0.97rem; color: var(--medium-gray); line-height: 1.8; margin-bottom: 0.7rem; }
+        .aoc-box p:last-child { margin-bottom: 0; }
 
-        /* File Upload */
-        .file-upload-area { border: 2px dashed var(--border); border-radius: 14px; padding: 2.5rem; text-align: center; background: var(--light-gray); cursor: pointer; transition: all 0.25s; position: relative; }
-        .file-upload-area:hover, .file-upload-area.drag-over { border-color: var(--primary-blue); background: #eff6ff; }
-        .file-upload-area input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
-        .file-upload-icon { font-size: 2.2rem; margin-bottom: 0.8rem; }
-        .file-upload-area h4 { font-size: 0.95rem; font-weight: 700; color: var(--dark-blue); margin-bottom: 0.4rem; }
-        .file-upload-area p { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.6; }
-        .file-upload-area .file-limit { font-size: 0.75rem; color: var(--medium-gray); margin-top: 0.6rem; background: rgba(0,0,0,0.05); display: inline-block; padding: 0.2rem 0.7rem; border-radius: 50px; }
-        .file-selected { display: none; margin-top: 1rem; padding: 0.8rem 1.2rem; background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 10px; font-size: 0.88rem; color: #166534; font-weight: 600; }
-        .file-selected.visible { display: flex; align-items: center; gap: 0.6rem; }
-        .file-error { display: none; margin-top: 1rem; padding: 0.8rem 1.2rem; background: #fef2f2; border: 1.5px solid #fca5a5; border-radius: 10px; font-size: 0.88rem; color: #991b1b; font-weight: 600; }
-        .file-error.visible { display: flex; align-items: center; gap: 0.6rem; }
+        /* ── PROZESS STEPS ── */
+        .process-steps { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
+        .process-step {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 2rem 2.2rem;
+            border-left: 4px solid var(--primary-blue);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            display: grid;
+            grid-template-columns: 48px 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+        .step-num {
+            width: 48px; height: 48px;
+            background: var(--dark-blue);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; font-weight: 900; color: var(--white);
+            flex-shrink: 0; margin-top: 2px;
+            aria-hidden: true;
+        }
+        .step-content h3 { font-size: 1.05rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.7rem; letter-spacing: -0.01em; }
+        .step-content p { font-size: 0.95rem; color: var(--medium-gray); line-height: 1.8; margin-bottom: 0.6rem; }
+        .step-content p:last-child { margin-bottom: 0; }
+        .step-content p strong { color: var(--black); font-weight: 600; }
 
-        .btn-submit { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem 2.4rem; background: var(--primary-blue); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s; width: 100%; margin-top: 0.5rem; }
-        .btn-submit:hover { background: var(--dark-blue); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,39,119,0.2); }
-        .btn-submit:disabled { opacity: 0.5; pointer-events: none; }
-        .form-success { display: none; background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 14px; padding: 2rem; text-align: center; margin-top: 1rem; }
-        .form-success.visible { display: block; }
-        .form-success p { font-size: 0.95rem; color: #166534; font-weight: 600; line-height: 1.75; }
+        /* ── PRICING ── */
+        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+        .pricing-item {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 1.6rem 1.8rem;
+            border-top: 3px solid var(--border);
+        }
+        .pricing-item.featured { border-top-color: var(--primary-blue); background: rgba(0,98,177,0.04); }
+        .pricing-item h4 { font-size: 0.9rem; font-weight: 700; color: var(--dark-blue); margin-bottom: 0.6rem; }
+        .pricing-item p { font-size: 0.9rem; color: var(--medium-gray); line-height: 1.7; }
 
-        /* ── HINWEIS UNTEN ── */
-        .hinweis-section { padding: 4rem 2.5rem; background: var(--light-gray); }
-        .hinweis-inner { max-width: 860px; margin: 0 auto; display: flex; align-items: flex-start; gap: 1.2rem; }
-        .hinweis-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
-        .hinweis-inner p { font-size: 0.9rem; color: var(--medium-gray); line-height: 1.8; }
-        .hinweis-inner p strong { color: var(--black); }
+        /* ── JOB PROFILE SECTION ── */
+        .job-profile-section {
+            padding: 5rem 2.5rem;
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+            text-align: center;
+        }
+        .job-profile-section h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; color: var(--white); letter-spacing: -0.02em; margin-bottom: 1rem; }
+        .job-profile-section p { font-size: 1rem; color: rgba(255,255,255,0.85); line-height: 1.8; margin-bottom: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .job-profile-section p strong { color: rgba(255,255,255,0.95); font-weight: 600; }
+
+        /* ── FAQ ── */
+        .faq-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+        .faq-item { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+        .faq-question { width: 100%; padding: 1.4rem 1.8rem; background: var(--white); border: none; text-align: left; font-family: 'Montserrat', sans-serif; font-size: 0.97rem; font-weight: 700; color: var(--dark-blue); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; transition: background 0.2s; }
+        .faq-question:hover { background: var(--light-gray); }
+        .faq-icon { font-size: 1.3rem; color: var(--primary-blue); transition: transform 0.3s; flex-shrink: 0; font-weight: 300; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-answer-inner { padding: 0 1.8rem 1.6rem; font-size: 0.95rem; color: var(--medium-gray); line-height: 1.85; }
+
+        /* ── CONTACT SECTION ── */
+        .contact-section { padding: 5.5rem 2.5rem; background: var(--white); }
+        .contact-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .contact-text h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; color: var(--black); letter-spacing: -0.02em; margin-bottom: 1rem; }
+        .contact-text p { font-size: 1rem; color: var(--medium-gray); line-height: 1.8; margin-bottom: 0.8rem; }
+        .contact-text p:last-child { margin-bottom: 0; }
+        .contact-image { border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+        .contact-image img { width: 100%; height: 320px; object-fit: cover; object-position: center 30%; display: block; }
+        .contact-links { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+        .contact-link { color: var(--primary-blue); text-decoration: none; font-size: 0.92rem; font-weight: 500; transition: color 0.2s; }
+        .contact-link:hover { color: var(--dark-blue); text-decoration: underline; }
+
+        /* ── BUTTONS ── */
+        .btn-primary { display: inline-block; padding: 0.9rem 2.2rem; background: var(--primary-blue); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.92rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
+        .btn-primary:hover { background: var(--dark-blue); transform: translateY(-2px); }
+        .btn-secondary { display: inline-block; padding: 0.85rem 2rem; border: 2px solid var(--primary-blue); color: var(--primary-blue); font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; border-radius: 50px; text-decoration: none; transition: all 0.3s; }
+        .btn-secondary:hover { background: var(--primary-blue); color: var(--white); }
+        .btn-white-outline { display: inline-block; padding: 0.9rem 2.2rem; background: var(--white); color: var(--dark-blue); font-family: 'Montserrat', sans-serif; font-size: 0.92rem; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+        .btn-white-outline:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+        .cta-row { margin-top: 2.2rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+        .cta-row.center { justify-content: center; }
 
         /* ── FOOTER ── */
         footer { background: var(--black); color: rgba(255,255,255,0.85); padding: 4rem 2.5rem 2rem; }
@@ -149,30 +298,46 @@
         .footer-bottom p { color: rgba(255,255,255,0.6); font-size: 0.82rem; }
 
         /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .coop-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+            .footer-container { grid-template-columns: 1fr 1fr; }
+        }
         @media (max-width: 768px) {
-            nav ul, .header-cta-btn { display: none; }
+            nav ul { display: none; }
+            .header-cta-btn { display: none; }
             .burger { display: flex; }
-            .chooser-cards { grid-template-columns: 1fr; }
-            .form-row { grid-template-columns: 1fr; }
-            .chooser-section, .form-panel-section, .pdf-panel-section, .hinweis-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .hero { padding: 3.5rem 1.25rem; min-height: auto; overflow: hidden; }
+            .hero-inner { grid-template-columns: 1fr; width: 100%; }
+            .hero-ring-outer, .hero-ring-inner { display: none; }
+            .hero-side { display: none; }
+            .section { padding: 4rem 1.5rem; }
+            .process-step { grid-template-columns: 1fr; gap: 1rem; }
+            .step-num { width: 36px; height: 36px; font-size: 0.9rem; }
             .footer-container { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .hero-ctas { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
 
+<!-- SKIP LINK -->
 <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
+<!-- HEADER -->
 <header>
     <nav>
-        <a href="../index.html" class="logo"><img src="../images/Logo_weiß.png" alt="Koppmann Karriere"></a>
+        <a href="index.html" class="logo"><img src="images/Logo_weiß.png" alt="Koppmann Karriere"></a>
         <ul>
-            <li><a href="../unternehmen.html" class="active">Für Unternehmen</a></li>
-            <li><a href="../arbeitnehmende.html">Für Mitarbeitende</a></li>
-            <li><a href="../karriere-kosmos.html">Karriere-Kosmos</a></li>
-            <li><a href="../so-arbeite-ich.html">So Arbeite Ich</a></li>
-            <li><a href="../kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
+            <li><a href="unternehmen.html" class="active">Für Unternehmen</a></li>
+            <li><a href="arbeitnehmende.html">Für Mitarbeitende</a></li>
+            <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
+            <li><a href="so-arbeite-ich.html">So Arbeite Ich</a></li>
+            <li><a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
         </ul>
         <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="header-cta-btn">Erstgespräch vereinbaren</a>
         <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
@@ -180,148 +345,273 @@
 </header>
 
 <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile Navigation">
-    <a href="../unternehmen.html">Für Unternehmen</a>
-    <a href="../arbeitnehmende.html">Für Mitarbeitende</a>
-    <a href="../karriere-kosmos.html">Karriere-Kosmos</a>
-    <a href="../so-arbeite-ich.html">So Arbeite Ich</a>
-    <a href="../kontakt-einstieg.html">Kontakt &amp; Einstieg</a>
+    <a href="unternehmen.html">Für Unternehmen</a>
+    <a href="arbeitnehmende.html">Für Mitarbeitende</a>
+    <a href="karriere-kosmos.html">Karriere-Kosmos</a>
+    <a href="so-arbeite-ich.html">So Arbeite Ich</a>
+    <a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a>
     <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="mobile-cta">Erstgespräch vereinbaren</a>
 </div>
 
 <main id="main-content">
 
 <!-- HERO -->
-<section class="hero" aria-label="Jobprofil hinterlegen">
+<section class="hero" aria-label="Einleitung Für Unternehmen">
+    <div class="hero-ring-outer" aria-hidden="true"></div>
+    <div class="hero-ring-inner" aria-hidden="true"></div>
     <div class="hero-inner">
-        <p class="hero-eyebrow">Für Unternehmen</p>
-        <h1>Jobprofil hinterlegen</h1>
-        <p class="hero-sub">Sie haben eine offene Stelle – ich schaue, ob aus meinem begleiteten Personenkreis eine realistische Passung möglich ist. Bei positiver Einschätzung melde ich mich aktiv bei Ihnen.</p>
-        <div class="hero-note" aria-label="Hinweis">
-            <span aria-hidden="true">🔒</span> Alle Angaben werden vertraulich behandelt und nicht veröffentlicht.
+        <div class="hero-text">
+            <p class="hero-eyebrow" aria-hidden="true">Für Unternehmen</p>
+            <h1>
+                Personalentscheidungen,
+                <span class="thin">die langfristig tragen.</span>
+            </h1>
+            <div class="hero-rule" aria-hidden="true"></div>
+            <p class="hero-sub">
+                Ich erweitere die Entscheidungsgrundlage von Unternehmen durch strukturierte Einordnung, persönliche Begleitung und zusätzliche Einblicke jenseits klassischer Auswahlprozesse.
+            </p>
+            <div class="hero-ctas">
+                <a href="https://zeeg.me/koppmannkarriere" target="_blank" rel="noopener" class="btn-hero-primary">Erstgespräch vereinbaren</a>
+                <a href="unternehmen/jobprofil-hinterlegen.html" class="btn-hero-outline">Jobprofil hinterlegen</a>
+                <a href="so-arbeite-ich.html" class="btn-hero-text">→ So arbeite ich</a>
+            </div>
+        </div>
+        <div class="hero-side" aria-hidden="true">
+            <div class="hero-vertical">Koppmann Karriere · Für Unternehmen</div>
         </div>
     </div>
 </section>
 <div class="hero-wave" aria-hidden="true">
     <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <path d="M0,32 C360,56 1080,8 1440,32 L1440,48 L0,48 Z" fill="#ffffff"/>
+        <path d="M0,32 C360,56 1080,8 1440,32 L1440,48 L0,48 Z" fill="#f4f6f9"/>
     </svg>
 </div>
 
-<!-- OPTION CHOOSER -->
-<section class="chooser-section">
-    <div class="chooser-inner">
-        <h2>Wie möchten Sie Ihr Profil hinterlegen?</h2>
-        <p class="sub">Wählen Sie die Variante die für Sie passt – beide Wege führen direkt zu mir.</p>
-        <div class="chooser-cards" role="group" aria-label="Eingabemethode wählen">
-            <button class="chooser-card active" id="card-formular" onclick="switchPanel('formular')" aria-pressed="true">
-                <div class="chooser-icon" aria-hidden="true">📋</div>
-                <div class="chooser-card-text">
-                    <h3>Formular ausfüllen</h3>
-                    <p>Strukturiertes Formular – direkt hier auf der Seite, keine externe App nötig.</p>
-                </div>
-                <div class="chooser-indicator" aria-hidden="true"></div>
-            </button>
-            <button class="chooser-card" id="card-pdf" onclick="switchPanel('pdf')" aria-pressed="false">
-                <div class="chooser-icon" aria-hidden="true">📄</div>
-                <div class="chooser-card-text">
-                    <h3>Dokument hochladen</h3>
-                    <p>Sie haben bereits eine Stellenbeschreibung als PDF? Laden Sie sie direkt hoch.</p>
-                </div>
-                <div class="chooser-indicator" aria-hidden="true"></div>
-            </button>
+<!-- BLOCK 2: Problem -->
+<section class="section gray">
+    <div class="container">
+        <p class="section-eyebrow">Die Ausgangslage</p>
+        <h2 class="section-title">Personalentscheidungen bleiben mit Unsicherheit verbunden.</h2>
+        <p class="section-text"><strong>Personalentscheidungen sind anspruchsvoll – und sie bleiben es.</strong></p>
+        <p class="section-text">Menschen sind komplex. Zusammenarbeit entsteht nicht nach Schema, sondern im Zusammenspiel von Persönlichkeit, Erwartungen und Alltag.</p>
+        <p class="section-text">Lebensläufe und Gespräche sind wichtige Bestandteile eines Auswahlprozesses. Gleichzeitig zeigen sie nur einen Ausschnitt dessen, was Zusammenarbeit später tatsächlich prägt.</p>
+        <p class="section-text"><strong>Unsicherheit lässt sich nicht vollständig vermeiden.</strong> Aber sie lässt sich bewusster einordnen – wenn der Mensch hinter dem Profil verstanden wird.</p>
+    </div>
+</section>
+
+<!-- BLOCK 3: Solution -->
+<section class="section white">
+    <div class="container">
+        <p class="section-eyebrow">Mein Ansatz</p>
+        <h2 class="section-title">Recruiting aus Begleitung – nicht aus Druck.</h2>
+        <p class="section-text">Ich begleite Menschen kontinuierlich in ihrer beruflichen Entwicklung – unabhängig von einer konkreten Vakanz.</p>
+        <p class="section-text">Gleichzeitig lerne ich auch Unternehmen kennen: Geschäftsführung, Inhaber:innen oder HR-Verantwortliche – ich nehme mir Zeit zu verstehen, wie Sie arbeiten, welche Rahmenbedingungen entscheidend sind und was Zusammenarbeit in Ihrem Unternehmen tatsächlich bedeutet.</p>
+        <div class="highlight-box">
+            <p><strong>Wenn sich aus dieser Begleitung eine tragfähige Verbindung abzeichnet, melde ich mich aktiv.</strong></p>
+            <p>Nicht mit einer Auswahl an Profilen. Sondern mit einer klar eingeordneten Empfehlung.</p>
+        </div>
+        <p class="section-text">Die <strong>Karriere-Framework-Analyse (KFA)</strong> unterstützt diese Einordnung – sie schafft zusätzliche Einblicke in Arbeitsweise, Motivation und berufliches Selbstverständnis.</p>
+        <p class="section-text">So entsteht Recruiting nicht aus Druck, sondern aus gegenseitigem Verständnis und realer Passung.</p>
+    </div>
+</section>
+
+<!-- BLOCK 4: Cooperation Types -->
+<section class="section gray">
+    <div class="container-wide">
+        <p class="section-eyebrow">Zusammenarbeit</p>
+        <h2 class="section-title center">Zwei Wege der Zusammenarbeit</h2>
+        <div class="coop-grid">
+            <div class="coop-card">
+                <p class="coop-card-label">Variante A</p>
+                <h3>Kooperation</h3>
+                <p>Langfristige Zusammenarbeit auf Basis gegenseitiger Einordnung.</p>
+                <p>Wir führen ein <strong>Arbeitgeber:innen-Ziel-Gespräch (AZG)</strong> durch, in dem wir Rahmenbedingungen, Erwartungen und Entscheidungslogik klären.</p>
+                <p>Ich nehme mir Zeit, Ihr Unternehmen zu verstehen – fachlich, strukturell und kulturell.</p>
+                <p>Auf dieser Grundlage entsteht eine kontinuierliche Zusammenarbeit. Wenn sich aus der Begleitung geeigneter Personen eine tragfähige Verbindung abzeichnet, melde ich mich aktiv.</p>
+                <p><strong>Nicht mit einer Auswahl – sondern mit einer klar eingeordneten Empfehlung.</strong></p>
+            </div>
+            <div class="coop-card">
+                <p class="coop-card-label">Variante B</p>
+                <h3>Fast-Track</h3>
+                <p>Für akuten Bedarf oder konkrete Situationen.</p>
+                <p>Wenn eine Position zeitnah zu besetzen ist oder ich mit einem passenden Profil auf ein Unternehmen zugehe, welches ich noch nicht kennenlernen konnte, erfolgt die Abstimmung fokussiert und direkt.</p>
+                <p><strong>Auch hier gilt:</strong> Ich empfehle nur, wenn ich Passung realistisch einschätzen kann.</p>
+                <p>Der Prozess ist kompakter – die Einordnung bleibt zentral.</p>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- PANEL A: FORMBRICKS FORMULAR -->
-<div class="panel active" id="panel-formular">
-    <section class="form-panel-section">
-        <div class="form-panel-inner">
-            <div class="formbricks-wrap">
-                <iframe
-                    src="https://forms.koppmannkarriere.de/s/cmn1vge2h000gmr01r0uswqby"
-                    title="Jobprofil hinterlegen – Formular"
-                    loading="lazy"
-                    allow="clipboard-write"
-                    style="width:100%; min-height:700px; border:none; display:block;"
-                ></iframe>
+<!-- BLOCK 4b: Wann passt Koppmann Karriere? -->
+<section class="section white">
+    <div class="container-wide">
+        <p class="section-eyebrow">Für Sie geeignet, wenn ...</p>
+        <h2 class="section-title">Wann passt Koppmann Karriere?</h2>
+        <div class="usp-block">
+            <div class="usp-check-box">
+                <p class="usp-intro">Fünf Fragen zur Einordnung – ohne Marketingversprechen.</p>
+                <ul class="usp-list">
+                    <li><span class="usp-check" aria-hidden="true"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Wenn eine Stelle langfristig besetzt sein soll – nicht nur irgendwie</li>
+                    <li><span class="usp-check" aria-hidden="true"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Wenn die Unternehmenskultur erhalten bleiben soll</li>
+                    <li><span class="usp-check" aria-hidden="true"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Wenn Sie Fehlbesetzungen aktiv reduzieren wollen</li>
+                    <li><span class="usp-check" aria-hidden="true"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Wenn Sie Zugang zu einem wachsenden, jungen Talentepool suchen</li>
+                    <li><span class="usp-check" aria-hidden="true"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Wenn Ihnen auch nach der Besetzung wichtig ist, dass es wirklich passt</li>
+                </ul>
+                <div class="usp-conclusion">
+                    → Dann arbeiten wir zusammen.
+                    <span> Ein erstes Gespräch ist kostenlos und unverbindlich.</span>
+                </div>
+            </div>
+            <div class="dossier-box">
+                <div>
+                    <h3>Wie sieht eine Empfehlung aus?</h3>
+                    <p>Statt einer Bewerbungsmappe erhalten Sie von mir ein strukturiertes <strong>Bewerbungsdossier</strong> – mit Einordnung, Hintergrund und meiner persönlichen Einschätzung zur Passung.</p>
+                    <p>Hier können Sie sich ein Muster ansehen, sobald es hinterlegt ist.</p>
+                </div>
+                <div class="dossier-preview" aria-label="Musterdossier – wird zeitnah hinterlegt">
+                    <div class="dossier-icon" aria-hidden="true">📄</div>
+                    <div class="dossier-preview-label">Musterdossier</div>
+                    <div class="dossier-preview-name">Bewerbungsdossier – Koppmann Karriere</div>
+                    <span style="margin-top:0.8rem; display:inline-block; padding:0.85rem 2rem; border:2px solid var(--border); border-radius:50px; font-size:0.88rem; font-weight:600; color:var(--medium-gray); font-family:'Montserrat',sans-serif;">Muster wird zeitnah hinterlegt</span>
+                </div>
             </div>
         </div>
-    </section>
-</div>
+    </div>
+</section>
 
-<!-- PANEL B: PDF UPLOAD -->
-<div class="panel" id="panel-pdf">
-    <section class="pdf-panel-section">
-        <div class="pdf-panel-inner">
-
-            <div class="pdf-info-box">
-                <div class="pdf-info-icon" aria-hidden="true">ℹ️</div>
-                <p>Laden Sie Ihre bestehende Stellenbeschreibung oder ein Anforderungsprofil als PDF hoch. <strong>Maximale Dateigröße: 5 MB.</strong> Das Dokument wird direkt an mich übermittelt und vertraulich behandelt.</p>
-            </div>
-
-            <form class="pdf-form" id="pdf-form" novalidate>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="pdf-unternehmen">Unternehmen</label>
-                        <input type="text" id="pdf-unternehmen" name="unternehmen" placeholder="Unternehmensname" required autocomplete="organization">
-                    </div>
-                    <div class="form-group">
-                        <label for="pdf-ansprechpartner">Ansprechpartner:in</label>
-                        <input type="text" id="pdf-ansprechpartner" name="ansprechpartner" placeholder="Ihr Name" required autocomplete="name">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="pdf-email">E-Mail</label>
-                        <input type="email" id="pdf-email" name="email" placeholder="ihre@email.de" required autocomplete="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="pdf-stelle">Stellenbezeichnung</label>
-                        <input type="text" id="pdf-stelle" name="stelle" placeholder="z.B. Buchhalter:in (m/w/d)" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="pdf-hinweis">Kurze Anmerkung (optional)</label>
-                    <textarea id="pdf-hinweis" name="hinweis" placeholder="Gibt es etwas, das ich beim Lesen des Dokuments besonders beachten sollte?"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>Stellenbeschreibung als PDF</label>
-                    <div class="file-upload-area" id="file-upload-area">
-                        <input type="file" id="pdf-file" name="datei" accept=".pdf" aria-label="PDF hochladen">
-                        <div class="file-upload-icon" aria-hidden="true">📎</div>
-                        <h4>PDF hier ablegen oder klicken zum Auswählen</h4>
-                        <p>Stellenbeschreibung, Anforderungsprofil oder Jobinserat</p>
-                        <span class="file-limit">Max. 5 MB · nur PDF</span>
-                    </div>
-                    <div class="file-selected" id="file-selected" role="status">
-                        <span aria-hidden="true">✓</span> <span id="file-name"></span>
-                    </div>
-                    <div class="file-error" id="file-error" role="alert">
-                        <span aria-hidden="true">✕</span> <span id="file-error-msg"></span>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn-submit" id="pdf-submit-btn">
-                    Profil per E-Mail senden →
-                </button>
-                <p class="form-note" style="text-align:center; margin-top:0.8rem;">Das Formular öffnet Ihr E-Mail-Programm mit dem PDF als Anhang und allen Angaben vorausgefüllt. Bitte senden Sie die E-Mail ab.</p>
-            </form>
-
-            <div class="form-success" id="pdf-success" role="status" aria-live="polite">
-                <p>✓ Ihr E-Mail-Programm wird geöffnet – bitte senden Sie die vorbereitete Nachricht ab. Ich melde mich zeitnah bei Ihnen.</p>
-            </div>
-
+<!-- BLOCK 5: AOC -->
+<section class="section white">
+    <div class="container">
+        <p class="section-eyebrow">Zusatzleistung</p>
+        <h2 class="section-title">ArbeitsOrt-Check (AOC)</h2>
+        <p class="section-text">Neben der Vermittlung biete ich mit dem <strong>ArbeitsOrt-Check</strong> eine strukturierte Analyse der Arbeitsrealität in Ihrem Unternehmen.</p>
+        <p class="section-text">Der AOC macht sichtbar, wie Zusammenarbeit tatsächlich erlebt wird – in Bezug auf Kommunikation, Erwartungen, Verantwortungsverständnis und Rahmenbedingungen.</p>
+        <div class="aoc-box">
+            <p><strong>Ziel ist es, Transparenz zu schaffen.</strong></p>
+            <p>Denn tragfähige Personalentscheidungen beginnen nicht nur bei der Auswahl, sondern auch bei einem realistischen Verständnis des Arbeitsumfelds.</p>
         </div>
-    </section>
-</div>
+        <p class="section-text">Der ArbeitsOrt-Check ist unabhängig von einer Vermittlung nutzbar.</p>
+        <div class="cta-row">
+            <a href="unternehmen/aoc.html" class="btn-secondary">Mehr zum ArbeitsOrt-Check</a>
+        </div>
+    </div>
+</section>
 
-<!-- HINWEIS -->
-<section class="hinweis-section">
-    <div class="hinweis-inner">
-        <div class="hinweis-icon" aria-hidden="true">💡</div>
-        <p><strong>Was passiert nach dem Absenden?</strong> Ich prüfe Ihr Profil und gleiche es realistisch mit meinem begleiteten Personenkreis ab. <strong>Bei positiver Einschätzung melde ich mich aktiv bei Ihnen</strong> – mit einer klar eingeordneten Empfehlung, nicht mit einer Profilflut. Eine Garantie auf sofortige Vermittlung besteht bewusst nicht. Fragen? <a href="mailto:jan@koppmannkarriere.de" style="color:var(--primary-blue); font-weight:700;">jan@koppmannkarriere.de</a></p>
+<!-- BLOCK 6: Prozess -->
+<section class="section gray">
+    <div class="container">
+        <p class="section-eyebrow">Prozess</p>
+        <h2 class="section-title">So entsteht Zusammenarbeit</h2>
+        <ol class="process-steps" aria-label="Prozessschritte der Zusammenarbeit">
+            <li class="process-step">
+                <div class="step-num" aria-hidden="true">1</div>
+                <div class="step-content">
+                    <h3>Einstieg &amp; Kennenlernen</h3>
+                    <p>Ein unverbindliches Kennenlerngespräch bildet den Ausgangspunkt einer möglichen Kooperation.</p>
+                    <p>Alternativ können Sie ein konkretes Jobprofil hinterlegen. Bei realistischer Passung komme ich aktiv auf Sie zu – auch ohne vorherige Kooperation.</p>
+                </div>
+            </li>
+            <li class="process-step">
+                <div class="step-num" aria-hidden="true">2</div>
+                <div class="step-content">
+                    <h3>Kooperations-Check-In &amp; Unternehmenssuchprofil</h3>
+                    <p>Nach dem Erstgespräch erhalten Sie einen strukturierten <strong>Kooperations-Check-In</strong>. Er dient dazu, Erwartungen, Rahmenbedingungen und Entscheidungslogik frühzeitig sichtbar zu machen.</p>
+                    <p>Auf dieser Basis entwickle ich ein klares <strong>Unternehmenssuchprofil</strong> – das nicht nur Anforderungen beschreibt, sondern auch Arbeitsrealität, Kontext und Bedingungen gelingender Zusammenarbeit.</p>
+                </div>
+            </li>
+            <li class="process-step">
+                <div class="step-num" aria-hidden="true">3</div>
+                <div class="step-content">
+                    <h3>Empfehlung oder Fast-Track</h3>
+                    <p>Wenn sich aus der kontinuierlichen Begleitung geeigneter Personen eine tragfähige Verbindung abzeichnet, melde ich mich aktiv – gegebenenfalls auch mit einer konkreten Bewerbung.</p>
+                    <p>Im Fast-Track-Fall erfolgt die Abstimmung fokussierter und zeitnah – die Einordnung bleibt jedoch zentral.</p>
+                </div>
+            </li>
+            <li class="process-step">
+                <div class="step-num" aria-hidden="true">4</div>
+                <div class="step-content">
+                    <h3>Kontinuität</h3>
+                    <p>Kooperation bedeutet regelmäßiger Austausch. Suchprofile werden bei Bedarf aktualisiert, Veränderungen eingeordnet und neue Bedarfe realistisch bewertet.</p>
+                </div>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<!-- BLOCK 7: Vergütung -->
+<section class="section white">
+    <div class="container">
+        <p class="section-eyebrow">Vergütung</p>
+        <h2 class="section-title">Rahmenbedingungen &amp; Preismodell</h2>
+        <p class="section-text">Kosten entstehen ausschließlich bei <strong>erfolgreicher Einstellung</strong>. Zur Wahl stehen fünf Zahlungsmodelle – von der Einmalzahlung zum ersten Arbeitstag bis zu monatlichen Raten über bis zu 36 Monate. Offene Raten entfallen automatisch bei vorzeitiger Beendigung des Arbeitsverhältnisses.</p>
+        <div class="cta-row">
+            <a href="unternehmen/preise.html" class="btn-secondary">Alle Modelle &amp; Preisrechner →</a>
+        </div>
+    </div>
+</section>
+
+<!-- BLOCK 8: Job Profile -->
+<section class="job-profile-section" id="job-profile">
+    <p class="section-eyebrow light" style="margin-bottom:0.8rem;">Aktuellen Bedarf hinterlegen</p>
+    <h2>Sie haben aktuell eine offene Position?</h2>
+    <p>Über das Formular können Sie Ihr Jobprofil direkt hinterlegen – mit Anforderungen, Rahmenbedingungen und Kontext.</p>
+    <p>Ich prüfe realistisch, ob und wo sich aus der begleiteten Personengruppe eine tragfähige Verbindung abzeichnet.</p>
+    <p><strong>Bei Passung melde ich mich aktiv. Eine Garantie auf sofortige Vermittlung besteht bewusst nicht.</strong></p>
+    <div style="margin-top: 2.2rem;">
+        <a href="unternehmen/jobprofil-hinterlegen.html" class="btn-white-outline">Jobprofil hinterlegen</a>
+    </div>
+</section>
+
+<!-- BLOCK 9: FAQ -->
+<section class="section gray">
+    <div class="container">
+        <p class="section-eyebrow">FAQ</p>
+        <h2 class="section-title">Häufige Fragen</h2>
+        <div class="faq-list" role="list">
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false">Wie unterscheidet sich Ihr Ansatz von klassischem Recruiting? <span class="faq-icon" aria-hidden="true">+</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Ich arbeite nicht suchgetrieben auf Zuruf, sondern begleitungsbasiert.<br><br>Empfehlungen entstehen aus kontinuierlicher Einordnung – nicht aus kurzfristiger Vorauswahl.<br><br>Der Maßstab meiner Arbeit ist nicht die schnelle Besetzung, sondern eine langfristig tragfähige Entscheidung.</div></div>
+            </div>
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false">Können wir auch bei akutem Bedarf zusammenarbeiten? <span class="faq-icon" aria-hidden="true">+</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Ja. Im Rahmen eines Fast-Track-Prozesses prüfen wir zeitnah, ob eine realistische Passung vorliegt.<br><br>Gleichzeitig arbeite ich transparent: Eine Vorstellung ist nur möglich, wenn sich aus meinem begleiteten Personenkreis eine echte Passung ergibt.<br><br>Ich werbe keine Personen aktiv aus bestehenden Arbeitsverhältnissen ab. Nach einer erfolgreichen Vermittlung gilt zudem eine selbst auferlegte und vertraglich fixierte Sperrfrist.</div></div>
+            </div>
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false">Wie lange dauert es bis zur ersten Vermittlung? <span class="faq-icon" aria-hidden="true">+</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Das hängt von Bedarf, Markt und Passung ab.<br><br>Mein Ansatz ist nicht auf Geschwindigkeit optimiert, sondern auf Tragfähigkeit und realistische Einordnung.</div></div>
+            </div>
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false">Für welche Unternehmensgrößen ist das geeignet? <span class="faq-icon" aria-hidden="true">+</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Für kleine und mittelständische Unternehmen ebenso wie für wachsende Organisationen, die Wert auf langfristige Zusammenarbeit legen.<br><br>Auch größere Unternehmen können von einer zusätzlichen, unabhängigen Quelle qualifiziert eingeordneter Talente profitieren.</div></div>
+            </div>
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false">Was passiert bei einer Beendigung in der Probezeit? <span class="faq-icon" aria-hidden="true">+</span></button>
+                <div class="faq-answer"><div class="faq-answer-inner">Im Rahmen flexibler Ratenmodelle können finanzielle Risiken reduziert werden.<br><br>Offene Raten entfallen bei einer vorzeitigen Beendigung des Arbeitsverhältnisses automatisch.<br><br>Details regeln wir transparent im Vorfeld und sind unter „So Arbeite Ich" nachzulesen.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BLOCK 10: Kontakt -->
+<section class="contact-section" id="kontakt">
+    <div class="contact-inner">
+        <div class="contact-text">
+            <p class="section-eyebrow">Einstieg</p>
+            <h2>Unverbindlich ins Gespräch kommen.</h2>
+            <p>Wenn Sie prüfen möchten, ob dieser Ansatz für Ihr Unternehmen sinnvoll ist, lade ich Sie zu einem unverbindlichen Kennenlerngespräch ein.</p>
+            <p>Das Gespräch dient der Einordnung – nicht dem Abschluss.</p>
+            <div class="cta-row">
+                <a href="https://zeeg.me/koppmannkarriere" class="btn-primary" target="_blank" rel="noopener">Erstgespräch vereinbaren</a>
+            </div>
+            <div class="contact-links">
+                <a href="kontakt-einstieg.html" class="contact-link">→ Kontaktformular</a>
+                <a href="mailto:jan@koppmannkarriere.de" class="contact-link">→ jan@koppmannkarriere.de</a>
+                <a href="tel:+4916034028920" class="contact-link">→ 0160 340 2892</a>
+            </div>
+        </div>
+        <div class="contact-image">
+            <img src="https://res.cloudinary.com/duglcydsz/image/upload/f_auto,q_auto,w_900,h_640,c_fill,g_center/offener_Gespr%C3%A4chsraum_pkohvh.jpg" alt="Unverbindlich ins Gespräch kommen – Koppmann Karriere">
+        </div>
     </div>
 </section>
 
@@ -333,12 +623,12 @@
         <div class="footer-section">
             <h4>Navigation</h4>
             <ul>
-                <li><a href="../index.html">Start</a></li>
-                <li><a href="../unternehmen.html">Für Unternehmen</a></li>
-                <li><a href="../arbeitnehmende.html">Für Mitarbeitende</a></li>
-                <li><a href="../karriere-kosmos.html">Karriere-Kosmos</a></li>
-                <li><a href="../so-arbeite-ich.html">So Arbeite Ich</a></li>
-                <li><a href="../kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
+                <li><a href="index.html">Start</a></li>
+                <li><a href="unternehmen.html">Für Unternehmen</a></li>
+                <li><a href="arbeitnehmende.html">Für Mitarbeitende</a></li>
+                <li><a href="karriere-kosmos.html">Karriere-Kosmos</a></li>
+                <li><a href="so-arbeite-ich.html">So Arbeite Ich</a></li>
+                <li><a href="kontakt-einstieg.html">Kontakt &amp; Einstieg</a></li>
             </ul>
         </div>
         <div class="footer-section">
@@ -350,20 +640,20 @@
         <div class="footer-section">
             <h4>Social Media</h4>
             <div class="footer-social-icons">
-                <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="footer-social-icon" title="Instagram"><img src="../images/Instagram_Icon.png" alt="Instagram"></a>
-                <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="TikTok"><img src="../images/Tiktok_Icon.png" alt="TikTok"></a>
-                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="YouTube"><img src="../images/YouTube_Icon.png" alt="YouTube"></a>
-                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon" title="LinkedIn"><img src="../images/Linkedin_Icon.png" alt="LinkedIn"></a>
+                <a href="https://www.instagram.com/koppmannkarriere/" target="_blank" rel="noopener" class="footer-social-icon" title="Instagram"><img src="images/Instagram_Icon.png" alt="Instagram"></a>
+                <a href="https://www.tiktok.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="TikTok"><img src="images/Tiktok_Icon.png" alt="TikTok"></a>
+                <a href="https://www.youtube.com/@koppmannkarriere" target="_blank" rel="noopener" class="footer-social-icon" title="YouTube"><img src="images/YouTube_Icon.png" alt="YouTube"></a>
+                <a href="https://www.linkedin.com/in/jan-koppmann" target="_blank" rel="noopener" class="footer-social-icon" title="LinkedIn"><img src="images/Linkedin_Icon.png" alt="LinkedIn"></a>
             </div>
         </div>
         <div class="footer-section">
             <h4>Rechtliches</h4>
             <ul>
                 <li><a href="/impressum">Impressum</a></li>
-                <li><a href="../transparenz/datenschutz.html">Datenschutz</a></li>
+                <li><a href="transparenz/datenschutz.html">Datenschutz</a></li>
             </ul>
             <h4 style="margin-top:1.8rem;">Tippgeber:in werden</h4>
-            <p><a href="../tippgeberschaft/tippgebende.html">Weiterempfehlen &amp; Provision erhalten</a></p>
+            <p><a href="tippgeberschaft/tippgebende.html">Weiterempfehlen &amp; Provision erhalten</a></p>
         </div>
     </div>
     <div class="footer-bottom">
@@ -373,93 +663,6 @@
 </footer>
 
 <script>
-    // ── PANEL SWITCHER ──
-    function switchPanel(which) {
-        ['formular', 'pdf'].forEach(id => {
-            document.getElementById('panel-' + id).classList.toggle('active', id === which);
-            const card = document.getElementById('card-' + id);
-            card.classList.toggle('active', id === which);
-            card.setAttribute('aria-pressed', id === which ? 'true' : 'false');
-        });
-        // Scroll to panel smoothly
-        document.getElementById('panel-' + which).scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    // ── FILE UPLOAD VALIDATION ──
-    const fileInput  = document.getElementById('pdf-file');
-    const fileArea   = document.getElementById('file-upload-area');
-    const fileSelected = document.getElementById('file-selected');
-    const fileName   = document.getElementById('file-name');
-    const fileError  = document.getElementById('file-error');
-    const fileErrorMsg = document.getElementById('file-error-msg');
-    const MAX_SIZE   = 5 * 1024 * 1024; // 5 MB
-
-    function validateFile(file) {
-        fileSelected.classList.remove('visible');
-        fileError.classList.remove('visible');
-        if (!file) return false;
-        if (file.type !== 'application/pdf') {
-            fileErrorMsg.textContent = 'Bitte nur PDF-Dateien hochladen.';
-            fileError.classList.add('visible');
-            return false;
-        }
-        if (file.size > MAX_SIZE) {
-            fileErrorMsg.textContent = 'Die Datei ist zu groß (max. 5 MB).';
-            fileError.classList.add('visible');
-            return false;
-        }
-        fileName.textContent = file.name + ' (' + (file.size / 1024).toFixed(0) + ' KB)';
-        fileSelected.classList.add('visible');
-        return true;
-    }
-
-    fileInput.addEventListener('change', () => validateFile(fileInput.files[0]));
-
-    // Drag & Drop
-    fileArea.addEventListener('dragover', e => { e.preventDefault(); fileArea.classList.add('drag-over'); });
-    fileArea.addEventListener('dragleave', () => fileArea.classList.remove('drag-over'));
-    fileArea.addEventListener('drop', e => {
-        e.preventDefault();
-        fileArea.classList.remove('drag-over');
-        const file = e.dataTransfer.files[0];
-        if (file) {
-            const dt = new DataTransfer();
-            dt.items.add(file);
-            fileInput.files = dt.files;
-            validateFile(file);
-        }
-    });
-
-    // ── PDF FORM SUBMIT (mailto) ──
-    document.getElementById('pdf-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const unternehmen    = document.getElementById('pdf-unternehmen').value.trim();
-        const ansprechpartner = document.getElementById('pdf-ansprechpartner').value.trim();
-        const email          = document.getElementById('pdf-email').value.trim();
-        const stelle         = document.getElementById('pdf-stelle').value.trim();
-        const hinweis        = document.getElementById('pdf-hinweis').value.trim();
-        const file           = fileInput.files[0];
-
-        if (!unternehmen || !ansprechpartner || !email || !stelle) return;
-        if (!validateFile(file)) return;
-
-        const subject = encodeURIComponent('Jobprofil (PDF) – ' + unternehmen + ' · ' + stelle);
-        const body = encodeURIComponent(
-            'Unternehmen: ' + unternehmen + '\n' +
-            'Ansprechpartner:in: ' + ansprechpartner + '\n' +
-            'E-Mail: ' + email + '\n' +
-            'Stelle: ' + stelle + '\n' +
-            (hinweis ? '\nAnmerkung:\n' + hinweis + '\n' : '') +
-            '\n---\nBitte das PDF als Anhang beifügen: ' + (file ? file.name : '') + '\n' +
-            '(Das Dokument liegt bereit – bitte vor dem Senden als Anhang hinzufügen.)'
-        );
-
-        window.location.href = 'mailto:jan@koppmannkarriere.de?subject=' + subject + '&body=' + body;
-        document.getElementById('pdf-form').style.display = 'none';
-        document.getElementById('pdf-success').classList.add('visible');
-    });
-
-    // ── BURGER ──
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobile-menu');
     burger.addEventListener('click', () => {
@@ -467,11 +670,31 @@
         mobileMenu.classList.toggle('open');
         document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
     });
-    document.querySelectorAll('.mobile-menu a').forEach(l => l.addEventListener('click', () => {
-        burger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
-    }));
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            burger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+    });
+
+    document.querySelectorAll('.faq-item').forEach(item => {
+        const btn = item.querySelector('.faq-question');
+        btn.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('active');
+                i.querySelector('.faq-answer').style.maxHeight = null;
+                i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            });
+            if (!isActive) {
+                item.classList.add('active');
+                item.querySelector('.faq-answer').style.maxHeight = item.querySelector('.faq-answer').scrollHeight + 'px';
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
 </script>
+
 </body>
 </html>
