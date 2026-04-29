@@ -65,25 +65,25 @@
         .hero-note { margin-top: 1rem; font-size: 0.8rem; color: var(--medium-gray); }
         .hero-bottom-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to bottom, transparent, #002777); pointer-events: none; }
 
-        /* ── VIDEO PLACEHOLDER ── */
-        .video-section { background: var(--dark-blue); padding: 4rem 2.5rem 3rem; }
-        .video-inner { max-width: 800px; margin: 0 auto; text-align: center; }
-        .video-placeholder { background: rgba(255,255,255,0.06); border: 2px dashed rgba(255,255,255,0.18); border-radius: 20px; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; color: rgba(255,255,255,0.55); font-size: 0.95rem; }
-        .video-placeholder .play-icon { font-size: 3rem; opacity: 0.5; }
-        .video-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; }
-
-        /* ── ZERO FEE ── */
-        .zerofee-section { background: var(--dark-blue); padding: 4rem 2.5rem; }
-        .zerofee-inner { max-width: 900px; margin: 0 auto; text-align: center; }
-        .zerofee-badge { display: inline-block; background: #E8600A; color: #ffffff; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1.5rem; border: none; box-shadow: 0 4px 16px rgba(232,96,10,0.4); }
-        .zerofee-inner h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--white); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.2rem; }
-        .zerofee-inner h2 span { color: rgba(255,255,255,0.45); font-weight: 400; }
-        .zerofee-inner p { font-size: 1.05rem; color: rgba(255,255,255,0.82); line-height: 1.85; max-width: 680px; margin: 0 auto; }
-        .zerofee-details { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
-        .zerofee-item { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 1.8rem 1.5rem; text-align: left; }
-        .zerofee-item .icon { font-size: 1.4rem; margin-bottom: 0.8rem; }
-        .zerofee-item strong { display: block; font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
-        .zerofee-item p { font-size: 0.85rem; color: rgba(255,255,255,0.72); line-height: 1.7; margin: 0; }
+        /* ── VIDEO + ZEROFEE COMBINED ── */
+        .video-zerofee-section { background: var(--dark-blue); padding: 5rem 2.5rem; }
+        .video-zerofee-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 300px 1fr; gap: 5rem; align-items: center; }
+        /* Video links */
+        .video-col { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+        .video-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+        .video-container-portrait { border-radius: 20px; overflow: hidden; background: rgba(0,0,0,0.3); aspect-ratio: 9/16; width: 100%; box-shadow: 0 8px 32px rgba(0,0,0,0.35); }
+        .video-container-portrait video { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 20px; }
+        /* ZeroFee rechts */
+        .zerofee-col { text-align: left; }
+        .zerofee-badge { display: inline-block; background: #E8600A; color: #ffffff; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1.5rem; box-shadow: 0 4px 16px rgba(232,96,10,0.4); }
+        .zerofee-col h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900; color: var(--white); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.2rem; }
+        .zerofee-col h2 span { color: rgba(255,255,255,0.45); font-weight: 400; }
+        .zerofee-col > p { font-size: 1rem; color: rgba(255,255,255,0.82); line-height: 1.85; margin-bottom: 2rem; }
+        .zerofee-details { display: flex; flex-direction: column; gap: 1rem; }
+        .zerofee-item { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 1.4rem 1.5rem; display: flex; gap: 1.2rem; align-items: flex-start; }
+        .zerofee-item .icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+        .zerofee-item strong { display: block; font-size: 0.9rem; font-weight: 700; color: var(--white); margin-bottom: 0.3rem; }
+        .zerofee-item p { font-size: 0.83rem; color: rgba(255,255,255,0.72); line-height: 1.7; margin: 0; }
 
         /* ── FÜR WEN ── */
         .fuerwen-section { background: var(--white); padding: 5rem 2.5rem; }
@@ -179,7 +179,11 @@
             .footer-container { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
             .zerofee-section, .fuerwen-section, .prozess-section, .faq-section { padding-left: 1.5rem; padding-right: 1.5rem; }
-            .video-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .video-zerofee-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .video-zerofee-inner { grid-template-columns: 1fr; gap: 3rem; }
+            .video-col { max-width: 280px; margin: 0 auto; }
+            .zerofee-col { text-align: center; }
+            .zerofee-item { text-align: left; }
         }
     </style>
 </head>
@@ -234,39 +238,52 @@
 </section>
 
 <!-- VIDEO PLATZHALTER -->
-<section class="video-section" aria-label="Ansprache-Video">
-    <div class="video-inner">
-        <p class="video-label">Ansprache-Video</p>
-        <div class="video-placeholder" role="img" aria-label="Video folgt in Kürze">
-            <div class="play-icon" aria-hidden="true">▶</div>
-            <span>Video folgt in Kürze</span>
-        </div>
-    </div>
-</section>
+<section class="video-zerofee-section" aria-label="Ansprache-Video und ZeroFeePromise">
+    <div class="video-zerofee-inner">
 
-<!-- ZERO FEE PROMISE -->
-<section class="zerofee-section" aria-label="ZeroFeePromise – kostenlose Karrierebegleitung">
-    <div class="zerofee-inner">
-        <span class="zerofee-badge">ZeroFeePromise</span>
-        <h2>Karrierebegleitung.<br><span>Für dich. Kostenlos.</span></h2>
-        <p>Du zahlst nichts – nicht jetzt, nicht später, nicht indirekt. Mein Honorar kommt ausschließlich vom Unternehmen, wenn eine Vermittlung erfolgreich ist. Das bedeutet: Meine Interessen sind komplett auf deine ausgerichtet.</p>
-        <div class="zerofee-details">
-            <div class="zerofee-item">
-                <div class="icon" aria-hidden="true">🚫</div>
-                <strong>Keine versteckten Kosten</strong>
-                <p>Keine Bearbeitungsgebühren, keine Mitgliedschaft, kein Abo – zu keinem Zeitpunkt.</p>
-            </div>
-            <div class="zerofee-item">
-                <div class="icon" aria-hidden="true">🤝</div>
-                <strong>Keine Verpflichtungen</strong>
-                <p>Du gehst keine vertragliche Bindung ein. Alle erarbeiteten Unterlagen und Erkenntnisse gehören dir.</p>
-            </div>
-            <div class="zerofee-item">
-                <div class="icon" aria-hidden="true">🎯</div>
-                <strong>Echte Interessensgleichheit</strong>
-                <p>Ich verdiene nur, wenn du erfolgreich vermittelt wirst. Das hält mich ehrlich.</p>
+        <!-- Links: Video -->
+        <div class="video-col">
+            <div class="video-container-portrait">
+                <video
+                    src="https://res.cloudinary.com/duglcydsz/video/upload/v1777486709/Ansprache_Video_AN_tk6jyx.mp4"
+                    playsinline
+                    controls
+                    preload="metadata"
+                    aria-label="Ansprache-Video von Jan Koppmann für Mitarbeitende"
+                ></video>
             </div>
         </div>
+
+        <!-- Rechts: ZeroFee -->
+        <div class="zerofee-col">
+            <span class="zerofee-badge">ZeroFeePromise</span>
+            <h2>Karrierebegleitung.<br><span>Für dich. Kostenlos.</span></h2>
+            <p>Du zahlst nichts – nicht jetzt, nicht später, nicht indirekt. Mein Honorar kommt ausschließlich vom Unternehmen, wenn eine Vermittlung erfolgreich ist. Das bedeutet: Meine Interessen sind komplett auf deine ausgerichtet.</p>
+            <div class="zerofee-details">
+                <div class="zerofee-item">
+                    <div class="icon" aria-hidden="true">🚫</div>
+                    <div>
+                        <strong>Keine versteckten Kosten</strong>
+                        <p>Keine Bearbeitungsgebühren, keine Mitgliedschaft, kein Abo – zu keinem Zeitpunkt.</p>
+                    </div>
+                </div>
+                <div class="zerofee-item">
+                    <div class="icon" aria-hidden="true">🤝</div>
+                    <div>
+                        <strong>Keine Verpflichtungen</strong>
+                        <p>Du gehst keine vertragliche Bindung ein. Alle erarbeiteten Unterlagen und Erkenntnisse gehören dir.</p>
+                    </div>
+                </div>
+                <div class="zerofee-item">
+                    <div class="icon" aria-hidden="true">🎯</div>
+                    <div>
+                        <strong>Echte Interessensgleichheit</strong>
+                        <p>Ich verdiene nur, wenn du erfolgreich vermittelt wirst. Das hält mich ehrlich.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
